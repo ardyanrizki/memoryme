@@ -7,38 +7,19 @@
 
 import UIKit
 import SpriteKit
-import GameplayKit
+
+protocol SceneManagerDelegate {
+    func presentTitleScene()
+    func presentMainRoomScene()
+    func presentMemoryRoomScene(roomNumber: Int)
+    func presentHospitalRoomScene()
+}
 
 class GameViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        // Load 'GameScene.sks' as a GKScene. This provides gameplay related content
-        // including entities and graphs.
-        if let scene = GKScene(fileNamed: "GameScene") {
-            
-            // Get the SKScene from the loaded GKScene
-            if let sceneNode = scene.rootNode as! GameScene? {
-                
-                // Copy gameplay related content over to the scene
-                sceneNode.entities = scene.entities
-                sceneNode.graphs = scene.graphs
-                
-                // Set the scale mode to scale to fit the window
-                sceneNode.scaleMode = .aspectFill
-                
-                // Present the scene
-                if let view = self.view as! SKView? {
-                    view.presentScene(sceneNode)
-                    
-                    view.ignoresSiblingOrder = true
-                    
-                    view.showsFPS = true
-                    view.showsNodeCount = true
-                }
-            }
-        }
+        presentTitleScene()
     }
 
     override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
@@ -51,5 +32,70 @@ class GameViewController: UIViewController {
 
     override var prefersStatusBarHidden: Bool {
         return true
+    }
+}
+
+extension GameViewController: SceneManagerDelegate {
+    func presentTitleScene() {
+        guard let scene = TitleScene(fileNamed: "TitleScene") else { return }
+        scene.sceneManagerDelegate = self
+        let fade = SKTransition.fade(withDuration: 0.5)
+        present(scene: scene, transition: fade)
+    }
+    
+    func presentMainRoomScene() {
+        guard let scene = MainRoomScene(fileNamed: "MainRoomScene") else { return }
+        scene.sceneManagerDelegate = self
+        let fade = SKTransition.fade(withDuration: 0.5)
+        present(scene: scene, transition: fade)
+    }
+    
+    func presentMemoryRoomScene(roomNumber: Int) {
+        var scene = SKScene()
+        var transition = SKTransition.fade(withDuration: 0.5)
+        switch roomNumber {
+        case 1:
+            guard let firstRoomScene = FirstMemoryScene(fileNamed: "FirstMemoryScene") else { return }
+            scene = firstRoomScene
+        case 2:
+            guard let secondRoomScene = SecondMemoryScene(fileNamed: "SecondMemoryScene") else { return }
+            scene = secondRoomScene
+        case 3:
+            guard let thirdRoomScene = ThirdMemoryScene(fileNamed: "ThirdMemoryScene") else { return }
+            scene = thirdRoomScene
+        default:
+            break
+        }
+        present(scene: scene, transition: transition)
+    }
+    
+    func presentHospitalRoomScene() {
+        guard let scene = HospitalRoomScene(fileNamed: "HospitalRoomScene") else { return }
+        scene.sceneManagerDelegate = self
+        let fade = SKTransition.fade(withDuration: 0.5)
+        present(scene: scene, transition: fade)
+    }
+    
+    private func present(scene: SKScene, transition: SKTransition? = nil){
+        if let view = self.view as! SKView? {
+            if let gestureRecognizers = view.gestureRecognizers {
+                for recognizer in gestureRecognizers {
+                    view.removeGestureRecognizer(recognizer)
+                }
+            }
+            if let transition {
+                view.presentScene(scene, transition: transition)
+            } else {
+                view.presentScene(scene)
+            }
+            
+            scene.scaleMode = .aspectFill
+            scene.physicsBody = SKPhysicsBody(edgeLoopFrom: scene.frame)
+
+            view.ignoresSiblingOrder = true
+            view.showsPhysics = false
+            view.showsFPS = false
+            view.showsNodeCount = false
+        }
     }
 }

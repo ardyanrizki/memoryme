@@ -18,8 +18,7 @@ enum CompassDirection: CaseIterable {
 /// The different animation states that an animated character can be in.
 enum AnimationState {
     case idle
-    case walkForward
-    case walkBackward
+    case walk
     case sit
     case lay
 }

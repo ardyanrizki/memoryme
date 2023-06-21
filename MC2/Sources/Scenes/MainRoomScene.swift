@@ -1,5 +1,5 @@
 //
-//  ThirdMemoryScene.swift
+//  MainRoomScene.swift
 //  MC2
 //
 //  Created by Muhammad Rizki Ardyan on 15/06/23.
@@ -8,7 +8,8 @@
 import SpriteKit
 import GameplayKit
 
-class ThirdMemoryScene: SKScene {
+class MainRoomScene: SKScene {
+    
     var sceneManagerDelegate: SceneManagerDelegate?
     
     private var entities: [GKEntity] = []
@@ -55,7 +56,7 @@ class ThirdMemoryScene: SKScene {
     }
 }
 
-extension ThirdMemoryScene {
+extension MainRoomScene {
     private func createWorld() {
         let roomBackground = SKSpriteNode(imageNamed: "MainRoom")
         roomBackground.position = CGPoint(x: frame.midX, y: frame.midY)

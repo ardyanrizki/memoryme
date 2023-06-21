@@ -1,14 +1,14 @@
 //
-//  ThirdMemoryScene.swift
+//  HospitalRoomScene.swift
 //  MC2
 //
-//  Created by Muhammad Rizki Ardyan on 15/06/23.
+//  Created by Muhammad Rizki Ardyan on 21/06/23.
 //
 
 import SpriteKit
 import GameplayKit
 
-class ThirdMemoryScene: SKScene {
+class HospitalRoomScene: SKScene {
     var sceneManagerDelegate: SceneManagerDelegate?
     
     private var entities: [GKEntity] = []
@@ -55,7 +55,7 @@ class ThirdMemoryScene: SKScene {
     }
 }
 
-extension ThirdMemoryScene {
+extension HospitalRoomScene {
     private func createWorld() {
         let roomBackground = SKSpriteNode(imageNamed: "MainRoom")
         roomBackground.position = CGPoint(x: frame.midX, y: frame.midY)
@@ -69,3 +69,4 @@ extension ThirdMemoryScene {
         mainCharacter.node?.zPosition = 10
     }
 }
+
