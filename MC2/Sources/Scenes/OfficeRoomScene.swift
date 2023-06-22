@@ -8,7 +8,7 @@
 import SpriteKit
 import GameplayKit
 
-class FirstMemoryScene: SKScene {
+class OfficeRoomScene: SKScene {
     var sceneManagerDelegate: SceneManagerDelegate?
     
     private var entities: [GKEntity] = []
@@ -19,7 +19,25 @@ class FirstMemoryScene: SKScene {
     }
     
     override func update(_ currentTime: TimeInterval) {
+        checkDoorCollision()
+    }
+    
+    func checkDoorCollision() {
+        guard let characterNode = childNode(withName: CharacterType.mainCharacter.rawValue) as? SKSpriteNode else {
+            return
+        }
         
+        guard let doorMainRoom = childNode(withName: "DoorToMainRoom") as? SKShapeNode else {
+            return
+        }
+        
+        print("all object exist. checking collisions...")
+        
+        
+        if characterNode.intersects(doorMainRoom) {
+            print("Intersect")
+            sceneManagerDelegate?.presentMainRoomScene()
+        }
     }
     
     func touchDown(atPoint pos : CGPoint) {
@@ -55,12 +73,8 @@ class FirstMemoryScene: SKScene {
     }
 }
 
-extension FirstMemoryScene {
-    private func createWorld() {
-        let roomBackground = SKSpriteNode(imageNamed: "MainRoom")
-        roomBackground.position = CGPoint(x: frame.midX, y: frame.midY)
-        addChild(roomBackground)
-    }
+extension OfficeRoomScene {
+    private func createWorld() {}
     
     private func setupEntities(){
         let mainCharacter = Player(position: CGPoint(x: frame.midX, y: frame.midY))
