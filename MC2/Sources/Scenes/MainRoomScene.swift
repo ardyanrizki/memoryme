@@ -34,7 +34,7 @@ class MainRoomScene: SKScene {
         
         
         if characterNode.intersects(doorOffice) {
-            sceneManagerDelegate?.presentMemoryRoomScene(roomNumber: 1)
+            sceneManagerDelegate?.presentOfficeRoomScene()
         }
     }
     
