@@ -20,7 +20,22 @@ class MainRoomScene: SKScene {
     }
     
     override func update(_ currentTime: TimeInterval) {
+        checkDoorCollision()
+    }
+    
+    func checkDoorCollision() {
+        guard let characterNode = childNode(withName: CharacterType.mainCharacter.rawValue) as? SKSpriteNode else {
+            return
+        }
         
+        guard let doorOffice = childNode(withName: "DoorToOfficeRoom") as? SKShapeNode else {
+            return
+        }
+        
+        
+        if characterNode.intersects(doorOffice) {
+            sceneManagerDelegate?.presentMemoryRoomScene(roomNumber: 1)
+        }
     }
     
     func touchDown(atPoint pos : CGPoint) {
@@ -57,11 +72,7 @@ class MainRoomScene: SKScene {
 }
 
 extension MainRoomScene {
-    private func createWorld() {
-        let roomBackground = SKSpriteNode(imageNamed: "MainRoom")
-        roomBackground.position = CGPoint(x: frame.midX, y: frame.midY)
-        addChild(roomBackground)
-    }
+    private func createWorld() {}
     
     private func setupEntities(){
         let mainCharacter = Player(position: CGPoint(x: frame.midX, y: frame.midY))

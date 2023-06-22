@@ -50,12 +50,13 @@ extension GameViewController: SceneManagerDelegate {
         present(scene: scene, transition: fade)
     }
     
+    // TODO: change and rename each memory scene
     func presentMemoryRoomScene(roomNumber: Int) {
         var scene = SKScene()
         var transition = SKTransition.fade(withDuration: 0.5)
         switch roomNumber {
         case 1:
-            guard let firstRoomScene = FirstMemoryScene(fileNamed: "FirstMemoryScene") else { return }
+            guard let firstRoomScene = OfficeRoomScene(fileNamed: "OfficeRoomScene") else { return }
             scene = firstRoomScene
         case 2:
             guard let secondRoomScene = SecondMemoryScene(fileNamed: "SecondMemoryScene") else { return }
