@@ -31,11 +31,8 @@ class OfficeRoomScene: SKScene {
             return
         }
         
-        print("all object exist. checking collisions...")
-        
         
         if characterNode.intersects(doorMainRoom) {
-            print("Intersect")
             sceneManagerDelegate?.presentMainRoomScene()
         }
     }
@@ -77,7 +74,16 @@ extension OfficeRoomScene {
     private func createWorld() {}
     
     private func setupEntities(){
-        let mainCharacter = Player(position: CGPoint(x: frame.midX, y: frame.midY))
+        var xPosition = frame.midX
+        var yPosition = frame.midY
+        
+        // To change position of Main character based on scene
+        if let node = childNode(withName: "MorryStartingPoint") {
+            xPosition = node.position.x
+            yPosition = node.position.y
+        }
+        
+        let mainCharacter = Player(position: CGPoint(x: xPosition, y: yPosition))
         entities.append(mainCharacter)
         addChild(mainCharacter.node ?? SKSpriteNode())
         mainCharacter.node?.zPosition = 10
