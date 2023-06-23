@@ -48,18 +48,18 @@
 		38763F5B2A3B7148004129A6 /* OfficeRoomScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38763F5A2A3B7148004129A6 /* OfficeRoomScene.swift */; };
 		38763F5C2A3B7148004129A6 /* OfficeRoomScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38763F5A2A3B7148004129A6 /* OfficeRoomScene.swift */; };
 		38763F5D2A3B7148004129A6 /* OfficeRoomScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38763F5A2A3B7148004129A6 /* OfficeRoomScene.swift */; };
-		38763F5F2A3B71A1004129A6 /* SecondMemoryScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 38763F5E2A3B71A1004129A6 /* SecondMemoryScene.sks */; };
-		38763F602A3B71A1004129A6 /* SecondMemoryScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 38763F5E2A3B71A1004129A6 /* SecondMemoryScene.sks */; };
-		38763F612A3B71A1004129A6 /* SecondMemoryScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 38763F5E2A3B71A1004129A6 /* SecondMemoryScene.sks */; };
-		38763F632A3B71AE004129A6 /* SecondMemoryScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38763F622A3B71AE004129A6 /* SecondMemoryScene.swift */; };
-		38763F642A3B71AE004129A6 /* SecondMemoryScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38763F622A3B71AE004129A6 /* SecondMemoryScene.swift */; };
-		38763F652A3B71AE004129A6 /* SecondMemoryScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38763F622A3B71AE004129A6 /* SecondMemoryScene.swift */; };
-		38763F672A3B71C3004129A6 /* ThirdMemoryScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 38763F662A3B71C3004129A6 /* ThirdMemoryScene.sks */; };
-		38763F682A3B71C3004129A6 /* ThirdMemoryScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 38763F662A3B71C3004129A6 /* ThirdMemoryScene.sks */; };
-		38763F692A3B71C3004129A6 /* ThirdMemoryScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 38763F662A3B71C3004129A6 /* ThirdMemoryScene.sks */; };
-		38763F6B2A3B71D5004129A6 /* ThirdMemoryScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38763F6A2A3B71D5004129A6 /* ThirdMemoryScene.swift */; };
-		38763F6C2A3B71D5004129A6 /* ThirdMemoryScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38763F6A2A3B71D5004129A6 /* ThirdMemoryScene.swift */; };
-		38763F6D2A3B71D5004129A6 /* ThirdMemoryScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38763F6A2A3B71D5004129A6 /* ThirdMemoryScene.swift */; };
+		38763F5F2A3B71A1004129A6 /* BedroomScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 38763F5E2A3B71A1004129A6 /* BedroomScene.sks */; };
+		38763F602A3B71A1004129A6 /* BedroomScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 38763F5E2A3B71A1004129A6 /* BedroomScene.sks */; };
+		38763F612A3B71A1004129A6 /* BedroomScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 38763F5E2A3B71A1004129A6 /* BedroomScene.sks */; };
+		38763F632A3B71AE004129A6 /* BedroomScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38763F622A3B71AE004129A6 /* BedroomScene.swift */; };
+		38763F642A3B71AE004129A6 /* BedroomScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38763F622A3B71AE004129A6 /* BedroomScene.swift */; };
+		38763F652A3B71AE004129A6 /* BedroomScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38763F622A3B71AE004129A6 /* BedroomScene.swift */; };
+		38763F672A3B71C3004129A6 /* BarScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 38763F662A3B71C3004129A6 /* BarScene.sks */; };
+		38763F682A3B71C3004129A6 /* BarScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 38763F662A3B71C3004129A6 /* BarScene.sks */; };
+		38763F692A3B71C3004129A6 /* BarScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 38763F662A3B71C3004129A6 /* BarScene.sks */; };
+		38763F6B2A3B71D5004129A6 /* BarScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38763F6A2A3B71D5004129A6 /* BarScene.swift */; };
+		38763F6C2A3B71D5004129A6 /* BarScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38763F6A2A3B71D5004129A6 /* BarScene.swift */; };
+		38763F6D2A3B71D5004129A6 /* BarScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38763F6A2A3B71D5004129A6 /* BarScene.swift */; };
 		38763F7E2A41E3E3004129A6 /* TitleScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38763F7D2A41E3E3004129A6 /* TitleScene.swift */; };
 		38763F7F2A41E3E3004129A6 /* TitleScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38763F7D2A41E3E3004129A6 /* TitleScene.swift */; };
 		38763F802A41E3E3004129A6 /* TitleScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38763F7D2A41E3E3004129A6 /* TitleScene.swift */; };
@@ -72,6 +72,8 @@
 		38763F8B2A42DAA3004129A6 /* HospitalRoomScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 38763F8A2A42DAA3004129A6 /* HospitalRoomScene.sks */; };
 		38763F8C2A42DAA3004129A6 /* HospitalRoomScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 38763F8A2A42DAA3004129A6 /* HospitalRoomScene.sks */; };
 		38763F8D2A42DAA3004129A6 /* HospitalRoomScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 38763F8A2A42DAA3004129A6 /* HospitalRoomScene.sks */; };
+		8C56D9492A43CFE40076283B /* Scribble-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 8C56D9482A43CFE40076283B /* Scribble-Regular.otf */; };
+		8C56D94C2A43E9600076283B /* InteractiveItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C56D94B2A43E9600076283B /* InteractiveItem.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -97,7 +99,7 @@
 		38763F002A3AA7A8004129A6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		38763F022A3AA7A8004129A6 /* MainRoomScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = MainRoomScene.sks; sourceTree = "<group>"; };
 		38763F042A3AA7A8004129A6 /* Actions.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Actions.sks; sourceTree = "<group>"; };
-		38763F062A3AA7A8004129A6 /* MainRoomScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainRoomScene.swift; sourceTree = "<group>"; };
+		38763F062A3AA7A8004129A6 /* MainRoomScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainRoomScene.swift; sourceTree = "<group>"; usesTabs = 0; };
 		38763F082A3AA7A8004129A6 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 		38763F0B2A3AA7A8004129A6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		38763F0D2A3AA7AA004129A6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -116,14 +118,17 @@
 		38763F522A3AF789004129A6 /* RenderComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RenderComponent.swift; sourceTree = "<group>"; };
 		38763F562A3B7127004129A6 /* OfficeRoomScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = OfficeRoomScene.sks; sourceTree = "<group>"; };
 		38763F5A2A3B7148004129A6 /* OfficeRoomScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfficeRoomScene.swift; sourceTree = "<group>"; };
-		38763F5E2A3B71A1004129A6 /* SecondMemoryScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = SecondMemoryScene.sks; sourceTree = "<group>"; };
-		38763F622A3B71AE004129A6 /* SecondMemoryScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondMemoryScene.swift; sourceTree = "<group>"; };
-		38763F662A3B71C3004129A6 /* ThirdMemoryScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = ThirdMemoryScene.sks; sourceTree = "<group>"; };
-		38763F6A2A3B71D5004129A6 /* ThirdMemoryScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdMemoryScene.swift; sourceTree = "<group>"; };
+		38763F5E2A3B71A1004129A6 /* BedroomScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = BedroomScene.sks; sourceTree = "<group>"; };
+		38763F622A3B71AE004129A6 /* BedroomScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BedroomScene.swift; sourceTree = "<group>"; };
+		38763F662A3B71C3004129A6 /* BarScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = BarScene.sks; sourceTree = "<group>"; };
+		38763F6A2A3B71D5004129A6 /* BarScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarScene.swift; sourceTree = "<group>"; };
 		38763F7D2A41E3E3004129A6 /* TitleScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleScene.swift; sourceTree = "<group>"; };
 		38763F812A41E720004129A6 /* TitleScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = TitleScene.sks; sourceTree = "<group>"; };
 		38763F862A42A600004129A6 /* HospitalRoomScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HospitalRoomScene.swift; sourceTree = "<group>"; };
 		38763F8A2A42DAA3004129A6 /* HospitalRoomScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = HospitalRoomScene.sks; sourceTree = "<group>"; };
+		8C56D9482A43CFE40076283B /* Scribble-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Scribble-Regular.otf"; sourceTree = "<group>"; };
+		8C56D94A2A43D0320076283B /* MC2-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "MC2-Info.plist"; sourceTree = "<group>"; };
+		8C56D94B2A43E9600076283B /* InteractiveItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InteractiveItem.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -154,6 +159,7 @@
 		38763EF42A3AA7A8004129A6 = {
 			isa = PBXGroup;
 			children = (
+				8C56D94A2A43D0320076283B /* MC2-Info.plist */,
 				38763EFF2A3AA7A8004129A6 /* Sources */,
 				38763F192A3AA7AA004129A6 /* Tests */,
 				38763F232A3AA7AA004129A6 /* UITests */,
@@ -174,6 +180,7 @@
 		38763EFF2A3AA7A8004129A6 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				8C56D9472A43CFD10076283B /* Fonts */,
 				38763F372A3AA83B004129A6 /* App */,
 				38763F352A3AA7D6004129A6 /* Scenes */,
 				38763F332A3AA7CB004129A6 /* Entities */,
@@ -206,6 +213,7 @@
 			isa = PBXGroup;
 			children = (
 				38763F3A2A3AEC30004129A6 /* Player.swift */,
+				8C56D94B2A43E9600076283B /* InteractiveItem.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -230,8 +238,8 @@
 				38763F7D2A41E3E3004129A6 /* TitleScene.swift */,
 				38763F062A3AA7A8004129A6 /* MainRoomScene.swift */,
 				38763F5A2A3B7148004129A6 /* OfficeRoomScene.swift */,
-				38763F622A3B71AE004129A6 /* SecondMemoryScene.swift */,
-				38763F6A2A3B71D5004129A6 /* ThirdMemoryScene.swift */,
+				38763F622A3B71AE004129A6 /* BedroomScene.swift */,
+				38763F6A2A3B71D5004129A6 /* BarScene.swift */,
 				38763F862A42A600004129A6 /* HospitalRoomScene.swift */,
 			);
 			path = Scenes;
@@ -277,12 +285,20 @@
 				38763F812A41E720004129A6 /* TitleScene.sks */,
 				38763F022A3AA7A8004129A6 /* MainRoomScene.sks */,
 				38763F562A3B7127004129A6 /* OfficeRoomScene.sks */,
-				38763F5E2A3B71A1004129A6 /* SecondMemoryScene.sks */,
-				38763F662A3B71C3004129A6 /* ThirdMemoryScene.sks */,
+				38763F5E2A3B71A1004129A6 /* BedroomScene.sks */,
+				38763F662A3B71C3004129A6 /* BarScene.sks */,
 				38763F8A2A42DAA3004129A6 /* HospitalRoomScene.sks */,
 				38763F042A3AA7A8004129A6 /* Actions.sks */,
 			);
 			path = Scenes;
+			sourceTree = "<group>";
+		};
+		8C56D9472A43CFD10076283B /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				8C56D9482A43CFE40076283B /* Scribble-Regular.otf */,
+			);
+			path = Fonts;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -389,16 +405,17 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				38763F5F2A3B71A1004129A6 /* SecondMemoryScene.sks in Resources */,
+				38763F5F2A3B71A1004129A6 /* BedroomScene.sks in Resources */,
 				38763F0C2A3AA7A8004129A6 /* Main.storyboard in Resources */,
 				38763F822A41E720004129A6 /* TitleScene.sks in Resources */,
 				38763F032A3AA7A8004129A6 /* MainRoomScene.sks in Resources */,
 				38763F0E2A3AA7AA004129A6 /* Assets.xcassets in Resources */,
 				38763F112A3AA7AA004129A6 /* LaunchScreen.storyboard in Resources */,
-				38763F672A3B71C3004129A6 /* ThirdMemoryScene.sks in Resources */,
+				38763F672A3B71C3004129A6 /* BarScene.sks in Resources */,
 				38763F8B2A42DAA3004129A6 /* HospitalRoomScene.sks in Resources */,
 				38763F572A3B7127004129A6 /* OfficeRoomScene.sks in Resources */,
 				38763F052A3AA7A8004129A6 /* Actions.sks in Resources */,
+				8C56D9492A43CFE40076283B /* Scribble-Regular.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -406,11 +423,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				38763F682A3B71C3004129A6 /* ThirdMemoryScene.sks in Resources */,
+				38763F682A3B71C3004129A6 /* BarScene.sks in Resources */,
 				38763F832A41E720004129A6 /* TitleScene.sks in Resources */,
 				38763F8C2A42DAA3004129A6 /* HospitalRoomScene.sks in Resources */,
 				38763F582A3B7127004129A6 /* OfficeRoomScene.sks in Resources */,
-				38763F602A3B71A1004129A6 /* SecondMemoryScene.sks in Resources */,
+				38763F602A3B71A1004129A6 /* BedroomScene.sks in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -418,11 +435,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				38763F692A3B71C3004129A6 /* ThirdMemoryScene.sks in Resources */,
+				38763F692A3B71C3004129A6 /* BarScene.sks in Resources */,
 				38763F842A41E720004129A6 /* TitleScene.sks in Resources */,
 				38763F8D2A42DAA3004129A6 /* HospitalRoomScene.sks in Resources */,
 				38763F592A3B7127004129A6 /* OfficeRoomScene.sks in Resources */,
-				38763F612A3B71A1004129A6 /* SecondMemoryScene.sks in Resources */,
+				38763F612A3B71A1004129A6 /* BedroomScene.sks in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -434,7 +451,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				38763F4B2A3AF70A004129A6 /* ControlComponent.swift in Sources */,
-				38763F632A3B71AE004129A6 /* SecondMemoryScene.swift in Sources */,
+				38763F632A3B71AE004129A6 /* BedroomScene.swift in Sources */,
 				38763F532A3AF789004129A6 /* RenderComponent.swift in Sources */,
 				2C0325DB2A3EDB2A005B8E0A /* CharacterVisualComponent.swift in Sources */,
 				38763F872A42A600004129A6 /* HospitalRoomScene.swift in Sources */,
@@ -446,9 +463,10 @@
 				38763F012A3AA7A8004129A6 /* AppDelegate.swift in Sources */,
 				38763F7E2A41E3E3004129A6 /* TitleScene.swift in Sources */,
 				38763F472A3AF657004129A6 /* AnimationComponent.swift in Sources */,
-				38763F6B2A3B71D5004129A6 /* ThirdMemoryScene.swift in Sources */,
+				38763F6B2A3B71D5004129A6 /* BarScene.swift in Sources */,
 				38763F3B2A3AEC30004129A6 /* Player.swift in Sources */,
 				38763F3F2A3AF2F6004129A6 /* Enums.swift in Sources */,
+				8C56D94C2A43E9600076283B /* InteractiveItem.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -457,7 +475,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				38763F442A3AF49D004129A6 /* OrientationComponent.swift in Sources */,
-				38763F642A3B71AE004129A6 /* SecondMemoryScene.swift in Sources */,
+				38763F642A3B71AE004129A6 /* BedroomScene.swift in Sources */,
 				38763F882A42A600004129A6 /* HospitalRoomScene.swift in Sources */,
 				38763F502A3AF748004129A6 /* PhysicsComponent.swift in Sources */,
 				38763F482A3AF657004129A6 /* AnimationComponent.swift in Sources */,
@@ -465,7 +483,7 @@
 				38763F1B2A3AA7AA004129A6 /* MC2Tests.swift in Sources */,
 				38763F402A3AF2F6004129A6 /* Enums.swift in Sources */,
 				38763F4C2A3AF70A004129A6 /* ControlComponent.swift in Sources */,
-				38763F6C2A3B71D5004129A6 /* ThirdMemoryScene.swift in Sources */,
+				38763F6C2A3B71D5004129A6 /* BarScene.swift in Sources */,
 				38763F7F2A41E3E3004129A6 /* TitleScene.swift in Sources */,
 				2C0325DC2A3EDB2A005B8E0A /* CharacterVisualComponent.swift in Sources */,
 				38763F5C2A3B7148004129A6 /* OfficeRoomScene.swift in Sources */,
@@ -488,9 +506,9 @@
 				38763F252A3AA7AA004129A6 /* MC2UITests.swift in Sources */,
 				38763F272A3AA7AA004129A6 /* MC2UITestsLaunchTests.swift in Sources */,
 				38763F512A3AF748004129A6 /* PhysicsComponent.swift in Sources */,
-				38763F652A3B71AE004129A6 /* SecondMemoryScene.swift in Sources */,
+				38763F652A3B71AE004129A6 /* BedroomScene.swift in Sources */,
 				38763F552A3AF789004129A6 /* RenderComponent.swift in Sources */,
-				38763F6D2A3B71D5004129A6 /* ThirdMemoryScene.swift in Sources */,
+				38763F6D2A3B71D5004129A6 /* BarScene.swift in Sources */,
 				38763F802A41E3E3004129A6 /* TitleScene.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -653,6 +671,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = T84FHM7BL8;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "MC2-Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -681,6 +700,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = T84FHM7BL8;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "MC2-Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;

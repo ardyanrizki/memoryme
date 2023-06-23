@@ -9,41 +9,40 @@ import Foundation
 import SpriteKit
 import GameplayKit
 
-enum CharacterType: String {
+enum EntityType: String {
     case mainCharacter = "mainCharacter"
     case father = "father"
     case mother = "mother"
     case manager = "manager"
     case stranger = "stranger"
     case barista = "barista"
+    
+    case vase = "vase"
 }
 
 class CharacterVisualComponent: GKComponent {
     
-    let node: SKSpriteNode
     let textures: [AnimationState: [SKTexture]]
     var state: AnimationState = .idle
     
-    static func getTexture(type: CharacterType) -> String {
-        switch type {
-        case .mainCharacter:
-            return "mory_walk_1"
-        default:
-            return ""
-        }
-    }
+    let renderComponent: RenderComponent
     
-    init(type: CharacterType, position: CGPoint, textures: [AnimationState: [SKTexture]]) {
-        // load texture
-        let texture = SKTexture(imageNamed: CharacterVisualComponent.getTexture(type: type))
-        // create characterNode
-        self.node = SKSpriteNode(texture: texture)
-        self.node.position = position
+    init(type: EntityType, textures: [AnimationState: [SKTexture]], renderComponent: RenderComponent) {
+        self.renderComponent = renderComponent
         self.textures = textures
         super.init()
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    static func getTexture(type: EntityType) -> String {
+        switch type {
+        case .mainCharacter:
+            return "mory_walk_1"
+        default:
+            return ""
+        }
     }
 }

@@ -10,9 +10,12 @@ import GameplayKit
 
 class AnimationComponent: GKComponent {
     
+    var renderComponent: RenderComponent
+    
     var characterVisualComponent: CharacterVisualComponent
     
-    init(characterVisualComponent: CharacterVisualComponent) {
+    init(renderComponent: RenderComponent, characterVisualComponent: CharacterVisualComponent) {
+        self.renderComponent = renderComponent
         self.characterVisualComponent = characterVisualComponent
         super.init()
     }
@@ -27,10 +30,10 @@ class AnimationComponent: GKComponent {
         }
         let animationAction = SKAction.animate(with: textures, timePerFrame: time)
         let repeatedAnimation = SKAction.repeatForever(animationAction)
-        characterVisualComponent.node.run(repeatedAnimation, withKey: key)
+        renderComponent.node.run(repeatedAnimation, withKey: key)
     }
     
     func removeAllAnimations() {
-        characterVisualComponent.node.removeAllActions()
+        renderComponent.node.removeAllActions()
     }
 }

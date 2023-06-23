@@ -11,11 +11,11 @@ import GameplayKit
 class ControlComponent: GKComponent {
     private let offsetY: Double = 80.0
     
-    private var characterVisualComponent: CharacterVisualComponent
+    private var renderComponent: RenderComponent
     private var animationComponent: AnimationComponent?
     
-    init(characterVisualComponent: CharacterVisualComponent, animationComponent: AnimationComponent?) {
-        self.characterVisualComponent = characterVisualComponent
+    init(characterVisualComponent: CharacterVisualComponent, renderComponent: RenderComponent, animationComponent: AnimationComponent?) {
+        self.renderComponent = renderComponent
         super.init()
         self.animationComponent = animationComponent
     }
@@ -25,8 +25,8 @@ class ControlComponent: GKComponent {
     }
     
     public func walk(to point: CGPoint, speed: CGFloat = 300.0, withKey key: String = "walking") {
-        if characterVisualComponent.node.action(forKey: key) == nil {
-            let node = characterVisualComponent.node
+        if renderComponent.node.action(forKey: key) == nil {
+            let node = renderComponent.node
             var multipleForDirection: CGFloat
             
             // Compare previous location vs future location and get the difference

@@ -12,7 +12,7 @@ class Player: GKEntity {
     static var textureSize = CGSize(width: 120.0, height: 120.0)
     
     var node: SKSpriteNode? {
-        for case let component as CharacterVisualComponent in components {
+        for case let component as RenderComponent in components {
             return component.node
         }
         return nil
@@ -34,24 +34,27 @@ class Player: GKEntity {
     }
     
     private func addingComponents(position point: CGPoint, textures: [AnimationState: [SKTexture]]) {
+        let renderComponent = RenderComponent(type: .mainCharacter, position: point)
+        addComponent(renderComponent)
+        
         // MARK: Character Component
         let characterVisualComponent = CharacterVisualComponent(
             type: .mainCharacter,
-            position: point,
-            textures: textures
+            textures: textures,
+            renderComponent: renderComponent
         )
         addComponent(characterVisualComponent)
         
         // MARK: Physics Component
-        let physicsComponent = PhysicsComponent(type: .character, characterVisualComponent: characterVisualComponent)
+        let physicsComponent = PhysicsComponent(type: .character, renderComponent: renderComponent)
         addComponent(physicsComponent)
         
         // MARK: Animation Component
-        let animationComponent = AnimationComponent(characterVisualComponent: characterVisualComponent)
+        let animationComponent = AnimationComponent(renderComponent: renderComponent, characterVisualComponent: characterVisualComponent)
         addComponent(animationComponent)
         
         // MARK: Control Component
-        let controlComponent = ControlComponent(characterVisualComponent: characterVisualComponent, animationComponent: animationComponent)
+        let controlComponent = ControlComponent(characterVisualComponent: characterVisualComponent, renderComponent: renderComponent, animationComponent: animationComponent)
         addComponent(controlComponent)
     }
 }

@@ -24,11 +24,44 @@ struct PhysicsCategory {
 class PhysicsComponent: GKComponent {
     
     public var physicsBody: SKPhysicsBody?
+
+    static private func createPhysicsBody(node: SKSpriteNode, physicsType: PhysicsType) -> SKPhysicsBody {
+        node.physicsBody = SKPhysicsBody(rectangleOf: node.size)
+        
+        switch physicsType {
+        case .character:
+            let size = CGSize(width: node.size.width, height: node.size.height/2)
+            node.physicsBody = SKPhysicsBody(rectangleOf: size)
+//            node.anchorPoint = CGPoint(x: 0, y: 0)
+            node.position.y -= node.size.height / 2
+            node.physicsBody?.categoryBitMask = PhysicsCategory.character
+            node.physicsBody?.collisionBitMask = PhysicsCategory.obstacle | PhysicsCategory.wall | PhysicsCategory.item
+            node.physicsBody?.contactTestBitMask = PhysicsCategory.item
+            node.physicsBody?.affectedByGravity = false
+            node.physicsBody?.allowsRotation = false
+            node.physicsBody?.isDynamic = true
+            
+            break
+        case .item:
+            node.physicsBody?.categoryBitMask = PhysicsCategory.item
+            node.physicsBody?.collisionBitMask = PhysicsCategory.character | PhysicsCategory.obstacle | PhysicsCategory.wall
+            node.physicsBody?.contactTestBitMask = PhysicsCategory.item
+            node.physicsBody?.affectedByGravity = false
+            node.physicsBody?.isDynamic = false
+            
+            break
+        default:
+            // TODO: define other physics body
+            break
+        }
+        
+        return node.physicsBody!
+    }
     
-    private var characterVisualComponent: CharacterVisualComponent
+    private var renderComponent: RenderComponent
     
-    init(type: PhysicsType, characterVisualComponent: CharacterVisualComponent) {
-        self.characterVisualComponent = characterVisualComponent
+    init(type: PhysicsType, renderComponent: RenderComponent) {
+        self.renderComponent = renderComponent
         super.init()
         setupPhysicsBody(for: type)
     }
@@ -38,7 +71,7 @@ class PhysicsComponent: GKComponent {
     }
     
     private func setupPhysicsBody(for type: PhysicsType) {
-        let node = characterVisualComponent.node
+        let node = renderComponent.node
         let physicsBody = SKPhysicsBody(rectangleOf: node.size)
         switch type {
         case .character:
@@ -53,7 +86,11 @@ class PhysicsComponent: GKComponent {
             physicsBody.affectedByGravity = false
             physicsBody.isDynamic = false
         case .item:
-            break
+            node.physicsBody?.categoryBitMask = PhysicsCategory.item
+            node.physicsBody?.collisionBitMask = PhysicsCategory.character | PhysicsCategory.obstacle | PhysicsCategory.wall
+            node.physicsBody?.contactTestBitMask = PhysicsCategory.item
+            node.physicsBody?.affectedByGravity = false
+            node.physicsBody?.isDynamic = false
         }
         self.physicsBody = physicsBody
     }
