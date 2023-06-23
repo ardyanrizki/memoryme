@@ -13,6 +13,9 @@ class OfficeRoomScene: SKScene {
     
     private var entities: [GKEntity] = []
     
+    private var playerNode: SKSpriteNode?
+    private var doorToMainRoomContact: SKShapeNode?
+    
     override func didMove(to view: SKView) {
         createWorld()
         setupEntities()
@@ -23,16 +26,7 @@ class OfficeRoomScene: SKScene {
     }
     
     func checkDoorCollision() {
-        guard let characterNode = childNode(withName: CharacterType.mainCharacter.rawValue) as? SKSpriteNode else {
-            return
-        }
-        
-        guard let doorMainRoom = childNode(withName: "DoorToMainRoom") as? SKShapeNode else {
-            return
-        }
-        
-        
-        if characterNode.intersects(doorMainRoom) {
+        if (playerNode?.intersects(doorToMainRoomContact ?? SKNode())) == true {
             sceneManagerDelegate?.presentMainRoomScene()
         }
     }
@@ -42,11 +36,11 @@ class OfficeRoomScene: SKScene {
     }
     
     func touchMoved(toPoint pos : CGPoint) {
-   
+        
     }
     
     func touchUp(atPoint pos : CGPoint) {
-    
+        
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -73,20 +67,35 @@ class OfficeRoomScene: SKScene {
 extension OfficeRoomScene {
     private func createWorld() {}
     
-    private func setupEntities(){
-        var xPosition = frame.midX
-        var yPosition = frame.midY
+    private func setupEntities() {
+        var position = CGPoint(x: frame.midX, y: frame.midY)
         
         // To change position of Main character based on scene
         if let node = childNode(withName: "MorryStartingPoint") {
-            xPosition = node.position.x
-            yPosition = node.position.y
+            position.x = node.position.x
+            position.y = node.position.y
         }
         
-        let mainCharacter = Player(position: CGPoint(x: xPosition, y: yPosition))
-        entities.append(mainCharacter)
-        addChild(mainCharacter.node ?? SKSpriteNode())
-        mainCharacter.node?.zPosition = 10
+        let player = createPlayer(position: position)
+        player.node?.zPosition = 10
+        entities.append(player)
+        addChild(player.node ?? SKSpriteNode())
+        playerNode = player.node
+        
+        doorToMainRoomContact = childNode(withName: "DoorToMainRoom") as? SKShapeNode
+        doorToMainRoomContact?.zPosition = 99
+        doorToMainRoomContact?.alpha = 0
+        doorToMainRoomContact?.fillColor = .blue
+    }
+    
+    private func createPlayer(position point: CGPoint) -> Player {
+        let walkTextureAtlas = SKTextureAtlas(named: "MoryWalk")
+        let walkTextures = walkTextureAtlas.textureNames.sorted().map {
+            walkTextureAtlas.textureNamed($0)
+        }
+        let stateTextures: [AnimationState: [SKTexture]] = [
+            .walk: walkTextures
+        ]
+        return Player(position: point, textures: stateTextures)
     }
 }
-

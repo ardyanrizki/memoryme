@@ -10,9 +10,16 @@ import GameplayKit
 
 class MainRoomScene: SKScene {
     
-    var sceneManagerDelegate: SceneManagerDelegate?
+    weak var sceneManagerDelegate: SceneManagerDelegate?
     
     private var entities: [GKEntity] = []
+    
+    private var playerNode: SKSpriteNode?
+    
+    private var doorToOffice: SKShapeNode?
+    private var doorToBedroom: SKShapeNode?
+    private var doorToBar: SKShapeNode?
+    private var doorToHospital: SKShapeNode?
     
     override func didMove(to view: SKView) {
         createWorld()
@@ -24,16 +31,7 @@ class MainRoomScene: SKScene {
     }
     
     func checkDoorCollision() {
-        guard let characterNode = childNode(withName: CharacterType.mainCharacter.rawValue) as? SKSpriteNode else {
-            return
-        }
-        
-        guard let doorOffice = childNode(withName: "DoorToOfficeRoom") as? SKShapeNode else {
-            return
-        }
-        
-        
-        if characterNode.intersects(doorOffice) {
+        if (playerNode?.intersects(doorToOffice ?? SKNode())) == true {
             sceneManagerDelegate?.presentOfficeRoomScene()
         }
     }
@@ -74,10 +72,31 @@ class MainRoomScene: SKScene {
 extension MainRoomScene {
     private func createWorld() {}
     
-    private func setupEntities(){
-        let mainCharacter = Player(position: CGPoint(x: frame.midX, y: frame.midY))
-        entities.append(mainCharacter)
-        addChild(mainCharacter.node ?? SKSpriteNode())
-        mainCharacter.node?.zPosition = 10
+    private func setupEntities() {
+        var position = CGPoint(x: frame.midX, y: frame.midY)
+        if let node = childNode(withName: "MorryStartingPoint") {
+            position.x = node.position.x
+            position.y = node.position.y
+        }
+        let player = createPlayer(position: position)
+        player.node?.zPosition = 10
+        entities.append(player)
+        addChild(player.node ?? SKSpriteNode())
+        playerNode = player.node
+        
+        doorToOffice = childNode(withName: "DoorToOfficeRoom") as? SKShapeNode
+        doorToOffice?.zPosition = 99
+        doorToOffice?.alpha = 0
+    }
+    
+    private func createPlayer(position point: CGPoint) -> Player {
+        let walkTextureAtlas = SKTextureAtlas(named: "MoryWalk")
+        let walkTextures = walkTextureAtlas.textureNames.sorted().map {
+            walkTextureAtlas.textureNamed($0)
+        }
+        let textures: [AnimationState: [SKTexture]] = [
+            .walk: walkTextures
+        ]
+        return Player(position: point, textures: textures)
     }
 }

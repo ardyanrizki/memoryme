@@ -11,6 +11,7 @@ import GameplayKit
 enum PhysicsType {
     case character
     case wall
+    case item
 }
 
 struct PhysicsCategory {
@@ -21,39 +22,39 @@ struct PhysicsCategory {
 }
 
 class PhysicsComponent: GKComponent {
-    var physicsBody: SKPhysicsBody
     
-    static private func createPhysicsBody(node: SKSpriteNode, physicsType: PhysicsType) -> SKPhysicsBody {
-        node.physicsBody = SKPhysicsBody(rectangleOf: node.size)
-        
-        switch physicsType {
-        case .character:
-            node.physicsBody?.categoryBitMask = PhysicsCategory.character
-            node.physicsBody?.collisionBitMask = PhysicsCategory.obstacle | PhysicsCategory.wall
-            node.physicsBody?.contactTestBitMask = PhysicsCategory.item
-            node.physicsBody?.affectedByGravity = false
-            node.physicsBody?.isDynamic = true
-            
-            break
-        default:
-            // TODO: define other physics body
-            break
-        }
-        
-        return node.physicsBody!
-    }
+    public var physicsBody: SKPhysicsBody?
     
-    init(physicsType: PhysicsType, node: SKSpriteNode) {
-        let newPhysicsBody: SKPhysicsBody = PhysicsComponent.createPhysicsBody(
-            node: node,
-            physicsType: physicsType
-        )
-        
-        self.physicsBody = newPhysicsBody
+    private var characterVisualComponent: CharacterVisualComponent
+    
+    init(type: PhysicsType, characterVisualComponent: CharacterVisualComponent) {
+        self.characterVisualComponent = characterVisualComponent
         super.init()
+        setupPhysicsBody(for: type)
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    private func setupPhysicsBody(for type: PhysicsType) {
+        let node = characterVisualComponent.node
+        let physicsBody = SKPhysicsBody(rectangleOf: node.size)
+        switch type {
+        case .character:
+            physicsBody.categoryBitMask = PhysicsCategory.character
+            physicsBody.collisionBitMask = PhysicsCategory.obstacle | PhysicsCategory.wall
+            physicsBody.contactTestBitMask = PhysicsCategory.item
+            physicsBody.affectedByGravity = false
+            physicsBody.isDynamic = true
+        case .wall:
+            physicsBody.categoryBitMask = PhysicsCategory.wall
+            physicsBody.collisionBitMask = PhysicsCategory.character
+            physicsBody.affectedByGravity = false
+            physicsBody.isDynamic = false
+        case .item:
+            break
+        }
+        self.physicsBody = physicsBody
     }
 }

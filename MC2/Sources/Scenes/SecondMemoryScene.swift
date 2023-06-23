@@ -62,10 +62,29 @@ extension SecondMemoryScene {
         addChild(roomBackground)
     }
     
-    private func setupEntities(){
-        let mainCharacter = Player(position: CGPoint(x: frame.midX, y: frame.midY))
-        entities.append(mainCharacter)
-        addChild(mainCharacter.node ?? SKSpriteNode())
-        mainCharacter.node?.zPosition = 10
+    private func setupEntities() {
+        var position = CGPoint(x: frame.midX, y: frame.midY)
+        
+        // To change position of Main character based on scene
+        if let node = childNode(withName: "MorryStartingPoint") {
+            position.x = node.position.x
+            position.y = node.position.y
+        }
+        
+        let player = createPlayer(position: position)
+        player.node?.zPosition = 10
+        entities.append(player)
+        addChild(player.node ?? SKSpriteNode())
+    }
+    
+    private func createPlayer(position point: CGPoint) -> Player {
+        let walkTextureAtlas = SKTextureAtlas(named: "MoryWalk")
+        let walkTextures = walkTextureAtlas.textureNames.sorted().map {
+            walkTextureAtlas.textureNamed($0)
+        }
+        let stateTextures: [AnimationState: [SKTexture]] = [
+            .walk: walkTextures
+        ]
+        return Player(position: point, textures: stateTextures)
     }
 }

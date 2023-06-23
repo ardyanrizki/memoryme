@@ -62,11 +62,23 @@ extension HospitalRoomScene {
         addChild(roomBackground)
     }
     
-    private func setupEntities(){
-        let mainCharacter = Player(position: CGPoint(x: frame.midX, y: frame.midY))
-        entities.append(mainCharacter)
-        addChild(mainCharacter.node ?? SKSpriteNode())
-        mainCharacter.node?.zPosition = 10
+    private func setupEntities() {
+        let player = createPlayer()
+        player.node?.zPosition = 10
+        entities.append(player)
+        addChild(player.node ?? SKSpriteNode())
+    }
+    
+    private func createPlayer() -> Player {
+        let walkTextureAtlas = SKTextureAtlas(named: "MoryWalk")
+        let walkTextures = walkTextureAtlas.textureNames.sorted().map {
+            walkTextureAtlas.textureNamed($0)
+        }
+        let stateTextures: [AnimationState: [SKTexture]] = [
+            .walk: walkTextures
+        ]
+        let position = CGPoint(x: frame.midX, y: frame.midY)
+        return Player(position: position, textures: stateTextures)
     }
 }
 

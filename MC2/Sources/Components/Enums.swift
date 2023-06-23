@@ -22,3 +22,26 @@ enum AnimationState {
     case sit
     case lay
 }
+
+struct CharacterPoint {
+    static let mainRoomStart = "mainRoomStart"
+    static let mainRoomOfficeDoor = "mainRoomOfficeDoor"
+    static let mainRoomBedroomDoor = "mainRoomBedroomDoor"
+    static let mainRoomHospitalDoor = "mainRoomHospitalDoor"
+    static let mainRoomBarDoor = "mainRoomBarDoor"
+    static let officeEntrance = "officeEntrance"
+    static let hospitalEntrance = "hospitalEntrance"
+    static let barEntrance = "barEntrance"
+    static let bedroomEntrance = "bedroomEntrance"
+}
+
+struct ContactZone {
+    static let mainRoomOfficeDoor = "mainRoomOfficeDoor"
+    static let mainRoomBedroomDoor = "mainRoomBedroomDoor"
+    static let mainRoomBarDoor = "mainRoomBarDoor"
+    static let mainRoomHospitalDoor = "mainRoomHospitalDoor"
+    static let officeDoor = "officeDoor"
+    static let barDoor = "barDoor"
+    static let hospitalDoor = "hospitalDoor"
+    static let bedroomDoor = "bedroomDoor"
+}

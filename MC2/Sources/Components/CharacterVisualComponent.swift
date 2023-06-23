@@ -19,7 +19,10 @@ enum CharacterType: String {
 }
 
 class CharacterVisualComponent: GKComponent {
-    let characterNode: SKSpriteNode
+    
+    let node: SKSpriteNode
+    let textures: [AnimationState: [SKTexture]]
+    var state: AnimationState = .idle
     
     static func getTexture(type: CharacterType) -> String {
         switch type {
@@ -30,14 +33,13 @@ class CharacterVisualComponent: GKComponent {
         }
     }
     
-    init(type: CharacterType, position: CGPoint) {
+    init(type: CharacterType, position: CGPoint, textures: [AnimationState: [SKTexture]]) {
         // load texture
         let texture = SKTexture(imageNamed: CharacterVisualComponent.getTexture(type: type))
-        
         // create characterNode
-        characterNode = SKSpriteNode(texture: texture)
-        characterNode.position = position
-        
+        self.node = SKSpriteNode(texture: texture)
+        self.node.position = position
+        self.textures = textures
         super.init()
     }
     
