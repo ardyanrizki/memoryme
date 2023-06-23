@@ -77,8 +77,8 @@ extension OfficeRoomScene {
         var xPosition = frame.midX
         var yPosition = frame.midY
         
-        // To change position of Main character based on scene
-        if let node = childNode(withName: "MorryStartingPoint") {
+        // To change origin position of Main character when entering the scene
+        if let node = childNode(withName: "entrancePoint") {
             xPosition = node.position.x
             yPosition = node.position.y
             
