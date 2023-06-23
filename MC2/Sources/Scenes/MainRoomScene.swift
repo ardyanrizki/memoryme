@@ -28,7 +28,22 @@ class MainRoomScene: SKScene, SKPhysicsContactDelegate {
     }
     
     override func update(_ currentTime: TimeInterval) {
+        checkDoorCollision()
+    }
+    
+    func checkDoorCollision() {
+        guard let characterNode = childNode(withName: CharacterType.mainCharacter.rawValue) as? SKSpriteNode else {
+            return
+        }
         
+        guard let doorOffice = childNode(withName: "DoorToOfficeRoom") as? SKShapeNode else {
+            return
+        }
+        
+        
+        if characterNode.intersects(doorOffice) {
+            sceneManagerDelegate?.presentOfficeRoomScene()
+        }
     }
     
     func touchDown(atPoint pos : CGPoint) {
