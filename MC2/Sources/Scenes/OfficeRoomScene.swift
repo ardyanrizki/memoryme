@@ -81,6 +81,9 @@ extension OfficeRoomScene {
         if let node = childNode(withName: "MorryStartingPoint") {
             xPosition = node.position.x
             yPosition = node.position.y
+            
+            // hide the node so the the scene does not display two character
+            node.alpha = 0
         }
         
         let mainCharacter = Player(position: CGPoint(x: xPosition, y: yPosition))

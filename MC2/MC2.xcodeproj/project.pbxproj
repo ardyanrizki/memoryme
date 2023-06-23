@@ -75,6 +75,8 @@
 		38763F8B2A42DAA3004129A6 /* HospitalRoomScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 38763F8A2A42DAA3004129A6 /* HospitalRoomScene.sks */; };
 		38763F8C2A42DAA3004129A6 /* HospitalRoomScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 38763F8A2A42DAA3004129A6 /* HospitalRoomScene.sks */; };
 		38763F8D2A42DAA3004129A6 /* HospitalRoomScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 38763F8A2A42DAA3004129A6 /* HospitalRoomScene.sks */; };
+		8C56D9492A43CFE40076283B /* Scribble-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 8C56D9482A43CFE40076283B /* Scribble-Regular.otf */; };
+		8C56D94C2A43E9600076283B /* InteractiveItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C56D94B2A43E9600076283B /* InteractiveItem.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -101,7 +103,7 @@
 		38763F002A3AA7A8004129A6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		38763F022A3AA7A8004129A6 /* MainRoomScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = MainRoomScene.sks; sourceTree = "<group>"; };
 		38763F042A3AA7A8004129A6 /* Actions.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Actions.sks; sourceTree = "<group>"; };
-		38763F062A3AA7A8004129A6 /* MainRoomScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainRoomScene.swift; sourceTree = "<group>"; };
+		38763F062A3AA7A8004129A6 /* MainRoomScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainRoomScene.swift; sourceTree = "<group>"; usesTabs = 0; };
 		38763F082A3AA7A8004129A6 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 		38763F0B2A3AA7A8004129A6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		38763F0D2A3AA7AA004129A6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -128,6 +130,9 @@
 		38763F812A41E720004129A6 /* TitleScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = TitleScene.sks; sourceTree = "<group>"; };
 		38763F862A42A600004129A6 /* HospitalRoomScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HospitalRoomScene.swift; sourceTree = "<group>"; };
 		38763F8A2A42DAA3004129A6 /* HospitalRoomScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = HospitalRoomScene.sks; sourceTree = "<group>"; };
+		8C56D9482A43CFE40076283B /* Scribble-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Scribble-Regular.otf"; sourceTree = "<group>"; };
+		8C56D94A2A43D0320076283B /* MC2-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "MC2-Info.plist"; sourceTree = "<group>"; };
+		8C56D94B2A43E9600076283B /* InteractiveItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InteractiveItem.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -158,6 +163,7 @@
 		38763EF42A3AA7A8004129A6 = {
 			isa = PBXGroup;
 			children = (
+				8C56D94A2A43D0320076283B /* MC2-Info.plist */,
 				38763EFF2A3AA7A8004129A6 /* Sources */,
 				38763F192A3AA7AA004129A6 /* Tests */,
 				38763F232A3AA7AA004129A6 /* UITests */,
@@ -178,6 +184,7 @@
 		38763EFF2A3AA7A8004129A6 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				8C56D9472A43CFD10076283B /* Fonts */,
 				38763F372A3AA83B004129A6 /* App */,
 				38763F352A3AA7D6004129A6 /* Scenes */,
 				38763F332A3AA7CB004129A6 /* Entities */,
@@ -210,6 +217,7 @@
 			isa = PBXGroup;
 			children = (
 				38763F3A2A3AEC30004129A6 /* Player.swift */,
+				8C56D94B2A43E9600076283B /* InteractiveItem.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -288,6 +296,14 @@
 				38763F042A3AA7A8004129A6 /* Actions.sks */,
 			);
 			path = Scenes;
+			sourceTree = "<group>";
+		};
+		8C56D9472A43CFD10076283B /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				8C56D9482A43CFE40076283B /* Scribble-Regular.otf */,
+			);
+			path = Fonts;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -404,6 +420,7 @@
 				38763F8B2A42DAA3004129A6 /* HospitalRoomScene.sks in Resources */,
 				38763F572A3B7127004129A6 /* OfficeRoomScene.sks in Resources */,
 				38763F052A3AA7A8004129A6 /* Actions.sks in Resources */,
+				8C56D9492A43CFE40076283B /* Scribble-Regular.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -455,6 +472,7 @@
 				38763F6B2A3B71D5004129A6 /* ThirdMemoryScene.swift in Sources */,
 				38763F3B2A3AEC30004129A6 /* Player.swift in Sources */,
 				38763F3F2A3AF2F6004129A6 /* Enums.swift in Sources */,
+				8C56D94C2A43E9600076283B /* InteractiveItem.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -661,6 +679,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = T84FHM7BL8;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "MC2-Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -689,6 +708,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = T84FHM7BL8;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "MC2-Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;

@@ -11,6 +11,7 @@ import GameplayKit
 enum PhysicsType {
     case character
     case wall
+    case item
 }
 
 struct PhysicsCategory {
@@ -28,11 +29,24 @@ class PhysicsComponent: GKComponent {
         
         switch physicsType {
         case .character:
+            let size = CGSize(width: node.size.width, height: node.size.height/2)
+            node.physicsBody = SKPhysicsBody(rectangleOf: size)
+//            node.anchorPoint = CGPoint(x: 0, y: 0)
+            node.position.y -= node.size.height / 2
             node.physicsBody?.categoryBitMask = PhysicsCategory.character
-            node.physicsBody?.collisionBitMask = PhysicsCategory.obstacle | PhysicsCategory.wall
+            node.physicsBody?.collisionBitMask = PhysicsCategory.obstacle | PhysicsCategory.wall | PhysicsCategory.item
             node.physicsBody?.contactTestBitMask = PhysicsCategory.item
             node.physicsBody?.affectedByGravity = false
+            node.physicsBody?.allowsRotation = false
             node.physicsBody?.isDynamic = true
+            
+            break
+        case .item:
+            node.physicsBody?.categoryBitMask = PhysicsCategory.item
+            node.physicsBody?.collisionBitMask = PhysicsCategory.character | PhysicsCategory.obstacle | PhysicsCategory.wall
+            node.physicsBody?.contactTestBitMask = PhysicsCategory.item
+            node.physicsBody?.affectedByGravity = false
+            node.physicsBody?.isDynamic = false
             
             break
         default:
