@@ -8,12 +8,13 @@
 import UIKit
 import SpriteKit
 
-protocol SceneManagerDelegate: AnyObject {
+protocol SceneManagerProtocol: AnyObject {
     func presentTitleScene()
     func presentMainRoomScene()
-    func presentMemoryRoomScene(roomNumber: Int)
-    func presentHospitalRoomScene()
     func presentOfficeRoomScene()
+    func presentBedroomScene()
+    func presentBarScene()
+    func presentHospitalRoomScene()
 }
 
 class GameViewController: UIViewController {
@@ -36,51 +37,44 @@ class GameViewController: UIViewController {
     }
 }
 
-extension GameViewController: SceneManagerDelegate {
+extension GameViewController: SceneManagerProtocol {
     func presentTitleScene() {
-        guard let scene = TitleScene(fileNamed: "TitleScene") else { return }
+        guard let scene = TitleScene(fileNamed: Constants.titleScene) else { return }
         scene.sceneManagerDelegate = self
         let fade = SKTransition.fade(withDuration: 0.5)
         present(scene: scene, transition: fade)
     }
     
     func presentMainRoomScene() {
-        guard let scene = MainRoomScene(fileNamed: "MainRoomScene") else { return }
+        guard let scene = MainRoomScene(fileNamed: Constants.mainRoomScene) else { return }
         scene.sceneManagerDelegate = self
         let fade = SKTransition.fade(withDuration: 0.5)
         present(scene: scene, transition: fade)
     }
     
-    // TODO: change and rename each memory scene
-    func presentMemoryRoomScene(roomNumber: Int) {
-        var scene = SKScene()
-        let transition = SKTransition.fade(withDuration: 0.5)
-        switch roomNumber {
-        case 1:
-            guard let firstRoomScene = OfficeRoomScene(fileNamed: "OfficeRoomScene") else { return }
-            scene = firstRoomScene
-        case 2:
-            guard let secondRoomScene = SecondMemoryScene(fileNamed: "SecondMemoryScene") else { return }
-            scene = secondRoomScene
-        case 3:
-            guard let thirdRoomScene = ThirdMemoryScene(fileNamed: "ThirdMemoryScene") else { return }
-            scene = thirdRoomScene
-        default:
-            break
-        }
-        
-        present(scene: scene, transition: transition)
+    func presentOfficeRoomScene() {
+        guard let scene = OfficeRoomScene(fileNamed: Constants.officeRoomScene) else { return }
+        scene.sceneManagerDelegate = self
+        let fade = SKTransition.fade(withDuration: 0.5)
+        present(scene: scene, transition: fade)
     }
     
-    func presentOfficeRoomScene() {
-        guard let scene = OfficeRoomScene(fileNamed: "OfficeRoomScene") else { return }
+    func presentBedroomScene() {
+        guard let scene = BedroomScene(fileNamed: Constants.bedroomScene) else { return }
+        scene.sceneManagerDelegate = self
+        let fade = SKTransition.fade(withDuration: 0.5)
+        present(scene: scene, transition: fade)
+    }
+    
+    func presentBarScene() {
+        guard let scene = BarScene(fileNamed: Constants.barScene) else { return }
         scene.sceneManagerDelegate = self
         let fade = SKTransition.fade(withDuration: 0.5)
         present(scene: scene, transition: fade)
     }
     
     func presentHospitalRoomScene() {
-        guard let scene = HospitalRoomScene(fileNamed: "HospitalRoomScene") else { return }
+        guard let scene = HospitalRoomScene(fileNamed: Constants.hospitalScene) else { return }
         scene.sceneManagerDelegate = self
         let fade = SKTransition.fade(withDuration: 0.5)
         present(scene: scene, transition: fade)

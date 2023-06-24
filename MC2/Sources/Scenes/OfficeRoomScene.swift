@@ -9,7 +9,7 @@ import SpriteKit
 import GameplayKit
 
 class OfficeRoomScene: SKScene {
-    var sceneManagerDelegate: SceneManagerDelegate?
+    var sceneManagerDelegate: SceneManagerProtocol?
     
     private var entities: [GKEntity] = []
     
@@ -96,6 +96,6 @@ extension OfficeRoomScene {
         let stateTextures: [AnimationState: [SKTexture]] = [
             .walk: walkTextures
         ]
-        return Player(position: point, textures: stateTextures)
+        return Player(at: point, textures: stateTextures)
     }
 }

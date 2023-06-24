@@ -15,24 +15,33 @@ class SharedClass {
 
 class MainRoomScene: SKScene, SKPhysicsContactDelegate {
     
-    weak var sceneManagerDelegate: SceneManagerDelegate?
+    weak var sceneManagerDelegate: SceneManagerProtocol?
     
     private var entities: [GKEntity] = []
     
     private var playerNode: SKSpriteNode?
     
-    // MARK: Contact node
+    private var dialogBox: DialogBoxNode?
+    
+    // MARK: Doors
     private var doorToOffice: SKShapeNode?
     private var doorToBedroom: SKShapeNode?
     private var doorToBar: SKShapeNode?
     private var doorToHospital: SKShapeNode?
+    
+    // MARK: Contactable Items
+    private var vase: SKNode?
     
     override func didMove(to view: SKView) {
         physicsWorld.contactDelegate = self
         createWorld()
         setupEntities()
         setupInteractiveObject()
-        createDialogBox(dialogString: "Hello, this is a dialog box!", characterName: "Mory")
+//        createDialogBox(Dialog(Constants.mainCharacterName, prompt: "Hello, this is a dialog box!"))
+        dialogBox = FactoryMethods.createDialogBox(with: CGSize(width: frame.width - 200, height: 150), sceneFrame: frame)
+        if let dialogBox {
+            addChild(dialogBox)
+        }
     }
     
     override func update(_ currentTime: TimeInterval) {
@@ -94,20 +103,21 @@ class MainRoomScene: SKScene, SKPhysicsContactDelegate {
 }
 
 extension MainRoomScene {
+    
     func didBegin(_ contact: SKPhysicsContact) {
         print(contact.bodyA, contact.bodyB)
         if contact.bodyA.categoryBitMask == 1 || contact.bodyB.categoryBitMask == 1 {
             contact.bodyA.node?.removeAllActions()
             if (contact.bodyB.node?.name == "vase") {
-                createDialogBox(dialogString: "This is Vase... Wait there is something strange about the flower", characterName: "Mory")
+                dialogBox?.runDialog(DialogResources.strangeVase)
             }
         }
     }
     
     private func createWorld() {
-        let roomBackground = SKSpriteNode(imageNamed: "MainRoom")
-        roomBackground.position = CGPoint(x: frame.midX, y: frame.midY)
-        addChild(roomBackground)
+        doorToOffice = childNode(withName: "DoorToOfficeRoom") as? SKShapeNode
+        doorToOffice?.zPosition = 20
+        doorToOffice?.alpha = 0
     }
     
     private func setupEntities() {
@@ -116,99 +126,19 @@ extension MainRoomScene {
             position.x = node.position.x
             position.y = node.position.y
         }
-        let player = createPlayer(position: position)
+        let player = FactoryMethods.createPlayer(at: position)
         player.node?.zPosition = 10
         entities.append(player)
         addChild(player.node ?? SKSpriteNode())
         playerNode = player.node
         
-        doorToOffice = childNode(withName: "DoorToOfficeRoom") as? SKShapeNode
-        doorToOffice?.zPosition = 20
-        doorToOffice?.alpha = 0
-    }
-    
-    private func createPlayer(position point: CGPoint) -> Player {
-        let walkTextureAtlas = SKTextureAtlas(named: "MoryWalk")
-        let walkTextures = walkTextureAtlas.textureNames.sorted().map {
-            walkTextureAtlas.textureNamed($0)
-        }
-        let textures: [AnimationState: [SKTexture]] = [
-            .walk: walkTextures
-        ]
-        return Player(position: point, textures: textures)
+        vase = childNode(withName: "vase")
     }
     
     private func setupInteractiveObject(){
-        let vase = IntercativeItem(position: CGPoint(x: 148.014, y: 256.166), name: "vase")
+        let vase = InteractiveItem(name: TextureResources.vase, at: CGPoint(x: 148.014, y: 256.166))
         entities.append(vase)
         addChild(vase.node ?? SKSpriteNode())
         vase.node?.zPosition = 9
-    }
-    
-    private func createDialogBox(dialogString: String, characterName: String) {
-        // Create the dialog box node
-        let dialogBoxWidth: CGFloat = frame.width - 200
-        let dialogBoxHeight: CGFloat = 150
-        // Create the dialog box node
-        let dialogBox = SKShapeNode(rectOf: CGSize(width: dialogBoxWidth, height: dialogBoxHeight), cornerRadius: 10)
-        dialogBox.fillColor = UIColor.white.withAlphaComponent(0.7) // Set opacity to 70%
-        dialogBox.strokeColor = .black
-        dialogBox.lineWidth = 2.0
-        // Calculate the position for aligning to the bottom center
-        dialogBox.position = CGPoint(x: frame.midX / 2, y: (frame.minY + (dialogBoxHeight/2) + 75))
-        dialogBox.zPosition = 1000
-
-        // Create the text label
-        let textLabel = SKLabelNode(fontNamed: "Scribble-Regular")
-        textLabel.fontSize = 32
-        textLabel.fontColor = .black
-        textLabel.position = CGPoint(x: -dialogBoxWidth / 2 + 20, y: dialogBoxHeight / 2 - 70) // Align text to the left
-        
-        // Set the initial text of the dialog text label
-        textLabel.text = ""
-        
-        // Create the character name label
-        let characterNameLabel = SKLabelNode(fontNamed: "Scribble-Regular")
-        characterNameLabel.fontSize = 40
-        characterNameLabel.fontColor = .black
-        characterNameLabel.position = CGPoint(x: -dialogBoxWidth / 2 + 50, y: dialogBoxHeight / 2 - 40)
-        characterNameLabel.text = characterName
-
-        
-        // Assign the dialog box to the shared class property
-        SharedClass.dialogBox = dialogBox
-        SharedClass.touchCount = 0
-        
-        // Set the text alignment to left
-        textLabel.horizontalAlignmentMode = .left
-
-        // Add the character name label to the dialog box
-        dialogBox.addChild(characterNameLabel)
-        
-        // Add the label to the dialog box node
-        dialogBox.addChild(textLabel)
-
-        // Add the dialog box node to the scene
-        addChild(dialogBox)
-        
-        // Start the dialog box animation
-        animateDialogText(dialogString: dialogString, dialogText: textLabel)
-
-    }
-    
-    private func animateDialogText(dialogString: String, dialogText: SKLabelNode) {
-        let characters = Array(dialogString)
-        var characterIndex = 0
-        
-        let addCharacterAction = SKAction.run {
-            dialogText.text?.append(characters[characterIndex])
-            characterIndex += 1
-        }
-        
-        let waitAction = SKAction.wait(forDuration: 0.05)
-        let sequenceAction = SKAction.sequence([addCharacterAction, waitAction])
-        let repeatAction = SKAction.repeat(sequenceAction, count: characters.count)
-        
-        dialogText.run(repeatAction)
     }
 }

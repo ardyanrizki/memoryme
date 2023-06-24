@@ -1,5 +1,5 @@
 //
-//  ThirdMemoryScene.swift
+//  BarScene.swift
 //  MC2
 //
 //  Created by Muhammad Rizki Ardyan on 15/06/23.
@@ -8,8 +8,8 @@
 import SpriteKit
 import GameplayKit
 
-class ThirdMemoryScene: SKScene {
-    var sceneManagerDelegate: SceneManagerDelegate?
+class BarScene: SKScene {
+    var sceneManagerDelegate: SceneManagerProtocol?
     
     private var entities: [GKEntity] = []
     
@@ -55,7 +55,7 @@ class ThirdMemoryScene: SKScene {
     }
 }
 
-extension ThirdMemoryScene {
+extension BarScene {
     private func createWorld() {
         let roomBackground = SKSpriteNode(imageNamed: "MainRoom")
         roomBackground.position = CGPoint(x: frame.midX, y: frame.midY)
@@ -85,6 +85,6 @@ extension ThirdMemoryScene {
         let stateTextures: [AnimationState: [SKTexture]] = [
             .walk: walkTextures
         ]
-        return Player(position: point, textures: stateTextures)
+        return Player(at: point, textures: stateTextures)
     }
 }

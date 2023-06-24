@@ -24,7 +24,7 @@ class AnimationComponent: GKComponent {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func animate(for state: AnimationState, timePerFrame time: TimeInterval = 0.2, withKey key: String) {
+    public func animate(for state: AnimationState, timePerFrame time: TimeInterval = 0.2, withKey key: String) {
         guard let textures = characterVisualComponent.textures[state], textures.count > 1 else {
             fatalError("Entity must have more than one texture to be animated")
         }
@@ -33,7 +33,7 @@ class AnimationComponent: GKComponent {
         renderComponent.node.run(repeatedAnimation, withKey: key)
     }
     
-    func removeAllAnimations() {
+    public func removeAllAnimations() {
         renderComponent.node.removeAllActions()
     }
 }

@@ -18,9 +18,17 @@ class Player: GKEntity {
         return nil
     }
     
-    init(position point: CGPoint, textures: [AnimationState: [SKTexture]]) {
+    init(at position: CGPoint, textures: [AnimationState: [SKTexture]]? = nil) {
         super.init()
-        addingComponents(position: point, textures: textures)
+        let textureName = TextureResources.mainCharacter
+        let walkTextures = TextureResources.mainCharacterAtlasWalk.getAllTexturesFromAtlas()
+        var defaultTextures: [AnimationState: [SKTexture]] = [
+            .walk: walkTextures
+        ]
+        if let textures {
+            defaultTextures = textures
+        }
+        addingComponents(name: textureName, position: position, textures: defaultTextures)
     }
     
     required init?(coder: NSCoder) {
@@ -33,8 +41,8 @@ class Player: GKEntity {
         }
     }
     
-    private func addingComponents(position point: CGPoint, textures: [AnimationState: [SKTexture]]) {
-        let renderComponent = RenderComponent(type: .mainCharacter, position: point)
+    private func addingComponents(name: TextureName, position: CGPoint, textures: [AnimationState: [SKTexture]]) {
+        let renderComponent = RenderComponent(name: name, at: position)
         addComponent(renderComponent)
         
         // MARK: Character Component

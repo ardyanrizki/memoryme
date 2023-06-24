@@ -9,7 +9,7 @@ import SpriteKit
 import GameplayKit
 
 class HospitalRoomScene: SKScene {
-    var sceneManagerDelegate: SceneManagerDelegate?
+    var sceneManagerDelegate: SceneManagerProtocol?
     
     private var entities: [GKEntity] = []
     
@@ -78,7 +78,7 @@ extension HospitalRoomScene {
             .walk: walkTextures
         ]
         let position = CGPoint(x: frame.midX, y: frame.midY)
-        return Player(position: position, textures: stateTextures)
+        return Player(at: position, textures: stateTextures)
     }
 }
 

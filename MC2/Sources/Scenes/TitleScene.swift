@@ -9,7 +9,7 @@ import SpriteKit
 import GameplayKit
 
 class TitleScene: SKScene {
-    var sceneManagerDelegate: SceneManagerDelegate?
+    var sceneManagerDelegate: SceneManagerProtocol?
     
     var playButton: SKSpriteNode = SKSpriteNode()
     
@@ -30,7 +30,7 @@ class TitleScene: SKScene {
 
 extension TitleScene {
     private func setupNodes() {
-        if let playButton = childNode(withName: "startButton") as? SKSpriteNode {
+        if let playButton = childNode(withName: TextureResources.startButton) as? SKSpriteNode {
             self.playButton = playButton
             self.playButton.zPosition = 10
         }

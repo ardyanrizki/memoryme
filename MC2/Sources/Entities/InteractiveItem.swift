@@ -8,21 +8,21 @@
 import SpriteKit
 import GameplayKit
 
-class IntercativeItem: GKEntity {
+class InteractiveItem: GKEntity {
     
     var node: SKSpriteNode?
     
-    init(position point: CGPoint, name: String) {
+    init(name textureName: TextureName, at position: CGPoint) {
         super.init()
-        addingComponents(position: point, name: name)
+        addingComponents(name: textureName, position: position)
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    private func addingComponents(position point: CGPoint, name: String) {
-        let renderComponent = RenderComponent(type: .vase, position: point)
+    private func addingComponents(name textureName: TextureName, position point: CGPoint) {
+        let renderComponent = RenderComponent(name: textureName, at: point)
         
         node = renderComponent.node
         
@@ -33,7 +33,7 @@ class IntercativeItem: GKEntity {
         
         let physicalComponent = PhysicsComponent(type: .item, renderComponent: renderComponent)
         
-        node.name = "vase"
+        node.name = textureName
         addComponent(renderComponent)
         addComponent(physicalComponent)
     }
