@@ -11,7 +11,6 @@ import SpriteKit
 protocol SceneManagerDelegate {
     func presentTitleScene()
     func presentMainRoomScene()
-    func presentMemoryRoomScene(roomNumber: Int)
     func presentHospitalRoomScene()
     func presentOfficeRoomScene()
     func presentBedroomScene()
@@ -52,27 +51,6 @@ extension GameViewController: SceneManagerDelegate {
         present(scene: scene, transition: fade)
     }
     
-    // TODO: change and rename each memory scene
-    func presentMemoryRoomScene(roomNumber: Int) {
-        var scene = SKScene()
-        let transition = SKTransition.fade(withDuration: 0.5)
-        switch roomNumber {
-        case 1:
-            guard let firstRoomScene = OfficeRoomScene(fileNamed: "OfficeRoomScene") else { return }
-            scene = firstRoomScene
-        case 2:
-            guard let secondRoomScene = SecondMemoryScene(fileNamed: "SecondMemoryScene") else { return }
-            scene = secondRoomScene
-        case 3:
-            guard let thirdRoomScene = ThirdMemoryScene(fileNamed: "ThirdMemoryScene") else { return }
-            scene = thirdRoomScene
-        default:
-            break
-        }
-        
-        present(scene: scene, transition: transition)
-    }
-    
     func presentOfficeRoomScene() {
         guard let scene = HospitalRoomScene(fileNamed: "OfficeRoomScene") else { return }
         scene.sceneManagerDelegate = self
@@ -81,7 +59,7 @@ extension GameViewController: SceneManagerDelegate {
     }
     
     func presentBedroomScene() {
-        guard let scene = SecondMemoryScene(fileNamed: "SecondMemoryScene") else { return }
+        guard let scene = BedroomScene(fileNamed: "BedroomScene") else { return }
         
         scene.sceneManagerDelegate = self
         let fade = SKTransition.fade(withDuration: 0.5)

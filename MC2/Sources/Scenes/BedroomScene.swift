@@ -8,7 +8,7 @@
 import SpriteKit
 import GameplayKit
 
-class SecondMemoryScene: SKScene {
+class BedroomScene: SKScene {
     var sceneManagerDelegate: SceneManagerDelegate?
     
     private var entities: [GKEntity] = []
@@ -80,7 +80,7 @@ class SecondMemoryScene: SKScene {
     }
 }
 
-extension SecondMemoryScene {
+extension BedroomScene {
     private func createWorld() {
         guard let messyParentNode = childNode(withName: "messySectionNode") as SKNode? else {
             return

@@ -52,12 +52,12 @@
 		38763F5B2A3B7148004129A6 /* OfficeRoomScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38763F5A2A3B7148004129A6 /* OfficeRoomScene.swift */; };
 		38763F5C2A3B7148004129A6 /* OfficeRoomScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38763F5A2A3B7148004129A6 /* OfficeRoomScene.swift */; };
 		38763F5D2A3B7148004129A6 /* OfficeRoomScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38763F5A2A3B7148004129A6 /* OfficeRoomScene.swift */; };
-		38763F5F2A3B71A1004129A6 /* SecondMemoryScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 38763F5E2A3B71A1004129A6 /* SecondMemoryScene.sks */; };
-		38763F602A3B71A1004129A6 /* SecondMemoryScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 38763F5E2A3B71A1004129A6 /* SecondMemoryScene.sks */; };
-		38763F612A3B71A1004129A6 /* SecondMemoryScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 38763F5E2A3B71A1004129A6 /* SecondMemoryScene.sks */; };
-		38763F632A3B71AE004129A6 /* SecondMemoryScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38763F622A3B71AE004129A6 /* SecondMemoryScene.swift */; };
-		38763F642A3B71AE004129A6 /* SecondMemoryScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38763F622A3B71AE004129A6 /* SecondMemoryScene.swift */; };
-		38763F652A3B71AE004129A6 /* SecondMemoryScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38763F622A3B71AE004129A6 /* SecondMemoryScene.swift */; };
+		38763F5F2A3B71A1004129A6 /* BedroomScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 38763F5E2A3B71A1004129A6 /* BedroomScene.sks */; };
+		38763F602A3B71A1004129A6 /* BedroomScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 38763F5E2A3B71A1004129A6 /* BedroomScene.sks */; };
+		38763F612A3B71A1004129A6 /* BedroomScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 38763F5E2A3B71A1004129A6 /* BedroomScene.sks */; };
+		38763F632A3B71AE004129A6 /* BedroomScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38763F622A3B71AE004129A6 /* BedroomScene.swift */; };
+		38763F642A3B71AE004129A6 /* BedroomScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38763F622A3B71AE004129A6 /* BedroomScene.swift */; };
+		38763F652A3B71AE004129A6 /* BedroomScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38763F622A3B71AE004129A6 /* BedroomScene.swift */; };
 		38763F672A3B71C3004129A6 /* ThirdMemoryScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 38763F662A3B71C3004129A6 /* ThirdMemoryScene.sks */; };
 		38763F682A3B71C3004129A6 /* ThirdMemoryScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 38763F662A3B71C3004129A6 /* ThirdMemoryScene.sks */; };
 		38763F692A3B71C3004129A6 /* ThirdMemoryScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 38763F662A3B71C3004129A6 /* ThirdMemoryScene.sks */; };
@@ -124,8 +124,8 @@
 		38763F522A3AF789004129A6 /* RenderComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RenderComponent.swift; sourceTree = "<group>"; };
 		38763F562A3B7127004129A6 /* OfficeRoomScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = OfficeRoomScene.sks; sourceTree = "<group>"; };
 		38763F5A2A3B7148004129A6 /* OfficeRoomScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfficeRoomScene.swift; sourceTree = "<group>"; };
-		38763F5E2A3B71A1004129A6 /* SecondMemoryScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = SecondMemoryScene.sks; sourceTree = "<group>"; };
-		38763F622A3B71AE004129A6 /* SecondMemoryScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondMemoryScene.swift; sourceTree = "<group>"; };
+		38763F5E2A3B71A1004129A6 /* BedroomScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = BedroomScene.sks; sourceTree = "<group>"; };
+		38763F622A3B71AE004129A6 /* BedroomScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BedroomScene.swift; sourceTree = "<group>"; };
 		38763F662A3B71C3004129A6 /* ThirdMemoryScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = ThirdMemoryScene.sks; sourceTree = "<group>"; };
 		38763F6A2A3B71D5004129A6 /* ThirdMemoryScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdMemoryScene.swift; sourceTree = "<group>"; };
 		38763F7D2A41E3E3004129A6 /* TitleScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleScene.swift; sourceTree = "<group>"; };
@@ -246,7 +246,7 @@
 				38763F7D2A41E3E3004129A6 /* TitleScene.swift */,
 				38763F062A3AA7A8004129A6 /* MainRoomScene.swift */,
 				38763F5A2A3B7148004129A6 /* OfficeRoomScene.swift */,
-				38763F622A3B71AE004129A6 /* SecondMemoryScene.swift */,
+				38763F622A3B71AE004129A6 /* BedroomScene.swift */,
 				38763F6A2A3B71D5004129A6 /* ThirdMemoryScene.swift */,
 				38763F862A42A600004129A6 /* HospitalRoomScene.swift */,
 			);
@@ -293,7 +293,7 @@
 				38763F812A41E720004129A6 /* TitleScene.sks */,
 				38763F022A3AA7A8004129A6 /* MainRoomScene.sks */,
 				38763F562A3B7127004129A6 /* OfficeRoomScene.sks */,
-				38763F5E2A3B71A1004129A6 /* SecondMemoryScene.sks */,
+				38763F5E2A3B71A1004129A6 /* BedroomScene.sks */,
 				38763F662A3B71C3004129A6 /* ThirdMemoryScene.sks */,
 				38763F8A2A42DAA3004129A6 /* HospitalRoomScene.sks */,
 				38763F042A3AA7A8004129A6 /* Actions.sks */,
@@ -413,7 +413,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				38763F5F2A3B71A1004129A6 /* SecondMemoryScene.sks in Resources */,
+				38763F5F2A3B71A1004129A6 /* BedroomScene.sks in Resources */,
 				38763F0C2A3AA7A8004129A6 /* Main.storyboard in Resources */,
 				38763F822A41E720004129A6 /* TitleScene.sks in Resources */,
 				38763F032A3AA7A8004129A6 /* MainRoomScene.sks in Resources */,
@@ -435,7 +435,7 @@
 				38763F832A41E720004129A6 /* TitleScene.sks in Resources */,
 				38763F8C2A42DAA3004129A6 /* HospitalRoomScene.sks in Resources */,
 				38763F582A3B7127004129A6 /* OfficeRoomScene.sks in Resources */,
-				38763F602A3B71A1004129A6 /* SecondMemoryScene.sks in Resources */,
+				38763F602A3B71A1004129A6 /* BedroomScene.sks in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -447,7 +447,7 @@
 				38763F842A41E720004129A6 /* TitleScene.sks in Resources */,
 				38763F8D2A42DAA3004129A6 /* HospitalRoomScene.sks in Resources */,
 				38763F592A3B7127004129A6 /* OfficeRoomScene.sks in Resources */,
-				38763F612A3B71A1004129A6 /* SecondMemoryScene.sks in Resources */,
+				38763F612A3B71A1004129A6 /* BedroomScene.sks in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -460,7 +460,7 @@
 			files = (
 				38763F4B2A3AF70A004129A6 /* ControlComponent.swift in Sources */,
 				2C0325DF2A3EE887005B8E0A /* MainPlayerComponent.swift in Sources */,
-				38763F632A3B71AE004129A6 /* SecondMemoryScene.swift in Sources */,
+				38763F632A3B71AE004129A6 /* BedroomScene.swift in Sources */,
 				38763F532A3AF789004129A6 /* RenderComponent.swift in Sources */,
 				2CAFBBDE2A473E0E00813659 /* DecorativeItem.swift in Sources */,
 				2C0325DB2A3EDB2A005B8E0A /* CharacterVisualComponent.swift in Sources */,
@@ -485,7 +485,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				38763F442A3AF49D004129A6 /* OrientationComponent.swift in Sources */,
-				38763F642A3B71AE004129A6 /* SecondMemoryScene.swift in Sources */,
+				38763F642A3B71AE004129A6 /* BedroomScene.swift in Sources */,
 				38763F882A42A600004129A6 /* HospitalRoomScene.swift in Sources */,
 				38763F502A3AF748004129A6 /* PhysicsComponent.swift in Sources */,
 				38763F482A3AF657004129A6 /* AnimationComponent.swift in Sources */,
@@ -518,7 +518,7 @@
 				38763F252A3AA7AA004129A6 /* MC2UITests.swift in Sources */,
 				38763F272A3AA7AA004129A6 /* MC2UITestsLaunchTests.swift in Sources */,
 				38763F512A3AF748004129A6 /* PhysicsComponent.swift in Sources */,
-				38763F652A3B71AE004129A6 /* SecondMemoryScene.swift in Sources */,
+				38763F652A3B71AE004129A6 /* BedroomScene.swift in Sources */,
 				38763F552A3AF789004129A6 /* RenderComponent.swift in Sources */,
 				38763F6D2A3B71D5004129A6 /* ThirdMemoryScene.swift in Sources */,
 				38763F802A41E3E3004129A6 /* TitleScene.swift in Sources */,
