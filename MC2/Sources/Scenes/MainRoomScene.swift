@@ -40,9 +40,16 @@ class MainRoomScene: SKScene, SKPhysicsContactDelegate {
             return
         }
         
+        guard let doorBedroom = childNode(withName: "DoorToRoom") as? SKShapeNode else {
+            return
+        }
         
         if characterNode.intersects(doorOffice) {
             sceneManagerDelegate?.presentOfficeRoomScene()
+        }
+        
+        if characterNode.intersects(doorBedroom) {
+            sceneManagerDelegate?.presentBedroomScene()
         }
     }
     

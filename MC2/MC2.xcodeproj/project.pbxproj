@@ -13,6 +13,7 @@
 		2C0325DF2A3EE887005B8E0A /* MainPlayerComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C0325DE2A3EE887005B8E0A /* MainPlayerComponent.swift */; };
 		2C0325E02A3EE887005B8E0A /* MainPlayerComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C0325DE2A3EE887005B8E0A /* MainPlayerComponent.swift */; };
 		2C0325E12A3EE887005B8E0A /* MainPlayerComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C0325DE2A3EE887005B8E0A /* MainPlayerComponent.swift */; };
+		2CAFBBDE2A473E0E00813659 /* DecorativeItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CAFBBDD2A473E0E00813659 /* DecorativeItem.swift */; };
 		38763F012A3AA7A8004129A6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38763F002A3AA7A8004129A6 /* AppDelegate.swift */; };
 		38763F032A3AA7A8004129A6 /* MainRoomScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 38763F022A3AA7A8004129A6 /* MainRoomScene.sks */; };
 		38763F052A3AA7A8004129A6 /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = 38763F042A3AA7A8004129A6 /* Actions.sks */; };
@@ -99,6 +100,7 @@
 /* Begin PBXFileReference section */
 		2C0325DA2A3EDB2A005B8E0A /* CharacterVisualComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterVisualComponent.swift; sourceTree = "<group>"; };
 		2C0325DE2A3EE887005B8E0A /* MainPlayerComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPlayerComponent.swift; sourceTree = "<group>"; };
+		2CAFBBDD2A473E0E00813659 /* DecorativeItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecorativeItem.swift; sourceTree = "<group>"; };
 		38763EFD2A3AA7A8004129A6 /* MC2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MC2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		38763F002A3AA7A8004129A6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		38763F022A3AA7A8004129A6 /* MainRoomScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = MainRoomScene.sks; sourceTree = "<group>"; };
@@ -218,6 +220,7 @@
 			children = (
 				38763F3A2A3AEC30004129A6 /* Player.swift */,
 				8C56D94B2A43E9600076283B /* InteractiveItem.swift */,
+				2CAFBBDD2A473E0E00813659 /* DecorativeItem.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -459,6 +462,7 @@
 				2C0325DF2A3EE887005B8E0A /* MainPlayerComponent.swift in Sources */,
 				38763F632A3B71AE004129A6 /* SecondMemoryScene.swift in Sources */,
 				38763F532A3AF789004129A6 /* RenderComponent.swift in Sources */,
+				2CAFBBDE2A473E0E00813659 /* DecorativeItem.swift in Sources */,
 				2C0325DB2A3EDB2A005B8E0A /* CharacterVisualComponent.swift in Sources */,
 				38763F872A42A600004129A6 /* HospitalRoomScene.swift in Sources */,
 				38763F072A3AA7A8004129A6 /* MainRoomScene.swift in Sources */,
