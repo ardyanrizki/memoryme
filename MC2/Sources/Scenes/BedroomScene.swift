@@ -94,10 +94,16 @@ extension BedroomScene {
             tidyParentNode.alpha = 1
             messyParentNode.alpha = 0
             
-            let tidyBoundingBox = tidyParentNode.calculateAccumulatedFrame()
-            
-            tidyParentNode.physicsBody = SKPhysicsBody(rectangleOf: tidyBoundingBox.size)
-            tidyParentNode.physicsBody?.isDynamic = false
+            tidyParentNode.children.forEach { childNode in
+                if let spriteNode = childNode as? SKSpriteNode {
+                    let decorationEntity = DecorativeItem(
+                        node: spriteNode,
+                        name: spriteNode.name!
+                    )
+                    
+                    entities.append(decorationEntity)
+                }
+            }
         } else {
             tidyParentNode.alpha = 0
             messyParentNode.alpha = 1
