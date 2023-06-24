@@ -12,17 +12,17 @@ class IntercativeItem: GKEntity {
     
     var node: SKSpriteNode?
     
-    init(position point: CGPoint, name: String) {
+    init(position point: CGPoint, name: String, type: ItemType) {
         super.init()
-        addingComponents(position: point, name: name)
+        addingComponents(position: point, name: name, type: type)
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    private func addingComponents(position point: CGPoint, name: String) {
-        let itemRenderComponent = RenderComponent(type: .vase, position: point)
+    private func addingComponents(position point: CGPoint, name: String, type: ItemType) {
+        let itemRenderComponent = RenderComponent(type: type, position: point)
         
         node = itemRenderComponent.itemNode
         
@@ -33,7 +33,7 @@ class IntercativeItem: GKEntity {
         
         let physicalComponent = PhysicsComponent(physicsType: .item, node: node)
         
-        node.name = "vase"
+        node.name = name
         addComponent(itemRenderComponent)
         addComponent(physicalComponent)
     }

@@ -126,7 +126,7 @@ extension MainRoomScene {
     }
     
     private func setupInteractiveObject(){
-        let vase = IntercativeItem(position: CGPoint(x: 148.014, y: 256.166), name: "vase")
+        let vase = IntercativeItem(position: CGPoint(x: 148.014, y: 256.166), name: "vase", type: .vase)
         entities.append(vase)
         addChild(vase.node ?? SKSpriteNode())
         vase.node?.zPosition = 9
