@@ -13,6 +13,10 @@ class SecondMemoryScene: SKScene {
     
     private var entities: [GKEntity] = []
     
+    /**
+     hard-coded value to simulate tidy or messy scene on Bedroom
+     TODO: replace this value with game state
+    */
     let STATE_TIDYNESS_ROOM = false
     
     override func sceneDidLoad() {
