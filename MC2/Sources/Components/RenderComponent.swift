@@ -10,6 +10,7 @@ import GameplayKit
 
 enum ItemType: String {
     case vase = "vase"
+    case photoAlbum = "photoAlbum"
 }
 
 class RenderComponent: GKComponent {
@@ -19,10 +20,11 @@ class RenderComponent: GKComponent {
         switch type {
         case .vase:
             return "VaseDefault"
+        case .photoAlbum:
+            return "PhotoAlbum"
         default:
             return ""
         }
-        
     }
     
     init(type: ItemType, position: CGPoint) {
@@ -32,6 +34,16 @@ class RenderComponent: GKComponent {
         // create characterNode
         itemNode = SKSpriteNode(texture: texture)
         itemNode.position = position
+        
+        super.init()
+    }
+    
+    init(node: SKSpriteNode, position: CGPoint? = nil) {
+        itemNode = node
+        
+        if let position {
+            itemNode.position = position
+        }
         
         super.init()
     }

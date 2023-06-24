@@ -13,13 +13,34 @@ class SecondMemoryScene: SKScene {
     
     private var entities: [GKEntity] = []
     
+    let STATE_TIDYNESS_ROOM = false
+    
+    override func sceneDidLoad() {
+        createWorld()
+        setupEntities()
+    }
+    
     override func didMove(to view: SKView) {
         createWorld()
         setupEntities()
     }
     
     override func update(_ currentTime: TimeInterval) {
+        checkDoorCollision()
+    }
+    
+    func checkDoorCollision() {
+        guard let characterNode = childNode(withName: CharacterType.mainCharacter.rawValue) as? SKSpriteNode else {
+            return
+        }
         
+        guard let doorMainRoom = childNode(withName: "doorToMainRoom") as? SKShapeNode else {
+            return
+        }
+        
+        if characterNode.intersects(doorMainRoom) {
+            sceneManagerDelegate?.presentMainRoomScene()
+        }
     }
     
     func touchDown(atPoint pos : CGPoint) {
@@ -57,13 +78,62 @@ class SecondMemoryScene: SKScene {
 
 extension SecondMemoryScene {
     private func createWorld() {
-        let roomBackground = SKSpriteNode(imageNamed: "MainRoom")
-        roomBackground.position = CGPoint(x: frame.midX, y: frame.midY)
-        addChild(roomBackground)
+        guard let messyParentNode = childNode(withName: "messySectionNode") as SKNode? else {
+            return
+        }
+        
+        guard let tidyParentNode = childNode(withName: "tidySectionNode") as SKNode? else {
+            return
+        }
+        
+        if STATE_TIDYNESS_ROOM {
+            tidyParentNode.alpha = 1
+            messyParentNode.alpha = 0
+            
+            let tidyBoundingBox = tidyParentNode.calculateAccumulatedFrame()
+            
+            tidyParentNode.physicsBody = SKPhysicsBody(rectangleOf: tidyBoundingBox.size)
+            tidyParentNode.physicsBody?.isDynamic = false
+        } else {
+            tidyParentNode.alpha = 0
+            messyParentNode.alpha = 1
+            
+            messyParentNode.children.forEach { childNode in
+                if let spriteNode = childNode as? SKSpriteNode {
+                    let decorationEntity = DecorativeItem(
+                        node: spriteNode,
+                        name: spriteNode.name!
+                    )
+                    
+                    entities.append(decorationEntity)
+                }
+            }
+            
+            let photoAlbum = IntercativeItem(
+                position: CGPoint(x: frame.midX, y: frame.midY),
+                name: "photo-allbum",
+                type: .photoAlbum
+            )
+            entities.append(photoAlbum)
+            addChild(photoAlbum.node!)
+            photoAlbum.node?.zPosition = 10
+        }
     }
     
     private func setupEntities(){
-        let mainCharacter = Player(position: CGPoint(x: frame.midX, y: frame.midY))
+        var xPosition = frame.midX
+        var yPosition = frame.midY
+        
+        // To change origin position of Main character when entering the scene
+        if let node = childNode(withName: "entrancePoint") {
+            xPosition = node.position.x
+            yPosition = node.position.y
+            
+            // hide the node so the the scene does not display two character
+            node.alpha = 0
+        }
+        
+        let mainCharacter = Player(position: CGPoint(x: xPosition, y: yPosition))
         entities.append(mainCharacter)
         addChild(mainCharacter.node ?? SKSpriteNode())
         mainCharacter.node?.zPosition = 10

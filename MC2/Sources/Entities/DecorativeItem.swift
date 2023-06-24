@@ -12,7 +12,7 @@ class DecorativeItem: GKEntity {
     
     var node: SKSpriteNode
     
-    init(node: SKSpriteNode, name: String, position point: CGPoint) {
+    init(node: SKSpriteNode, name: String, position point: CGPoint? = nil) {
         self.node = node
         self.node.name = name
         
@@ -24,7 +24,7 @@ class DecorativeItem: GKEntity {
         fatalError("init(coder:) has not been implemented")
     }
     
-    private func addingComponents(name: String, position: CGPoint) {
+    private func addingComponents(name: String, position: CGPoint? = nil) {
         let itemRenderComponent = RenderComponent(
             node: self.node,
             position: position
