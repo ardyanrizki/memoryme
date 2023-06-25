@@ -12,8 +12,8 @@ struct FactoryMethods {
         Player(at: position)
     }
     
-    static func createInteractiveItem(name textureName: TextureName, at position: CGPoint) -> InteractiveItem {
-        InteractiveItem(name: textureName, at: position)
+    static func createInteractiveItem(with identifier: ItemIdentifier, at position: CGPoint, withScene scene: SKScene) -> InteractiveItem {
+        InteractiveItem(with: identifier, at: position, withScene: scene)
     }
     
     static func createDialogBox(with size: CGSize, sceneFrame frame: CGRect, cornerRadius: CGFloat = 10) -> DialogBoxNode {

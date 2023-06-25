@@ -12,8 +12,13 @@ class TestScene: PlayableScene, PlayableSceneProtocol {
     typealias T = TestScene
     
     static func sharedScene(playerAt position: PositionIdentifier) -> TestScene? {
-        let scene = TestScene(fileNamed: "TestScene")
+        let scene = TestScene(fileNamed: Constants.testScene)
         scene?.setup(playerAt: position)
         return scene
+    }
+    
+    override func setup(playerAt position: PositionIdentifier) {
+        super.setup(playerAt: position)
+        
     }
 }

@@ -16,8 +16,8 @@ struct Constants {
     static let mainCharacterName = "Mory"
     
     // Game scenes
-//    static let titleScene = "TitleScene"
-    static let titleScene = "TestScene"
+    static let testScene = "TestScene"
+    static let titleScene = "TitleScene"
     static let mainRoomScene = "MainRoomScene"
     static let officeRoomScene = "OfficeRoomScene"
     static let bedroomScene = "BedroomScene"

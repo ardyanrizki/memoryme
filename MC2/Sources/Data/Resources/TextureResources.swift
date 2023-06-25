@@ -48,12 +48,12 @@ struct TextureResources {
     static let friendCharacterAtlasWalk: TextureAtlasName = "friend_walk"
     static let bartenderCharacterAtlasWalk: TextureAtlasName = "bartender_walk"
     
-    // MARK: Items in office
+    // MARK: Items in Office
     static let vase: TextureName = "vase_static"
     static let laptop: TextureName = "laptop_static"
     static let radio: TextureName = "radio_static"
     
-    // MARK: Items in bedroom
+    // MARK: Items in Bedroom
     static let bedMessy: TextureName = "bed_messy"
     static let bookMessy: TextureName = "book_messy"
     static let bookshelfMessy: TextureName = "bookshelf_messy"

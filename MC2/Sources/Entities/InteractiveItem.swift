@@ -8,32 +8,50 @@
 import SpriteKit
 import GameplayKit
 
+enum ItemTextureType {
+    case normal
+    case tidy
+    case messy
+}
+
 class InteractiveItem: GKEntity {
     
-    var node: SKSpriteNode?
+    var node: ItemNode? {
+        for case let component as RenderComponent in components {
+            return component.node as? ItemNode
+        }
+        return nil
+    }
     
-    init(name textureName: TextureName, at position: CGPoint) {
+    private var textures: [ItemTextureType: SKTexture]?
+    
+    var textureType: ItemTextureType = .tidy
+    
+    init(from node: ItemNode, textures: [ItemTextureType: SKTexture]) {
+        guard let firstTexture = textures.first else { fatalError("InteractiveItem must have at least 1 texture type.") }
         super.init()
-        addingComponents(name: textureName, position: position)
+        self.textures = textures
+        self.textureType = firstTexture.key
+        // First texture always run for the first time as a default texture.
+        addingComponents(node: node)
+        node.texture = firstTexture.value
+    }
+    
+    init(with identifier: ItemIdentifier, at point: CGPoint, withScene scene: SKScene) {
+        guard let node = identifier.getNode(from: scene) else {
+            fatalError("Node unavailable.")
+        }
+        super.init()
+        addingComponents(node: node)
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    private func addingComponents(name textureName: TextureName, position point: CGPoint) {
-        let renderComponent = RenderComponent(name: textureName, at: point)
-        
-        node = renderComponent.node
-        
-        guard let node else {
-            print("Error: No item node available.")
-            return
-        }
-        
+    private func addingComponents(node: ItemNode) {
+        let renderComponent = RenderComponent(node: node)
         let physicalComponent = PhysicsComponent(type: .item, renderComponent: renderComponent)
-        
-        node.name = textureName
         addComponent(renderComponent)
         addComponent(physicalComponent)
     }

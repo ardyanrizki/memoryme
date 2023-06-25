@@ -60,6 +60,14 @@ class DialogBoxNode: SKShapeNode {
         clearLabelText()
     }
     
+    func handleTouch(on touchLocation: CGPoint) {
+        if contains(touchLocation) == true {
+            // Skip `dialogBox` typing animation if running.
+            skipTyping()
+        }
+        hide()
+    }
+    
     private func clearLabelText() {
         nameLabel?.text = .emptyString
         promptLabel?.text = .emptyString

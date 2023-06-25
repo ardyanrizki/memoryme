@@ -18,11 +18,6 @@ class PlayableScene: SKScene {
     weak var sceneManager: SceneManagerProtocol?
     
     /**
-     Collection of scene entities.
-     */
-    var entities: [GKEntity] = [GKEntity]()
-    
-    /**
      Collection of character position's points.
      */
     var positions: [PositionNode] = [PositionNode]()
@@ -36,6 +31,11 @@ class PlayableScene: SKScene {
      Collection of zones that are responsible for triggering scene changes.
      */
     var sceneChangeZones: [SceneChangeZoneNode] = [SceneChangeZoneNode]()
+    
+    /**
+     Collection of interactable items that are responsible for triggering some dialog.
+     */
+    var interactiveItem: [InteractiveItem] = [InteractiveItem]()
     
     /**
      Player character entity.
@@ -55,6 +55,8 @@ class PlayableScene: SKScene {
         setupPlayer(at: position, from: positions)
         setupDialogBox()
         setupWallsCollision()
+        setupSceneChangeZones()
+        setupInteractiveItems()
     }
     
     /**
@@ -94,21 +96,22 @@ class PlayableScene: SKScene {
      */
     private func setupWallsCollision() {
         walls = children.compactMap { $0 as? WallNode }
-        walls.forEach { $0.setupPhysicsBodyCollision() }
+        walls.forEach { $0.setupPhysicsBody() }
     }
     
     /**
      Setup all interactable items and add to scene.
      */
-    private func setupInteractableItems() {
-        
+    private func setupInteractiveItems() {
+        let itemNodes = findAllItemNodesInScene()
+        interactiveItem = itemNodes.map { $0.createInteractiveItem(from: self) }
     }
     
     /**
-     Setup all contact areas and add to scene.
+     Setup all available sceneChangeZones.
      */
-    private func setupContactAreas() {
-        
+    private func setupSceneChangeZones() {
+        sceneChangeZones = findAllSceneChangeZoneNodesInScene()
     }
     
     /**
@@ -118,6 +121,18 @@ class PlayableScene: SKScene {
         sceneChangeZones.forEach { zone in
             if player?.node?.intersects(zone) == true {
                 zone.moveScene(with: sceneManager)
+            }
+        }
+    }
+    
+    /**
+     Detecting player contact with item to perform action.
+     */
+    private func detectIntersectsWithItem() {
+        interactiveItem.forEach { item in
+            if let itemNode = item.node,
+               player?.node?.intersects(itemNode) == true {
+                dialogBox?.show(dialog: DialogResources.strangeVase, from: self)
             }
         }
     }
@@ -134,51 +149,54 @@ class PlayableScene: SKScene {
     /**
      Search for all `SceneChangeZoneNode`s in scene.
      */
-    private func findAllSceneChangeZoneNodeInScene() -> [SceneChangeZoneNode] {
+    private func findAllSceneChangeZoneNodesInScene() -> [SceneChangeZoneNode] {
         return SceneChangeZoneIdentifier.allCases.compactMap { identifier in
             identifier.getNode(from: self)
         }
     }
     
-    func touchDown(atPoint pos : CGPoint) {
-        
+    /**
+     Search for all `ItemNode`s in scene.
+     */
+    private func findAllItemNodesInScene() -> [ItemNode] {
+        return ItemIdentifier.allCases.compactMap { identifier in
+            identifier.getNode(from: self)
+        }
     }
     
-    func touchMoved(toPoint pos : CGPoint) {
-   
-    }
+    func touchDown(atPoint pos : CGPoint) {}
     
-    func touchUp(atPoint pos : CGPoint) {
+    func touchMoved(toPoint pos : CGPoint) {}
     
-    }
+    func touchUp(atPoint pos : CGPoint) {}
+
+}
+
+// MARK: Overrided methods.
+extension PlayableScene {
     
-    // MARK: Overrided methods.
     override func didMove(to view: SKView) {
         scene?.anchorPoint = CGPoint(x: 0.5, y: 0.5)
     }
     
     override func update(_ currentTime: TimeInterval) {
         detectIntersectsAndChangeScene()
+        detectIntersectsWithItem()
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         guard let touch = touches.first else { return }
         let touchLocation = touch.location(in: self)
-        if dialogBox?.contains(touchLocation) == true {
-            // Skip dialog box typing animation if running.
-            dialogBox?.skipTyping()
-        } else {
-            // Hide dialog box if shown.
-            dialogBox?.hide()
-        }
+        dialogBox?.handleTouch(on: touchLocation)
         for t in touches { self.touchDown(atPoint: t.location(in: self)) }
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         guard let touchLocation = touches.first?.location(in: self) else { return }
-        if dialogBox?.isShowing == false {
-            // Assign player to walk if dialogBox is not shown.
+        if dialogBox?.isShowing == false, (dialogBox?.isShowing == false || dialogBox?.contains(touchLocation) == false) {
+            // Assign player to walk if `dialogBox` not shown.
             player?.walk(to: touchLocation)
         }
     }
+    
 }

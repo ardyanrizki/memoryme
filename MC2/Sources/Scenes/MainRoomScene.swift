@@ -134,7 +134,8 @@ extension MainRoomScene {
     }
     
     private func setupInteractiveObject(){
-        let vase = InteractiveItem(name: TextureResources.vase, at: CGPoint(x: 148.014, y: 256.166))
+        let position = CGPoint(x: 148.014, y: 256.166)
+        let vase = FactoryMethods.createInteractiveItem(with: .vase, at: position, withScene: self)
         entities.append(vase)
         addChild(vase.node ?? SKSpriteNode())
         vase.node?.zPosition = 9

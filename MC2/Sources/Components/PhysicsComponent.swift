@@ -12,6 +12,7 @@ enum PhysicsType {
     case character
     case wall
     case item
+    case sceneChangeZone
 }
 
 struct PhysicsCategory {
@@ -19,6 +20,7 @@ struct PhysicsCategory {
     static let obstacle: UInt32 = 0x1 << 1
     static let wall: UInt32 = 0x1 << 2
     static let item: UInt32 = 0x1 << 3
+    static let sceneChangeZone: UInt32 = 0x1 << 4
 }
 
 class PhysicsComponent: GKComponent {
@@ -30,7 +32,7 @@ class PhysicsComponent: GKComponent {
         
         switch physicsType {
         case .character:
-            let size = CGSize(width: node.size.width, height: node.size.height/2)
+            let size = CGSize(width: node.size.width, height: node.size.height / 2)
             node.physicsBody = SKPhysicsBody(rectangleOf: size)
 //            node.anchorPoint = CGPoint(x: 0, y: 0)
             node.position.y -= node.size.height / 2
@@ -40,16 +42,12 @@ class PhysicsComponent: GKComponent {
             node.physicsBody?.affectedByGravity = false
             node.physicsBody?.allowsRotation = false
             node.physicsBody?.isDynamic = true
-            
-            break
         case .item:
             node.physicsBody?.categoryBitMask = PhysicsCategory.item
             node.physicsBody?.collisionBitMask = PhysicsCategory.character | PhysicsCategory.obstacle | PhysicsCategory.wall
             node.physicsBody?.contactTestBitMask = PhysicsCategory.item
             node.physicsBody?.affectedByGravity = false
             node.physicsBody?.isDynamic = false
-            
-            break
         default:
             // TODO: define other physics body
             break
@@ -72,26 +70,29 @@ class PhysicsComponent: GKComponent {
     
     private func setupPhysicsBody(for type: PhysicsType) {
         let node = renderComponent.node
-        let physicsBody = SKPhysicsBody(rectangleOf: node.size)
+        node.physicsBody = SKPhysicsBody(rectangleOf: node.size)
         switch type {
         case .character:
-            physicsBody.categoryBitMask = PhysicsCategory.character
-            physicsBody.collisionBitMask = PhysicsCategory.obstacle | PhysicsCategory.wall
-            physicsBody.contactTestBitMask = PhysicsCategory.item
-            physicsBody.affectedByGravity = false
-            physicsBody.isDynamic = true
+            node.physicsBody?.categoryBitMask = PhysicsCategory.character
+            node.physicsBody?.collisionBitMask = PhysicsCategory.obstacle | PhysicsCategory.wall
+            node.physicsBody?.contactTestBitMask = PhysicsCategory.item
+            node.physicsBody?.affectedByGravity = false
+            node.physicsBody?.allowsRotation = false
+            node.physicsBody?.isDynamic = true
         case .wall:
-            physicsBody.categoryBitMask = PhysicsCategory.wall
-            physicsBody.collisionBitMask = PhysicsCategory.character
-            physicsBody.affectedByGravity = false
-            physicsBody.isDynamic = false
+            node.physicsBody?.categoryBitMask = PhysicsCategory.wall
+            node.physicsBody?.collisionBitMask = PhysicsCategory.character
+            node.physicsBody?.affectedByGravity = false
+            node.physicsBody?.isDynamic = false
         case .item:
             node.physicsBody?.categoryBitMask = PhysicsCategory.item
             node.physicsBody?.collisionBitMask = PhysicsCategory.character | PhysicsCategory.obstacle | PhysicsCategory.wall
             node.physicsBody?.contactTestBitMask = PhysicsCategory.item
             node.physicsBody?.affectedByGravity = false
             node.physicsBody?.isDynamic = false
+        case .sceneChangeZone:
+            break
         }
-        self.physicsBody = physicsBody
+        self.physicsBody = node.physicsBody
     }
 }

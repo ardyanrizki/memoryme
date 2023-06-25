@@ -8,18 +8,16 @@
 import SpriteKit
 
 enum SceneChangeZoneIdentifier: String, CaseIterable {
-    case mainRoomOfficeDoor = "mainRoomOfficeDoor"
-    case mainRoomBedroomDoor = "mainRoomBedroomDoor"
-    case mainRoomBarDoor = "mainRoomBarDoor"
-    case mainRoomHospitalDoor = "mainRoomHospitalDoor"
-    case officeDoor = "officeDoor"
-    case barDoor = "barDoor"
-    case hospitalDoor = "hospitalDoor"
-    case bedroomDoor = "bedroomDoor"
+    case toOffice = "toOffice"
+    case toBedroom = "toBedroom"
+    case toBar = "toBar"
+    case toHospital = "toHospital"
+    case toMainRoom = "toMainRoom"
     
     func getNode(from scene: SKScene) -> SceneChangeZoneNode? {
         let node = scene.childNode(withName: self.rawValue) as? SceneChangeZoneNode
         node?.identifier = self
+        node?.setup()
         return node
     }
 }

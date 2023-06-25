@@ -57,7 +57,7 @@ class Player: GKEntity {
     }
     
     private func addingComponents(name: TextureName, position: CGPoint, textures: [AnimationState: [SKTexture]]) {
-        let renderComponent = RenderComponent(name: name, at: position)
+        let renderComponent = RenderComponent(with: name, at: position)
         addComponent(renderComponent)
         
         // MARK: Character Component
