@@ -50,12 +50,12 @@ class ControlComponent: GKComponent {
             // Create a move action specifying where to move and how long it should take.
             let moveAction = SKAction.move(to: newPoint, duration:(TimeInterval(moveDuration)))
             
-            animationComponent?.animate(for: .walk, withKey: key)
+            animationComponent?.animate(for: .walk, timePerFrame: 0.2, withKey: key)
 
             let pauseAnimation = SKAction.run {
                 self.animationComponent?.pauseAnimation()
             }
-            let waitToIdle = SKAction.wait(forDuration: 0.4)
+            let waitToIdle = SKAction.wait(forDuration: 0.1)
             let removeAllActions = SKAction.run({
                 self.animationComponent?.removeAnimation()
             })
