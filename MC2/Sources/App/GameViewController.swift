@@ -21,7 +21,7 @@ class GameViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        presentTitleScene()
+        presentTestScene()
     }
 
     override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
@@ -38,45 +38,52 @@ class GameViewController: UIViewController {
 }
 
 extension GameViewController: SceneManagerProtocol {
+    
     func presentTitleScene() {
-//        guard let scene = TitleScene(fileNamed: Constants.titleScene) else { return }
-        guard let scene = TestScene.sharedScene(playerAt: .mainRoomBedroomDoor) else { return }
+        guard let scene = TitleScene(fileNamed: Constants.titleScene) else { return }
         scene.sceneManager = self
         let fade = SKTransition.fade(withDuration: 0.5)
         present(scene: scene, transition: fade)
     }
     
     func presentMainRoomScene() {
-        guard let scene = MainRoomScene(fileNamed: Constants.mainRoomScene) else { return }
-        scene.sceneManagerDelegate = self
+        guard let scene = MainRoomScene.sharedScene(playerAt: .barEntrance) else { return }
+        scene.sceneManager = self
         let fade = SKTransition.fade(withDuration: 0.5)
         present(scene: scene, transition: fade)
     }
     
     func presentOfficeRoomScene() {
         guard let scene = OfficeRoomScene(fileNamed: Constants.officeRoomScene) else { return }
-        scene.sceneManagerDelegate = self
+        scene.sceneManager = self
         let fade = SKTransition.fade(withDuration: 0.5)
         present(scene: scene, transition: fade)
     }
     
     func presentBedroomScene() {
         guard let scene = BedroomScene(fileNamed: Constants.bedroomScene) else { return }
-        scene.sceneManagerDelegate = self
+        scene.sceneManager = self
         let fade = SKTransition.fade(withDuration: 0.5)
         present(scene: scene, transition: fade)
     }
     
     func presentBarScene() {
-        guard let scene = BarScene(fileNamed: Constants.barScene) else { return }
-        scene.sceneManagerDelegate = self
+        guard let scene = BarScene.sharedScene(playerAt: .barEntrance) else { return }
+        scene.sceneManager = self
         let fade = SKTransition.fade(withDuration: 0.5)
         present(scene: scene, transition: fade)
     }
     
     func presentHospitalRoomScene() {
         guard let scene = HospitalRoomScene(fileNamed: Constants.hospitalScene) else { return }
-        scene.sceneManagerDelegate = self
+        scene.sceneManager = self
+        let fade = SKTransition.fade(withDuration: 0.5)
+        present(scene: scene, transition: fade)
+    }
+    
+    func presentTestScene() {
+        guard let scene = TestScene.sharedScene(playerAt: .mainRoomBedroomDoor) else { return }
+        scene.sceneManager = self
         let fade = SKTransition.fade(withDuration: 0.5)
         present(scene: scene, transition: fade)
     }

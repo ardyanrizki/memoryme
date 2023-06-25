@@ -23,6 +23,8 @@ struct Constants {
     static let bedroomScene = "BedroomScene"
     static let barScene = "BarScene"
     static let hospitalScene = "HospitalScene"
+    
+    static let background = "background"
 }
 
 extension String {

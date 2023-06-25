@@ -21,3 +21,4 @@ enum SceneChangeZoneIdentifier: String, CaseIterable {
         return node
     }
 }
+

@@ -10,7 +10,7 @@ import GameplayKit
 
 protocol PlayableSceneProtocol {
     associatedtype T: SKScene
-    static func sharedScene(playerAt: PositionIdentifier) -> T?
+    static func sharedScene(playerAt position: PositionIdentifier) -> T?
 }
 
 class PlayableScene: SKScene {
@@ -51,12 +51,21 @@ class PlayableScene: SKScene {
     
     func setup(playerAt position: PositionIdentifier) {
         print(type(of: self) == TestScene.self, "<<")
+        setupBackground()
         setupPositions()
         setupPlayer(at: position, from: positions)
         setupDialogBox()
         setupWallsCollision()
         setupSceneChangeZones()
         setupInteractiveItems()
+    }
+    
+    /**
+     Setting up the background's z index.
+     */
+    private func setupBackground() {
+        let background = childNode(withName: Constants.background)
+        background?.zPosition = 0
     }
     
     /**
@@ -87,7 +96,6 @@ class PlayableScene: SKScene {
         guard dialogBox == nil else { return }
         let size = CGSize(width: frame.width - 200, height: 150)
         dialogBox = FactoryMethods.createDialogBox(with: size, sceneFrame: frame)
-        dialogBox?.show(dialog: DialogResources.strangeVase, from: self)
     }
     
     /**
@@ -131,8 +139,9 @@ class PlayableScene: SKScene {
     private func detectIntersectsWithItem() {
         interactiveItem.forEach { item in
             if let itemNode = item.node,
-               player?.node?.intersects(itemNode) == true {
-                dialogBox?.show(dialog: DialogResources.strangeVase, from: self)
+               player?.node?.intersects(itemNode) == true,
+               let itemIdentifier = itemNode.identifier {
+                playerDidIntersects(with: itemIdentifier)
             }
         }
     }
@@ -169,6 +178,8 @@ class PlayableScene: SKScene {
     func touchMoved(toPoint pos : CGPoint) {}
     
     func touchUp(atPoint pos : CGPoint) {}
+    
+    func playerDidIntersects(with itemIdentifier: ItemIdentifier) {}
 
 }
 

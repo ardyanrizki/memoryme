@@ -17,8 +17,10 @@ class TestScene: PlayableScene, PlayableSceneProtocol {
         return scene
     }
     
-    override func setup(playerAt position: PositionIdentifier) {
-        super.setup(playerAt: position)
-        
+    override func playerDidIntersects(with itemIdentifier: ItemIdentifier) {
+        if itemIdentifier == .vase {
+            print("Item triggered")
+            dialogBox?.show(dialog: DialogResources.strangeVase, from: self)
+        }
     }
 }

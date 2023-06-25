@@ -9,7 +9,7 @@ import SpriteKit
 import GameplayKit
 
 class TitleScene: SKScene {
-    var sceneManagerDelegate: SceneManagerProtocol?
+    var sceneManager: SceneManagerProtocol?
     
     var playButton: SKSpriteNode = SKSpriteNode()
     
@@ -22,7 +22,7 @@ class TitleScene: SKScene {
             let location = touch.location(in: self)
             
             if playButton.contains(location) {
-                sceneManagerDelegate?.presentMainRoomScene()
+                sceneManager?.presentMainRoomScene()
             }
         }
     }

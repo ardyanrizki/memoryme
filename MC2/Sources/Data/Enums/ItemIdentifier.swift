@@ -41,6 +41,7 @@ enum ItemIdentifier: String, CaseIterable {
      */
     func getTextures() -> [ItemTextureType: SKTexture] {
         var textures = [ItemTextureType: SKTexture]()
+        // TODO: Add item textures
         switch self {
         case .laptop:
             textures = [
