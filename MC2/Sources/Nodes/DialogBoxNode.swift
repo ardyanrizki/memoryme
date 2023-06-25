@@ -8,16 +8,25 @@
 import SpriteKit
 
 class DialogBoxNode: SKShapeNode {
-    lazy var nameLabel: SKLabelNode? = {
-        nil
-    }()
     
-    lazy var promptLabel: SKLabelNode? = {
-        nil
-    }()
+    var nameLabel: SKLabelNode?
     
-    func runDialog(_ dialog: Dialog) {
-        nameLabel?.text = dialog.name
+    var promptLabel: SKLabelNode?
+    
+    var isShowing: Bool = false
+    
+    private var isTypingPrompt: Bool = false
+    
+    func show(dialog: Dialog, from scene: SKScene) {
+        guard isShowing == false, let nameLabel, let promptLabel else { return }
+        clearLabelText()
+        removeAllActions()
+        
+        if self.scene == nil {
+            scene.addChild(self)
+        }
+        
+        nameLabel.text = dialog.name
         
         let characters = Array(dialog.prompt)
         var characterIndex = 0
@@ -25,10 +34,34 @@ class DialogBoxNode: SKShapeNode {
             self.promptLabel?.text?.append(characters[characterIndex])
             characterIndex += 1
         }
-        let waitAction = SKAction.wait(forDuration: 0.05)
-        let sequencedAction = SKAction.sequence([addCharacterAction, waitAction])
-        let repeatAction = SKAction.repeat(sequencedAction, count: characters.count)
+        let delay = SKAction.wait(forDuration: 0.05)
+        let runAddCharactersAction = SKAction.sequence([addCharacterAction, delay])
+        let showAllPromptText = SKAction.repeat(runAddCharactersAction, count: characters.count)
         
-        promptLabel?.run(repeatAction)
+        let endAction = SKAction.run {
+            self.isTypingPrompt = false
+        }
+        
+        isTypingPrompt = true
+        let typingAnimation = SKAction.sequence([showAllPromptText, endAction])
+        promptLabel.run(typingAnimation)
+        isShowing = true
+    }
+    
+    func skipTyping() {
+        guard isTypingPrompt == true else { return }
+        // TODO: Create method to skip typing animation.
+    }
+    
+    func hide() {
+        guard isTypingPrompt == false else { return }
+        removeFromParent()
+        isShowing = false
+        clearLabelText()
+    }
+    
+    private func clearLabelText() {
+        nameLabel?.text = .emptyString
+        promptLabel?.text = .emptyString
     }
 }

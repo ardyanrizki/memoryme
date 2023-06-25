@@ -14,7 +14,7 @@ class ControlComponent: GKComponent {
     private var renderComponent: RenderComponent
     private var animationComponent: AnimationComponent?
     
-    init(characterVisualComponent: CharacterVisualComponent, renderComponent: RenderComponent, animationComponent: AnimationComponent?) {
+    init(renderComponent: RenderComponent, animationComponent: AnimationComponent?) {
         self.renderComponent = renderComponent
         super.init()
         self.animationComponent = animationComponent
@@ -51,13 +51,20 @@ class ControlComponent: GKComponent {
             let moveAction = SKAction.move(to: newPoint, duration:(TimeInterval(moveDuration)))
             
             animationComponent?.animate(for: .walk, withKey: key)
-            
-            // Create a done action that will run a block to stop the animation
-            let doneAction = SKAction.run({
-                node.removeAllActions()
+
+            let pauseAnimation = SKAction.run {
+                self.animationComponent?.pauseAnimation()
+            }
+            let waitToIdle = SKAction.wait(forDuration: 0.4)
+            let removeAllActions = SKAction.run({
+                self.animationComponent?.removeAnimation()
+            })
+            let backToIdle = SKAction.run ({
+                self.animationComponent?.animate(for: .idle, timePerFrame: 0.6, withKey: "idle")
             })
             
-            let moveActionWithDone = SKAction.sequence([moveAction, doneAction])
+            
+            let moveActionWithDone = SKAction.sequence([moveAction, pauseAnimation, waitToIdle, removeAllActions, backToIdle])
             node.run(moveActionWithDone)
         }
     }

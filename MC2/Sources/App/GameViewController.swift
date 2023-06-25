@@ -39,8 +39,9 @@ class GameViewController: UIViewController {
 
 extension GameViewController: SceneManagerProtocol {
     func presentTitleScene() {
-        guard let scene = TitleScene(fileNamed: Constants.titleScene) else { return }
-        scene.sceneManagerDelegate = self
+//        guard let scene = TitleScene(fileNamed: Constants.titleScene) else { return }
+        guard let scene = TestScene.sharedScene(playerAt: .mainRoomBedroomDoor) else { return }
+        scene.sceneManager = self
         let fade = SKTransition.fade(withDuration: 0.5)
         present(scene: scene, transition: fade)
     }
@@ -98,8 +99,8 @@ extension GameViewController: SceneManagerProtocol {
 
             view.ignoresSiblingOrder = true
             view.showsPhysics = false
-            view.showsFPS = false
-            view.showsNodeCount = false
+            view.showsFPS = true
+            view.showsNodeCount = true
         }
     }
 }

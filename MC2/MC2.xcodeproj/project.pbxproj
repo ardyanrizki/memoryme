@@ -21,6 +21,8 @@
 		3811E4DD2A472D8600416B95 /* WallNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3811E4DC2A472D8600416B95 /* WallNode.swift */; };
 		3811E4DF2A473BC700416B95 /* DialogBoxNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3811E4DE2A473BC700416B95 /* DialogBoxNode.swift */; };
 		3811E4E32A474D6000416B95 /* SceneChangeZoneNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3811E4E22A474D6000416B95 /* SceneChangeZoneNode.swift */; };
+		3811E4E52A475E5500416B95 /* TestScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3811E4E42A475E5500416B95 /* TestScene.swift */; };
+		3811E4E72A475E7E00416B95 /* TestScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 3811E4E62A475E7E00416B95 /* TestScene.sks */; };
 		38763F012A3AA7A8004129A6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38763F002A3AA7A8004129A6 /* AppDelegate.swift */; };
 		38763F032A3AA7A8004129A6 /* MainRoomScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 38763F022A3AA7A8004129A6 /* MainRoomScene.sks */; };
 		38763F052A3AA7A8004129A6 /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = 38763F042A3AA7A8004129A6 /* Actions.sks */; };
@@ -112,6 +114,8 @@
 		3811E4DC2A472D8600416B95 /* WallNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WallNode.swift; sourceTree = "<group>"; };
 		3811E4DE2A473BC700416B95 /* DialogBoxNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DialogBoxNode.swift; sourceTree = "<group>"; };
 		3811E4E22A474D6000416B95 /* SceneChangeZoneNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneChangeZoneNode.swift; sourceTree = "<group>"; };
+		3811E4E42A475E5500416B95 /* TestScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestScene.swift; sourceTree = "<group>"; };
+		3811E4E62A475E7E00416B95 /* TestScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = TestScene.sks; sourceTree = "<group>"; };
 		38763EFD2A3AA7A8004129A6 /* MC2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MC2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		38763F002A3AA7A8004129A6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		38763F022A3AA7A8004129A6 /* MainRoomScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = MainRoomScene.sks; sourceTree = "<group>"; };
@@ -297,6 +301,7 @@
 				38763F6A2A3B71D5004129A6 /* BarScene.swift */,
 				38763F862A42A600004129A6 /* HospitalRoomScene.swift */,
 				3811E4D32A4667F100416B95 /* PlayableScene.swift */,
+				3811E4E42A475E5500416B95 /* TestScene.swift */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -331,6 +336,7 @@
 				38763F662A3B71C3004129A6 /* BarScene.sks */,
 				38763F8A2A42DAA3004129A6 /* HospitalRoomScene.sks */,
 				38763F042A3AA7A8004129A6 /* Actions.sks */,
+				3811E4E62A475E7E00416B95 /* TestScene.sks */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -453,6 +459,7 @@
 				38763F032A3AA7A8004129A6 /* MainRoomScene.sks in Resources */,
 				38763F0E2A3AA7AA004129A6 /* Assets.xcassets in Resources */,
 				38763F112A3AA7AA004129A6 /* LaunchScreen.storyboard in Resources */,
+				3811E4E72A475E7E00416B95 /* TestScene.sks in Resources */,
 				38763F672A3B71C3004129A6 /* BarScene.sks in Resources */,
 				38763F8B2A42DAA3004129A6 /* HospitalRoomScene.sks in Resources */,
 				38763F572A3B7127004129A6 /* OfficeRoomScene.sks in Resources */,
@@ -516,6 +523,7 @@
 				3811E4CE2A464E5A00416B95 /* Constants.swift in Sources */,
 				38763F3B2A3AEC30004129A6 /* Player.swift in Sources */,
 				3811E4D42A4667F100416B95 /* PlayableScene.swift in Sources */,
+				3811E4E52A475E5500416B95 /* TestScene.swift in Sources */,
 				38763F3F2A3AF2F6004129A6 /* SceneChangeZoneIdentifier.swift in Sources */,
 				8C56D94C2A43E9600076283B /* InteractiveItem.swift in Sources */,
 				3811E4CA2A4643DA00416B95 /* DialogResources.swift in Sources */,

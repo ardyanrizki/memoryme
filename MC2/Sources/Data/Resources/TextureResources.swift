@@ -31,35 +31,57 @@ extension TextureAtlasName {
 struct TextureResources {
     
     // MARK: Characters
-    static let mainCharacter: TextureName = "Mory_Static"
-    static let dadCharacter: TextureName = "Dad_Static"
-    static let momCharacter: TextureName = "Mom_Static"
-    static let bossCharacter: TextureName = "Boss_Static"
-    static let friendCharacter: TextureName = "Friend_Static"
-    static let bartenderCharacter: TextureName = "Bartender_Static"
+    static let mainCharacter: TextureName = "mory_static"
+    static let dadCharacter: TextureName = "dad_static"
+    static let momCharacter: TextureName = "mom_static"
+    static let bossCharacter: TextureName = "boss_static"
+    static let friendCharacter: TextureName = "friend_static"
+    static let bartenderCharacter: TextureName = "bartender_static"
     
     // MARK: Characters's atlas name
-    static let mainCharacterAtlasWalk: TextureAtlasName = "Mory_Walk"
-    static let mainCharacterAtlasLay: TextureAtlasName = "Mory_Lay"
-    static let dadCharacterAtlasWalk: TextureAtlasName = "Dad_Walk"
-    static let momCharacterAtlasWalk: TextureAtlasName = "Mom_Walk"
-    static let bossCharacterAtlasWalk: TextureAtlasName = "Boss_Walk"
-    static let friendCharacterAtlasWalk: TextureAtlasName = "Friend_Walk"
-    static let bartenderCharacterAtlasWalk: TextureAtlasName = "Bartender_Walk"
+    static let mainCharacterAtlasIdle: TextureAtlasName = "mory_idle"
+    static let mainCharacterAtlasWalk: TextureAtlasName = "mory_walk"
+    static let mainCharacterAtlas_lay: TextureAtlasName = "mory_lay"
+    static let dadCharacterAtlasWalk: TextureAtlasName = "dad_walk"
+    static let momCharacterAtlasWalk: TextureAtlasName = "mom_walk"
+    static let bossCharacterAtlasWalk: TextureAtlasName = "boss_walk"
+    static let friendCharacterAtlasWalk: TextureAtlasName = "friend_walk"
+    static let bartenderCharacterAtlasWalk: TextureAtlasName = "bartender_walk"
     
-    // MARK: Items
-    static let vase: TextureName = "Vase_Static"
-    static let laptop: TextureName = "Laptop_Static"
-    static let radio: TextureName = "Radio_Static"
+    // MARK: Items in office
+    static let vase: TextureName = "vase_static"
+    static let laptop: TextureName = "laptop_static"
+    static let radio: TextureName = "radio_static"
+    
+    // MARK: Items in bedroom
+    static let bedMessy: TextureName = "bed_messy"
+    static let bookMessy: TextureName = "book_messy"
+    static let bookshelfMessy: TextureName = "bookshelf_messy"
+    static let chairMessy: TextureName = "chair_messy"
+    static let clothesMessy: TextureName = "clothes_messy"
+    static let computerMessy: TextureName = "computer_messy"
+    static let deskMessy: TextureName = "desk_messy"
+    static let pillowMessy: TextureName = "pillow_messy"
+    static let wardrobeMessy: TextureName = "wardrobe_messy"
+    static let curtainMessy: TextureName = "curtain_messy"
+    static let windowMessy: TextureName = "window_messy"
+    
+    static let bedTidy: TextureName = "bed_tidy"
+    static let bookshelfTidy: TextureName = "bookshelf_tidy"
+    static let deskTidy: TextureName = "desk_tidy"
+    static let wardrobeTidy: TextureName = "wardrobe_tidy"
+    static let windowTidy: TextureName = "window_tidy"
+    
+    static let photoAlbum: TextureName = "photo-album"
     
     // MARK: Rooms
-    static let mainRoom: TextureName = "MainRoom"
-    static let officeRoom: TextureName = "OfficeRoom"
-    static let bedroom: TextureName = "Bedroom"
-    static let bar: TextureName = "Bar"
-    static let hospital: TextureName = "Hospital"
+    static let mainRoom: TextureName = "main-room"
+    static let officeRoom: TextureName = "office-room"
+    static let bedroom: TextureName = "bedroom"
+    static let bar: TextureName = "bar"
+    static let hospital: TextureName = "hospital"
     
     // MARK: Title
-    static let title: TextureName = "Title"
-    static let startButton: TextureName = "StartButton"
+    static let title: TextureName = "title"
+    static let startButton: TextureName = "start-button"
 }

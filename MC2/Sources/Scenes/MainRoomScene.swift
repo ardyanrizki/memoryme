@@ -38,7 +38,7 @@ class MainRoomScene: SKScene, SKPhysicsContactDelegate {
         setupEntities()
         setupInteractiveObject()
 //        createDialogBox(Dialog(Constants.mainCharacterName, prompt: "Hello, this is a dialog box!"))
-        dialogBox = FactoryMethods.createDialogBox(with: CGSize(width: frame.width - 200, height: 150), sceneFrame: frame)
+//        dialogBox = FactoryMethods.createDialogBox(with: CGSize(width: frame.width - 200, height: 150), sceneFrame: frame)
         if let dialogBox {
             addChild(dialogBox)
         }
@@ -85,7 +85,6 @@ class MainRoomScene: SKScene, SKPhysicsContactDelegate {
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         guard let touchLocation = touches.first?.location(in: self) else { return }
         SharedClass.touchCount += 1
-        print(SharedClass.touchCount)
         // Perform object movement only when the dialog box is close and one touch after that
         if SharedClass.touchCount >= 2 {
             // Perform the object movement based on the touch
@@ -105,11 +104,10 @@ class MainRoomScene: SKScene, SKPhysicsContactDelegate {
 extension MainRoomScene {
     
     func didBegin(_ contact: SKPhysicsContact) {
-        print(contact.bodyA, contact.bodyB)
         if contact.bodyA.categoryBitMask == 1 || contact.bodyB.categoryBitMask == 1 {
             contact.bodyA.node?.removeAllActions()
             if (contact.bodyB.node?.name == "vase") {
-                dialogBox?.runDialog(DialogResources.strangeVase)
+                dialogBox?.show(dialog: DialogResources.strangeVase, from: self)
             }
         }
     }
@@ -127,7 +125,7 @@ extension MainRoomScene {
             position.y = node.position.y
         }
         let player = FactoryMethods.createPlayer(at: position)
-        player.node?.zPosition = 10
+//        player.node?.zPosition = 10
         entities.append(player)
         addChild(player.node ?? SKSpriteNode())
         playerNode = player.node

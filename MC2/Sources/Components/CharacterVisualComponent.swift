@@ -36,13 +36,4 @@ class CharacterVisualComponent: GKComponent {
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
-    static func getTexture(type: EntityType) -> String {
-        switch type {
-        case .mainCharacter:
-            return "mory_walk_1"
-        default:
-            return ""
-        }
-    }
 }

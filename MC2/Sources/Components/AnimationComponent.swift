@@ -10,13 +10,18 @@ import GameplayKit
 
 class AnimationComponent: GKComponent {
     
-    var renderComponent: RenderComponent
+    var renderComponent: RenderComponent? {
+        entity?.component(ofType: RenderComponent.self) as? RenderComponent
+    }
     
-    var characterVisualComponent: CharacterVisualComponent
+    var characterVisualComponent: CharacterVisualComponent? {
+        entity?.component(ofType: CharacterVisualComponent.self) as? CharacterVisualComponent
+    }
+    
+    var animationKey: String?
     
     init(renderComponent: RenderComponent, characterVisualComponent: CharacterVisualComponent) {
-        self.renderComponent = renderComponent
-        self.characterVisualComponent = characterVisualComponent
+//        self.renderComponent = renderComponent
         super.init()
     }
     
@@ -24,16 +29,31 @@ class AnimationComponent: GKComponent {
         fatalError("init(coder:) has not been implemented")
     }
     
-    public func animate(for state: AnimationState, timePerFrame time: TimeInterval = 0.2, withKey key: String) {
-        guard let textures = characterVisualComponent.textures[state], textures.count > 1 else {
+    public func animate(for state: AnimationState, timePerFrame time: TimeInterval = 0.3, withKey key: String) {
+        guard let textures = characterVisualComponent?.textures[state], textures.count > 1 else {
             fatalError("Entity must have more than one texture to be animated")
         }
-        let animationAction = SKAction.animate(with: textures, timePerFrame: time)
+        animationKey = key
+        let animationAction = SKAction.animate(with: textures, timePerFrame: time, resize: true, restore: true)
         let repeatedAnimation = SKAction.repeatForever(animationAction)
-        renderComponent.node.run(repeatedAnimation, withKey: key)
+        renderComponent?.node.run(repeatedAnimation, withKey: key)
     }
     
-    public func removeAllAnimations() {
-        renderComponent.node.removeAllActions()
+    public func removeAnimation() {
+        guard let animationKey else { return }
+        renderComponent?.node.removeAction(forKey: animationKey)
+        self.animationKey = nil
+    }
+    
+    public func pauseAnimation() {
+        guard let animationKey else { return }
+        let animation = renderComponent?.node.action(forKey: animationKey)
+        animation?.speed = 0
+    }
+    
+    public func resumePausedAnimation() {
+        guard let animationKey else { return }
+        let animation = renderComponent?.node.action(forKey: animationKey)
+        animation?.speed = 1
     }
 }
