@@ -39,8 +39,8 @@ struct TextureResources {
     static let bartenderCharacter: TextureName = "bartender_static"
     
     // MARK: Characters's atlas name
-    static let mainCharacterAtlasIdle: TextureAtlasName = "mory_idle"
-    static let mainCharacterAtlasWalk: TextureAtlasName = "mory_walk"
+    static let mainCharacterAtlasIdle: TextureAtlasName = "mory_idle_atlas"
+    static let mainCharacterAtlasWalk: TextureAtlasName = "mory_walk_atlas"
     static let mainCharacterAtlas_lay: TextureAtlasName = "mory_lay"
     static let dadCharacterAtlasWalk: TextureAtlasName = "dad_walk"
     static let momCharacterAtlasWalk: TextureAtlasName = "mom_walk"
