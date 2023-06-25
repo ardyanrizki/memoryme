@@ -8,33 +8,51 @@
 import SpriteKit
 import GameplayKit
 
-class IntercativeItem: GKEntity {
+enum ItemTextureType {
+    case normal
+    case tidy
+    case messy
+}
+
+class InteractiveItem: GKEntity {
     
-    var node: SKSpriteNode?
+    var node: ItemNode? {
+        for case let component as RenderComponent in components {
+            return component.node as? ItemNode
+        }
+        return nil
+    }
     
-    init(position point: CGPoint, name: String) {
+    private var textures: [ItemTextureType: SKTexture]?
+    
+    var textureType: ItemTextureType = .tidy
+    
+    init(from node: ItemNode, textures: [ItemTextureType: SKTexture]) {
+        guard let firstTexture = textures.first else { fatalError("InteractiveItem must have at least 1 texture type.") }
         super.init()
-        addingComponents(position: point, name: name)
+        self.textures = textures
+        self.textureType = firstTexture.key
+        // First texture always run for the first time as a default texture.
+        addingComponents(node: node)
+        node.texture = firstTexture.value
+    }
+    
+    init(with identifier: ItemIdentifier, at point: CGPoint, withScene scene: SKScene) {
+        guard let node = identifier.getNode(from: scene) else {
+            fatalError("Node unavailable.")
+        }
+        super.init()
+        addingComponents(node: node)
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    private func addingComponents(position point: CGPoint, name: String) {
-        let itemRenderComponent = RenderComponent(type: .vase, position: point)
-        
-        node = itemRenderComponent.itemNode
-        
-        guard let node else {
-            print("Error: No item node available.")
-            return
-        }
-        
-        let physicalComponent = PhysicsComponent(physicsType: .item, node: node)
-        
-        node.name = "vase"
-        addComponent(itemRenderComponent)
+    private func addingComponents(node: ItemNode) {
+        let renderComponent = RenderComponent(node: node)
+        let physicalComponent = PhysicsComponent(type: .item, renderComponent: renderComponent)
+        addComponent(renderComponent)
         addComponent(physicalComponent)
     }
 }

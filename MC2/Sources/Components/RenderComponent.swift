@@ -8,31 +8,22 @@
 import SpriteKit
 import GameplayKit
 
-enum ItemType: String {
-    case vase = "vase"
-}
-
 class RenderComponent: GKComponent {
-    let itemNode: SKSpriteNode
     
-    static func getTexture(type: ItemType) -> String {
-        switch type {
-        case .vase:
-            return "VaseDefault"
-        default:
-            return ""
-        }
-        
+    let node: SKSpriteNode
+    
+    init(with name: TextureName, at position: CGPoint) {
+        let texture = name.getTexture()
+        node = SKSpriteNode(texture: texture)
+        node.position = position
+        super.init()
     }
     
-    init(type: ItemType, position: CGPoint) {
-        // load texture
-        let texture = SKTexture(imageNamed: RenderComponent.getTexture(type: type))
-        
-        // create characterNode
-        itemNode = SKSpriteNode(texture: texture)
-        itemNode.position = position
-        
+    init(node: SKSpriteNode, at position: CGPoint? = nil) {
+        self.node = node
+        if let position {
+            node.position = position
+        }
         super.init()
     }
     

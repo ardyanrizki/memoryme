@@ -8,41 +8,49 @@
 import SpriteKit
 import GameplayKit
 
-struct Animation {
-    let frames: [AnimationState: [SKTexture]]
-}
-
 class AnimationComponent: GKComponent {
-    let entityNode: SKNode
-    let frames: [AnimationState: [SKTexture]]
     
-    init(entityNode: SKNode, frames: [AnimationState: [SKTexture]]) {
-        self.entityNode = entityNode
-        self.frames = frames
+    var renderComponent: RenderComponent
+    
+    var characterVisualComponent: CharacterVisualComponent
+    
+    var animationKey: String?
+    
+    init(renderComponent: RenderComponent, characterVisualComponent: CharacterVisualComponent) {
+        self.renderComponent = renderComponent
+        self.characterVisualComponent = characterVisualComponent
         super.init()
     }
     
-    required init?(coder aDecoder: NSCoder) {
+    required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func startAnimation(state: AnimationState, timePerFrame: TimeInterval = 0.2) {
-        if !entityNode.hasActions() {
-            guard let stateFrames = frames[state] else { return }
-            let animationAction = SKAction.animate(with: stateFrames, timePerFrame: timePerFrame)
-            let repeatAction = SKAction.repeatForever(animationAction)
-            entityNode.run(repeatAction, withKey: "w")
+    public func animate(for state: AnimationState, timePerFrame time: TimeInterval = 0.3, withKey key: String) {
+        guard let textures = characterVisualComponent.textures[state], textures.count > 1 else {
+            fatalError("Entity must have more than one texture to be animated")
         }
+        animationKey = key
+        let animationAction = SKAction.animate(with: textures, timePerFrame: time, resize: true, restore: true)
+        let repeatedAnimation = SKAction.repeatForever(animationAction)
+        renderComponent.node.run(repeatedAnimation, withKey: key)
     }
     
-    func stopAnimation() {
-        guard let characterNode = entity?.component(ofType: CharacterVisualComponent.self)?.characterNode else {
-            return
-        }
-        
-        // Remove any running actions from the character node
-        characterNode.removeAllActions()
-        guard let texture = frames[.idle]?.first else { return }
-        characterNode.texture = texture
+    public func removeAnimation() {
+        guard let animationKey else { return }
+        renderComponent.node.removeAction(forKey: animationKey)
+        self.animationKey = nil
+    }
+    
+    public func pauseAnimation() {
+        guard let animationKey else { return }
+        let animation = renderComponent.node.action(forKey: animationKey)
+        animation?.speed = 0
+    }
+    
+    public func resumePausedAnimation() {
+        guard let animationKey else { return }
+        let animation = renderComponent.node.action(forKey: animationKey)
+        animation?.speed = 1
     }
 }

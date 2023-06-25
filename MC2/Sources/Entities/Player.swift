@@ -11,15 +11,43 @@ import GameplayKit
 class Player: GKEntity {
     static var textureSize = CGSize(width: 120.0, height: 120.0)
     
-    var node: SKSpriteNode?
+    var node: SKSpriteNode? {
+        for case let component as RenderComponent in components {
+            return component.node
+        }
+        return nil
+    }
     
-    init(position point: CGPoint) {
+    init(at position: CGPoint, textures: [AnimationState: [SKTexture]]? = nil) {
         super.init()
-        addingComponents(position: point)
+        
+        let name = TextureResources.mainCharacter
+        
+        let idleTextures = TextureResources.mainCharacterAtlasIdle.getAllTexturesFromAtlas()
+        let walkTextures = TextureResources.mainCharacterAtlasWalk.getAllTexturesFromAtlas()
+        var defaultTextures: [AnimationState: [SKTexture]] = [
+            .walk: walkTextures,
+            .idle: idleTextures
+        ]
+        if let textures {
+            defaultTextures = textures
+        }
+        
+        addingComponents(name: name, position: position, textures: defaultTextures)
+        
+        node?.zPosition = 2
+        
+        animate(for: .idle)
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    public func animate(for state: AnimationState) {
+        for case let controlComponent as AnimationComponent in components {
+            controlComponent.animate(for: state, timePerFrame: 0.6, withKey: "idle")
+        }
     }
     
     public func walk(to point: CGPoint) {
@@ -28,40 +56,28 @@ class Player: GKEntity {
         }
     }
     
-    private func addingComponents(position point: CGPoint) {
+    private func addingComponents(name: TextureName, position: CGPoint, textures: [AnimationState: [SKTexture]]) {
+        let renderComponent = RenderComponent(with: name, at: position)
+        addComponent(renderComponent)
+        
+        // MARK: Character Component
         let characterVisualComponent = CharacterVisualComponent(
             type: .mainCharacter,
-            position: point
+            textures: textures,
+            renderComponent: renderComponent
         )
-        
-        node = characterVisualComponent.characterNode
-        
-        guard let node else {
-            print("Error: No player node available.")
-            return
-        }
-        
-        let physicalComponent = PhysicsComponent(
-            physicsType: .character,
-            node: node
-        )
-        
-        let walkTextureAtlas = SKTextureAtlas(named: "MoryWalk")
-        
-        let walkTextures = walkTextureAtlas.textureNames.sorted().map {
-            walkTextureAtlas.textureNamed($0)
-        }
-        
-        let allTextures: [AnimationState: [SKTexture]] = [
-            .walk: walkTextures
-        ]
-        
-        let walkAnimationComponent = AnimationComponent(entityNode: node, frames: allTextures)
-        
         addComponent(characterVisualComponent)
-        addComponent(physicalComponent)
-        addComponent(ControlComponent())
-        addComponent(walkAnimationComponent)
-        addComponent(MainPlayerComponent(playerNode: characterVisualComponent.characterNode))
+        
+        // MARK: Physics Component
+        let physicsComponent = PhysicsComponent(type: .character, renderComponent: renderComponent)
+        addComponent(physicsComponent)
+        
+        // MARK: Animation Component
+        let animationComponent = AnimationComponent(renderComponent: renderComponent, characterVisualComponent: characterVisualComponent)
+        addComponent(animationComponent)
+        
+        // MARK: Control Component
+        let controlComponent = ControlComponent(renderComponent: renderComponent, animationComponent: animationComponent)
+        addComponent(controlComponent)
     }
 }

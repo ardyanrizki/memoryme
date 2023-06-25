@@ -10,9 +10,25 @@
 		2C0325DB2A3EDB2A005B8E0A /* CharacterVisualComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C0325DA2A3EDB2A005B8E0A /* CharacterVisualComponent.swift */; };
 		2C0325DC2A3EDB2A005B8E0A /* CharacterVisualComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C0325DA2A3EDB2A005B8E0A /* CharacterVisualComponent.swift */; };
 		2C0325DD2A3EDB2A005B8E0A /* CharacterVisualComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C0325DA2A3EDB2A005B8E0A /* CharacterVisualComponent.swift */; };
-		2C0325DF2A3EE887005B8E0A /* MainPlayerComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C0325DE2A3EE887005B8E0A /* MainPlayerComponent.swift */; };
-		2C0325E02A3EE887005B8E0A /* MainPlayerComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C0325DE2A3EE887005B8E0A /* MainPlayerComponent.swift */; };
-		2C0325E12A3EE887005B8E0A /* MainPlayerComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C0325DE2A3EE887005B8E0A /* MainPlayerComponent.swift */; };
+		3811E4CA2A4643DA00416B95 /* DialogResources.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3811E4C92A4643DA00416B95 /* DialogResources.swift */; };
+		3811E4CC2A4643E400416B95 /* TextureResources.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3811E4CB2A4643E400416B95 /* TextureResources.swift */; };
+		3811E4CE2A464E5A00416B95 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3811E4CD2A464E5A00416B95 /* Constants.swift */; };
+		3811E4D02A46517A00416B95 /* AnimationState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3811E4CF2A46517A00416B95 /* AnimationState.swift */; };
+		3811E4D22A46519B00416B95 /* PositionIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3811E4D12A46519B00416B95 /* PositionIdentifier.swift */; };
+		3811E4D42A4667F100416B95 /* PlayableScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3811E4D32A4667F100416B95 /* PlayableScene.swift */; };
+		3811E4D62A471DCD00416B95 /* PositionNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3811E4D52A471DCD00416B95 /* PositionNode.swift */; };
+		3811E4DB2A4728B700416B95 /* FactoryMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3811E4DA2A4728B700416B95 /* FactoryMethods.swift */; };
+		3811E4DD2A472D8600416B95 /* WallNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3811E4DC2A472D8600416B95 /* WallNode.swift */; };
+		3811E4DF2A473BC700416B95 /* DialogBoxNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3811E4DE2A473BC700416B95 /* DialogBoxNode.swift */; };
+		3811E4E32A474D6000416B95 /* SceneChangeZoneNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3811E4E22A474D6000416B95 /* SceneChangeZoneNode.swift */; };
+		3811E4E52A475E5500416B95 /* TestScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3811E4E42A475E5500416B95 /* TestScene.swift */; };
+		3811E4E72A475E7E00416B95 /* TestScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 3811E4E62A475E7E00416B95 /* TestScene.sks */; };
+		3811E4E92A47F56B00416B95 /* ItemNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3811E4E82A47F56B00416B95 /* ItemNode.swift */; };
+		3811E4EA2A47F56B00416B95 /* ItemNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3811E4E82A47F56B00416B95 /* ItemNode.swift */; };
+		3811E4EB2A47F56B00416B95 /* ItemNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3811E4E82A47F56B00416B95 /* ItemNode.swift */; };
+		3811E4ED2A47F5B200416B95 /* ItemIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3811E4EC2A47F5B200416B95 /* ItemIdentifier.swift */; };
+		3811E4EE2A47F5B200416B95 /* ItemIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3811E4EC2A47F5B200416B95 /* ItemIdentifier.swift */; };
+		3811E4EF2A47F5B200416B95 /* ItemIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3811E4EC2A47F5B200416B95 /* ItemIdentifier.swift */; };
 		38763F012A3AA7A8004129A6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38763F002A3AA7A8004129A6 /* AppDelegate.swift */; };
 		38763F032A3AA7A8004129A6 /* MainRoomScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 38763F022A3AA7A8004129A6 /* MainRoomScene.sks */; };
 		38763F052A3AA7A8004129A6 /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = 38763F042A3AA7A8004129A6 /* Actions.sks */; };
@@ -27,12 +43,7 @@
 		38763F3B2A3AEC30004129A6 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38763F3A2A3AEC30004129A6 /* Player.swift */; };
 		38763F3C2A3AEC30004129A6 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38763F3A2A3AEC30004129A6 /* Player.swift */; };
 		38763F3D2A3AEC30004129A6 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38763F3A2A3AEC30004129A6 /* Player.swift */; };
-		38763F3F2A3AF2F6004129A6 /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38763F3E2A3AF2F6004129A6 /* Enums.swift */; };
-		38763F402A3AF2F6004129A6 /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38763F3E2A3AF2F6004129A6 /* Enums.swift */; };
-		38763F412A3AF2F6004129A6 /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38763F3E2A3AF2F6004129A6 /* Enums.swift */; };
-		38763F432A3AF49D004129A6 /* OrientationComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38763F422A3AF49D004129A6 /* OrientationComponent.swift */; };
-		38763F442A3AF49D004129A6 /* OrientationComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38763F422A3AF49D004129A6 /* OrientationComponent.swift */; };
-		38763F452A3AF49D004129A6 /* OrientationComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38763F422A3AF49D004129A6 /* OrientationComponent.swift */; };
+		38763F3F2A3AF2F6004129A6 /* SceneChangeZoneIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38763F3E2A3AF2F6004129A6 /* SceneChangeZoneIdentifier.swift */; };
 		38763F472A3AF657004129A6 /* AnimationComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38763F462A3AF657004129A6 /* AnimationComponent.swift */; };
 		38763F482A3AF657004129A6 /* AnimationComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38763F462A3AF657004129A6 /* AnimationComponent.swift */; };
 		38763F492A3AF657004129A6 /* AnimationComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38763F462A3AF657004129A6 /* AnimationComponent.swift */; };
@@ -51,18 +62,18 @@
 		38763F5B2A3B7148004129A6 /* OfficeRoomScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38763F5A2A3B7148004129A6 /* OfficeRoomScene.swift */; };
 		38763F5C2A3B7148004129A6 /* OfficeRoomScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38763F5A2A3B7148004129A6 /* OfficeRoomScene.swift */; };
 		38763F5D2A3B7148004129A6 /* OfficeRoomScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38763F5A2A3B7148004129A6 /* OfficeRoomScene.swift */; };
-		38763F5F2A3B71A1004129A6 /* SecondMemoryScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 38763F5E2A3B71A1004129A6 /* SecondMemoryScene.sks */; };
-		38763F602A3B71A1004129A6 /* SecondMemoryScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 38763F5E2A3B71A1004129A6 /* SecondMemoryScene.sks */; };
-		38763F612A3B71A1004129A6 /* SecondMemoryScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 38763F5E2A3B71A1004129A6 /* SecondMemoryScene.sks */; };
-		38763F632A3B71AE004129A6 /* SecondMemoryScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38763F622A3B71AE004129A6 /* SecondMemoryScene.swift */; };
-		38763F642A3B71AE004129A6 /* SecondMemoryScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38763F622A3B71AE004129A6 /* SecondMemoryScene.swift */; };
-		38763F652A3B71AE004129A6 /* SecondMemoryScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38763F622A3B71AE004129A6 /* SecondMemoryScene.swift */; };
-		38763F672A3B71C3004129A6 /* ThirdMemoryScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 38763F662A3B71C3004129A6 /* ThirdMemoryScene.sks */; };
-		38763F682A3B71C3004129A6 /* ThirdMemoryScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 38763F662A3B71C3004129A6 /* ThirdMemoryScene.sks */; };
-		38763F692A3B71C3004129A6 /* ThirdMemoryScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 38763F662A3B71C3004129A6 /* ThirdMemoryScene.sks */; };
-		38763F6B2A3B71D5004129A6 /* ThirdMemoryScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38763F6A2A3B71D5004129A6 /* ThirdMemoryScene.swift */; };
-		38763F6C2A3B71D5004129A6 /* ThirdMemoryScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38763F6A2A3B71D5004129A6 /* ThirdMemoryScene.swift */; };
-		38763F6D2A3B71D5004129A6 /* ThirdMemoryScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38763F6A2A3B71D5004129A6 /* ThirdMemoryScene.swift */; };
+		38763F5F2A3B71A1004129A6 /* BedroomScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 38763F5E2A3B71A1004129A6 /* BedroomScene.sks */; };
+		38763F602A3B71A1004129A6 /* BedroomScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 38763F5E2A3B71A1004129A6 /* BedroomScene.sks */; };
+		38763F612A3B71A1004129A6 /* BedroomScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 38763F5E2A3B71A1004129A6 /* BedroomScene.sks */; };
+		38763F632A3B71AE004129A6 /* BedroomScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38763F622A3B71AE004129A6 /* BedroomScene.swift */; };
+		38763F642A3B71AE004129A6 /* BedroomScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38763F622A3B71AE004129A6 /* BedroomScene.swift */; };
+		38763F652A3B71AE004129A6 /* BedroomScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38763F622A3B71AE004129A6 /* BedroomScene.swift */; };
+		38763F672A3B71C3004129A6 /* BarScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 38763F662A3B71C3004129A6 /* BarScene.sks */; };
+		38763F682A3B71C3004129A6 /* BarScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 38763F662A3B71C3004129A6 /* BarScene.sks */; };
+		38763F692A3B71C3004129A6 /* BarScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 38763F662A3B71C3004129A6 /* BarScene.sks */; };
+		38763F6B2A3B71D5004129A6 /* BarScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38763F6A2A3B71D5004129A6 /* BarScene.swift */; };
+		38763F6C2A3B71D5004129A6 /* BarScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38763F6A2A3B71D5004129A6 /* BarScene.swift */; };
+		38763F6D2A3B71D5004129A6 /* BarScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38763F6A2A3B71D5004129A6 /* BarScene.swift */; };
 		38763F7E2A41E3E3004129A6 /* TitleScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38763F7D2A41E3E3004129A6 /* TitleScene.swift */; };
 		38763F7F2A41E3E3004129A6 /* TitleScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38763F7D2A41E3E3004129A6 /* TitleScene.swift */; };
 		38763F802A41E3E3004129A6 /* TitleScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38763F7D2A41E3E3004129A6 /* TitleScene.swift */; };
@@ -98,7 +109,21 @@
 
 /* Begin PBXFileReference section */
 		2C0325DA2A3EDB2A005B8E0A /* CharacterVisualComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterVisualComponent.swift; sourceTree = "<group>"; };
-		2C0325DE2A3EE887005B8E0A /* MainPlayerComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPlayerComponent.swift; sourceTree = "<group>"; };
+		3811E4C92A4643DA00416B95 /* DialogResources.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DialogResources.swift; sourceTree = "<group>"; };
+		3811E4CB2A4643E400416B95 /* TextureResources.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextureResources.swift; sourceTree = "<group>"; };
+		3811E4CD2A464E5A00416B95 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		3811E4CF2A46517A00416B95 /* AnimationState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationState.swift; sourceTree = "<group>"; };
+		3811E4D12A46519B00416B95 /* PositionIdentifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PositionIdentifier.swift; sourceTree = "<group>"; };
+		3811E4D32A4667F100416B95 /* PlayableScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayableScene.swift; sourceTree = "<group>"; };
+		3811E4D52A471DCD00416B95 /* PositionNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PositionNode.swift; path = Sources/Nodes/PositionNode.swift; sourceTree = SOURCE_ROOT; };
+		3811E4DA2A4728B700416B95 /* FactoryMethods.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FactoryMethods.swift; sourceTree = "<group>"; };
+		3811E4DC2A472D8600416B95 /* WallNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WallNode.swift; sourceTree = "<group>"; };
+		3811E4DE2A473BC700416B95 /* DialogBoxNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DialogBoxNode.swift; sourceTree = "<group>"; };
+		3811E4E22A474D6000416B95 /* SceneChangeZoneNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneChangeZoneNode.swift; sourceTree = "<group>"; };
+		3811E4E42A475E5500416B95 /* TestScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestScene.swift; sourceTree = "<group>"; };
+		3811E4E62A475E7E00416B95 /* TestScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = TestScene.sks; sourceTree = "<group>"; };
+		3811E4E82A47F56B00416B95 /* ItemNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemNode.swift; sourceTree = "<group>"; };
+		3811E4EC2A47F5B200416B95 /* ItemIdentifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemIdentifier.swift; sourceTree = "<group>"; };
 		38763EFD2A3AA7A8004129A6 /* MC2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MC2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		38763F002A3AA7A8004129A6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		38763F022A3AA7A8004129A6 /* MainRoomScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = MainRoomScene.sks; sourceTree = "<group>"; };
@@ -114,18 +139,17 @@
 		38763F242A3AA7AA004129A6 /* MC2UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MC2UITests.swift; sourceTree = "<group>"; };
 		38763F262A3AA7AA004129A6 /* MC2UITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MC2UITestsLaunchTests.swift; sourceTree = "<group>"; };
 		38763F3A2A3AEC30004129A6 /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
-		38763F3E2A3AF2F6004129A6 /* Enums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
-		38763F422A3AF49D004129A6 /* OrientationComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrientationComponent.swift; sourceTree = "<group>"; };
+		38763F3E2A3AF2F6004129A6 /* SceneChangeZoneIdentifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneChangeZoneIdentifier.swift; sourceTree = "<group>"; };
 		38763F462A3AF657004129A6 /* AnimationComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationComponent.swift; sourceTree = "<group>"; };
 		38763F4A2A3AF70A004129A6 /* ControlComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControlComponent.swift; sourceTree = "<group>"; };
 		38763F4E2A3AF748004129A6 /* PhysicsComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhysicsComponent.swift; sourceTree = "<group>"; };
 		38763F522A3AF789004129A6 /* RenderComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RenderComponent.swift; sourceTree = "<group>"; };
 		38763F562A3B7127004129A6 /* OfficeRoomScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = OfficeRoomScene.sks; sourceTree = "<group>"; };
 		38763F5A2A3B7148004129A6 /* OfficeRoomScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfficeRoomScene.swift; sourceTree = "<group>"; };
-		38763F5E2A3B71A1004129A6 /* SecondMemoryScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = SecondMemoryScene.sks; sourceTree = "<group>"; };
-		38763F622A3B71AE004129A6 /* SecondMemoryScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondMemoryScene.swift; sourceTree = "<group>"; };
-		38763F662A3B71C3004129A6 /* ThirdMemoryScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = ThirdMemoryScene.sks; sourceTree = "<group>"; };
-		38763F6A2A3B71D5004129A6 /* ThirdMemoryScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdMemoryScene.swift; sourceTree = "<group>"; };
+		38763F5E2A3B71A1004129A6 /* BedroomScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = BedroomScene.sks; sourceTree = "<group>"; };
+		38763F622A3B71AE004129A6 /* BedroomScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BedroomScene.swift; sourceTree = "<group>"; };
+		38763F662A3B71C3004129A6 /* BarScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = BarScene.sks; sourceTree = "<group>"; };
+		38763F6A2A3B71D5004129A6 /* BarScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarScene.swift; sourceTree = "<group>"; };
 		38763F7D2A41E3E3004129A6 /* TitleScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleScene.swift; sourceTree = "<group>"; };
 		38763F812A41E720004129A6 /* TitleScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = TitleScene.sks; sourceTree = "<group>"; };
 		38763F862A42A600004129A6 /* HospitalRoomScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HospitalRoomScene.swift; sourceTree = "<group>"; };
@@ -160,6 +184,49 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3811E4C82A4643C800416B95 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				3811E4DA2A4728B700416B95 /* FactoryMethods.swift */,
+				3811E4E12A4749F300416B95 /* Enums */,
+				3811E4E02A4749EF00416B95 /* Resources */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		3811E4D72A471DD400416B95 /* Nodes */ = {
+			isa = PBXGroup;
+			children = (
+				3811E4D52A471DCD00416B95 /* PositionNode.swift */,
+				3811E4DC2A472D8600416B95 /* WallNode.swift */,
+				3811E4DE2A473BC700416B95 /* DialogBoxNode.swift */,
+				3811E4E22A474D6000416B95 /* SceneChangeZoneNode.swift */,
+				3811E4E82A47F56B00416B95 /* ItemNode.swift */,
+			);
+			path = Nodes;
+			sourceTree = "<group>";
+		};
+		3811E4E02A4749EF00416B95 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				3811E4CD2A464E5A00416B95 /* Constants.swift */,
+				3811E4C92A4643DA00416B95 /* DialogResources.swift */,
+				3811E4CB2A4643E400416B95 /* TextureResources.swift */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		3811E4E12A4749F300416B95 /* Enums */ = {
+			isa = PBXGroup;
+			children = (
+				3811E4CF2A46517A00416B95 /* AnimationState.swift */,
+				3811E4D12A46519B00416B95 /* PositionIdentifier.swift */,
+				38763F3E2A3AF2F6004129A6 /* SceneChangeZoneIdentifier.swift */,
+				3811E4EC2A47F5B200416B95 /* ItemIdentifier.swift */,
+			);
+			path = Enums;
+			sourceTree = "<group>";
+		};
 		38763EF42A3AA7A8004129A6 = {
 			isa = PBXGroup;
 			children = (
@@ -184,13 +251,13 @@
 		38763EFF2A3AA7A8004129A6 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				3811E4C82A4643C800416B95 /* Data */,
 				8C56D9472A43CFD10076283B /* Fonts */,
 				38763F372A3AA83B004129A6 /* App */,
 				38763F352A3AA7D6004129A6 /* Scenes */,
 				38763F332A3AA7CB004129A6 /* Entities */,
+				3811E4D72A471DD400416B95 /* Nodes */,
 				38763F342A3AA7D2004129A6 /* Components */,
-				38763F392A3ABE79004129A6 /* Behaviors */,
-				38763F382A3ABE74004129A6 /* States */,
 				38763F362A3AA806004129A6 /* Assets */,
 			);
 			path = Sources;
@@ -225,14 +292,11 @@
 		38763F342A3AA7D2004129A6 /* Components */ = {
 			isa = PBXGroup;
 			children = (
-				38763F3E2A3AF2F6004129A6 /* Enums.swift */,
-				38763F422A3AF49D004129A6 /* OrientationComponent.swift */,
 				38763F462A3AF657004129A6 /* AnimationComponent.swift */,
 				38763F4A2A3AF70A004129A6 /* ControlComponent.swift */,
 				38763F4E2A3AF748004129A6 /* PhysicsComponent.swift */,
 				38763F522A3AF789004129A6 /* RenderComponent.swift */,
 				2C0325DA2A3EDB2A005B8E0A /* CharacterVisualComponent.swift */,
-				2C0325DE2A3EE887005B8E0A /* MainPlayerComponent.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -243,9 +307,11 @@
 				38763F7D2A41E3E3004129A6 /* TitleScene.swift */,
 				38763F062A3AA7A8004129A6 /* MainRoomScene.swift */,
 				38763F5A2A3B7148004129A6 /* OfficeRoomScene.swift */,
-				38763F622A3B71AE004129A6 /* SecondMemoryScene.swift */,
-				38763F6A2A3B71D5004129A6 /* ThirdMemoryScene.swift */,
+				38763F622A3B71AE004129A6 /* BedroomScene.swift */,
+				38763F6A2A3B71D5004129A6 /* BarScene.swift */,
 				38763F862A42A600004129A6 /* HospitalRoomScene.swift */,
+				3811E4D32A4667F100416B95 /* PlayableScene.swift */,
+				3811E4E42A475E5500416B95 /* TestScene.swift */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -253,8 +319,8 @@
 		38763F362A3AA806004129A6 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
-				38763F852A41E744004129A6 /* Scenes */,
 				38763F0D2A3AA7AA004129A6 /* Assets.xcassets */,
+				38763F852A41E744004129A6 /* Scenes */,
 			);
 			path = Assets;
 			sourceTree = "<group>";
@@ -270,30 +336,17 @@
 			path = App;
 			sourceTree = "<group>";
 		};
-		38763F382A3ABE74004129A6 /* States */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = States;
-			sourceTree = "<group>";
-		};
-		38763F392A3ABE79004129A6 /* Behaviors */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Behaviors;
-			sourceTree = "<group>";
-		};
 		38763F852A41E744004129A6 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
 				38763F812A41E720004129A6 /* TitleScene.sks */,
 				38763F022A3AA7A8004129A6 /* MainRoomScene.sks */,
 				38763F562A3B7127004129A6 /* OfficeRoomScene.sks */,
-				38763F5E2A3B71A1004129A6 /* SecondMemoryScene.sks */,
-				38763F662A3B71C3004129A6 /* ThirdMemoryScene.sks */,
+				38763F5E2A3B71A1004129A6 /* BedroomScene.sks */,
+				38763F662A3B71C3004129A6 /* BarScene.sks */,
 				38763F8A2A42DAA3004129A6 /* HospitalRoomScene.sks */,
 				38763F042A3AA7A8004129A6 /* Actions.sks */,
+				3811E4E62A475E7E00416B95 /* TestScene.sks */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -410,13 +463,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				38763F5F2A3B71A1004129A6 /* SecondMemoryScene.sks in Resources */,
+				38763F5F2A3B71A1004129A6 /* BedroomScene.sks in Resources */,
 				38763F0C2A3AA7A8004129A6 /* Main.storyboard in Resources */,
 				38763F822A41E720004129A6 /* TitleScene.sks in Resources */,
 				38763F032A3AA7A8004129A6 /* MainRoomScene.sks in Resources */,
 				38763F0E2A3AA7AA004129A6 /* Assets.xcassets in Resources */,
 				38763F112A3AA7AA004129A6 /* LaunchScreen.storyboard in Resources */,
-				38763F672A3B71C3004129A6 /* ThirdMemoryScene.sks in Resources */,
+				3811E4E72A475E7E00416B95 /* TestScene.sks in Resources */,
+				38763F672A3B71C3004129A6 /* BarScene.sks in Resources */,
 				38763F8B2A42DAA3004129A6 /* HospitalRoomScene.sks in Resources */,
 				38763F572A3B7127004129A6 /* OfficeRoomScene.sks in Resources */,
 				38763F052A3AA7A8004129A6 /* Actions.sks in Resources */,
@@ -428,11 +482,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				38763F682A3B71C3004129A6 /* ThirdMemoryScene.sks in Resources */,
+				38763F682A3B71C3004129A6 /* BarScene.sks in Resources */,
 				38763F832A41E720004129A6 /* TitleScene.sks in Resources */,
 				38763F8C2A42DAA3004129A6 /* HospitalRoomScene.sks in Resources */,
 				38763F582A3B7127004129A6 /* OfficeRoomScene.sks in Resources */,
-				38763F602A3B71A1004129A6 /* SecondMemoryScene.sks in Resources */,
+				38763F602A3B71A1004129A6 /* BedroomScene.sks in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -440,11 +494,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				38763F692A3B71C3004129A6 /* ThirdMemoryScene.sks in Resources */,
+				38763F692A3B71C3004129A6 /* BarScene.sks in Resources */,
 				38763F842A41E720004129A6 /* TitleScene.sks in Resources */,
 				38763F8D2A42DAA3004129A6 /* HospitalRoomScene.sks in Resources */,
 				38763F592A3B7127004129A6 /* OfficeRoomScene.sks in Resources */,
-				38763F612A3B71A1004129A6 /* SecondMemoryScene.sks in Resources */,
+				38763F612A3B71A1004129A6 /* BedroomScene.sks in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -455,24 +509,36 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3811E4D62A471DCD00416B95 /* PositionNode.swift in Sources */,
+				3811E4CC2A4643E400416B95 /* TextureResources.swift in Sources */,
 				38763F4B2A3AF70A004129A6 /* ControlComponent.swift in Sources */,
-				2C0325DF2A3EE887005B8E0A /* MainPlayerComponent.swift in Sources */,
-				38763F632A3B71AE004129A6 /* SecondMemoryScene.swift in Sources */,
+				3811E4D22A46519B00416B95 /* PositionIdentifier.swift in Sources */,
+				38763F632A3B71AE004129A6 /* BedroomScene.swift in Sources */,
+				3811E4DD2A472D8600416B95 /* WallNode.swift in Sources */,
+				3811E4D02A46517A00416B95 /* AnimationState.swift in Sources */,
 				38763F532A3AF789004129A6 /* RenderComponent.swift in Sources */,
 				2C0325DB2A3EDB2A005B8E0A /* CharacterVisualComponent.swift in Sources */,
 				38763F872A42A600004129A6 /* HospitalRoomScene.swift in Sources */,
 				38763F072A3AA7A8004129A6 /* MainRoomScene.swift in Sources */,
+				3811E4DF2A473BC700416B95 /* DialogBoxNode.swift in Sources */,
 				38763F092A3AA7A8004129A6 /* GameViewController.swift in Sources */,
-				38763F432A3AF49D004129A6 /* OrientationComponent.swift in Sources */,
+				3811E4DB2A4728B700416B95 /* FactoryMethods.swift in Sources */,
 				38763F5B2A3B7148004129A6 /* OfficeRoomScene.swift in Sources */,
 				38763F4F2A3AF748004129A6 /* PhysicsComponent.swift in Sources */,
 				38763F012A3AA7A8004129A6 /* AppDelegate.swift in Sources */,
 				38763F7E2A41E3E3004129A6 /* TitleScene.swift in Sources */,
 				38763F472A3AF657004129A6 /* AnimationComponent.swift in Sources */,
-				38763F6B2A3B71D5004129A6 /* ThirdMemoryScene.swift in Sources */,
+				3811E4E32A474D6000416B95 /* SceneChangeZoneNode.swift in Sources */,
+				38763F6B2A3B71D5004129A6 /* BarScene.swift in Sources */,
+				3811E4CE2A464E5A00416B95 /* Constants.swift in Sources */,
 				38763F3B2A3AEC30004129A6 /* Player.swift in Sources */,
-				38763F3F2A3AF2F6004129A6 /* Enums.swift in Sources */,
+				3811E4D42A4667F100416B95 /* PlayableScene.swift in Sources */,
+				3811E4E52A475E5500416B95 /* TestScene.swift in Sources */,
+				38763F3F2A3AF2F6004129A6 /* SceneChangeZoneIdentifier.swift in Sources */,
 				8C56D94C2A43E9600076283B /* InteractiveItem.swift in Sources */,
+				3811E4CA2A4643DA00416B95 /* DialogResources.swift in Sources */,
+				3811E4E92A47F56B00416B95 /* ItemNode.swift in Sources */,
+				3811E4ED2A47F5B200416B95 /* ItemIdentifier.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -480,20 +546,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				38763F442A3AF49D004129A6 /* OrientationComponent.swift in Sources */,
-				38763F642A3B71AE004129A6 /* SecondMemoryScene.swift in Sources */,
+				3811E4EA2A47F56B00416B95 /* ItemNode.swift in Sources */,
+				38763F642A3B71AE004129A6 /* BedroomScene.swift in Sources */,
 				38763F882A42A600004129A6 /* HospitalRoomScene.swift in Sources */,
 				38763F502A3AF748004129A6 /* PhysicsComponent.swift in Sources */,
 				38763F482A3AF657004129A6 /* AnimationComponent.swift in Sources */,
 				38763F542A3AF789004129A6 /* RenderComponent.swift in Sources */,
 				38763F1B2A3AA7AA004129A6 /* MC2Tests.swift in Sources */,
-				38763F402A3AF2F6004129A6 /* Enums.swift in Sources */,
 				38763F4C2A3AF70A004129A6 /* ControlComponent.swift in Sources */,
-				38763F6C2A3B71D5004129A6 /* ThirdMemoryScene.swift in Sources */,
+				38763F6C2A3B71D5004129A6 /* BarScene.swift in Sources */,
+				3811E4EE2A47F5B200416B95 /* ItemIdentifier.swift in Sources */,
 				38763F7F2A41E3E3004129A6 /* TitleScene.swift in Sources */,
 				2C0325DC2A3EDB2A005B8E0A /* CharacterVisualComponent.swift in Sources */,
 				38763F5C2A3B7148004129A6 /* OfficeRoomScene.swift in Sources */,
-				2C0325E02A3EE887005B8E0A /* MainPlayerComponent.swift in Sources */,
 				38763F3C2A3AEC30004129A6 /* Player.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -506,18 +571,17 @@
 				38763F892A42A600004129A6 /* HospitalRoomScene.swift in Sources */,
 				38763F492A3AF657004129A6 /* AnimationComponent.swift in Sources */,
 				38763F4D2A3AF70A004129A6 /* ControlComponent.swift in Sources */,
-				38763F412A3AF2F6004129A6 /* Enums.swift in Sources */,
 				2C0325DD2A3EDB2A005B8E0A /* CharacterVisualComponent.swift in Sources */,
-				2C0325E12A3EE887005B8E0A /* MainPlayerComponent.swift in Sources */,
-				38763F452A3AF49D004129A6 /* OrientationComponent.swift in Sources */,
 				38763F3D2A3AEC30004129A6 /* Player.swift in Sources */,
+				3811E4EB2A47F56B00416B95 /* ItemNode.swift in Sources */,
 				38763F252A3AA7AA004129A6 /* MC2UITests.swift in Sources */,
 				38763F272A3AA7AA004129A6 /* MC2UITestsLaunchTests.swift in Sources */,
 				38763F512A3AF748004129A6 /* PhysicsComponent.swift in Sources */,
-				38763F652A3B71AE004129A6 /* SecondMemoryScene.swift in Sources */,
+				38763F652A3B71AE004129A6 /* BedroomScene.swift in Sources */,
 				38763F552A3AF789004129A6 /* RenderComponent.swift in Sources */,
-				38763F6D2A3B71D5004129A6 /* ThirdMemoryScene.swift in Sources */,
+				38763F6D2A3B71D5004129A6 /* BarScene.swift in Sources */,
 				38763F802A41E3E3004129A6 /* TitleScene.swift in Sources */,
+				3811E4EF2A47F5B200416B95 /* ItemIdentifier.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

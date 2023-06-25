@@ -8,19 +8,20 @@
 import UIKit
 import SpriteKit
 
-protocol SceneManagerDelegate {
+protocol SceneManagerProtocol: AnyObject {
     func presentTitleScene()
     func presentMainRoomScene()
-    func presentMemoryRoomScene(roomNumber: Int)
-    func presentHospitalRoomScene()
     func presentOfficeRoomScene()
+    func presentBedroomScene()
+    func presentBarScene()
+    func presentHospitalRoomScene()
 }
 
 class GameViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        presentTitleScene()
+        presentTestScene()
     }
 
     override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
@@ -36,52 +37,53 @@ class GameViewController: UIViewController {
     }
 }
 
-extension GameViewController: SceneManagerDelegate {
+extension GameViewController: SceneManagerProtocol {
+    
     func presentTitleScene() {
-        guard let scene = TitleScene(fileNamed: "TitleScene") else { return }
-        scene.sceneManagerDelegate = self
+        guard let scene = TitleScene(fileNamed: Constants.titleScene) else { return }
+        scene.sceneManager = self
         let fade = SKTransition.fade(withDuration: 0.5)
         present(scene: scene, transition: fade)
     }
     
     func presentMainRoomScene() {
-        guard let scene = MainRoomScene(fileNamed: "MainRoomScene") else { return }
-        scene.sceneManagerDelegate = self
+        guard let scene = MainRoomScene.sharedScene(playerAt: .barEntrance) else { return }
+        scene.sceneManager = self
         let fade = SKTransition.fade(withDuration: 0.5)
         present(scene: scene, transition: fade)
     }
     
-    // TODO: change and rename each memory scene
-    func presentMemoryRoomScene(roomNumber: Int) {
-        var scene = SKScene()
-        let transition = SKTransition.fade(withDuration: 0.5)
-        switch roomNumber {
-        case 1:
-            guard let firstRoomScene = OfficeRoomScene(fileNamed: "OfficeRoomScene") else { return }
-            scene = firstRoomScene
-        case 2:
-            guard let secondRoomScene = SecondMemoryScene(fileNamed: "SecondMemoryScene") else { return }
-            scene = secondRoomScene
-        case 3:
-            guard let thirdRoomScene = ThirdMemoryScene(fileNamed: "ThirdMemoryScene") else { return }
-            scene = thirdRoomScene
-        default:
-            break
-        }
-        
-        present(scene: scene, transition: transition)
+    func presentOfficeRoomScene() {
+        guard let scene = OfficeRoomScene(fileNamed: Constants.officeRoomScene) else { return }
+        scene.sceneManager = self
+        let fade = SKTransition.fade(withDuration: 0.5)
+        present(scene: scene, transition: fade)
     }
     
-    func presentOfficeRoomScene() {
-        guard let scene = HospitalRoomScene(fileNamed: "OfficeRoomScene") else { return }
-        scene.sceneManagerDelegate = self
+    func presentBedroomScene() {
+        guard let scene = BedroomScene(fileNamed: Constants.bedroomScene) else { return }
+        scene.sceneManager = self
+        let fade = SKTransition.fade(withDuration: 0.5)
+        present(scene: scene, transition: fade)
+    }
+    
+    func presentBarScene() {
+        guard let scene = BarScene.sharedScene(playerAt: .barEntrance) else { return }
+        scene.sceneManager = self
         let fade = SKTransition.fade(withDuration: 0.5)
         present(scene: scene, transition: fade)
     }
     
     func presentHospitalRoomScene() {
-        guard let scene = HospitalRoomScene(fileNamed: "HospitalRoomScene") else { return }
-        scene.sceneManagerDelegate = self
+        guard let scene = HospitalRoomScene(fileNamed: Constants.hospitalScene) else { return }
+        scene.sceneManager = self
+        let fade = SKTransition.fade(withDuration: 0.5)
+        present(scene: scene, transition: fade)
+    }
+    
+    func presentTestScene() {
+        guard let scene = TestScene.sharedScene(playerAt: .mainRoomBedroomDoor) else { return }
+        scene.sceneManager = self
         let fade = SKTransition.fade(withDuration: 0.5)
         present(scene: scene, transition: fade)
     }
@@ -104,8 +106,8 @@ extension GameViewController: SceneManagerDelegate {
 
             view.ignoresSiblingOrder = true
             view.showsPhysics = false
-            view.showsFPS = false
-            view.showsNodeCount = false
+            view.showsFPS = true
+            view.showsNodeCount = true
         }
     }
 }
