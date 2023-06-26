@@ -15,13 +15,16 @@ protocol SceneManagerProtocol: AnyObject {
     func presentBedroomScene()
     func presentBarScene()
     func presentHospitalRoomScene()
+    func presentMGPasswordScene()
+    func presentMGMatchingNumbersScene()
 }
 
 class GameViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        presentTitleScene()
+//        presentTitleScene()
+        presentMGMatchingNumbersScene()
     }
 
     override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
@@ -84,6 +87,21 @@ extension GameViewController: SceneManagerProtocol {
     func presentTestScene() {
         guard let scene = TestScene.sharedScene(playerAt: .mainRoomBedroomDoor) else { return }
         scene.sceneManager = self
+        let fade = SKTransition.fade(withDuration: 0.5)
+        present(scene: scene, transition: fade)
+    }
+    
+    //MARK: MINI GAME SCENES
+    //Mini Game 1 - Input Password
+    func presentMGPasswordScene(){
+        guard let scene = InputPasswordScene(fileNamed: "InputPasswordScene") else {return}
+        let fade = SKTransition.fade(withDuration: 0.5)
+        present(scene: scene, transition: fade)
+    }
+    
+    //Mini Game 2 - Matching Numbers
+    func presentMGMatchingNumbersScene(){
+        guard let scene = MatchingNumberScene(fileNamed: "MatchingNumberScene") else {return}
         let fade = SKTransition.fade(withDuration: 0.5)
         present(scene: scene, transition: fade)
     }
