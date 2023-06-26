@@ -10,12 +10,11 @@ import SpriteKit
 class WallNode: SKSpriteNode {
     func setupPhysicsBody() {
         physicsBody = SKPhysicsBody(rectangleOf: self.frame.size)
-        physicsBody?.categoryBitMask = PhysicsCategory.wall
-        physicsBody?.collisionBitMask = PhysicsCategory.character
+        physicsBody?.categoryBitMask = PhysicsType.wall.rawValue
+        physicsBody?.collisionBitMask = PhysicsType.character.rawValue
         physicsBody?.affectedByGravity = false
         physicsBody?.isDynamic = false
         physicsBody?.allowsRotation = false
-        zPosition = 1
         alpha = 0
     }
 }

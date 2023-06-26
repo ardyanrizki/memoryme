@@ -26,12 +26,14 @@ enum ItemIdentifier: String, CaseIterable {
     case wardrobe = "wardrobe"
     case window = "window"
     
-    func getNode(from scene: SKScene) -> ItemNode? {
+    func getNode(from scene: SKScene, withTextureType textureType: ItemTextureType?, zPosition: CGFloat = 1) -> ItemNode? {
         let node = scene.childNode(withName: self.rawValue) as? ItemNode
         node?.identifier = self
+        node?.textures = getTextures()
+        node?.textureType = textureType ?? getTextures().first?.key
         node?.name = self.rawValue
-        node?.texture = getTextures().first?.value
-        node?.zPosition = 1
+        node?.texture = node?.textures?[node?.textureType ?? .normal]
+        node?.zPosition = zPosition
         return node
     }
     
@@ -62,7 +64,7 @@ enum ItemIdentifier: String, CaseIterable {
             ]
         case .book:
             textures = [
-                .messy: SKTexture(imageNamed: TextureResources.bookMessy)
+                .messy: SKTexture(imageNamed: TextureResources.booksMessy)
             ]
         case .bookshelf:
             textures = [
@@ -110,5 +112,41 @@ enum ItemIdentifier: String, CaseIterable {
             ]
         }
         return textures
+    }
+    
+    func getSize() -> CGSize? {
+        guard let size = getTextures().first?.value.size() else { return nil }
+        switch self {
+        case .laptop:
+            return CGSize(width: size.width, height: size.height)
+        case .radio:
+            return nil
+        case .vase:
+            return nil
+        case .bed:
+            return nil
+        case .book:
+            return nil
+        case .bookshelf:
+            return nil
+        case .chair:
+            return nil
+        case .clothes:
+            return nil
+        case .curtain:
+            return nil
+        case .computer:
+            return nil
+        case .desk:
+            return nil
+        case .photoAlbum:
+            return nil
+        case .pillow:
+            return nil
+        case .wardrobe:
+            return nil
+        case .window:
+            return nil
+        }
     }
 }

@@ -9,10 +9,13 @@ import SpriteKit
 import GameplayKit
 
 class ControlComponent: GKComponent {
-    private let offsetY: Double = 80.0
     
     private var renderComponent: RenderComponent
     private var animationComponent: AnimationComponent?
+    
+    private var targetLocation: CGPoint?
+    
+    var moveSpeed: CGFloat = 300.0
     
     init(renderComponent: RenderComponent, animationComponent: AnimationComponent?) {
         self.renderComponent = renderComponent
@@ -24,48 +27,35 @@ class ControlComponent: GKComponent {
         fatalError(.initCoderNotImplemented)
     }
     
-    public func walk(to point: CGPoint, speed: CGFloat = 300.0, withKey key: String = "walking") {
-        if renderComponent.node.action(forKey: key) == nil {
-            let node = renderComponent.node
+    override func update(deltaTime seconds: TimeInterval) {
+        let node = renderComponent.node
+        if let targetLocation, (node.position - targetLocation).length() > 10 {
+            animationComponent?.animate(for: .walk, timePerFrame: 0.2, withKey: Constants.walkingAction)
+            let direction = (targetLocation - node.position).normalized()
+            let movement = moveSpeed * seconds * direction
+            node.position += movement
+            
             var multipleForDirection: CGFloat
-            
-            // Compare previous location vs future location and get the difference
-            let moveDifference = CGPoint(x: point.x - node.position.x, y: point.y - node.position.y)
-            let distanceToMove = sqrt(moveDifference.x * moveDifference.x + moveDifference.y * moveDifference.y)
-            
-            // Get how long it should take the bear to move along this length, by dividing the length by desired speed
-            let moveDuration = distanceToMove / speed
-            
-            // Flip direction
-            if moveDifference.x < 0 {
+            if direction.x < 0 {
                 multipleForDirection = 1.0
             } else {
                 multipleForDirection = -1.0
             }
-            
             node.xScale = abs(node.xScale) * multipleForDirection
-            
-            let newPoint = CGPoint(x: point.x, y: point.y + offsetY)
-            
-            // Create a move action specifying where to move and how long it should take.
-            let moveAction = SKAction.move(to: newPoint, duration:(TimeInterval(moveDuration)))
-            
-            animationComponent?.animate(for: .walk, timePerFrame: 0.2, withKey: key)
-
-            let pauseAnimation = SKAction.run {
-                self.animationComponent?.pauseAnimation()
-            }
-            let waitToIdle = SKAction.wait(forDuration: 0.1)
-            let removeAllActions = SKAction.run({
-                self.animationComponent?.removeAnimation()
-            })
-            let backToIdle = SKAction.run ({
-                self.animationComponent?.animate(for: .idle, timePerFrame: 0.6, withKey: "idle")
-            })
-            
-            
-            let moveActionWithDone = SKAction.sequence([moveAction, pauseAnimation, waitToIdle, removeAllActions, backToIdle])
-            node.run(moveActionWithDone)
+        } else {
+            // On target location
+            targetLocation = nil
+            self.animationComponent?.animate(for: .idle, timePerFrame: 0.6, withKey: Constants.idleAction)
         }
+    }
+    
+    public func walk(to point: CGPoint, speed: CGFloat = 300.0) {
+        targetLocation  = CGPoint(x: point.x, y: point.y)
+        moveSpeed = speed
+    }
+    
+    public func stopWalking() {
+        targetLocation = nil
+        animationComponent?.removeAnimation(withKey: Constants.walkingAction)
     }
 }

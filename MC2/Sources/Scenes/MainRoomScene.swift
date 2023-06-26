@@ -12,9 +12,9 @@ class MainRoomScene: PlayableScene, PlayableSceneProtocol {
     
     typealias T = MainRoomScene
     
-    static func sharedScene(playerAt position: PositionIdentifier) -> MainRoomScene? {
+    static func sharedScene(playerPosition: PositionIdentifier) -> MainRoomScene? {
         let scene = MainRoomScene(fileNamed: Constants.mainRoomScene)
-        scene?.setup(playerAt: position)
+        scene?.setup(playerPosition: playerPosition)
         return scene
     }
 }

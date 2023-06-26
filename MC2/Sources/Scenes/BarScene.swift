@@ -12,9 +12,9 @@ class BarScene: PlayableScene, PlayableSceneProtocol {
     
     typealias T = BarScene
     
-    static func sharedScene(playerAt position: PositionIdentifier) -> BarScene? {
+    static func sharedScene(playerPosition position: PositionIdentifier) -> BarScene? {
         let scene = BarScene(fileNamed: Constants.barScene)
-        scene?.setup(playerAt: position)
+        scene?.setup(playerPosition: position)
         return scene
     }
     

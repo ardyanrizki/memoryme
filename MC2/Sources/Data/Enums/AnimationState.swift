@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum AnimationState {
+enum AnimationState: String {
     case idle
     case walk
     case sit

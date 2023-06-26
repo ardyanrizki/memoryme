@@ -10,7 +10,7 @@ import GameplayKit
 
 protocol PlayableSceneProtocol {
     associatedtype T: SKScene
-    static func sharedScene(playerAt position: PositionIdentifier) -> T?
+    static func sharedScene(playerPosition: PositionIdentifier) -> T?
 }
 
 class PlayableScene: SKScene {
@@ -35,7 +35,7 @@ class PlayableScene: SKScene {
     /**
      Collection of interactable items that are responsible for triggering some dialog.
      */
-    var interactiveItem: [InteractiveItem] = [InteractiveItem]()
+    var interactableItems: [InteractableItem] = [InteractableItem]()
     
     /**
      Player character entity.
@@ -49,15 +49,17 @@ class PlayableScene: SKScene {
      */
     var dialogBox: DialogBoxNode?
     
-    func setup(playerAt position: PositionIdentifier) {
+    private var timeOnLastFrame: TimeInterval = 0
+    
+    func setup(playerPosition: PositionIdentifier) {
         print(type(of: self) == TestScene.self, "<<")
         setupBackground()
         setupPositions()
-        setupPlayer(at: position, from: positions)
+        setupPlayer(at: playerPosition, from: positions)
         setupDialogBox()
         setupWallsCollision()
         setupSceneChangeZones()
-        setupInteractiveItems()
+        setupInteractableItems()
     }
     
     /**
@@ -110,9 +112,9 @@ class PlayableScene: SKScene {
     /**
      Setup all interactable items and add to scene.
      */
-    private func setupInteractiveItems() {
+    private func setupInteractableItems() {
         let itemNodes = findAllItemNodesInScene()
-        interactiveItem = itemNodes.map { $0.createInteractiveItem(from: self) }
+        interactableItems = itemNodes.map { $0.createInteractableItem(in: self, withTextureType: nil) }
     }
     
     /**
@@ -137,13 +139,43 @@ class PlayableScene: SKScene {
      Detecting player contact with item to perform action.
      */
     private func detectIntersectsWithItem() {
-        interactiveItem.forEach { item in
+        interactableItems.forEach { item in
             if let itemNode = item.node,
                player?.node?.intersects(itemNode) == true,
                let itemIdentifier = itemNode.identifier {
-                playerDidIntersects(with: itemIdentifier)
+                playerDidIntersect(with: itemIdentifier)
             }
         }
+    }
+    
+    private func detectContactsWithItem(contact: SKPhysicsContact) {
+        if (contact.bodyA.categoryBitMask == PhysicsType.character.rawValue ||
+            contact.bodyA.categoryBitMask == PhysicsType.character.rawValue) {
+            
+            if (contact.bodyB.categoryBitMask == PhysicsType.item.rawValue ||
+                contact.bodyB.categoryBitMask == PhysicsType.item.rawValue) {
+                // This code block will triggered when player contacted with another item.
+                var itemNode: ItemNode?
+                if contact.bodyA.categoryBitMask == PhysicsType.item.rawValue {
+                    itemNode = contact.bodyA.node as? ItemNode
+                } else if contact.bodyB.categoryBitMask == PhysicsType.item.rawValue {
+                    itemNode = contact.bodyB.node as? ItemNode
+                }
+                guard let itemNode, let identifier = itemNode.identifier else { return }
+                stopPlayerWhenDidContact()
+                playerDidContact(with: identifier)
+            }
+            
+            if (contact.bodyB.categoryBitMask == PhysicsType.wall.rawValue ||
+                contact.bodyB.categoryBitMask == PhysicsType.wall.rawValue) {
+                stopPlayerWhenDidContact()
+            }
+        }
+    }
+    
+    private func stopPlayerWhenDidContact() {
+        guard let component = player?.component(ofType: ControlComponent.self) as? ControlComponent else { return }
+        component.stopWalking()
     }
     
     /**
@@ -169,7 +201,7 @@ class PlayableScene: SKScene {
      */
     private func findAllItemNodesInScene() -> [ItemNode] {
         return ItemIdentifier.allCases.compactMap { identifier in
-            identifier.getNode(from: self)
+            identifier.getNode(from: self, withTextureType: nil)
         }
     }
     
@@ -179,8 +211,10 @@ class PlayableScene: SKScene {
     
     func touchUp(atPoint pos : CGPoint) {}
     
-    func playerDidIntersects(with itemIdentifier: ItemIdentifier) {}
-
+    func playerDidIntersect(with itemIdentifier: ItemIdentifier) {}
+    
+    func playerDidContact(with itemIdentifier: ItemIdentifier) {}
+    
 }
 
 // MARK: Overrided methods.
@@ -188,11 +222,29 @@ extension PlayableScene {
     
     override func didMove(to view: SKView) {
         scene?.anchorPoint = CGPoint(x: 0.5, y: 0.5)
+        physicsWorld.contactDelegate = self
     }
     
     override func update(_ currentTime: TimeInterval) {
+        let deltaTime = calculateDeltaTime(from: currentTime)
+        
+        self.update(deltaTime: deltaTime)
+    }
+    
+    func update(deltaTime: TimeInterval) {
         detectIntersectsAndChangeScene()
         detectIntersectsWithItem()
+        
+        guard let controlComponent = player?.component(ofType: ControlComponent.self) as? ControlComponent else { return }
+        
+        controlComponent.update(deltaTime: deltaTime)
+    }
+    
+    private func calculateDeltaTime(from currentTime: TimeInterval) -> TimeInterval {
+        if timeOnLastFrame.isZero { timeOnLastFrame = currentTime }
+        let deltaTime = currentTime - timeOnLastFrame
+        timeOnLastFrame = currentTime
+        return deltaTime
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -208,6 +260,15 @@ extension PlayableScene {
             // Assign player to walk if `dialogBox` not shown.
             player?.walk(to: touchLocation)
         }
+    }
+    
+}
+
+// MARK: SKPhysicsContactDelegate methods.
+extension PlayableScene: SKPhysicsContactDelegate {
+    
+    func didBegin(_ contact: SKPhysicsContact) {
+        detectContactsWithItem(contact: contact)
     }
     
 }

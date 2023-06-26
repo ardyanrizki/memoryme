@@ -10,7 +10,7 @@ import SpriteKit
 
 protocol SceneManagerProtocol: AnyObject {
     func presentTitleScene()
-    func presentMainRoomScene()
+    func presentMainRoomScene(playerPosition: PositionIdentifier)
     func presentOfficeRoomScene()
     func presentBedroomScene()
     func presentBarScene()
@@ -46,43 +46,43 @@ extension GameViewController: SceneManagerProtocol {
         present(scene: scene, transition: fade)
     }
     
-    func presentMainRoomScene() {
-        guard let scene = MainRoomScene.sharedScene(playerAt: .barEntrance) else { return }
+    func presentMainRoomScene(playerPosition: PositionIdentifier) {
+        guard let scene = MainRoomScene.sharedScene(playerPosition: playerPosition) else { return }
         scene.sceneManager = self
         let fade = SKTransition.fade(withDuration: 0.5)
         present(scene: scene, transition: fade)
     }
     
     func presentOfficeRoomScene() {
-        guard let scene = OfficeRoomScene.sharedScene(playerAt: .officeEntrance) else { return }
+        guard let scene = OfficeRoomScene.sharedScene(playerPosition: .officeEntrance) else { return }
         scene.sceneManager = self
         let fade = SKTransition.fade(withDuration: 0.5)
         present(scene: scene, transition: fade)
     }
     
     func presentBedroomScene() {
-        guard let scene = BedroomScene.sharedScene(playerAt: .bedroomEntrance) else { return }
+        guard let scene = BedroomScene.sharedScene(playerPosition: .bedroomEntrance) else { return }
         scene.sceneManager = self
         let fade = SKTransition.fade(withDuration: 0.5)
         present(scene: scene, transition: fade)
     }
     
     func presentBarScene() {
-        guard let scene = BarScene.sharedScene(playerAt: .barEntrance) else { return }
+        guard let scene = BarScene.sharedScene(playerPosition: .barEntrance) else { return }
         scene.sceneManager = self
         let fade = SKTransition.fade(withDuration: 0.5)
         present(scene: scene, transition: fade)
     }
     
     func presentHospitalRoomScene() {
-        guard let scene = HospitalRoomScene.sharedScene(playerAt: .hospitalEntrance) else { return }
+        guard let scene = HospitalRoomScene.sharedScene(playerPosition: .hospitalEntrance) else { return }
         scene.sceneManager = self
         let fade = SKTransition.fade(withDuration: 0.5)
         present(scene: scene, transition: fade)
     }
     
     func presentTestScene() {
-        guard let scene = TestScene.sharedScene(playerAt: .mainRoomBedroomDoor) else { return }
+        guard let scene = TestScene.sharedScene(playerPosition: .mainRoomOfficeDoor) else { return }
         scene.sceneManager = self
         let fade = SKTransition.fade(withDuration: 0.5)
         present(scene: scene, transition: fade)
@@ -103,9 +103,9 @@ extension GameViewController: SceneManagerProtocol {
             
             scene.scaleMode = .aspectFill
             scene.physicsBody = SKPhysicsBody(edgeLoopFrom: scene.frame)
-
+            scene.physicsWorld.gravity = CGVector.zero
             view.ignoresSiblingOrder = true
-            view.showsPhysics = false
+            view.showsPhysics = true
             view.showsFPS = true
             view.showsNodeCount = true
         }

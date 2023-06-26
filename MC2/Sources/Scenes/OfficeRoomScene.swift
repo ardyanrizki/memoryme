@@ -12,9 +12,9 @@ class OfficeRoomScene: PlayableScene, PlayableSceneProtocol {
     
     typealias T = OfficeRoomScene
     
-    static func sharedScene(playerAt position: PositionIdentifier) -> OfficeRoomScene? {
+    static func sharedScene(playerPosition position: PositionIdentifier) -> OfficeRoomScene? {
         let scene = OfficeRoomScene(fileNamed: Constants.officeRoomScene)
-        scene?.setup(playerAt: position)
+        scene?.setup(playerPosition: position)
         return scene
     }
     

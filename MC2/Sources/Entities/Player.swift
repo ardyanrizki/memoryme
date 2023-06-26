@@ -21,7 +21,7 @@ class Player: GKEntity {
     init(at position: CGPoint, textures: [AnimationState: [SKTexture]]? = nil) {
         super.init()
         
-        let name = TextureResources.mainCharacter
+        let textureName = TextureResources.mainCharacter
         
         let idleTextures = TextureResources.mainCharacterAtlasIdle.getAllTexturesFromAtlas()
         let walkTextures = TextureResources.mainCharacterAtlasWalk.getAllTexturesFromAtlas()
@@ -33,7 +33,7 @@ class Player: GKEntity {
             defaultTextures = textures
         }
         
-        addingComponents(name: name, position: position, textures: defaultTextures)
+        addingComponents(name: textureName, position: position, textures: defaultTextures)
         
         node?.zPosition = 2
         
@@ -53,6 +53,12 @@ class Player: GKEntity {
     public func walk(to point: CGPoint) {
         for case let controlComponent as ControlComponent in components {
             controlComponent.walk(to: point)
+        }
+    }
+    
+    public func stopWalking() {
+        for case let controlComponent as ControlComponent in components {
+            controlComponent.stopWalking()
         }
     }
     

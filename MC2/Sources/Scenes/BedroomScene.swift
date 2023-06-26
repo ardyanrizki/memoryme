@@ -12,9 +12,9 @@ class BedroomScene: PlayableScene, PlayableSceneProtocol {
     
     typealias T = BedroomScene
     
-    static func sharedScene(playerAt position: PositionIdentifier) -> BedroomScene? {
+    static func sharedScene(playerPosition position: PositionIdentifier) -> BedroomScene? {
         let scene = BedroomScene(fileNamed: Constants.bedroomScene)
-        scene?.setup(playerAt: position)
+        scene?.setup(playerPosition: position)
         return scene
     }
     
