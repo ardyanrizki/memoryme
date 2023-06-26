@@ -10,7 +10,7 @@ import GameplayKit
 
 class SharedClass {
     static var dialogBox: SKShapeNode!
-    static var touchCount: Int = 0
+    static var showDialog: Bool = false
 }
 
 class MainRoomScene: SKScene, SKPhysicsContactDelegate {
@@ -24,7 +24,7 @@ class MainRoomScene: SKScene, SKPhysicsContactDelegate {
 //        createWorld()
         setupEntities()
         setupInteractiveObject()
-        createDialogBox(dialogString: "Hello, this is a dialog box!", characterName: "Mory")
+//        createDialogBox(dialogString: "Hello, this is a dialog box!", characterName: "Mory")
     }
     
     override func update(_ currentTime: TimeInterval) {
@@ -40,9 +40,15 @@ class MainRoomScene: SKScene, SKPhysicsContactDelegate {
             return
         }
         
+        guard let barOffice = childNode(withName: "DoorToBarRoom") as? SKShapeNode else {
+            return
+        }
         
         if characterNode.intersects(doorOffice) {
             sceneManagerDelegate?.presentOfficeRoomScene()
+        }
+        if characterNode.intersects(barOffice) {
+            sceneManagerDelegate?.presentBarRoomScene()
         }
     }
     
@@ -62,7 +68,7 @@ class MainRoomScene: SKScene, SKPhysicsContactDelegate {
         guard let touch = touches.first else { return }
         
         let touchLocation = touch.location(in: self)
-        if !SharedClass.dialogBox.contains(touchLocation) {
+        if ((SharedClass.dialogBox?.contains(touchLocation)) != nil) {
             // Close the dialog box
             SharedClass.dialogBox.removeFromParent()
         } else {
@@ -76,15 +82,15 @@ class MainRoomScene: SKScene, SKPhysicsContactDelegate {
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         guard let touchLocation = touches.first?.location(in: self) else { return }
-        SharedClass.touchCount += 1
-        print(SharedClass.touchCount)
+//        SharedClass.touchCount += 1
         // Perform object movement only when the dialog box is close and one touch after that
-        if SharedClass.touchCount >= 2 {
+        if !SharedClass.showDialog {
             // Perform the object movement based on the touch
             for case let player as Player in entities {
                 player.walk(to: touchLocation)
             }
         } else {
+            SharedClass.showDialog = false
             return
         }
     }
@@ -96,10 +102,14 @@ class MainRoomScene: SKScene, SKPhysicsContactDelegate {
 
 extension MainRoomScene {
     func didBegin(_ contact: SKPhysicsContact) {
-        print(contact.bodyA, contact.bodyB)
         if contact.bodyA.categoryBitMask == 1 || contact.bodyB.categoryBitMask == 1 {
-            contact.bodyA.node?.removeAllActions()
-            if (contact.bodyB.node?.name == "vase") {
+            if contact.bodyA.node?.name == "mainCharacter" {
+                contact.bodyA.node?.removeAllActions()
+            }
+            if contact.bodyB.node?.name == "mainCharacter" {
+                contact.bodyB.node?.removeAllActions()
+            }
+            if (contact.bodyA.node?.name == "vase" || contact.bodyB.node?.name == "vase") && !SharedClass.showDialog {
                 createDialogBox(dialogString: "This is Vase... Wait there is something strange about the flower", characterName: "Mory")
             }
         }
@@ -112,7 +122,7 @@ extension MainRoomScene {
     }
     
     private func setupEntities(){
-        let mainCharacter = Player(position: CGPoint(x: frame.midX, y: frame.midY))
+        let mainCharacter = Player(position: CGPoint(x: frame.midX, y: frame.midY + 80))
         entities.append(mainCharacter)
         addChild(mainCharacter.node ?? SKSpriteNode())
         mainCharacter.node?.zPosition = 10
@@ -131,8 +141,8 @@ extension MainRoomScene {
         let dialogBoxHeight: CGFloat = 150
         // Create the dialog box node
         let dialogBox = SKShapeNode(rectOf: CGSize(width: dialogBoxWidth, height: dialogBoxHeight), cornerRadius: 10)
-        dialogBox.fillColor = UIColor.white.withAlphaComponent(0.7) // Set opacity to 70%
-        dialogBox.strokeColor = .black
+        dialogBox.fillColor = UIColor.black.withAlphaComponent(0.7) // Set opacity to 70%
+        dialogBox.strokeColor = .white
         dialogBox.lineWidth = 2.0
         // Calculate the position for aligning to the bottom center
         dialogBox.position = CGPoint(x: frame.midX / 2, y: (frame.minY + (dialogBoxHeight/2) + 75))
@@ -141,7 +151,7 @@ extension MainRoomScene {
         // Create the text label
         let textLabel = SKLabelNode(fontNamed: "Scribble-Regular")
         textLabel.fontSize = 32
-        textLabel.fontColor = .black
+        textLabel.fontColor = .white
         textLabel.position = CGPoint(x: -dialogBoxWidth / 2 + 20, y: dialogBoxHeight / 2 - 70) // Align text to the left
         
         // Set the initial text of the dialog text label
@@ -150,14 +160,14 @@ extension MainRoomScene {
         // Create the character name label
         let characterNameLabel = SKLabelNode(fontNamed: "Scribble-Regular")
         characterNameLabel.fontSize = 40
-        characterNameLabel.fontColor = .black
+        characterNameLabel.fontColor = .white
         characterNameLabel.position = CGPoint(x: -dialogBoxWidth / 2 + 50, y: dialogBoxHeight / 2 - 40)
         characterNameLabel.text = characterName
 
         
         // Assign the dialog box to the shared class property
         SharedClass.dialogBox = dialogBox
-        SharedClass.touchCount = 0
+        SharedClass.showDialog = true
         
         // Set the text alignment to left
         textLabel.horizontalAlignmentMode = .left

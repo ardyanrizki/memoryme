@@ -49,10 +49,10 @@ class ControlComponent: GKComponent {
                 animationComponent?.startAnimation(state: .walk)
             }
             
-            let newPoint = CGPoint(x: point.x, y: point.y + offsetY)
+            let newPoint = CGPoint(x: point.x, y: point.y)
             
             // Create a move action specifying where to move and how long it should take.
-            let moveAction = SKAction.move(to: newPoint, duration:(TimeInterval(moveDuration)))
+            let moveAction = SKAction.move(to: newPoint, duration:(moveDuration))
 
             // Create a done action that will run a block to stop the animation
             let doneAction = SKAction.run({

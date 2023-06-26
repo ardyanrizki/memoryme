@@ -7,47 +7,189 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "A5E0AE53-A416-4751-B34C-91C3698A7146"
+            uuid = "81B0879B-1CE1-412E-8261-8DEBF9CABC77"
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Sources/Scenes/MainRoomScene.swift"
+            filePath = "Sources/Scenes/OfficeRoomScene.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "84"
-            endingLineNumber = "84"
-            landmarkName = "touchesEnded(_:with:)"
+            startingLineNumber = "35"
+            endingLineNumber = "35"
+            landmarkName = "checkDoorCollision()"
             landmarkType = "7">
             <Locations>
                <Location
-                  uuid = "A5E0AE53-A416-4751-B34C-91C3698A7146 - 3e1ee2a97c92c7a5"
+                  uuid = "81B0879B-1CE1-412E-8261-8DEBF9CABC77 - c391a3d8e248ce52"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "MC2.MainRoomScene.touchesEnded(_: Swift.Set&lt;__C.UITouch&gt;, with: Swift.Optional&lt;__C.UIEvent&gt;) -&gt; ()"
+                  symbolName = "MC2.OfficeRoomScene.checkDoorCollision() -&gt; ()"
                   moduleName = "MC2"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/rivanma/Documents/ADA/memoryme-ada23/MC2/Sources/Scenes/MainRoomScene.swift"
+                  urlString = "file:///Users/rivanma/Documents/ADA/memoryme-ada23/MC2/Sources/Scenes/OfficeRoomScene.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "84"
-                  endingLineNumber = "84"
-                  offsetFromSymbolStart = "448">
+                  startingLineNumber = "35"
+                  endingLineNumber = "35"
+                  offsetFromSymbolStart = "584">
                </Location>
                <Location
-                  uuid = "A5E0AE53-A416-4751-B34C-91C3698A7146 - fdf5cb7edc7a84f7"
+                  uuid = "81B0879B-1CE1-412E-8261-8DEBF9CABC77 - c391a3d8e248ce37"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "MC2.MainRoomScene.didBegin(__C.SKPhysicsContact) -&gt; ()"
+                  symbolName = "MC2.OfficeRoomScene.checkDoorCollision() -&gt; ()"
                   moduleName = "MC2"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/rivanma/Documents/ADA/memoryme-ada23/MC2/Sources/Scenes/MainRoomScene.swift"
+                  urlString = "file:///Users/rivanma/Documents/ADA/memoryme-ada23/MC2/Sources/Scenes/OfficeRoomScene.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "84"
-                  endingLineNumber = "84"
-                  offsetFromSymbolStart = "56">
+                  startingLineNumber = "38"
+                  endingLineNumber = "38"
+                  offsetFromSymbolStart = "568">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "8967A16E-12F4-4F30-B86D-DA38941A70A6"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Sources/Components/PhysicsComponent.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "29"
+            endingLineNumber = "29"
+            landmarkName = "createPhysicsBody(node:physicsType:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "B6ED2478-5E9A-4358-9470-DF0AD3F8372A"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Sources/Components/PhysicsComponent.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "41"
+            endingLineNumber = "41"
+            landmarkName = "createPhysicsBody(node:physicsType:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "B6ED2478-5E9A-4358-9470-DF0AD3F8372A - 65010ee6ed426529"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "static MC2.PhysicsComponent.createPhysicsBody(node: __C.SKSpriteNode, physicsType: MC2.PhysicsType) -&gt; __C.SKPhysicsBody"
+                  moduleName = "MC2"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/rivanma/Documents/ADA/memoryme-ada23/MC2/Sources/Components/PhysicsComponent.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "43"
+                  endingLineNumber = "43"
+                  offsetFromSymbolStart = "1420">
+               </Location>
+               <Location
+                  uuid = "B6ED2478-5E9A-4358-9470-DF0AD3F8372A - 65010ee6ed426529"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "static MC2.PhysicsComponent.createPhysicsBody(node: __C.SKSpriteNode, physicsType: MC2.PhysicsType) -&gt; __C.SKPhysicsBody"
+                  moduleName = "MC2"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/rivanma/Documents/ADA/memoryme-ada23/MC2/Sources/Components/PhysicsComponent.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "43"
+                  endingLineNumber = "43"
+                  offsetFromSymbolStart = "1272">
+               </Location>
+               <Location
+                  uuid = "B6ED2478-5E9A-4358-9470-DF0AD3F8372A - 65010ee6ed426529"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "static MC2.PhysicsComponent.createPhysicsBody(node: __C.SKSpriteNode, physicsType: MC2.PhysicsType) -&gt; __C.SKPhysicsBody"
+                  moduleName = "MC2"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/rivanma/Documents/ADA/memoryme-ada23/MC2/Sources/Components/PhysicsComponent.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "43"
+                  endingLineNumber = "43"
+                  offsetFromSymbolStart = "1472">
+               </Location>
+               <Location
+                  uuid = "B6ED2478-5E9A-4358-9470-DF0AD3F8372A - 65010ee6ed426529"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "static MC2.PhysicsComponent.createPhysicsBody(node: __C.SKSpriteNode, physicsType: MC2.PhysicsType) -&gt; __C.SKPhysicsBody"
+                  moduleName = "MC2"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/rivanma/Documents/ADA/memoryme-ada23/MC2/Sources/Components/PhysicsComponent.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "43"
+                  endingLineNumber = "43"
+                  offsetFromSymbolStart = "1400">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "E4AE424E-F20D-4B87-BA73-ADCB153573D3"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Sources/Scenes/BarRoomScene.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "33"
+            endingLineNumber = "33"
+            landmarkName = "checkDoorCollision()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "E4AE424E-F20D-4B87-BA73-ADCB153573D3 - f1a6b5beb48f01af"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "MC2.BarRoomScene.checkDoorCollision() -&gt; ()"
+                  moduleName = "MC2"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/rivanma/Documents/ADA/memoryme-ada23/MC2/Sources/Scenes/BarRoomScene.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "34"
+                  endingLineNumber = "34"
+                  offsetFromSymbolStart = "584">
+               </Location>
+               <Location
+                  uuid = "E4AE424E-F20D-4B87-BA73-ADCB153573D3 - f1a6b5beb48f01ce"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "MC2.BarRoomScene.checkDoorCollision() -&gt; ()"
+                  moduleName = "MC2"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/rivanma/Documents/ADA/memoryme-ada23/MC2/Sources/Scenes/BarRoomScene.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "35"
+                  endingLineNumber = "35"
+                  offsetFromSymbolStart = "584">
                </Location>
             </Locations>
          </BreakpointContent>

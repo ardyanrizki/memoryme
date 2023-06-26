@@ -30,9 +30,8 @@ class PhysicsComponent: GKComponent {
         switch physicsType {
         case .character:
             let size = CGSize(width: node.size.width, height: node.size.height/2)
-            node.physicsBody = SKPhysicsBody(rectangleOf: size)
-//            node.anchorPoint = CGPoint(x: 0, y: 0)
-            node.position.y -= node.size.height / 2
+            node.physicsBody = SKPhysicsBody(texture: node.texture!, size: CGSize(width: node.texture!.size().width, height: node.texture!.size().height/2))
+            node.anchorPoint = CGPoint(x: 0.5, y: 0)
             node.physicsBody?.categoryBitMask = PhysicsCategory.character
             node.physicsBody?.collisionBitMask = PhysicsCategory.obstacle | PhysicsCategory.wall | PhysicsCategory.item
             node.physicsBody?.contactTestBitMask = PhysicsCategory.item

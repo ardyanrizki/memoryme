@@ -14,6 +14,7 @@ protocol SceneManagerDelegate {
     func presentMemoryRoomScene(roomNumber: Int)
     func presentHospitalRoomScene()
     func presentOfficeRoomScene()
+    func presentBarRoomScene()
 }
 
 class GameViewController: UIViewController {
@@ -63,8 +64,8 @@ extension GameViewController: SceneManagerDelegate {
             guard let secondRoomScene = SecondMemoryScene(fileNamed: "SecondMemoryScene") else { return }
             scene = secondRoomScene
         case 3:
-            guard let thirdRoomScene = ThirdMemoryScene(fileNamed: "ThirdMemoryScene") else { return }
-            scene = thirdRoomScene
+            guard let barRoomScene = BarRoomScene(fileNamed: "BarRoomScene") else { return }
+            scene = barRoomScene
         default:
             break
         }
@@ -74,6 +75,13 @@ extension GameViewController: SceneManagerDelegate {
     
     func presentOfficeRoomScene() {
         guard let scene = HospitalRoomScene(fileNamed: "OfficeRoomScene") else { return }
+        scene.sceneManagerDelegate = self
+        let fade = SKTransition.fade(withDuration: 0.5)
+        present(scene: scene, transition: fade)
+    }
+    
+    func presentBarRoomScene() {
+        guard let scene = HospitalRoomScene(fileNamed: "BarRoomScene") else { return }
         scene.sceneManagerDelegate = self
         let fade = SKTransition.fade(withDuration: 0.5)
         present(scene: scene, transition: fade)

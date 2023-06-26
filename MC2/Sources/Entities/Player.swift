@@ -9,7 +9,7 @@ import SpriteKit
 import GameplayKit
 
 class Player: GKEntity {
-    static var textureSize = CGSize(width: 120.0, height: 120.0)
+//    static var textureSize = CGSize(width: 120.0, height: 120.0)
     
     var node: SKSpriteNode?
     
