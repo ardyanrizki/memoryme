@@ -29,4 +29,9 @@ struct Constants {
 
 extension String {
     static let emptyString = ""
+    
+    // Error text
+    static let initCoderNotImplemented = "init(coder:) has not been implemented"
+    static let errorNodeNotFound = "error: node not found"
+    static let errorTextureNotFound = "error: texture not found"
 }

@@ -23,12 +23,12 @@ class AnimationComponent: GKComponent {
     }
     
     required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        fatalError(.initCoderNotImplemented)
     }
     
     public func animate(for state: AnimationState, timePerFrame time: TimeInterval = 0.3, withKey key: String) {
         guard let textures = characterVisualComponent.textures[state], textures.count > 1 else {
-            fatalError("Entity must have more than one texture to be animated")
+            fatalError(.errorTextureNotFound)
         }
         animationKey = key
         let animationAction = SKAction.animate(with: textures, timePerFrame: time, resize: true, restore: true)

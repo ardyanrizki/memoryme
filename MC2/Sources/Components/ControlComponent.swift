@@ -21,7 +21,7 @@ class ControlComponent: GKComponent {
     }
     
     required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        fatalError(.initCoderNotImplemented)
     }
     
     public func walk(to point: CGPoint, speed: CGFloat = 300.0, withKey key: String = "walking") {

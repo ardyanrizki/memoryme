@@ -41,7 +41,7 @@ class Player: GKEntity {
     }
     
     required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        fatalError(.initCoderNotImplemented)
     }
     
     public func animate(for state: AnimationState) {
@@ -62,7 +62,6 @@ class Player: GKEntity {
         
         // MARK: Character Component
         let characterVisualComponent = CharacterVisualComponent(
-            type: .mainCharacter,
             textures: textures,
             renderComponent: renderComponent
         )

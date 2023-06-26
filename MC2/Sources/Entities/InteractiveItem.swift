@@ -28,7 +28,7 @@ class InteractiveItem: GKEntity {
     var textureType: ItemTextureType = .tidy
     
     init(from node: ItemNode, textures: [ItemTextureType: SKTexture]) {
-        guard let firstTexture = textures.first else { fatalError("InteractiveItem must have at least 1 texture type.") }
+        guard let firstTexture = textures.first else { fatalError(.errorTextureNotFound) }
         super.init()
         self.textures = textures
         self.textureType = firstTexture.key
@@ -39,14 +39,14 @@ class InteractiveItem: GKEntity {
     
     init(with identifier: ItemIdentifier, at point: CGPoint, withScene scene: SKScene) {
         guard let node = identifier.getNode(from: scene) else {
-            fatalError("Node unavailable.")
+            fatalError(.errorNodeNotFound)
         }
         super.init()
         addingComponents(node: node)
     }
     
     required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        fatalError(.initCoderNotImplemented)
     }
     
     private func addingComponents(node: ItemNode) {

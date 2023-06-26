@@ -48,113 +48,66 @@ enum ItemIdentifier: String, CaseIterable {
                 .normal: SKTexture(imageNamed: TextureResources.laptop)
             ]
         case .radio:
-            /*
             textures = [
-                .normal: SKTexture(imageNamed: TextureResources.laptop)
+                .normal: SKTexture(imageNamed: TextureResources.radio)
             ]
-             // Please delete `break` when this case line applied.
-             */
-            break
         case .vase:
             textures = [
                 .normal: SKTexture(imageNamed: TextureResources.vase)
             ]
         case .bed:
-            /*
             textures = [
-                .normal: SKTexture(imageNamed: TextureResources.laptop)
+                .tidy: SKTexture(imageNamed: TextureResources.bedMessy),
+                .messy: SKTexture(imageNamed: TextureResources.bedMessy)
             ]
-             // Please delete `break` when this case line applied.
-             */
-            break
         case .book:
-            /*
             textures = [
-                .normal: SKTexture(imageNamed: TextureResources.laptop)
+                .messy: SKTexture(imageNamed: TextureResources.bookMessy)
             ]
-             // Please delete `break` when this case line applied.
-             */
-            break
         case .bookshelf:
-            /*
             textures = [
-                .normal: SKTexture(imageNamed: TextureResources.laptop)
+                .tidy: SKTexture(imageNamed: TextureResources.bookshelfTidy),
+                .messy: SKTexture(imageNamed: TextureResources.bookshelfMessy)
             ]
-             // Please delete `break` when this case line applied.
-             */
-            break
         case .chair:
-            /*
             textures = [
-                .normal: SKTexture(imageNamed: TextureResources.laptop)
+                .messy: SKTexture(imageNamed: TextureResources.chairMessy)
             ]
-             */
-            // Please delete `break` when this case line applied.
-            break
         case .clothes:
-            /*
             textures = [
-                .normal: SKTexture(imageNamed: TextureResources.laptop)
+                .messy: SKTexture(imageNamed: TextureResources.clothesMessy)
             ]
-             */
-            // Please delete `break` when this case line applied.
-            break
         case .curtain:
-            /*
             textures = [
-                .normal: SKTexture(imageNamed: TextureResources.laptop)
+                .messy: SKTexture(imageNamed: TextureResources.curtainMessy)
             ]
-             */
-            // Please delete `break` when this case line applied.
-            break
         case .computer:
-            /*
             textures = [
-                .normal: SKTexture(imageNamed: TextureResources.laptop)
+                .messy: SKTexture(imageNamed: TextureResources.computerMessy)
             ]
-             */
-            // Please delete `break` when this case line applied.
-            break
         case .desk:
-            /*
             textures = [
-                .normal: SKTexture(imageNamed: TextureResources.laptop)
+                .tidy: SKTexture(imageNamed: TextureResources.deskTidy),
+                .messy: SKTexture(imageNamed: TextureResources.deskMessy)
             ]
-             */
-            // Please delete `break` when this case line applied.
-            break
         case .photoAlbum:
-            /*
             textures = [
-                .normal: SKTexture(imageNamed: TextureResources.laptop)
+                .normal: SKTexture(imageNamed: TextureResources.photoAlbum)
             ]
-             // Please delete `break` when this case line applied.
-             */
-            break
         case .pillow:
-            /*
             textures = [
-                .normal: SKTexture(imageNamed: TextureResources.laptop)
+                .messy: SKTexture(imageNamed: TextureResources.pillowMessy)
             ]
-             // Please delete `break` when this case line applied.
-             */
-            break
         case .wardrobe:
-            /*
             textures = [
-                .normal: SKTexture(imageNamed: TextureResources.laptop)
+                .tidy: SKTexture(imageNamed: TextureResources.wardrobeTidy),
+                .messy: SKTexture(imageNamed: TextureResources.wardrobeMessy)
             ]
-             // Please delete `break` when this case line applied.
-             */
-            break
         case .window:
-            /*
             textures = [
-                .normal: SKTexture(imageNamed: TextureResources.laptop)
+                .tidy: SKTexture(imageNamed: TextureResources.windowTidy),
+                .messy: SKTexture(imageNamed: TextureResources.windowMessy)
             ]
-             // Please delete `break` when this case line applied.
-             */
-            break
         }
         return textures
     }

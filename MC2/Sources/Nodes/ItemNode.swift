@@ -11,7 +11,7 @@ class ItemNode: SKSpriteNode {
     var identifier: ItemIdentifier?
     
     func createInteractiveItem(from scene: SKScene) -> InteractiveItem {
-        guard let identifier, let node = identifier.getNode(from: scene) else { fatalError("Node unavailable.") }
+        guard let identifier, let node = identifier.getNode(from: scene) else { fatalError(.errorNodeNotFound) }
         let textures = identifier.getTextures()
         return InteractiveItem(from: node, textures: textures)
     }

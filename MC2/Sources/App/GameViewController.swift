@@ -21,7 +21,7 @@ class GameViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        presentTitleScene()
+        presentTestScene()
     }
 
     override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
@@ -54,14 +54,14 @@ extension GameViewController: SceneManagerProtocol {
     }
     
     func presentOfficeRoomScene() {
-        guard let scene = OfficeRoomScene(fileNamed: Constants.officeRoomScene) else { return }
+        guard let scene = OfficeRoomScene.sharedScene(playerAt: .officeEntrance) else { return }
         scene.sceneManager = self
         let fade = SKTransition.fade(withDuration: 0.5)
         present(scene: scene, transition: fade)
     }
     
     func presentBedroomScene() {
-        guard let scene = BedroomScene(fileNamed: Constants.bedroomScene) else { return }
+        guard let scene = BedroomScene.sharedScene(playerAt: .bedroomEntrance) else { return }
         scene.sceneManager = self
         let fade = SKTransition.fade(withDuration: 0.5)
         present(scene: scene, transition: fade)
@@ -75,7 +75,7 @@ extension GameViewController: SceneManagerProtocol {
     }
     
     func presentHospitalRoomScene() {
-        guard let scene = HospitalRoomScene(fileNamed: Constants.hospitalScene) else { return }
+        guard let scene = HospitalRoomScene.sharedScene(playerAt: .hospitalEntrance) else { return }
         scene.sceneManager = self
         let fade = SKTransition.fade(withDuration: 0.5)
         present(scene: scene, transition: fade)
