@@ -26,12 +26,14 @@ enum ItemIdentifier: String, CaseIterable {
     case wardrobe = "wardrobe"
     case window = "window"
     
-    func getNode(from scene: SKScene) -> ItemNode? {
+    func getNode(from scene: SKScene, withTextureType textureType: ItemTextureType?, zPosition: CGFloat = 1) -> ItemNode? {
         let node = scene.childNode(withName: self.rawValue) as? ItemNode
         node?.identifier = self
+        node?.textures = getTextures()
+        node?.textureType = textureType ?? getTextures().first?.key
         node?.name = self.rawValue
-        node?.texture = getTextures().first?.value
-        node?.zPosition = 1
+        node?.texture = node?.textures?[node?.textureType ?? .normal]
+        node?.zPosition = zPosition
         return node
     }
     
@@ -48,114 +50,103 @@ enum ItemIdentifier: String, CaseIterable {
                 .normal: SKTexture(imageNamed: TextureResources.laptop)
             ]
         case .radio:
-            /*
             textures = [
-                .normal: SKTexture(imageNamed: TextureResources.laptop)
+                .normal: SKTexture(imageNamed: TextureResources.radio)
             ]
-             // Please delete `break` when this case line applied.
-             */
-            break
         case .vase:
             textures = [
                 .normal: SKTexture(imageNamed: TextureResources.vase)
             ]
         case .bed:
-            /*
             textures = [
-                .normal: SKTexture(imageNamed: TextureResources.laptop)
+                .tidy: SKTexture(imageNamed: TextureResources.bedMessy),
+                .messy: SKTexture(imageNamed: TextureResources.bedMessy)
             ]
-             // Please delete `break` when this case line applied.
-             */
-            break
         case .book:
-            /*
             textures = [
-                .normal: SKTexture(imageNamed: TextureResources.laptop)
+                .messy: SKTexture(imageNamed: TextureResources.booksMessy)
             ]
-             // Please delete `break` when this case line applied.
-             */
-            break
         case .bookshelf:
-            /*
             textures = [
-                .normal: SKTexture(imageNamed: TextureResources.laptop)
+                .tidy: SKTexture(imageNamed: TextureResources.bookshelfTidy),
+                .messy: SKTexture(imageNamed: TextureResources.bookshelfMessy)
             ]
-             // Please delete `break` when this case line applied.
-             */
-            break
         case .chair:
-            /*
             textures = [
-                .normal: SKTexture(imageNamed: TextureResources.laptop)
+                .messy: SKTexture(imageNamed: TextureResources.chairMessy)
             ]
-             */
-            // Please delete `break` when this case line applied.
-            break
         case .clothes:
-            /*
             textures = [
-                .normal: SKTexture(imageNamed: TextureResources.laptop)
+                .messy: SKTexture(imageNamed: TextureResources.clothesMessy)
             ]
-             */
-            // Please delete `break` when this case line applied.
-            break
         case .curtain:
-            /*
             textures = [
-                .normal: SKTexture(imageNamed: TextureResources.laptop)
+                .messy: SKTexture(imageNamed: TextureResources.curtainMessy)
             ]
-             */
-            // Please delete `break` when this case line applied.
-            break
         case .computer:
-            /*
             textures = [
-                .normal: SKTexture(imageNamed: TextureResources.laptop)
+                .messy: SKTexture(imageNamed: TextureResources.computerMessy)
             ]
-             */
-            // Please delete `break` when this case line applied.
-            break
         case .desk:
-            /*
             textures = [
-                .normal: SKTexture(imageNamed: TextureResources.laptop)
+                .tidy: SKTexture(imageNamed: TextureResources.deskTidy),
+                .messy: SKTexture(imageNamed: TextureResources.deskMessy)
             ]
-             */
-            // Please delete `break` when this case line applied.
-            break
         case .photoAlbum:
-            /*
             textures = [
-                .normal: SKTexture(imageNamed: TextureResources.laptop)
+                .normal: SKTexture(imageNamed: TextureResources.photoAlbum)
             ]
-             // Please delete `break` when this case line applied.
-             */
-            break
         case .pillow:
-            /*
             textures = [
-                .normal: SKTexture(imageNamed: TextureResources.laptop)
+                .messy: SKTexture(imageNamed: TextureResources.pillowMessy)
             ]
-             // Please delete `break` when this case line applied.
-             */
-            break
         case .wardrobe:
-            /*
             textures = [
-                .normal: SKTexture(imageNamed: TextureResources.laptop)
+                .tidy: SKTexture(imageNamed: TextureResources.wardrobeTidy),
+                .messy: SKTexture(imageNamed: TextureResources.wardrobeMessy)
             ]
-             // Please delete `break` when this case line applied.
-             */
-            break
         case .window:
-            /*
             textures = [
-                .normal: SKTexture(imageNamed: TextureResources.laptop)
+                .tidy: SKTexture(imageNamed: TextureResources.windowTidy),
+                .messy: SKTexture(imageNamed: TextureResources.windowMessy)
             ]
-             // Please delete `break` when this case line applied.
-             */
-            break
         }
         return textures
+    }
+    
+    func getSize() -> CGSize? {
+        guard let size = getTextures().first?.value.size() else { return nil }
+        switch self {
+        case .laptop:
+            return CGSize(width: size.width, height: size.height)
+        case .radio:
+            return nil
+        case .vase:
+            return nil
+        case .bed:
+            return nil
+        case .book:
+            return nil
+        case .bookshelf:
+            return nil
+        case .chair:
+            return nil
+        case .clothes:
+            return nil
+        case .curtain:
+            return nil
+        case .computer:
+            return nil
+        case .desk:
+            return nil
+        case .photoAlbum:
+            return nil
+        case .pillow:
+            return nil
+        case .wardrobe:
+            return nil
+        case .window:
+            return nil
+        }
     }
 }

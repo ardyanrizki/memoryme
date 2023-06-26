@@ -9,17 +9,6 @@ import Foundation
 import SpriteKit
 import GameplayKit
 
-enum EntityType: String {
-    case mainCharacter = "mainCharacter"
-    case father = "father"
-    case mother = "mother"
-    case manager = "manager"
-    case stranger = "stranger"
-    case barista = "barista"
-    
-    case vase = "vase"
-}
-
 class CharacterVisualComponent: GKComponent {
     
     let textures: [AnimationState: [SKTexture]]
@@ -27,13 +16,13 @@ class CharacterVisualComponent: GKComponent {
     
     let renderComponent: RenderComponent
     
-    init(type: EntityType, textures: [AnimationState: [SKTexture]], renderComponent: RenderComponent) {
+    init(textures: [AnimationState: [SKTexture]], renderComponent: RenderComponent) {
         self.renderComponent = renderComponent
         self.textures = textures
         super.init()
     }
     
     required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        fatalError(.initCoderNotImplemented)
     }
 }
