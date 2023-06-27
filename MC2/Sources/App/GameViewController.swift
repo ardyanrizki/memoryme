@@ -10,7 +10,7 @@ import SpriteKit
 
 protocol SceneManagerProtocol: AnyObject {
     func presentTitleScene()
-    func presentMainRoomScene()
+    func presentMainRoomScene(playerPosition: PositionIdentifier)
     func presentOfficeRoomScene()
     func presentBedroomScene()
     func presentBarScene()
@@ -23,8 +23,7 @@ class GameViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-//        presentTitleScene()
-        presentMGMatchingNumbersScene()
+        presentTitleScene()
     }
 
     override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
@@ -49,43 +48,43 @@ extension GameViewController: SceneManagerProtocol {
         present(scene: scene, transition: fade)
     }
     
-    func presentMainRoomScene() {
-        guard let scene = MainRoomScene.sharedScene(playerAt: .barEntrance) else { return }
+    func presentMainRoomScene(playerPosition: PositionIdentifier) {
+        guard let scene = MainRoomScene.sharedScene(playerPosition: playerPosition) else { return }
         scene.sceneManager = self
         let fade = SKTransition.fade(withDuration: 0.5)
         present(scene: scene, transition: fade)
     }
     
     func presentOfficeRoomScene() {
-        guard let scene = OfficeRoomScene(fileNamed: Constants.officeRoomScene) else { return }
+        guard let scene = OfficeRoomScene.sharedScene(playerPosition: .officeEntrance) else { return }
         scene.sceneManager = self
         let fade = SKTransition.fade(withDuration: 0.5)
         present(scene: scene, transition: fade)
     }
     
     func presentBedroomScene() {
-        guard let scene = BedroomScene(fileNamed: Constants.bedroomScene) else { return }
+        guard let scene = BedroomScene.sharedScene(playerPosition: .bedroomEntrance) else { return }
         scene.sceneManager = self
         let fade = SKTransition.fade(withDuration: 0.5)
         present(scene: scene, transition: fade)
     }
     
     func presentBarScene() {
-        guard let scene = BarScene.sharedScene(playerAt: .barEntrance) else { return }
+        guard let scene = BarScene.sharedScene(playerPosition: .barEntrance) else { return }
         scene.sceneManager = self
         let fade = SKTransition.fade(withDuration: 0.5)
         present(scene: scene, transition: fade)
     }
     
     func presentHospitalRoomScene() {
-        guard let scene = HospitalRoomScene(fileNamed: Constants.hospitalScene) else { return }
+        guard let scene = HospitalRoomScene.sharedScene(playerPosition: .hospitalEntrance) else { return }
         scene.sceneManager = self
         let fade = SKTransition.fade(withDuration: 0.5)
         present(scene: scene, transition: fade)
     }
     
     func presentTestScene() {
-        guard let scene = TestScene.sharedScene(playerAt: .mainRoomBedroomDoor) else { return }
+        guard let scene = TestScene.sharedScene(playerPosition: .mainRoomOfficeDoor) else { return }
         scene.sceneManager = self
         let fade = SKTransition.fade(withDuration: 0.5)
         present(scene: scene, transition: fade)
@@ -94,18 +93,21 @@ extension GameViewController: SceneManagerProtocol {
     //MARK: MINI GAME SCENES
     //Mini Game 1 - Input Password
     func presentMGPasswordScene(){
-        guard let scene = InputPasswordScene(fileNamed: "InputPasswordScene") else {return}
+        guard let scene = InputPasswordScene(fileNamed: Constants.inputPasswordScene) else { return }
         let fade = SKTransition.fade(withDuration: 0.5)
         present(scene: scene, transition: fade)
     }
     
     //Mini Game 2 - Matching Numbers
     func presentMGMatchingNumbersScene(){
-        guard let scene = MatchingNumberScene(fileNamed: "MatchingNumberScene") else {return}
+        guard let scene = MatchingNumberScene(fileNamed: Constants.matchingNumberScene) else { return }
         let fade = SKTransition.fade(withDuration: 0.5)
         present(scene: scene, transition: fade)
     }
-    
+
+}
+
+extension GameViewController {
     private func present(scene: SKScene, transition: SKTransition? = nil){
         if let view = self.view as! SKView? {
             if let gestureRecognizers = view.gestureRecognizers {
@@ -121,9 +123,9 @@ extension GameViewController: SceneManagerProtocol {
             
             scene.scaleMode = .aspectFill
             scene.physicsBody = SKPhysicsBody(edgeLoopFrom: scene.frame)
-
+            scene.physicsWorld.gravity = CGVector.zero
             view.ignoresSiblingOrder = true
-            view.showsPhysics = false
+            view.showsPhysics = true
             view.showsFPS = true
             view.showsNodeCount = true
         }

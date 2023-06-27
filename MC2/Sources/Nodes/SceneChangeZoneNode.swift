@@ -12,7 +12,7 @@ class SceneChangeZoneNode: SKSpriteNode {
     
     func setup() {
         physicsBody = SKPhysicsBody(rectangleOf: self.frame.size)
-        physicsBody?.categoryBitMask = PhysicsCategory.sceneChangeZone
+        physicsBody?.categoryBitMask = PhysicsType.sceneChangeZone.rawValue
         physicsBody?.affectedByGravity = false
         physicsBody?.isDynamic = false
         physicsBody?.allowsRotation = false
@@ -23,8 +23,6 @@ class SceneChangeZoneNode: SKSpriteNode {
     func moveScene(with sceneManager: SceneManagerProtocol?) {
         guard let identifier else { return }
         switch identifier {
-        case .toMainRoom:
-            sceneManager?.presentMainRoomScene()
         case .toOffice:
             sceneManager?.presentOfficeRoomScene()
         case .toBedroom:
@@ -33,6 +31,14 @@ class SceneChangeZoneNode: SKSpriteNode {
             sceneManager?.presentBarScene()
         case .toHospital:
             sceneManager?.presentHospitalRoomScene()
+        case .toMainRoomFromOffice:
+            sceneManager?.presentMainRoomScene(playerPosition: .mainRoomOfficeDoor)
+        case .toMainRoomFromBedroom:
+            sceneManager?.presentMainRoomScene(playerPosition: .mainRoomBedroomDoor)
+        case .toMainRoomFromHospital:
+            sceneManager?.presentMainRoomScene(playerPosition: .mainRoomHospitalDoor)
+        case .toMainRoomFromBar:
+            sceneManager?.presentMainRoomScene(playerPosition: .mainRoomBarDoor)
         }
     }
 }

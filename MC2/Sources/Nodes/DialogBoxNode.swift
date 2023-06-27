@@ -26,7 +26,7 @@ class DialogBoxNode: SKShapeNode {
             scene.addChild(self)
         }
         
-        nameLabel.text = dialog.name
+        nameLabel.text = dialog.name ?? .emptyString
         
         let characters = Array(dialog.prompt)
         var characterIndex = 0

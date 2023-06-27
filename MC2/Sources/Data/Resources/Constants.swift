@@ -14,6 +14,7 @@ struct Constants {
     // Game infos
     static let gameTitle = "Me...Mory...Me"
     static let mainCharacterName = "Mory"
+    static let momName = "Mom"
     
     // Game scenes
     static let testScene = "TestScene"
@@ -23,10 +24,23 @@ struct Constants {
     static let bedroomScene = "BedroomScene"
     static let barScene = "BarScene"
     static let hospitalScene = "HospitalScene"
+    static let inputPasswordScene = "InputPasswordScene"
+    static let matchingNumberScene = "MatchingNumberScene"
     
+    // Default node names
     static let background = "background"
+    
+    // Action keys
+    static let walkingAction = "walking"
+    static let idleAction = "idle"
 }
 
 extension String {
     static let emptyString = ""
+    
+    // Error text
+    static let initCoderNotImplemented = "init(coder:) has not been implemented"
+    static let errorNodeNotFound = "error: node not found"
+    static let errorTextureNotFound = "error: texture not found"
+    static let errorPhysicsBodyNotFound = "error: physics body not found"
 }

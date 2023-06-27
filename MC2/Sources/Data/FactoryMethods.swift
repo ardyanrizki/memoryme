@@ -12,15 +12,15 @@ struct FactoryMethods {
         Player(at: position)
     }
     
-    static func createInteractiveItem(with identifier: ItemIdentifier, at position: CGPoint, withScene scene: SKScene) -> InteractiveItem {
-        InteractiveItem(with: identifier, at: position, withScene: scene)
+    static func createInteractableItem(with identifier: ItemIdentifier, at position: CGPoint, in scene: SKScene) -> InteractableItem {
+        InteractableItem(withIdentifier: identifier, at: position, in: scene)
     }
     
     static func createDialogBox(with size: CGSize, sceneFrame frame: CGRect, cornerRadius: CGFloat = 10) -> DialogBoxNode {
         // Create the box shape.
         let dialogBox = DialogBoxNode(rectOf: size, cornerRadius: cornerRadius)
-        dialogBox.fillColor = UIColor.white.withAlphaComponent(0.95)
-        dialogBox.strokeColor = .black
+        dialogBox.fillColor = UIColor.black.withAlphaComponent(0.7)
+        dialogBox.strokeColor = .white
         dialogBox.lineWidth = 2.0
         dialogBox.position = CGPoint(x: frame.midX / 2, y: (frame.minY + (size.height / 2) + 75))
         dialogBox.zPosition = 100
@@ -29,7 +29,7 @@ struct FactoryMethods {
         let promptLabel = SKLabelNode(fontNamed: Constants.fontName)
         promptLabel.text = .emptyString
         promptLabel.fontSize = 32
-        promptLabel.fontColor = .black
+        promptLabel.fontColor = .white
         promptLabel.position = CGPoint(x: -size.width / 2 + 20, y: size.height / 2 - 70)
         promptLabel.horizontalAlignmentMode = .left
         dialogBox.addChild(promptLabel)
@@ -39,7 +39,7 @@ struct FactoryMethods {
         let nameLabel = SKLabelNode(fontNamed: Constants.fontName)
         nameLabel.text = .emptyString
         nameLabel.fontSize = 40
-        nameLabel.fontColor = .black
+        nameLabel.fontColor = .white
         nameLabel.position = CGPoint(x: -size.width / 2 + 50, y: size.height / 2 - 40)
         dialogBox.addChild(nameLabel)
         dialogBox.nameLabel = nameLabel

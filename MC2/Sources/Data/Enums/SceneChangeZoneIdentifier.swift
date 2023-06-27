@@ -12,7 +12,10 @@ enum SceneChangeZoneIdentifier: String, CaseIterable {
     case toBedroom = "toBedroom"
     case toBar = "toBar"
     case toHospital = "toHospital"
-    case toMainRoom = "toMainRoom"
+    case toMainRoomFromOffice = "toMainRoomFromOffice"
+    case toMainRoomFromBedroom = "toMainRoomFromBedroom"
+    case toMainRoomFromHospital = "toMainRoomFromHospital"
+    case toMainRoomFromBar = "toMainRoomFromBar"
     
     func getNode(from scene: SKScene) -> SceneChangeZoneNode? {
         let node = scene.childNode(withName: self.rawValue) as? SceneChangeZoneNode

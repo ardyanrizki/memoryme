@@ -21,7 +21,7 @@ class Player: GKEntity {
     init(at position: CGPoint, textures: [AnimationState: [SKTexture]]? = nil) {
         super.init()
         
-        let name = TextureResources.mainCharacter
+        let textureName = TextureResources.mainCharacter
         
         let idleTextures = TextureResources.mainCharacterAtlasIdle.getAllTexturesFromAtlas()
         let walkTextures = TextureResources.mainCharacterAtlasWalk.getAllTexturesFromAtlas()
@@ -33,7 +33,7 @@ class Player: GKEntity {
             defaultTextures = textures
         }
         
-        addingComponents(name: name, position: position, textures: defaultTextures)
+        addingComponents(name: textureName, position: position, textures: defaultTextures)
         
         node?.zPosition = 2
         
@@ -41,7 +41,7 @@ class Player: GKEntity {
     }
     
     required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        fatalError(.initCoderNotImplemented)
     }
     
     public func animate(for state: AnimationState) {
@@ -56,13 +56,18 @@ class Player: GKEntity {
         }
     }
     
+    public func stopWalking() {
+        for case let controlComponent as ControlComponent in components {
+            controlComponent.stopWalking()
+        }
+    }
+    
     private func addingComponents(name: TextureName, position: CGPoint, textures: [AnimationState: [SKTexture]]) {
         let renderComponent = RenderComponent(with: name, at: position)
         addComponent(renderComponent)
         
         // MARK: Character Component
         let characterVisualComponent = CharacterVisualComponent(
-            type: .mainCharacter,
             textures: textures,
             renderComponent: renderComponent
         )

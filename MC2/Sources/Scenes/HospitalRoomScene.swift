@@ -12,9 +12,9 @@ class HospitalRoomScene: PlayableScene, PlayableSceneProtocol {
     
     typealias T = HospitalRoomScene
     
-    static func sharedScene(playerAt position: PositionIdentifier) -> HospitalRoomScene? {
+    static func sharedScene(playerPosition position: PositionIdentifier) -> HospitalRoomScene? {
         let scene = HospitalRoomScene(fileNamed: Constants.hospitalScene)
-        scene?.setup(playerAt: position)
+        scene?.setup(playerPosition: position)
         return scene
     }
     

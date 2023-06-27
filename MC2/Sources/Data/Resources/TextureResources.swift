@@ -55,7 +55,7 @@ struct TextureResources {
     
     // MARK: Items in Bedroom
     static let bedMessy: TextureName = "bed_messy"
-    static let bookMessy: TextureName = "book_messy"
+    static let booksMessy: TextureName = "books_messy"
     static let bookshelfMessy: TextureName = "bookshelf_messy"
     static let chairMessy: TextureName = "chair_messy"
     static let clothesMessy: TextureName = "clothes_messy"
