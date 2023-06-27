@@ -17,4 +17,10 @@ class MainRoomScene: PlayableScene, PlayableSceneProtocol {
         scene?.setup(playerPosition: playerPosition)
         return scene
     }
+    
+    override func didMove(to view: SKView) {
+        super.didMove(to: view)
+        
+        super.player?.lay()
+    }
 }
