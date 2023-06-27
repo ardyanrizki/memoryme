@@ -10,8 +10,9 @@ import SpriteKit
 enum ItemIdentifier: String, CaseIterable {
     // MARK: Items in Office
     case laptop = "laptop"
-    case radio = "radio"
     case vase = "vase"
+    case radio = "radio"
+    
     // MARK: Items in Bedroom
     case bed = "bed"
     case book = "book"
@@ -25,6 +26,15 @@ enum ItemIdentifier: String, CaseIterable {
     case pillow = "pillow"
     case wardrobe = "wardrobe"
     case window = "window"
+    
+    //MARK: Items in Bar
+    case barIslandLeft = "barLeft"
+    case barIslandRight = "barRight"
+    case radioBar = "radioBar"
+    case stool = "stool"
+    case tableAndChairs = "tableAndChairs"
+    case upperDoor = "upperDoor"
+    case wallPot = "wallPot"
     
     func getAllNodes(from scene: SKScene, zPosition: CGFloat = 1) -> [ItemNode] {
         var nodes = [ItemNode]()
@@ -130,6 +140,35 @@ enum ItemIdentifier: String, CaseIterable {
                 .tidy: SKTexture(imageNamed: TextureResources.windowTidy),
                 .messy: SKTexture(imageNamed: TextureResources.windowMessy)
             ]
+        
+        case .barIslandLeft:
+            textures = [
+                .normal : SKTexture(imageNamed: TextureResources.barIslandLeft)
+            ]
+        case .barIslandRight:
+            textures = [
+                .normal : SKTexture(imageNamed: TextureResources.barIslandRight)
+            ]
+        case .radioBar:
+            textures = [
+                .normal : SKTexture(imageNamed: TextureResources.radio)
+            ]
+        case .stool:
+            textures = [
+                .normal : SKTexture(imageNamed: TextureResources.stool)
+            ]
+        case .tableAndChairs:
+            textures = [
+                .normal : SKTexture(imageNamed: TextureResources.tableAndChairs)
+            ]
+        case .upperDoor:
+            textures = [
+                .normal : SKTexture(imageNamed: TextureResources.upperDoor)
+            ]
+        case .wallPot:
+            textures = [
+                .normal : SKTexture(imageNamed: TextureResources.wallPot)
+            ]
         }
         return textures
     }
@@ -166,6 +205,20 @@ enum ItemIdentifier: String, CaseIterable {
         case .wardrobe:
             return nil
         case .window:
+            return nil
+        case .barIslandLeft:
+            return nil
+        case .barIslandRight:
+            return nil
+        case .radioBar:
+            return nil
+        case .stool:
+            return nil
+        case .tableAndChairs:
+            return nil
+        case .upperDoor:
+            return nil
+        case .wallPot:
             return nil
         }
     }
