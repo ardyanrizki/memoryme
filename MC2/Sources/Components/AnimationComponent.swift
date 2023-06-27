@@ -40,17 +40,21 @@ class AnimationComponent: GKComponent {
         guard let textures = characterVisualComponent.textures[state], textures.count > 1 else { fatalError(.errorTextureNotFound) }
         animationKey = key ?? state.rawValue
         let animationAction = SKAction.animate(with: textures, timePerFrame: time, resize: true, restore: true)
-        let repeatedAnimation: SKAction
+        let mainAction: SKAction
         if isRepeatForever {
-            repeatedAnimation = SKAction.repeatForever(animationAction)
+            mainAction = SKAction.repeatForever(animationAction)
         } else {
             let mainAction = SKAction.repeat(animationAction, count: repeatCount)
             let completionAction = SKAction.run {
                 completion?(self.animationKey)
             }
-            repeatedAnimation = SKAction.sequence([mainAction, completionAction])
+            mainAction = SKAction.sequence([mainAction, completionAction])
         }
-        renderComponent.node.run(repeatedAnimation, withKey: animationKey!)
+        renderComponent.node.run(mainAction, withKey: animationKey ?? state.rawValue)
+    }
+    
+    public func animate(_ action: SKAction, completion: @escaping () -> Void = { }) {
+        renderComponent.node.run(action, completion: completion)
     }
     
     public func removeAnimation() {
