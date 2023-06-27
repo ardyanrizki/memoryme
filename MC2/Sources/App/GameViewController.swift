@@ -93,18 +93,21 @@ extension GameViewController: SceneManagerProtocol {
     //MARK: MINI GAME SCENES
     //Mini Game 1 - Input Password
     func presentMGPasswordScene(){
-        guard let scene = InputPasswordScene(fileNamed: "InputPasswordScene") else {return}
+        guard let scene = InputPasswordScene(fileNamed: Constants.inputPasswordScene) else { return }
         let fade = SKTransition.fade(withDuration: 0.5)
         present(scene: scene, transition: fade)
     }
     
     //Mini Game 2 - Matching Numbers
     func presentMGMatchingNumbersScene(){
-        guard let scene = MatchingNumberScene(fileNamed: "MatchingNumberScene") else {return}
+        guard let scene = MatchingNumberScene(fileNamed: Constants.matchingNumberScene) else { return }
         let fade = SKTransition.fade(withDuration: 0.5)
         present(scene: scene, transition: fade)
     }
-    
+
+}
+
+extension GameViewController {
     private func present(scene: SKScene, transition: SKTransition? = nil){
         if let view = self.view as! SKView? {
             if let gestureRecognizers = view.gestureRecognizers {
