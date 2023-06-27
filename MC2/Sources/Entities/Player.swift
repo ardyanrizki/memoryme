@@ -25,9 +25,11 @@ class Player: GKEntity {
         
         let idleTextures = TextureResources.mainCharacterAtlasIdle.getAllTexturesFromAtlas()
         let walkTextures = TextureResources.mainCharacterAtlasWalk.getAllTexturesFromAtlas()
+        let layTextures = TextureResources.mainCharacterAtlasLay.getAllTexturesFromAtlas()
         var defaultTextures: [AnimationState: [SKTexture]] = [
             .walk: walkTextures,
-            .idle: idleTextures
+            .idle: idleTextures,
+            .lay: layTextures
         ]
         if let textures {
             defaultTextures = textures
@@ -45,8 +47,19 @@ class Player: GKEntity {
     }
     
     public func animate(for state: AnimationState) {
-        for case let controlComponent as AnimationComponent in components {
-            controlComponent.animate(for: state, timePerFrame: 0.6, withKey: "idle")
+        for case let animationComponent as AnimationComponent in components {
+            animationComponent.animate(for: state, timePerFrame: 0.6, withKey: state.rawValue)
+        }
+    }
+    
+    public func lay() {
+        for case let animationComponent as AnimationComponent in components {
+            self.node?.anchorPoint = CGPoint(x: 0.7, y: 0)
+            
+            animationComponent.animate(for: .lay, timePerFrame: 0.6, withKey: AnimationState.lay.rawValue, isRepeatForever: false) { key in
+                self.animate(for: .idle)
+                self.node?.anchorPoint = CGPoint(x: 0.5, y: 0)
+            }
         }
     }
     

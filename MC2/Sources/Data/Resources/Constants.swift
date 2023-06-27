@@ -33,6 +33,7 @@ struct Constants {
     // Action keys
     static let walkingAction = "walking"
     static let idleAction = "idle"
+    static let layAction = "lay"
 }
 
 extension String {
