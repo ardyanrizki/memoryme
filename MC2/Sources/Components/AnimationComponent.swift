@@ -12,7 +12,7 @@ class AnimationComponent: GKComponent {
     
     var renderComponent: RenderComponent
     
-    var characterVisualComponent: CharacterVisualComponent
+    var characterVisualComponent: CharacterVisualComponent?
     
     var animationKey: String?
     
@@ -22,18 +22,32 @@ class AnimationComponent: GKComponent {
         super.init()
     }
     
+    init(renderComponent: RenderComponent) {
+        self.renderComponent = renderComponent
+        super.init()
+    }
+    
     required init?(coder: NSCoder) {
         fatalError(.initCoderNotImplemented)
     }
     
-    public func animate(for state: AnimationState, timePerFrame time: TimeInterval = 0.3, withKey key: String? = nil) {
+    public func animate(for state: CharacterAnimationState, timePerFrame time: TimeInterval = 0.3, withKey key: String? = nil) {
         guard animationKey != key else { return }
         removeAnimation()
-        guard let textures = characterVisualComponent.textures[state], textures.count > 1 else { fatalError(.errorTextureNotFound) }
+        guard let textures = characterVisualComponent?.textures[state], textures.count > 1 else { fatalError(.errorTextureNotFound) }
         animationKey = key ?? state.rawValue
         let animationAction = SKAction.animate(with: textures, timePerFrame: time, resize: true, restore: true)
         let repeatedAnimation = SKAction.repeatForever(animationAction)
         renderComponent.node.run(repeatedAnimation, withKey: key ?? state.rawValue)
+    }
+    
+    public func animate(withTextures textures: [SKTexture], timePerFrame time: TimeInterval = 0.3, withKey key: String) {
+        guard animationKey != key else { return }
+        removeAnimation()
+        animationKey = key
+        let animationAction = SKAction.animate(with: textures, timePerFrame: time, resize: true, restore: true)
+        let repeatedAnimation = SKAction.repeatForever(animationAction)
+        renderComponent.node.run(repeatedAnimation, withKey: key)
     }
     
     public func removeAnimation() {

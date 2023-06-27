@@ -143,7 +143,7 @@ class PlayableScene: SKScene {
             if let itemNode = item.node,
                player?.node?.intersects(itemNode) == true,
                let itemIdentifier = itemNode.identifier {
-                playerDidIntersect(with: itemIdentifier)
+                playerDidIntersect(with: itemIdentifier, node: itemNode)
             }
         }
     }
@@ -163,7 +163,7 @@ class PlayableScene: SKScene {
                 }
                 guard let itemNode, let identifier = itemNode.identifier else { return }
                 stopPlayerWhenDidContact()
-                playerDidContact(with: identifier)
+                playerDidContact(with: identifier, node: itemNode)
             }
             
             if (contact.bodyB.categoryBitMask == PhysicsType.wall.rawValue ||
@@ -211,9 +211,9 @@ class PlayableScene: SKScene {
     
     func touchUp(atPoint pos : CGPoint) {}
     
-    func playerDidIntersect(with itemIdentifier: ItemIdentifier) {}
+    func playerDidIntersect(with itemIdentifier: ItemIdentifier, node: ItemNode) {}
     
-    func playerDidContact(with itemIdentifier: ItemIdentifier) {}
+    func playerDidContact(with itemIdentifier: ItemIdentifier, node: ItemNode) {}
     
 }
 

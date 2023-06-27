@@ -8,9 +8,22 @@
 import SpriteKit
 
 enum ItemIdentifier: String, CaseIterable {
+    // MARK: Bubbles Item
+    case bubble = "bubble"
+    
     // MARK: Items in Office
-    case laptop = "laptop"
-    case radio = "radio"
+    case macbook = "macbook"
+    case photoframe = "photoframe"
+    case bookshelfOffice = "bookshelfOffice"
+    case whiteboard = "whiteboard"
+    case officeDeskFront = "officeDeskFront"
+    case officeDeskBehind = "officeDeskBehind"
+    case bossDesk = "bossDesk"
+    case officeChair = "officeChair"
+    case officeChairFlipped = "officeChairFlipped"
+    
+    
+    // MARK: Items in MainRoom
     case vase = "vase"
     // MARK: Items in Bedroom
     case bed = "bed"
@@ -45,13 +58,45 @@ enum ItemIdentifier: String, CaseIterable {
         var textures = [ItemTextureType: SKTexture]()
         // TODO: Add item textures
         switch self {
-        case .laptop:
+        case .bubble:
             textures = [
-                .normal: SKTexture(imageNamed: TextureResources.laptop)
+                .normal: SKTexture(imageNamed: TextureResources.bubble1)
             ]
-        case .radio:
+        case .macbook:
             textures = [
-                .normal: SKTexture(imageNamed: TextureResources.radio)
+                .normal: SKTexture(imageNamed: TextureResources.macbook)
+            ]
+        case .photoframe:
+            textures = [
+                .normal: SKTexture(imageNamed: TextureResources.photoframe)
+            ]
+        case .bookshelfOffice:
+            textures = [
+                .normal: SKTexture(imageNamed: TextureResources.bookshelf)
+            ]
+        case .whiteboard:
+            textures = [
+                .normal: SKTexture(imageNamed: TextureResources.whiteboard)
+            ]
+        case .officeDeskFront:
+            textures = [
+                .normal: SKTexture(imageNamed: TextureResources.officeDeskFront)
+            ]
+        case .officeDeskBehind:
+            textures = [
+                .normal: SKTexture(imageNamed: TextureResources.officeDeskBehind)
+            ]
+        case .officeChairFlipped:
+            textures = [
+                .normal: SKTexture(imageNamed: TextureResources.officeChairFlipped)
+            ]
+        case .bossDesk:
+            textures = [
+                .normal: SKTexture(imageNamed: TextureResources.bossDesk)
+            ]
+        case .officeChair:
+            textures = [
+                .normal: SKTexture(imageNamed: TextureResources.officeChair)
             ]
         case .vase:
             textures = [
@@ -117,10 +162,26 @@ enum ItemIdentifier: String, CaseIterable {
     func getSize() -> CGSize? {
         guard let size = getTextures().first?.value.size() else { return nil }
         switch self {
-        case .laptop:
-            return CGSize(width: size.width, height: size.height)
-        case .radio:
+        case .bubble:
             return nil
+        case .macbook:
+            return CGSize(width: size.width, height: size.height)
+        case .photoframe:
+            return CGSize(width: size.width, height: size.height)
+        case .bookshelfOffice:
+            return nil
+        case .whiteboard:
+            return nil
+        case .officeDeskFront:
+            return nil
+        case .officeDeskBehind:
+            return CGSize(width: size.width, height: size.height * 0.6)
+        case .bossDesk:
+            return CGSize(width: size.width, height: size.height * 0.8)
+        case .officeChair:
+            return CGSize(width: size.width, height: size.height * 0.6)
+        case .officeChairFlipped:
+            return CGSize(width: size.width, height: size.height * 0.6)
         case .vase:
             return nil
         case .bed:

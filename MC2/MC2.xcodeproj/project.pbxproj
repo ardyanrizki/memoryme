@@ -13,7 +13,7 @@
 		3811E4CA2A4643DA00416B95 /* DialogResources.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3811E4C92A4643DA00416B95 /* DialogResources.swift */; };
 		3811E4CC2A4643E400416B95 /* TextureResources.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3811E4CB2A4643E400416B95 /* TextureResources.swift */; };
 		3811E4CE2A464E5A00416B95 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3811E4CD2A464E5A00416B95 /* Constants.swift */; };
-		3811E4D02A46517A00416B95 /* AnimationState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3811E4CF2A46517A00416B95 /* AnimationState.swift */; };
+		3811E4D02A46517A00416B95 /* CharacterAnimationState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3811E4CF2A46517A00416B95 /* CharacterAnimationState.swift */; };
 		3811E4D22A46519B00416B95 /* PositionIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3811E4D12A46519B00416B95 /* PositionIdentifier.swift */; };
 		3811E4D42A4667F100416B95 /* PlayableScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3811E4D32A4667F100416B95 /* PlayableScene.swift */; };
 		3811E4D62A471DCD00416B95 /* PositionNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3811E4D52A471DCD00416B95 /* PositionNode.swift */; };
@@ -117,7 +117,7 @@
 		3811E4C92A4643DA00416B95 /* DialogResources.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DialogResources.swift; sourceTree = "<group>"; };
 		3811E4CB2A4643E400416B95 /* TextureResources.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextureResources.swift; sourceTree = "<group>"; };
 		3811E4CD2A464E5A00416B95 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
-		3811E4CF2A46517A00416B95 /* AnimationState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationState.swift; sourceTree = "<group>"; };
+		3811E4CF2A46517A00416B95 /* CharacterAnimationState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterAnimationState.swift; sourceTree = "<group>"; };
 		3811E4D12A46519B00416B95 /* PositionIdentifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PositionIdentifier.swift; sourceTree = "<group>"; };
 		3811E4D32A4667F100416B95 /* PlayableScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayableScene.swift; sourceTree = "<group>"; };
 		3811E4D52A471DCD00416B95 /* PositionNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PositionNode.swift; path = Sources/Nodes/PositionNode.swift; sourceTree = SOURCE_ROOT; };
@@ -228,7 +228,7 @@
 		3811E4E12A4749F300416B95 /* Enums */ = {
 			isa = PBXGroup;
 			children = (
-				3811E4CF2A46517A00416B95 /* AnimationState.swift */,
+				3811E4CF2A46517A00416B95 /* CharacterAnimationState.swift */,
 				3811E4D12A46519B00416B95 /* PositionIdentifier.swift */,
 				38763F3E2A3AF2F6004129A6 /* SceneChangeZoneIdentifier.swift */,
 				3811E4EC2A47F5B200416B95 /* ItemIdentifier.swift */,
@@ -535,7 +535,7 @@
 				3811E4D22A46519B00416B95 /* PositionIdentifier.swift in Sources */,
 				38763F632A3B71AE004129A6 /* BedroomScene.swift in Sources */,
 				3811E4DD2A472D8600416B95 /* WallNode.swift in Sources */,
-				3811E4D02A46517A00416B95 /* AnimationState.swift in Sources */,
+				3811E4D02A46517A00416B95 /* CharacterAnimationState.swift in Sources */,
 				38763F532A3AF789004129A6 /* RenderComponent.swift in Sources */,
 				2C0325DB2A3EDB2A005B8E0A /* CharacterVisualComponent.swift in Sources */,
 				38763F872A42A600004129A6 /* HospitalRoomScene.swift in Sources */,

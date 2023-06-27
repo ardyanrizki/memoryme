@@ -41,6 +41,7 @@ struct TextureResources {
     // MARK: Characters's atlas name
     static let mainCharacterAtlasIdle: TextureAtlasName = "mory_idle_atlas"
     static let mainCharacterAtlasWalk: TextureAtlasName = "mory_walk_atlas"
+    static let bubbleAtlasStatic: TextureAtlasName = "bubble_atlas"
     static let mainCharacterAtlas_lay: TextureAtlasName = "mory_lay"
     static let dadCharacterAtlasWalk: TextureAtlasName = "dad_walk"
     static let momCharacterAtlasWalk: TextureAtlasName = "mom_walk"
@@ -48,10 +49,21 @@ struct TextureResources {
     static let friendCharacterAtlasWalk: TextureAtlasName = "friend_walk"
     static let bartenderCharacterAtlasWalk: TextureAtlasName = "bartender_walk"
     
-    // MARK: Items in Office
+    // MARK: Items in MainRoom
     static let vase: TextureName = "vase_static"
-    static let laptop: TextureName = "laptop_static"
-    static let radio: TextureName = "radio_static"
+    
+    // MARK: Items in Office
+    static let bookshelf: TextureName = "bookshelf_static"
+    static let bossDesk: TextureName = "boss-desk_static"
+    static let officeChairFlipped: TextureName = "office-chair-flipped_static"
+    static let officeChair: TextureName = "office-chair_static"
+    static let officeDeskBehind: TextureName = "office-desk-behind_static"
+    static let officeDeskFront: TextureName = "office-desk-front_static"
+    static let rightDoor: TextureName = "right-door_static"
+    static let whiteboard: TextureName = "whiteboard_static"
+    
+    static let macbook: TextureName = "macbook"
+    static let photoframe: TextureName = "photoframe"
     
     // MARK: Items in Bedroom
     static let bedMessy: TextureName = "bed_messy"
@@ -80,6 +92,11 @@ struct TextureResources {
     static let bedroom: TextureName = "bedroom"
     static let bar: TextureName = "bar"
     static let hospital: TextureName = "hospital"
+    
+    // MARK: Bubbles
+    static let bubble1: TextureName = "bubble_1"
+    static let bubble2: TextureName = "bubble_2"
+    static let bubble3: TextureName = "bubble_3"
     
     // MARK: Title
     static let title: TextureName = "title"
