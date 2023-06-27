@@ -88,10 +88,10 @@
 		38763F8D2A42DAA3004129A6 /* HospitalRoomScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 38763F8A2A42DAA3004129A6 /* HospitalRoomScene.sks */; };
 		8C56D9492A43CFE40076283B /* Scribble-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 8C56D9482A43CFE40076283B /* Scribble-Regular.otf */; };
 		8C56D94C2A43E9600076283B /* InteractiveItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C56D94B2A43E9600076283B /* InteractiveItem.swift */; };
-		F618B3C72A4A80EE00358874 /* MatchingNumberScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = F618B3C52A4A80EE00358874 /* MatchingNumberScene.swift */; };
-		F618B3C82A4A80EE00358874 /* InputPasswordScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = F618B3C62A4A80EE00358874 /* InputPasswordScene.swift */; };
 		F618B3CB2A4A811900358874 /* InputPasswordScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = F618B3C92A4A811900358874 /* InputPasswordScene.sks */; };
 		F618B3CC2A4A811900358874 /* MatchingNumberScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = F618B3CA2A4A811900358874 /* MatchingNumberScene.sks */; };
+		F618B3CF2A4A828F00358874 /* InputPasswordScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = F618B3CD2A4A828F00358874 /* InputPasswordScene.swift */; };
+		F618B3D02A4A828F00358874 /* MatchingNumberScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = F618B3CE2A4A828F00358874 /* MatchingNumberScene.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -161,10 +161,10 @@
 		8C56D9482A43CFE40076283B /* Scribble-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Scribble-Regular.otf"; sourceTree = "<group>"; };
 		8C56D94A2A43D0320076283B /* MC2-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "MC2-Info.plist"; sourceTree = "<group>"; };
 		8C56D94B2A43E9600076283B /* InteractiveItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InteractiveItem.swift; sourceTree = "<group>"; };
-		F618B3C52A4A80EE00358874 /* MatchingNumberScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MatchingNumberScene.swift; path = "../../../../../../../Downloads/memoryme-ada23/MC2/Sources/Scenes/Mini Games/MatchingNumberScene.swift"; sourceTree = "<group>"; };
-		F618B3C62A4A80EE00358874 /* InputPasswordScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = InputPasswordScene.swift; path = "../../../../../../../Downloads/memoryme-ada23/MC2/Sources/Scenes/Mini Games/InputPasswordScene.swift"; sourceTree = "<group>"; };
 		F618B3C92A4A811900358874 /* InputPasswordScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = InputPasswordScene.sks; sourceTree = "<group>"; };
 		F618B3CA2A4A811900358874 /* MatchingNumberScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = MatchingNumberScene.sks; sourceTree = "<group>"; };
+		F618B3CD2A4A828F00358874 /* InputPasswordScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputPasswordScene.swift; sourceTree = "<group>"; };
+		F618B3CE2A4A828F00358874 /* MatchingNumberScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MatchingNumberScene.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -373,8 +373,8 @@
 		F618B3BA2A49A64300358874 /* Mini Games */ = {
 			isa = PBXGroup;
 			children = (
-				F618B3C62A4A80EE00358874 /* InputPasswordScene.swift */,
-				F618B3C52A4A80EE00358874 /* MatchingNumberScene.swift */,
+				F618B3CD2A4A828F00358874 /* InputPasswordScene.swift */,
+				F618B3CE2A4A828F00358874 /* MatchingNumberScene.swift */,
 			);
 			path = "Mini Games";
 			sourceTree = "<group>";
@@ -532,9 +532,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				3811E4D62A471DCD00416B95 /* PositionNode.swift in Sources */,
-				F618B3C72A4A80EE00358874 /* MatchingNumberScene.swift in Sources */,
 				3811E4CC2A4643E400416B95 /* TextureResources.swift in Sources */,
 				38763F4B2A3AF70A004129A6 /* ControlComponent.swift in Sources */,
+				F618B3CF2A4A828F00358874 /* InputPasswordScene.swift in Sources */,
 				3811E4D22A46519B00416B95 /* PositionIdentifier.swift in Sources */,
 				38763F632A3B71AE004129A6 /* BedroomScene.swift in Sources */,
 				3811E4DD2A472D8600416B95 /* WallNode.swift in Sources */,
@@ -553,11 +553,11 @@
 				38763F472A3AF657004129A6 /* AnimationComponent.swift in Sources */,
 				3811E4E32A474D6000416B95 /* SceneChangeZoneNode.swift in Sources */,
 				38763F6B2A3B71D5004129A6 /* BarScene.swift in Sources */,
+				F618B3D02A4A828F00358874 /* MatchingNumberScene.swift in Sources */,
 				3811E4CE2A464E5A00416B95 /* Constants.swift in Sources */,
 				38763F3B2A3AEC30004129A6 /* Player.swift in Sources */,
 				3811E4D42A4667F100416B95 /* PlayableScene.swift in Sources */,
 				3811E4E52A475E5500416B95 /* TestScene.swift in Sources */,
-				F618B3C82A4A80EE00358874 /* InputPasswordScene.swift in Sources */,
 				38763F3F2A3AF2F6004129A6 /* SceneChangeZoneIdentifier.swift in Sources */,
 				8C56D94C2A43E9600076283B /* InteractiveItem.swift in Sources */,
 				3811E4CA2A4643DA00416B95 /* DialogResources.swift in Sources */,
