@@ -11,7 +11,7 @@ import GameplayKit
 class MainRoomScene: PlayableScene, PlayableSceneProtocol {
     
     // TODO: move this value to State Machine
-    var touchEventsEnabled: Bool = false
+    var touchEventsEnabled: Bool = true
     
     typealias T = MainRoomScene
     
