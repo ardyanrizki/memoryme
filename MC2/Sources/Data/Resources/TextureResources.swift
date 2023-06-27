@@ -51,7 +51,6 @@ struct TextureResources {
     // MARK: Items in Office
     static let vase: TextureName = "vase_static"
     static let laptop: TextureName = "laptop_static"
-    static let radio: TextureName = "radio_static"
     
     // MARK: Items in Bedroom
     static let bedMessy: TextureName = "bed_messy"
@@ -73,6 +72,16 @@ struct TextureResources {
     static let windowTidy: TextureName = "window_tidy"
     
     static let photoAlbum: TextureName = "photo-album"
+    
+    //MARK: Items in Bar
+    static let barIslandLeft: TextureName = "bar-island-left_static"
+    static let barIslandRight: TextureName = "bar-island-right_static"
+    static let radio: TextureName = "radio_normal"
+    static let stool: TextureName = "stool_static"
+    static let tableAndChairs: TextureName = "table-and-chairs_static"
+    static let upperDoor: TextureName = "upper-door_normal"
+    static let wallPot: TextureName = "wall-pot_static"
+    
     
     // MARK: Rooms
     static let mainRoom: TextureName = "main-room"
