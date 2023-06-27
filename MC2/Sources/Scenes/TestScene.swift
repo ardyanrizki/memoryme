@@ -17,9 +17,7 @@ class TestScene: PlayableScene, PlayableSceneProtocol {
         return scene
     }
     
-    override func playerDidIntersect(with itemIdentifier: ItemIdentifier) {
-        
-    }
+    override func playerDidIntersect(with itemIdentifier: ItemIdentifier) {}
     
     override func playerDidContact(with itemIdentifier: ItemIdentifier) {
         if itemIdentifier == .vase {
