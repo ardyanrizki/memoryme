@@ -90,8 +90,8 @@
 		8C56D94C2A43E9600076283B /* InteractiveItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C56D94B2A43E9600076283B /* InteractiveItem.swift */; };
 		F618B3B92A49A63000358874 /* InputPasswordScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = F618B3B82A49A63000358874 /* InputPasswordScene.swift */; };
 		F618B3BC2A49A65700358874 /* MatchingNumberScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = F618B3BB2A49A65700358874 /* MatchingNumberScene.swift */; };
-		F618B3BE2A49A8B000358874 /* MatchingNumberScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = F618B3BD2A49A8B000358874 /* MatchingNumberScene.sks */; };
-		F618B3C02A49A8BA00358874 /* InputPasswordScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = F618B3BF2A49A8BA00358874 /* InputPasswordScene.sks */; };
+		F618B3C22A4A7DAD00358874 /* InputPasswordScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = F618B3C12A4A7DAD00358874 /* InputPasswordScene.sks */; };
+		F618B3C42A4A7DB100358874 /* MatchingNumberScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = F618B3C32A4A7DB100358874 /* MatchingNumberScene.sks */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -163,8 +163,8 @@
 		8C56D94B2A43E9600076283B /* InteractiveItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InteractiveItem.swift; sourceTree = "<group>"; };
 		F618B3B82A49A63000358874 /* InputPasswordScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputPasswordScene.swift; sourceTree = "<group>"; };
 		F618B3BB2A49A65700358874 /* MatchingNumberScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchingNumberScene.swift; sourceTree = "<group>"; };
-		F618B3BD2A49A8B000358874 /* MatchingNumberScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; name = MatchingNumberScene.sks; path = "../../../../../../../Downloads/memoryme-ada23/MC2/Sources/Assets/Scenes/MatchingNumberScene.sks"; sourceTree = "<group>"; };
-		F618B3BF2A49A8BA00358874 /* InputPasswordScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; name = InputPasswordScene.sks; path = "../../../../../../../Downloads/memoryme-ada23/MC2/Sources/Assets/Scenes/InputPasswordScene.sks"; sourceTree = "<group>"; };
+		F618B3C12A4A7DAD00358874 /* InputPasswordScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; name = InputPasswordScene.sks; path = "../../../../../../../Downloads/memoryme-ada23/MC2/Sources/Assets/Scenes/InputPasswordScene.sks"; sourceTree = "<group>"; };
+		F618B3C32A4A7DB100358874 /* MatchingNumberScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; name = MatchingNumberScene.sks; path = "../../../../../../../Downloads/memoryme-ada23/MC2/Sources/Assets/Scenes/MatchingNumberScene.sks"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -356,8 +356,8 @@
 				38763F8A2A42DAA3004129A6 /* HospitalRoomScene.sks */,
 				38763F042A3AA7A8004129A6 /* Actions.sks */,
 				3811E4E62A475E7E00416B95 /* TestScene.sks */,
-				F618B3BF2A49A8BA00358874 /* InputPasswordScene.sks */,
-				F618B3BD2A49A8B000358874 /* MatchingNumberScene.sks */,
+				F618B3C12A4A7DAD00358874 /* InputPasswordScene.sks */,
+				F618B3C32A4A7DB100358874 /* MatchingNumberScene.sks */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -486,16 +486,16 @@
 				38763F5F2A3B71A1004129A6 /* BedroomScene.sks in Resources */,
 				38763F0C2A3AA7A8004129A6 /* Main.storyboard in Resources */,
 				38763F822A41E720004129A6 /* TitleScene.sks in Resources */,
+				F618B3C22A4A7DAD00358874 /* InputPasswordScene.sks in Resources */,
 				38763F032A3AA7A8004129A6 /* MainRoomScene.sks in Resources */,
 				38763F0E2A3AA7AA004129A6 /* Assets.xcassets in Resources */,
 				38763F112A3AA7AA004129A6 /* LaunchScreen.storyboard in Resources */,
-				F618B3BE2A49A8B000358874 /* MatchingNumberScene.sks in Resources */,
 				3811E4E72A475E7E00416B95 /* TestScene.sks in Resources */,
 				38763F672A3B71C3004129A6 /* BarScene.sks in Resources */,
 				38763F8B2A42DAA3004129A6 /* HospitalRoomScene.sks in Resources */,
-				F618B3C02A49A8BA00358874 /* InputPasswordScene.sks in Resources */,
 				38763F572A3B7127004129A6 /* OfficeRoomScene.sks in Resources */,
 				38763F052A3AA7A8004129A6 /* Actions.sks in Resources */,
+				F618B3C42A4A7DB100358874 /* MatchingNumberScene.sks in Resources */,
 				8C56D9492A43CFE40076283B /* Scribble-Regular.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
