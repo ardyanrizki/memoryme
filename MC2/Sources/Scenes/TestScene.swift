@@ -17,17 +17,11 @@ class TestScene: PlayableScene, PlayableSceneProtocol {
         return scene
     }
     
-    override func playerDidIntersect(with itemIdentifier: ItemIdentifier) {
-//        if itemIdentifier == .vase {
-//            print("Item triggered")
-//            dialogBox?.show(dialog: DialogResources.strangeVase, from: self)
-//        }
-    }
+    override func playerDidIntersect(with itemIdentifier: ItemIdentifier) {}
     
     override func playerDidContact(with itemIdentifier: ItemIdentifier) {
         if itemIdentifier == .vase {
-            print("Item triggered")
-            dialogBox?.show(dialog: DialogResources.strangeVase, from: self)
+            dialogBox?.show(dialog: DialogResources.opening_8_vase, from: self)
         }
     }
 }

@@ -14,6 +14,7 @@ struct Constants {
     // Game infos
     static let gameTitle = "Me...Mory...Me"
     static let mainCharacterName = "Mory"
+    static let momName = "Mom"
     
     // Game scenes
     static let testScene = "TestScene"
@@ -23,6 +24,8 @@ struct Constants {
     static let bedroomScene = "BedroomScene"
     static let barScene = "BarScene"
     static let hospitalScene = "HospitalScene"
+    static let inputPasswordScene = "InputPasswordScene"
+    static let matchingNumberScene = "MatchingNumberScene"
     
     // Default node names
     static let background = "background"
