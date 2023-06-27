@@ -114,7 +114,7 @@ class PlayableScene: SKScene {
      */
     private func setupInteractableItems() {
         let itemNodes = findAllItemNodesInScene()
-        interactableItems = itemNodes.map { $0.createInteractableItem(in: self, withTextureType: nil) }
+        interactableItems = itemNodes.map { $0.createInteractableItem() }
     }
     
     /**
@@ -200,9 +200,11 @@ class PlayableScene: SKScene {
      Search for all `ItemNode`s in scene.
      */
     private func findAllItemNodesInScene() -> [ItemNode] {
-        return ItemIdentifier.allCases.compactMap { identifier in
-            identifier.getNode(from: self, withTextureType: nil)
+        var result = [ItemNode]()
+         ItemIdentifier.allCases.forEach { identifier in
+             result.append(contentsOf: identifier.getAllNodes(from: self))
         }
+        return result
     }
     
     func touchDown(atPoint pos : CGPoint) {}

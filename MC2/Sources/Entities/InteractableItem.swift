@@ -8,7 +8,7 @@
 import SpriteKit
 import GameplayKit
 
-enum ItemTextureType {
+enum ItemTextureType: String, CaseIterable {
     case normal
     case tidy
     case messy
@@ -42,16 +42,17 @@ class InteractableItem: GKEntity {
     }
     
     init(withNode node: ItemNode, textures: [ItemTextureType: SKTexture]) {
-        guard let firstTexture = textures.first else { fatalError(.errorTextureNotFound) }
-        
         super.init()
         addingComponents(node: node)
-        // Important! First texture always run for the first time as a default texture.
-        node.texture = firstTexture.value
+        if node.texture ==  nil {
+            // Important! First texture always run for the first time as a fallback texture.
+            guard let firstTexture = textures.first else { fatalError(.errorTextureNotFound) }
+            node.texture = firstTexture.value
+        }
     }
     
     init(withIdentifier identifier: ItemIdentifier, at point: CGPoint, in scene: SKScene) {
-        guard let node = identifier.getNode(from: scene, withTextureType: nil) else {
+        guard let node = identifier.createNode(in: scene, withTextureType: nil) else {
             fatalError(.errorNodeNotFound)
         }
         super.init()

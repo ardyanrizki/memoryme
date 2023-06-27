@@ -14,9 +14,8 @@ class ItemNode: SKSpriteNode {
     
     var textureType: ItemTextureType?
     
-    func createInteractableItem(in scene: SKScene, withTextureType textureType: ItemTextureType?) -> InteractableItem {
-        guard let identifier, let node = identifier.getNode(from: scene, withTextureType: textureType) else { fatalError(.errorNodeNotFound) }
-        let textures = identifier.getTextures()
-        return InteractableItem(withNode: node, textures: textures)
+    func createInteractableItem() -> InteractableItem {
+        guard let textures else { fatalError(.errorTextureNotFound) }
+        return InteractableItem(withNode: self, textures: textures)
     }
 }

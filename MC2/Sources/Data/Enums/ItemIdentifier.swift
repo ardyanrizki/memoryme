@@ -26,7 +26,27 @@ enum ItemIdentifier: String, CaseIterable {
     case wardrobe = "wardrobe"
     case window = "window"
     
-    func getNode(from scene: SKScene, withTextureType textureType: ItemTextureType?, zPosition: CGFloat = 1) -> ItemNode? {
+    func getAllNodes(from scene: SKScene, zPosition: CGFloat = 1) -> [ItemNode] {
+        var nodes = [ItemNode]()
+        scene.children.forEach { node in
+            guard let nodeName = node.name, nodeName.contains(self.rawValue) else { return }
+            let splittedStr = nodeName.splitIdentifer()
+            guard splittedStr.first(where: { $0 == self.rawValue }) != nil else { return }
+            let textureType = splittedStr.compactMap { str in
+                ItemTextureType.allCases.first(where: { $0.rawValue == str })
+            }.first
+            guard let node = scene.childNode(withName: nodeName) as? ItemNode else { return }
+            node.identifier = self
+            node.textures = getTextures()
+            node.textureType = textureType ?? getTextures().first?.key
+            node.texture = getTextures()[node.textureType ?? getTextures().first?.key ?? .normal]
+            node.zPosition = zPosition
+            nodes.append(node)
+        }
+        return nodes
+    }
+    
+    func createNode(in scene: SKScene, withTextureType textureType: ItemTextureType?, zPosition: CGFloat = 1) -> ItemNode? {
         let node = scene.childNode(withName: self.rawValue) as? ItemNode
         node?.identifier = self
         node?.textures = getTextures()
@@ -59,7 +79,7 @@ enum ItemIdentifier: String, CaseIterable {
             ]
         case .bed:
             textures = [
-                .tidy: SKTexture(imageNamed: TextureResources.bedMessy),
+                .tidy: SKTexture(imageNamed: TextureResources.bedTidy),
                 .messy: SKTexture(imageNamed: TextureResources.bedMessy)
             ]
         case .book:
@@ -124,7 +144,7 @@ enum ItemIdentifier: String, CaseIterable {
         case .vase:
             return nil
         case .bed:
-            return nil
+            return CGSize(width: size.width, height: size.height * 0.8)
         case .book:
             return nil
         case .bookshelf:
