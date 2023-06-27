@@ -24,7 +24,9 @@ extension TextureAtlasName {
     
     func getAllTexturesFromAtlas() -> [SKTexture] {
         let atlas = getTextureAtlas()
-        return atlas.textureNames.sorted().map { atlas.textureNamed($0) }
+        let sortedTextureNames =  atlas.textureNames.sorted(using: .localizedStandard)
+            .map { atlas.textureNamed($0) }
+        return sortedTextureNames
     }
 }
 
@@ -41,7 +43,7 @@ struct TextureResources {
     // MARK: Characters's atlas name
     static let mainCharacterAtlasIdle: TextureAtlasName = "mory_idle_atlas"
     static let mainCharacterAtlasWalk: TextureAtlasName = "mory_walk_atlas"
-    static let mainCharacterAtlas_lay: TextureAtlasName = "mory_lay"
+    static let mainCharacterAtlasLay: TextureAtlasName = "mory_lay_atlas"
     static let dadCharacterAtlasWalk: TextureAtlasName = "dad_walk"
     static let momCharacterAtlasWalk: TextureAtlasName = "mom_walk"
     static let bossCharacterAtlasWalk: TextureAtlasName = "boss_walk"
