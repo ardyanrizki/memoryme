@@ -24,7 +24,9 @@ extension TextureAtlasName {
     
     func getAllTexturesFromAtlas() -> [SKTexture] {
         let atlas = getTextureAtlas()
-        return atlas.textureNames.sorted().map { atlas.textureNamed($0) }
+        let sortedTextureNames =  atlas.textureNames.sorted(using: .localizedStandard)
+            .map { atlas.textureNamed($0) }
+        return sortedTextureNames
     }
 }
 
@@ -42,7 +44,7 @@ struct TextureResources {
     static let mainCharacterAtlasIdle: TextureAtlasName = "mory_idle_atlas"
     static let mainCharacterAtlasWalk: TextureAtlasName = "mory_walk_atlas"
     static let bubbleAtlasStatic: TextureAtlasName = "bubble_atlas"
-    static let mainCharacterAtlas_lay: TextureAtlasName = "mory_lay"
+    static let mainCharacterAtlasLay: TextureAtlasName = "mory_lay_atlas"
     static let dadCharacterAtlasWalk: TextureAtlasName = "dad_walk"
     static let momCharacterAtlasWalk: TextureAtlasName = "mom_walk"
     static let bossCharacterAtlasWalk: TextureAtlasName = "boss_walk"
@@ -85,6 +87,16 @@ struct TextureResources {
     static let windowTidy: TextureName = "window_tidy"
     
     static let photoAlbum: TextureName = "photo-album"
+    
+    //MARK: Items in Bar
+    static let barIslandLeft: TextureName = "bar-island-left_static"
+    static let barIslandRight: TextureName = "bar-island-right_static"
+    static let radio: TextureName = "radio_normal"
+    static let stool: TextureName = "stool_static"
+    static let tableAndChairs: TextureName = "table-and-chairs_static"
+    static let upperDoor: TextureName = "upper-door_normal"
+    static let wallPot: TextureName = "wall-pot_static"
+    
     
     // MARK: Rooms
     static let mainRoom: TextureName = "main-room"

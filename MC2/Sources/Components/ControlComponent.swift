@@ -44,8 +44,10 @@ class ControlComponent: GKComponent {
             node.xScale = abs(node.xScale) * multipleForDirection
         } else {
             // On target location
-            targetLocation = nil
-            self.animationComponent?.animate(for: .idle, timePerFrame: 0.6, withKey: Constants.idleAction)
+            if animationComponent?.animationKey == Constants.walkingAction {
+                 targetLocation = nil
+                 self.animationComponent?.animate(for: .idle, timePerFrame: 0.6, withKey: Constants.idleAction)
+            }
         }
     }
     

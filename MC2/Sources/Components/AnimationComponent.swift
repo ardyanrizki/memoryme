@@ -31,14 +31,31 @@ class AnimationComponent: GKComponent {
         fatalError(.initCoderNotImplemented)
     }
     
-    public func animate(for state: CharacterAnimationState, timePerFrame time: TimeInterval = 0.3, withKey key: String? = nil) {
+    public func animate(
+        for state: CharacterAnimationState,
+        timePerFrame time:
+        TimeInterval = 0.3,
+        withKey key: String? = nil,
+        isRepeatForever: Bool = true,
+        repeatCount: Int = 1,
+        completion: ((_ key: String?) -> Void)? = nil
+    ) {
         guard animationKey != key else { return }
         removeAnimation()
         guard let textures = characterVisualComponent?.textures[state], textures.count > 1 else { fatalError(.errorTextureNotFound) }
         animationKey = key ?? state.rawValue
         let animationAction = SKAction.animate(with: textures, timePerFrame: time, resize: true, restore: true)
-        let repeatedAnimation = SKAction.repeatForever(animationAction)
-        renderComponent.node.run(repeatedAnimation, withKey: key ?? state.rawValue)
+        let repeatedAnimation: SKAction
+        if isRepeatForever {
+            repeatedAnimation = SKAction.repeatForever(animationAction)
+        } else {
+            let mainAction = SKAction.repeat(animationAction, count: repeatCount)
+            let completionAction = SKAction.run {
+                completion?(self.animationKey)
+            }
+            repeatedAnimation = SKAction.sequence([mainAction, completionAction])
+        }
+        renderComponent.node.run(repeatedAnimation, withKey: animationKey!)
     }
     
     public func animate(withTextures textures: [SKTexture], timePerFrame time: TimeInterval = 0.3, withKey key: String) {
