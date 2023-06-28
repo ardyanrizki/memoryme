@@ -16,6 +16,9 @@ enum ItemTextureType: String, CaseIterable {
     case budding
     case partialBlossom
     case fullBlossom
+    case sketchy
+    case vague
+    case clear
 }
 
 class InteractableItem: GKEntity {

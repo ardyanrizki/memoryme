@@ -105,6 +105,9 @@ struct TextureResources {
     static let stool: TextureName = "stool_static"
     static let tableAndChairs: TextureName = "table-and-chairs_static"
     static let upperDoor: TextureName = "upper-door_normal"
+    static let upperDoorSketchy: TextureName = "upper-door_sketchy"
+    static let upperDoorVague: TextureName = "upper-door_vague"
+    static let upperDoorClear: TextureName = "upper-door_clear"
     static let wallPot: TextureName = "wall-pot_static"
     
     // MARK: - Rooms's backgrounds

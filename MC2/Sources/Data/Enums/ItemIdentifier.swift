@@ -243,7 +243,10 @@ enum ItemIdentifier: String, CaseIterable {
             ]
         case .topDoor:
             textures = [
-                .normal : SKTexture(imageNamed: TextureResources.upperDoor)
+                .normal : SKTexture(imageNamed: TextureResources.upperDoor),
+                .sketchy : SKTexture(imageNamed: TextureResources.upperDoorSketchy),
+                .vague : SKTexture(imageNamed: TextureResources.upperDoorVague),
+                .clear : SKTexture(imageNamed: TextureResources.upperDoorClear),
             ]
         case .lowerDoor:
             textures = [
