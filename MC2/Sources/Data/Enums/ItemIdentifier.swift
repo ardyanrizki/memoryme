@@ -25,7 +25,6 @@ enum ItemIdentifier: String, CaseIterable {
     
     // MARK: Items in MainRoom
     case vase = "vase"
-    case radio = "radio"
     
     // MARK: Items in Bedroom
     case bed = "bed"
@@ -42,11 +41,15 @@ enum ItemIdentifier: String, CaseIterable {
     case window = "window"
     
     //MARK: Items in Bar
-    case barIslandLeft = "barLeft"
-    case barIslandRight = "barRight"
+    case barIslandLeft = "barIslandLeft"
+    case barIslandRight = "barIslandRight"
     case radioBar = "radioBar"
     case stool = "stool"
+    case stool2 = "stool2"
+    case stool3 = "stool3"
     case tableAndChairs = "tableAndChairs"
+    case tableAndChairs2 = "tableAndChairs3"
+    case tableAndChairs3 = "tableAndChairs2"
     case upperDoor = "upperDoor"
     case wallPot = "wallPot"
     
@@ -166,7 +169,7 @@ enum ItemIdentifier: String, CaseIterable {
                 .tidy: SKTexture(imageNamed: TextureResources.windowTidy),
                 .messy: SKTexture(imageNamed: TextureResources.windowMessy)
             ]
-        
+            
         case .barIslandLeft:
             textures = [
                 .normal : SKTexture(imageNamed: TextureResources.barIslandLeft)
@@ -177,13 +180,29 @@ enum ItemIdentifier: String, CaseIterable {
             ]
         case .radioBar:
             textures = [
-                .normal : SKTexture(imageNamed: TextureResources.radio)
+                .normal : SKTexture(imageNamed: TextureResources.radioBar)
             ]
         case .stool:
             textures = [
                 .normal : SKTexture(imageNamed: TextureResources.stool)
             ]
+        case .stool2:
+            textures = [
+                .normal : SKTexture(imageNamed: TextureResources.stool)
+            ]
+        case .stool3:
+            textures = [
+                .normal : SKTexture(imageNamed: TextureResources.stool)
+            ]
         case .tableAndChairs:
+            textures = [
+                .normal : SKTexture(imageNamed: TextureResources.tableAndChairs)
+            ]
+        case .tableAndChairs2:
+            textures = [
+                .normal : SKTexture(imageNamed: TextureResources.tableAndChairs)
+            ]
+        case .tableAndChairs3:
             textures = [
                 .normal : SKTexture(imageNamed: TextureResources.tableAndChairs)
             ]
@@ -194,10 +213,6 @@ enum ItemIdentifier: String, CaseIterable {
         case .wallPot:
             textures = [
                 .normal : SKTexture(imageNamed: TextureResources.wallPot)
-            ]
-        case .radio:
-            textures = [
-                .normal : SKTexture(imageNamed: TextureResources.radio)
             ]
         }
         return textures
@@ -253,20 +268,26 @@ enum ItemIdentifier: String, CaseIterable {
         case .window:
             return nil
         case .barIslandLeft:
-            return nil
+            return CGSize(width: size.width, height: size.height * 0.6)
         case .barIslandRight:
-            return nil
+            return CGSize(width: size.width, height: size.height * 0.9)
         case .radioBar:
             return nil
         case .stool:
-            return nil
+            return CGSize(width: size.width, height: size.height * 0.6)
+        case .stool2:
+            return CGSize(width: size.width, height: size.height * 0.6)
+        case .stool3:
+            return CGSize(width: size.width, height: size.height * 0.6)
         case .tableAndChairs:
-            return nil
+            return CGSize(width: size.width, height: size.height * 0.6)
+        case .tableAndChairs2:
+            return CGSize(width: size.width, height: size.height * 0.6)
+        case .tableAndChairs3:
+            return CGSize(width: size.width, height: size.height * 0.6)
         case .upperDoor:
-            return nil
+            return CGSize(width: size.width, height: size.height)
         case .wallPot:
-            return nil
-        case .radio:
             return nil
         }
     }

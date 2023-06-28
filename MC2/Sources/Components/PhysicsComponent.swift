@@ -52,7 +52,6 @@ class PhysicsComponent: GKComponent {
                 node.physicsBody = SKPhysicsBody(rectangleOf: uniqueSize, center: CGPoint(x: 0, y: yPoint))
                 if node.name == "macbook" || node.name == "photoframe" {
                     node.zPosition = 4
-//                    node.anchorPoint = CGPoint(x: 0.5, y: -1)
                 } else {
                     node.zPosition = 20
                 }
@@ -60,7 +59,11 @@ class PhysicsComponent: GKComponent {
                 node.physicsBody = SKPhysicsBody(rectangleOf: size, center: CGPoint(x: 0, y: size.height / 2))
             } else {
                 node.physicsBody = SKPhysicsBody(rectangleOf: node.size)
-                node.zPosition = 2
+                if node.name == "radioBar"{
+                    node.zPosition = 25
+                } else {
+                    node.zPosition = 2                    
+                }
             }
             node.physicsBody?.categoryBitMask = PhysicsType.item.rawValue
             node.physicsBody?.collisionBitMask = PhysicsType.character.rawValue
