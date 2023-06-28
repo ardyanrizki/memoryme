@@ -163,6 +163,7 @@ class PlayableScene: SKScene {
                 }
                 guard let itemNode, let identifier = itemNode.identifier else { return }
                 stopPlayerWhenDidContact()
+                itemNode.isShowBubble = true
                 playerDidContact(with: identifier, node: itemNode)
             }
             
