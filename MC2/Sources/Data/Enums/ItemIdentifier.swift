@@ -138,7 +138,10 @@ enum ItemIdentifier: String, CaseIterable {
             ]
         case .vase:
             textures = [
-                .normal: SKTexture(imageNamed: TextureResources.vase)
+                .ripe: SKTexture(imageNamed: TextureResources.vaseRipe),
+                .budding: SKTexture(imageNamed: TextureResources.vaseBudding),
+                .partialBlossom: SKTexture(imageNamed: TextureResources.vasePartialBlossom),
+                .blossom: SKTexture(imageNamed: TextureResources.vaseBlossom)
             ]
         case .bed:
             textures = [

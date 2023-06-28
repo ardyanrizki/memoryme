@@ -23,7 +23,7 @@ class MainRoomScene: PlayableScene, PlayableSceneProtocol {
     
     override func didMove(to view: SKView) {
         super.didMove(to: view)
-        startOpeningEvent()
+        //startOpeningEvent()
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
