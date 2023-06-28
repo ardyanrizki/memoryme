@@ -248,7 +248,7 @@ enum ItemIdentifier: String, CaseIterable {
             ]
         case .sideDoor:
             textures = [
-                .normal : SKTexture(imageNamed: TextureResources.rightDoor)
+                .normal : SKTexture(imageNamed: TextureResources.sideDoor)
             ]
         }
         return textures
