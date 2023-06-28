@@ -95,4 +95,13 @@ struct TextureResources {
     // MARK: Title
     static let title: TextureName = "title"
     static let startButton: TextureName = "start-button"
+    
+    // MARK: Polaroid
+    static let polaroidBirthday: TextureName = "polaroid-birthday"
+    static let polaroidBoyfriend: TextureName = "polaroid-boyfriend"
+    static let polaroidBracelet: TextureName = "polaroid-bracelet"
+    static let polaroidChocolate: TextureName = "polaroid-chocolate"
+    static let polaroidFight: TextureName = "polaroid-fight"
+    static let polaroidFriend: TextureName = "polaroid-friend"
+    static let polaroidHappy: TextureName = "polaroid-happy"
 }
