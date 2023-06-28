@@ -98,7 +98,6 @@ class InputPasswordScene: SKScene{
     var deleteButton: SKSpriteNode!
     var textField: TextField!
     
-    
     override func didMove(to view: SKView) {//hanya dijalanin sekali pas awal scene
         //Nyari laptopNode dan dimasukin ke variabel
         let laptop = childNode(withName: "MacbookLogin")!
