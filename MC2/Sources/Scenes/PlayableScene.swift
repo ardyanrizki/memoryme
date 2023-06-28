@@ -13,6 +13,10 @@ protocol PlayableSceneProtocol {
     static func sharedScene(playerPosition: PositionIdentifier) -> T?
 }
 
+protocol SceneBlockerProtocol: AnyObject {
+    func isAllowToPresentScene(_ identifier: SceneChangeZoneIdentifier) -> Bool
+}
+
 class PlayableScene: SKScene {
     
     weak var sceneManager: SceneManagerProtocol?
@@ -44,15 +48,18 @@ class PlayableScene: SKScene {
         nil
     }()
     
+    var stateCentral: GameStateCentral?
+    
     /**
      Box to showing dialog or prompt.
      */
     var dialogBox: DialogBoxNode?
     
+    var sceneBlocker: SceneBlockerProtocol?
+    
     private var timeOnLastFrame: TimeInterval = 0
     
     func setup(playerPosition: PositionIdentifier) {
-        print(type(of: self) == TestScene.self, "<<")
         setupBackground()
         setupPositions()
         setupPlayer(at: playerPosition, from: positions)
@@ -130,7 +137,7 @@ class PlayableScene: SKScene {
     private func detectIntersectsAndChangeScene() {
         sceneChangeZones.forEach { zone in
             if player?.node?.intersects(zone) == true {
-                zone.moveScene(with: sceneManager)
+                zone.moveScene(with: sceneManager, sceneBlocker: sceneBlocker)
             }
         }
     }

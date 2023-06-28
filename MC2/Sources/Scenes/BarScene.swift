@@ -19,3 +19,24 @@ class BarScene: PlayableScene, PlayableSceneProtocol {
     }
     
 }
+
+// MARK: Scene's Events
+extension BarScene {
+    
+    func startPlayRadioEvent() {
+        
+    }
+    
+    func startRadioGame() {
+        
+    }
+    
+    func startTheStrangerSnapshots() {
+        
+    }
+    
+    func startTheBartenderEvent() {
+        
+    }
+    
+}

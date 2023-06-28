@@ -9,6 +9,11 @@ import SpriteKit
 
 enum ItemIdentifier: String, CaseIterable {
     // MARK: Items in Office
+    case topDoor = "topDoor"
+    case lowerDoor = "lowerDoor"
+    case sideDoor = "sideDoor"
+    
+    // MARK: Items in Office
     case laptop = "laptop"
     case vase = "vase"
     case radio = "radio"
@@ -169,6 +174,18 @@ enum ItemIdentifier: String, CaseIterable {
             textures = [
                 .normal : SKTexture(imageNamed: TextureResources.wallPot)
             ]
+        case .topDoor:
+            textures = [
+                .normal : SKTexture(imageNamed: TextureResources.topDoor)
+            ]
+        case .lowerDoor:
+            textures = [
+                .normal : SKTexture(imageNamed: TextureResources.lowerDoor)
+            ]
+        case .sideDoor:
+            textures = [
+                .normal : SKTexture(imageNamed: TextureResources.sideDoor)
+            ]
         }
         return textures
     }
@@ -219,6 +236,12 @@ enum ItemIdentifier: String, CaseIterable {
         case .upperDoor:
             return nil
         case .wallPot:
+            return nil
+        case .topDoor:
+            return nil
+        case .lowerDoor:
+            return nil
+        case .sideDoor:
             return nil
         }
     }

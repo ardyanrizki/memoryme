@@ -9,7 +9,6 @@ import SpriteKit
 import GameplayKit
 
 class Player: GKEntity {
-    static var textureSize = CGSize(width: 120.0, height: 120.0)
     
     var node: SKSpriteNode? {
         for case let component as RenderComponent in components {
@@ -52,10 +51,11 @@ class Player: GKEntity {
         }
     }
     
-    public func lay() {
+    public func lay(completion: @escaping () -> Void = { }) {
         for case let animationComponent as AnimationComponent in components {
             animationComponent.animate(for: .lay, timePerFrame: 0.6, withKey: AnimationState.lay.rawValue, isRepeatForever: false) { key in
                 self.animate(for: .idle)
+                completion()
             }
         }
     }

@@ -24,6 +24,7 @@ class GameViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         presentTitleScene()
+//        presentTestScene()
     }
 
     override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
