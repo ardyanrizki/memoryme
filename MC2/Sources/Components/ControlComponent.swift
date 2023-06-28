@@ -45,7 +45,7 @@ class ControlComponent: GKComponent {
         } else {
             // On target location
             if animationComponent?.animationKey == Constants.walkingAction {
-                 stopWalking()
+                stopWalking()
             }
         }
     }

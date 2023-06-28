@@ -17,7 +17,7 @@ class Player: GKEntity {
         return nil
     }
     
-    init(at position: CGPoint, textures: [AnimationState: [SKTexture]]? = nil) {
+    init(at position: CGPoint, textures: [CharacterAnimationState: [SKTexture]]? = nil) {
         super.init()
         
         let textureName = TextureResources.mainCharacter
@@ -25,7 +25,7 @@ class Player: GKEntity {
         let idleTextures = TextureResources.mainCharacterAtlasIdle.getAllTexturesFromAtlas()
         let walkTextures = TextureResources.mainCharacterAtlasWalk.getAllTexturesFromAtlas()
         let layTextures = TextureResources.mainCharacterAtlasLay.getAllTexturesFromAtlas()
-        var defaultTextures: [AnimationState: [SKTexture]] = [
+        var defaultTextures: [CharacterAnimationState: [SKTexture]] = [
             .walk: walkTextures,
             .idle: idleTextures,
             .lay: layTextures
@@ -36,7 +36,7 @@ class Player: GKEntity {
         
         addingComponents(name: textureName, position: position, textures: defaultTextures)
         
-        node?.zPosition = 2
+        node?.zPosition = 15
         
         animate(for: .idle)
     }
@@ -45,7 +45,7 @@ class Player: GKEntity {
         fatalError(.initCoderNotImplemented)
     }
     
-    public func animate(for state: AnimationState) {
+    public func animate(for state: CharacterAnimationState) {
         for case let animationComponent as AnimationComponent in components {
             animationComponent.animate(for: state, timePerFrame: 0.6, withKey: state.rawValue)
         }
@@ -53,7 +53,7 @@ class Player: GKEntity {
     
     public func lay(completion: @escaping () -> Void = { }) {
         for case let animationComponent as AnimationComponent in components {
-            animationComponent.animate(for: .lay, timePerFrame: 0.6, withKey: AnimationState.lay.rawValue, isRepeatForever: false) { key in
+            animationComponent.animate(for: .lay, timePerFrame: 0.6, withKey: CharacterAnimationState.lay.rawValue, isRepeatForever: false) { key in
                 self.animate(for: .idle)
                 completion()
             }
@@ -72,7 +72,7 @@ class Player: GKEntity {
         }
     }
     
-    private func addingComponents(name: TextureName, position: CGPoint, textures: [AnimationState: [SKTexture]]) {
+    private func addingComponents(name: TextureName, position: CGPoint, textures: [CharacterAnimationState: [SKTexture]]) {
         let renderComponent = RenderComponent(with: name, at: position)
         addComponent(renderComponent)
         

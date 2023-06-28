@@ -11,12 +11,12 @@ import GameplayKit
 
 class CharacterVisualComponent: GKComponent {
     
-    let textures: [AnimationState: [SKTexture]]
-    var state: AnimationState = .idle
+    let textures: [CharacterAnimationState: [SKTexture]]
+    var state: CharacterAnimationState = .idle
     
     let renderComponent: RenderComponent
     
-    init(textures: [AnimationState: [SKTexture]], renderComponent: RenderComponent) {
+    init(textures: [CharacterAnimationState: [SKTexture]], renderComponent: RenderComponent) {
         self.renderComponent = renderComponent
         self.textures = textures
         super.init()

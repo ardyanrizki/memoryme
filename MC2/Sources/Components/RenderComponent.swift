@@ -8,6 +8,7 @@
 import SpriteKit
 import GameplayKit
 
+
 class RenderComponent: GKComponent {
     
     let node: SKSpriteNode
@@ -16,6 +17,7 @@ class RenderComponent: GKComponent {
         let texture = name.getTexture()
         node = SKSpriteNode(texture: texture)
         node.position = position
+        
         super.init()
     }
     

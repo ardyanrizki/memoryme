@@ -14,8 +14,31 @@ class ItemNode: SKSpriteNode {
     
     var textureType: ItemTextureType?
     
-    func createInteractableItem() -> InteractableItem {
-        guard let textures else { fatalError(.errorTextureNotFound) }
-        return InteractableItem(withNode: self, textures: textures)
+    var bubbleDialog: InteractableItem?
+    
+    var isShowBubble: Bool = false {
+        didSet {
+            animateBubble(stop: !isShowBubble)
+        }
+    }
+    
+    func createInteractableItem(in scene: SKScene, withTextureType textureType: ItemTextureType?) -> InteractableItem {
+        guard let identifier, let node = identifier.createNode(in: scene, withTextureType: textureType) else { fatalError(.errorNodeNotFound) }
+        let textures = identifier.getTextures()
+        return InteractableItem(withNode: node, textures: textures)
+    }
+    
+    private func animateBubble(stop: Bool = false) {
+        if let component = bubbleDialog?.component(ofType: AnimationComponent.self) as? AnimationComponent {
+            bubbleDialog?.node?.zPosition = 20
+            if !stop {
+                bubbleDialog?.node?.alpha = 1
+                let atlasName = TextureResources.bubbleAtlasStatic
+                component.animate(withTextures: atlasName.getAllTexturesFromAtlas(), withKey: "animateBubble")
+            } else {
+                bubbleDialog?.node?.alpha = 0
+                component.removeAnimation()
+            }
+        }
     }
 }

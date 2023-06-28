@@ -17,9 +17,7 @@ class TestScene: PlayableScene, PlayableSceneProtocol {
         return scene
     }
     
-    override func playerDidIntersect(with itemIdentifier: ItemIdentifier) {}
-    
-    override func playerDidContact(with itemIdentifier: ItemIdentifier) {
+    override func playerDidContact(with itemIdentifier: ItemIdentifier, node: ItemNode) {
         if itemIdentifier == .vase {
             // Testing line for sequence dialog.
             dialogBox?.startSequence(dialogs: [
@@ -27,5 +25,9 @@ class TestScene: PlayableScene, PlayableSceneProtocol {
                 DialogResources.opening_2_officeDesk_alt1
             ], from: self)
         }
+    }
+    
+    override func playerDidIntersect(with itemIdentifier: ItemIdentifier, node: ItemNode) {
+        
     }
 }
