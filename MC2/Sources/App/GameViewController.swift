@@ -17,13 +17,15 @@ protocol SceneManagerProtocol: AnyObject {
     func presentHospitalRoomScene()
     func presentMGPasswordScene()
     func presentMGMatchingNumbersScene()
+    func presentMGPhotoAlbumScene()
 }
 
 class GameViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        presentTitleScene()
+//        presentTitleScene()
+        presentMGPhotoAlbumScene()
     }
 
     override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
@@ -101,6 +103,13 @@ extension GameViewController: SceneManagerProtocol {
     //Mini Game 2 - Matching Numbers
     func presentMGMatchingNumbersScene(){
         guard let scene = MatchingNumberScene(fileNamed: Constants.matchingNumberScene) else { return }
+        let fade = SKTransition.fade(withDuration: 0.5)
+        present(scene: scene, transition: fade)
+    }
+    
+    //Mini Game 3 - Drag and drop photos to album
+    func presentMGPhotoAlbumScene(){
+        guard let scene = PhotoAlbumGameScene(fileNamed: Constants.photoAlbumScene) else {return}
         let fade = SKTransition.fade(withDuration: 0.5)
         present(scene: scene, transition: fade)
     }
