@@ -10,7 +10,7 @@
 		2C0325DB2A3EDB2A005B8E0A /* CharacterVisualComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C0325DA2A3EDB2A005B8E0A /* CharacterVisualComponent.swift */; };
 		2C0325DC2A3EDB2A005B8E0A /* CharacterVisualComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C0325DA2A3EDB2A005B8E0A /* CharacterVisualComponent.swift */; };
 		2C0325DD2A3EDB2A005B8E0A /* CharacterVisualComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C0325DA2A3EDB2A005B8E0A /* CharacterVisualComponent.swift */; };
-		2C92028A2A4BF7B6004FB043 /* BedroomScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 2C9202892A4BF7B6004FB043 /* BedroomScene.sks */; };
+		2C92028C2A4BFAF8004FB043 /* BedroomScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 2C92028B2A4BFAF8004FB043 /* BedroomScene.sks */; };
 		3811E4CA2A4643DA00416B95 /* DialogResources.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3811E4C92A4643DA00416B95 /* DialogResources.swift */; };
 		3811E4CC2A4643E400416B95 /* TextureResources.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3811E4CB2A4643E400416B95 /* TextureResources.swift */; };
 		3811E4CE2A464E5A00416B95 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3811E4CD2A464E5A00416B95 /* Constants.swift */; };
@@ -113,7 +113,7 @@
 
 /* Begin PBXFileReference section */
 		2C0325DA2A3EDB2A005B8E0A /* CharacterVisualComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterVisualComponent.swift; sourceTree = "<group>"; };
-		2C9202892A4BF7B6004FB043 /* BedroomScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; name = BedroomScene.sks; path = ../../../../../../Downloads/BedroomScene.sks; sourceTree = "<group>"; };
+		2C92028B2A4BFAF8004FB043 /* BedroomScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = BedroomScene.sks; sourceTree = "<group>"; };
 		3811E4C92A4643DA00416B95 /* DialogResources.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DialogResources.swift; sourceTree = "<group>"; };
 		3811E4CB2A4643E400416B95 /* TextureResources.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextureResources.swift; sourceTree = "<group>"; };
 		3811E4CD2A464E5A00416B95 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -349,7 +349,7 @@
 		38763F852A41E744004129A6 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
-				2C9202892A4BF7B6004FB043 /* BedroomScene.sks */,
+				2C92028B2A4BFAF8004FB043 /* BedroomScene.sks */,
 				F618B3C92A4A811900358874 /* InputPasswordScene.sks */,
 				F618B3CA2A4A811900358874 /* MatchingNumberScene.sks */,
 				38763F812A41E720004129A6 /* TitleScene.sks */,
@@ -488,7 +488,7 @@
 				F618B3CB2A4A811900358874 /* InputPasswordScene.sks in Resources */,
 				38763F032A3AA7A8004129A6 /* MainRoomScene.sks in Resources */,
 				38763F0E2A3AA7AA004129A6 /* Assets.xcassets in Resources */,
-				2C92028A2A4BF7B6004FB043 /* BedroomScene.sks in Resources */,
+				2C92028C2A4BFAF8004FB043 /* BedroomScene.sks in Resources */,
 				38763F112A3AA7AA004129A6 /* LaunchScreen.storyboard in Resources */,
 				3811E4E72A475E7E00416B95 /* TestScene.sks in Resources */,
 				38763F672A3B71C3004129A6 /* BarScene.sks in Resources */,
