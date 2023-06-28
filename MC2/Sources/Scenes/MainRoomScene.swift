@@ -57,8 +57,12 @@ extension MainRoomScene {
     func startOpeningEvent() {
         touchEventsEnabled = false
         player?.lay(completion: {
-            self.dialogBox?.start(dialog: DialogResources.opening_1_solo_seq1, from: self)
-            self.touchEventsEnabled = true
+            self.dialogBox?.startSequence(dialogs: [
+                DialogResources.opening_1_solo_seq1,
+                DialogResources.opening_1_solo_seq2,
+            ], from: self, completion: {
+                self.touchEventsEnabled = true
+            })
         })
     }
     
