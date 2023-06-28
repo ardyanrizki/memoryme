@@ -60,7 +60,7 @@ struct TextureResources {
     static let vaseRipe: TextureName = "vase_ripe"
     static let vaseBudding: TextureName = "vase_budding"
     static let vasePartialBlossom: TextureName = "vase_partial-blossom"
-    static let vaseBlossom: TextureName = "vase_blossom"
+    static let vaseFullBlossom: TextureName = "vase_full-blossom"
     static let laptop: TextureName = "laptop_static"
     static let lowerDoor: TextureName = "lower-door_static"
     
