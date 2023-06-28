@@ -18,4 +18,18 @@ class BarScene: PlayableScene, PlayableSceneProtocol {
         return scene
     }
     
+    override func playerDidContact(with itemIdentifier: ItemIdentifier, node: ItemNode) {
+        
+        node.isShowBubble = true
+    }
+    
+    override func playerDidIntersect(with itemIdentifier: ItemIdentifier, node: ItemNode) {
+        if node.position.y < (player?.node?.position.y)! {
+            node.zPosition = 20
+        } else {
+            if node.zPosition > 10 {
+                node.zPosition = 10
+            }
+        }
+    }
 }

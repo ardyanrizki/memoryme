@@ -41,13 +41,18 @@ class InteractableItem: GKEntity {
         }
     }
     
-    init(withNode node: ItemNode, textures: [ItemTextureType: SKTexture]) {
+    init(withNode node: ItemNode, textures: [ItemTextureType: SKTexture], isAnimationable: Bool = false) {
         guard let firstTexture = textures.first else { fatalError(.errorTextureNotFound) }
         
         super.init()
-        addingComponents(node: node)
+        addingComponents(node: node, isAnimationable: isAnimationable)
         // Important! First texture always run for the first time as a default texture.
         node.texture = firstTexture.value
+        
+        if node.children.count > 0 {
+            guard let bubbleNode = node.childNode(withName: "bubble") as? ItemNode else { return }
+            node.bubbleDialog = InteractableItem(withNode: bubbleNode, textures: ItemIdentifier.bubble.getTextures(), isAnimationable: true)
+        }
     }
     
     init(withIdentifier identifier: ItemIdentifier, at point: CGPoint, in scene: SKScene) {
@@ -62,10 +67,18 @@ class InteractableItem: GKEntity {
         fatalError(.initCoderNotImplemented)
     }
     
-    private func addingComponents(node: ItemNode) {
+    private func addingComponents(node: ItemNode, isAnimationable: Bool = false) {
         let renderComponent = RenderComponent(node: node)
         let physicalComponent = PhysicsComponent(type: .item, renderComponent: renderComponent)
+        
         addComponent(renderComponent)
         addComponent(physicalComponent)
+        
+        if isAnimationable {
+            let animationComponent = AnimationComponent(renderComponent: renderComponent)
+            addComponent(animationComponent)
+        }
     }
+    
+    
 }

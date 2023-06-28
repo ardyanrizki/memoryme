@@ -33,11 +33,11 @@ class PhysicsComponent: GKComponent {
     
     private func setupPhysicsBody(for type: PhysicsType, withSize size: CGSize? = nil) {
         let node = renderComponent.node
-        node.anchorPoint = CGPoint(x: 0.5, y: 0)
         
         switch type {
         case .character:
             let physicsSize = CGSize(width: node.size.width / 1.2, height: node.size.height / 4)
+            node.anchorPoint = CGPoint(x: 0.5, y: 0)
             node.physicsBody = SKPhysicsBody(rectangleOf: physicsSize, center: CGPoint(x: 0, y: physicsSize.height / 2))
             node.physicsBody?.categoryBitMask = PhysicsType.character.rawValue
             node.physicsBody?.collisionBitMask = PhysicsType.item.rawValue | PhysicsType.wall.rawValue
@@ -45,21 +45,31 @@ class PhysicsComponent: GKComponent {
             node.physicsBody?.affectedByGravity = false
             node.physicsBody?.allowsRotation = false
             node.physicsBody?.isDynamic = true
-            node.zPosition = 1
+            node.zPosition = 15
         case .item:
             if let node = node as? ItemNode, let uniqueSize = node.identifier?.getSize() {
-                node.physicsBody = SKPhysicsBody(rectangleOf: uniqueSize, center: CGPoint(x: 0, y: uniqueSize.height / 2))
+                let yPoint = uniqueSize.height > node.size.height ? (abs(uniqueSize.height - node.size.height) / 2) : -(node.size.height / 2) + (uniqueSize.height / 2)
+                node.physicsBody = SKPhysicsBody(rectangleOf: uniqueSize, center: CGPoint(x: 0, y: yPoint))
+                if node.name == "macbook" || node.name == "photoframe" {
+                    node.zPosition = 4
+                } else {
+                    node.zPosition = 20
+                }
             } else if let size {
                 node.physicsBody = SKPhysicsBody(rectangleOf: size, center: CGPoint(x: 0, y: size.height / 2))
             } else {
                 node.physicsBody = SKPhysicsBody(rectangleOf: node.size)
+                if node.name == "radioBar"{
+                    node.zPosition = 25
+                } else {
+                    node.zPosition = 2                    
+                }
             }
             node.physicsBody?.categoryBitMask = PhysicsType.item.rawValue
             node.physicsBody?.collisionBitMask = PhysicsType.character.rawValue
             node.physicsBody?.contactTestBitMask = PhysicsType.item.rawValue
             node.physicsBody?.affectedByGravity = false
             node.physicsBody?.isDynamic = false
-            node.zPosition = 2
         case .wall:
             break
         case .sceneChangeZone:
