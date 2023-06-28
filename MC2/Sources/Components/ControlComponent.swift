@@ -45,8 +45,7 @@ class ControlComponent: GKComponent {
         } else {
             // On target location
             if animationComponent?.animationKey == Constants.walkingAction {
-                 targetLocation = nil
-                 self.animationComponent?.animate(for: .idle, timePerFrame: 0.6, withKey: Constants.idleAction)
+                stopWalking()
             }
         }
     }
@@ -58,6 +57,6 @@ class ControlComponent: GKComponent {
     
     public func stopWalking() {
         targetLocation = nil
-        animationComponent?.removeAnimation(withKey: Constants.walkingAction)
+        animationComponent?.animate(for: .idle, timePerFrame: 0.6, withKey: Constants.idleAction)
     }
 }

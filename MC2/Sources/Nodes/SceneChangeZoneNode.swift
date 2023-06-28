@@ -20,8 +20,11 @@ class SceneChangeZoneNode: SKSpriteNode {
         alpha = 0.5
     }
     
-    func moveScene(with sceneManager: SceneManagerProtocol?) {
+    func moveScene(with sceneManager: SceneManagerProtocol?, sceneBlocker: SceneBlockerProtocol? = nil) {
         guard let identifier else { return }
+        
+        if let sceneBlocker, sceneBlocker.isAllowToPresentScene(identifier) { return }
+        
         switch identifier {
         case .toOffice:
             sceneManager?.presentOfficeRoomScene()

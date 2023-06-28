@@ -20,7 +20,7 @@ class BarScene: PlayableScene, PlayableSceneProtocol {
     
     override func playerDidContact(with itemIdentifier: ItemIdentifier, node: ItemNode) {
         
-        node.isShowBubble = true
+        
     }
     
     override func playerDidIntersect(with itemIdentifier: ItemIdentifier, node: ItemNode) {
@@ -32,4 +32,25 @@ class BarScene: PlayableScene, PlayableSceneProtocol {
             }
         }
     }
+}
+
+// MARK: Scene's Events
+extension BarScene {
+    
+    func startPlayRadioEvent() {
+        
+    }
+    
+    func startRadioGame() {
+        
+    }
+    
+    func startTheStrangerSnapshots() {
+        
+    }
+    
+    func startTheBartenderEvent() {
+        
+    }
+    
 }

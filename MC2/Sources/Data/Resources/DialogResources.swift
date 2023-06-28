@@ -5,7 +5,7 @@
 //  Created by Muhammad Rizki Ardyan on 24/06/23.
 //
 
-import Foundation
+import SpriteKit
 
 struct Dialog {
     let name: String?
@@ -66,6 +66,29 @@ struct DialogResources {
     
     static let office_30_rejectPhone = Dialog(Constants.mainCharacterName, prompt: "I need to get this work done asap.")
     
+    // MARK: Bedroom Scene
+    static let bedroom_1_solo_seq1 = Dialog(Constants.mainCharacterName, prompt: "So messy, what happened to my bedroom..?")
+    static let bedroom_2_withPhoto_seq1 = Dialog(Constants.mainCharacterName, prompt: " Hmmm I need to put these photos to its places.")
+    static let bedroom_3_withPhoto_seq2 = Dialog(Constants.mainCharacterName, prompt: "Done! It looks tidy. Bet I got some cleaning skills now.")
+    static let bedroom_4_withPhoto_seq3 = Dialog(Constants.mainCharacterName, prompt: "Hmm, I’m having mixed feelings. What should I do with this album?")
+    // Alternative 1: Keep album.
+    static let bedroom_4_withPhoto_alt1_seq1 = Dialog(Constants.mainCharacterName, prompt: "Even though there are bad memories, there are still some of the good ones")
+    // Alternative 2: Burn album.
+    static let bedroom_4_withPhoto_alt2_seq2 = Dialog(Constants.mainCharacterName, prompt: "I have no need of these bad memories. Better burn them away.")
+    
+    // MARK: Bar Scene
+    static let bar_1_solo_seq1 = Dialog(Constants.mainCharacterName, prompt: "Oh.. this is the bar that I frequently visited")
+    static let bar_2_solo_seq1 = Dialog(Constants.mainCharacterName, prompt: "I need some music.")
+    static let bar_3_solo_seq1 = Dialog(Constants.mainCharacterName, prompt: "I remember this song")
+    // Alternative 1: Saved his life.
+    static let bar_4_bartender_alt1_seq1 = Dialog(Constants.bartenderName, prompt: "Here’s your regular drink. Every time I see you, I always remember that day when you saved my life.")
+    static let bar_5_bartender_alt1_seq2 = Dialog(Constants.mainCharacterName, prompt: "… I’m glad that I was able to pull you on time")
+    static let bar_6_bartender_alt1_seq3 = Dialog(Constants.bartenderName, prompt: "Haha, we should see each other more.")
+    static let bar_7_bartender_alt1_seq4 = Dialog(Constants.mainCharacterName, prompt: "Yeah, we should")
+    static let bar_8_bartender_alt1_seq5 = Dialog(Constants.bartenderName, prompt: "Can I have your number?")
+    static let bar_9_bartender_alt1_seq6 = Dialog(Constants.mainCharacterName, prompt: "Sure!")
+    static let bar_10_bartender_alt1_seq7 = Dialog(Constants.mainCharacterName, prompt: "I need some music.")
+    // Alternative 2: Not saved his life.
+    static let bar_11_bartender_alt2_seq1 = Dialog(Constants.mainCharacterName, prompt: "1 drink please")
+    static let bar_12_bartender_alt2_seq1 = Dialog(Constants.bartenderName, prompt: "1 drink coming up!")
 }
-
-

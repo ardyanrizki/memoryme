@@ -19,7 +19,11 @@ class TestScene: PlayableScene, PlayableSceneProtocol {
     
     override func playerDidContact(with itemIdentifier: ItemIdentifier, node: ItemNode) {
         if itemIdentifier == .vase {
-            dialogBox?.show(dialog: DialogResources.opening_8_vase, from: self)
+            // Testing line for sequence dialog.
+            dialogBox?.startSequence(dialogs: [
+                DialogResources.opening_1_solo_seq1,
+                DialogResources.opening_2_officeDesk_alt1
+            ], from: self)
         }
     }
     

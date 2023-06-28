@@ -24,8 +24,7 @@ class GameViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-//        presentTitleScene()
-        presentMGPhotoAlbumScene()
+        presentTitleScene()
     }
 
     override var supportedInterfaceOrientations: UIInterfaceOrientationMask {

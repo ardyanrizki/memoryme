@@ -13,6 +13,10 @@ protocol PlayableSceneProtocol {
     static func sharedScene(playerPosition: PositionIdentifier) -> T?
 }
 
+protocol SceneBlockerProtocol: AnyObject {
+    func isAllowToPresentScene(_ identifier: SceneChangeZoneIdentifier) -> Bool
+}
+
 class PlayableScene: SKScene {
     
     weak var sceneManager: SceneManagerProtocol?
@@ -44,15 +48,18 @@ class PlayableScene: SKScene {
         nil
     }()
     
+    var stateCentral: GameStateCentral?
+    
     /**
      Box to showing dialog or prompt.
      */
     var dialogBox: DialogBoxNode?
     
+    var sceneBlocker: SceneBlockerProtocol?
+    
     private var timeOnLastFrame: TimeInterval = 0
     
     func setup(playerPosition: PositionIdentifier) {
-        print(type(of: self) == TestScene.self, "<<")
         setupBackground()
         setupPositions()
         setupPlayer(at: playerPosition, from: positions)
@@ -130,7 +137,7 @@ class PlayableScene: SKScene {
     private func detectIntersectsAndChangeScene() {
         sceneChangeZones.forEach { zone in
             if player?.node?.intersects(zone) == true {
-                zone.moveScene(with: sceneManager)
+                zone.moveScene(with: sceneManager, sceneBlocker: sceneBlocker)
             }
         }
     }
@@ -163,6 +170,7 @@ class PlayableScene: SKScene {
                 }
                 guard let itemNode, let identifier = itemNode.identifier else { return }
                 stopPlayerWhenDidContact()
+                itemNode.isShowBubble = true
                 playerDidContact(with: identifier, node: itemNode)
             }
             
@@ -200,9 +208,11 @@ class PlayableScene: SKScene {
      Search for all `ItemNode`s in scene.
      */
     private func findAllItemNodesInScene() -> [ItemNode] {
-        return ItemIdentifier.allCases.compactMap { identifier in
-            identifier.getNode(from: self, withTextureType: nil)
+        var result = [ItemNode]()
+         ItemIdentifier.allCases.forEach { identifier in
+             result.append(contentsOf: identifier.getAllNodes(from: self))
         }
+        return result
     }
     
     func touchDown(atPoint pos : CGPoint) {}

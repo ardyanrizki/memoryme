@@ -50,3 +50,23 @@ class OfficeRoomScene: PlayableScene, PlayableSceneProtocol {
     }
     
 }
+
+// MARK: Scene's Events
+extension OfficeRoomScene {
+    
+    func startMomsCallEvent() {
+        
+    }
+    
+    func startAngryManagerSnapshots() {
+        
+    }
+    
+    func startInputPinGame() {
+        
+    }
+    
+    func startMatchNumberGame() {
+        
+    }
+}
