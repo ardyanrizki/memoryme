@@ -19,14 +19,19 @@ class OfficeRoomScene: PlayableScene, PlayableSceneProtocol {
     }
     
     override func playerDidContact(with itemIdentifier: ItemIdentifier, node: ItemNode) {
-        if itemIdentifier == .vase {
-            dialogBox?.show(dialog: DialogResources.opening_8_vase, from: self)
-        }
         
         node.isShowBubble = true
     }
     
     override func playerDidIntersect(with itemIdentifier: ItemIdentifier, node: ItemNode) {
+        let itemContacted = childNode(withName: itemIdentifier.rawValue)
+        if node.position.y < (player?.node?.position.y)! {
+            node.zPosition = 20
+        } else {
+            if node.zPosition > 10 {
+                node.zPosition = 10
+            }
+        }
         
     }
     
