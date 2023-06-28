@@ -8,7 +8,7 @@
 import SpriteKit
 import GameplayKit
 
-enum ItemTextureType {
+enum ItemTextureType: String, CaseIterable {
     case normal
     case tidy
     case messy
@@ -56,7 +56,7 @@ class InteractableItem: GKEntity {
     }
     
     init(withIdentifier identifier: ItemIdentifier, at point: CGPoint, in scene: SKScene) {
-        guard let node = identifier.getNode(from: scene, withTextureType: nil) else {
+        guard let node = identifier.createNode(in: scene, withTextureType: nil) else {
             fatalError(.errorNodeNotFound)
         }
         super.init()
@@ -79,6 +79,4 @@ class InteractableItem: GKEntity {
             addComponent(animationComponent)
         }
     }
-    
-    
 }

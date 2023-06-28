@@ -19,3 +19,20 @@ class BedroomScene: PlayableScene, PlayableSceneProtocol {
     }
     
 }
+
+// MARK: Scene's Events
+extension BedroomScene {
+    
+    func startSeeingAlbumEvent() {
+        
+    }
+    
+    func startPhotoAlbumGame() {
+        
+    }
+    
+    func changeRoomScenery() {
+        
+    }
+    
+}

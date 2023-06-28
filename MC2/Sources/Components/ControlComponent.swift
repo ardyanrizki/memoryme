@@ -57,6 +57,6 @@ class ControlComponent: GKComponent {
     
     public func stopWalking() {
         targetLocation = nil
-        self.animationComponent?.animate(for: .idle, timePerFrame: 0.6, withKey: Constants.idleAction)
+        animationComponent?.animate(for: .idle, timePerFrame: 0.6, withKey: Constants.idleAction)
     }
 }

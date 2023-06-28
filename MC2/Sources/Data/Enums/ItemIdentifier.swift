@@ -12,6 +12,11 @@ enum ItemIdentifier: String, CaseIterable {
     case bubble = "bubble"
     
     // MARK: Items in Office
+    case topDoor = "topDoor"
+    case lowerDoor = "lowerDoor"
+    case sideDoor = "sideDoor"
+    
+    // MARK: Items in Office
     case macbook = "macbook"
     case photoframe = "photoframe"
     case bookshelfOffice = "bookshelfOffice"
@@ -21,7 +26,6 @@ enum ItemIdentifier: String, CaseIterable {
     case bossDesk = "bossDesk"
     case officeChair = "officeChair"
     case officeChairFlipped = "officeChairFlipped"
-    
     
     // MARK: Items in MainRoom
     case vase = "vase"
@@ -53,7 +57,27 @@ enum ItemIdentifier: String, CaseIterable {
     case upperDoor = "upperDoor"
     case wallPot = "wallPot"
     
-    func getNode(from scene: SKScene, withTextureType textureType: ItemTextureType?, zPosition: CGFloat = 1) -> ItemNode? {
+    func getAllNodes(from scene: SKScene, zPosition: CGFloat = 1) -> [ItemNode] {
+        var nodes = [ItemNode]()
+        scene.children.forEach { node in
+            guard let nodeName = node.name, nodeName.contains(self.rawValue) else { return }
+            let splittedStr = nodeName.splitIdentifer()
+            guard splittedStr.first(where: { $0 == self.rawValue }) != nil else { return }
+            let textureType = splittedStr.compactMap { str in
+                ItemTextureType.allCases.first(where: { $0.rawValue == str })
+            }.first
+            guard let node = scene.childNode(withName: nodeName) as? ItemNode else { return }
+            node.identifier = self
+            node.textures = getTextures()
+            node.textureType = textureType ?? getTextures().first?.key
+            node.texture = getTextures()[node.textureType ?? getTextures().first?.key ?? .normal]
+            node.zPosition = zPosition
+            nodes.append(node)
+        }
+        return nodes
+    }
+    
+    func createNode(in scene: SKScene, withTextureType textureType: ItemTextureType?, zPosition: CGFloat = 1) -> ItemNode? {
         let node = scene.childNode(withName: self.rawValue) as? ItemNode
         node?.identifier = self
         node?.textures = getTextures()
@@ -118,7 +142,7 @@ enum ItemIdentifier: String, CaseIterable {
             ]
         case .bed:
             textures = [
-                .tidy: SKTexture(imageNamed: TextureResources.bedMessy),
+                .tidy: SKTexture(imageNamed: TextureResources.bedTidy),
                 .messy: SKTexture(imageNamed: TextureResources.bedMessy)
             ]
         case .book:
@@ -214,6 +238,18 @@ enum ItemIdentifier: String, CaseIterable {
             textures = [
                 .normal : SKTexture(imageNamed: TextureResources.wallPot)
             ]
+        case .topDoor:
+            textures = [
+                .normal : SKTexture(imageNamed: TextureResources.upperDoor)
+            ]
+        case .lowerDoor:
+            textures = [
+                .normal : SKTexture(imageNamed: TextureResources.lowerDoor)
+            ]
+        case .sideDoor:
+            textures = [
+                .normal : SKTexture(imageNamed: TextureResources.rightDoor)
+            ]
         }
         return textures
     }
@@ -244,7 +280,7 @@ enum ItemIdentifier: String, CaseIterable {
         case .vase:
             return nil
         case .bed:
-            return nil
+            return CGSize(width: size.width, height: size.height * 0.8)
         case .book:
             return nil
         case .bookshelf:
@@ -288,6 +324,12 @@ enum ItemIdentifier: String, CaseIterable {
         case .upperDoor:
             return CGSize(width: size.width, height: size.height)
         case .wallPot:
+            return nil
+        case .topDoor:
+            return nil
+        case .lowerDoor:
+            return nil
+        case .sideDoor:
             return nil
         }
     }

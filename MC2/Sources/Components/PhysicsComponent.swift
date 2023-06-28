@@ -36,6 +36,7 @@ class PhysicsComponent: GKComponent {
         
         switch type {
         case .character:
+            node.anchorPoint = CGPoint(x: 0.5, y: 0)
             let physicsSize = CGSize(width: node.size.width / 1.2, height: node.size.height / 4)
             node.anchorPoint = CGPoint(x: 0.5, y: 0)
             node.physicsBody = SKPhysicsBody(rectangleOf: physicsSize, center: CGPoint(x: 0, y: physicsSize.height / 2))
