@@ -72,9 +72,9 @@ struct TextureResources {
     static let officeDeskBehind: TextureName = "office-desk-behind_static"
     static let officeDeskFront: TextureName = "office-desk-front_static"
     static let whiteboard: TextureName = "whiteboard_static"
-    
     static let macbook: TextureName = "macbook"
     static let photoframe: TextureName = "photoframe"
+    static let familyPhotoFrame: TextureName = "family-photo-frame"
     
     // Items in Bedroom
     // - Messy
