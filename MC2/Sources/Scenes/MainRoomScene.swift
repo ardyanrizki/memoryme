@@ -29,6 +29,27 @@ class MainRoomScene: PlayableScene, PlayableSceneProtocol {
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         guard touchEventsEnabled else { return }
         
+        guard let touch = touches.first else { return }
+        
+        let touchLocation = touch.location(in: self)
+        let touchedNode = self.nodes(at: touchLocation).first
+        
+        if touchedNode!.name == ItemIdentifier.bubble.rawValue {
+            // Indicate touched node does not have any parent
+            guard let parentNode = touchedNode?.parent else {
+                return
+            }
+            
+            switch(parentNode.name) {
+            case ItemIdentifier.vase.rawValue:
+                self.dialogBox?.start(dialog: DialogResources.opening_8_vase, from: self)
+                break
+                
+            default:
+                break
+            }
+        }
+        
         super.touchesBegan(touches, with: event)
     }
     
