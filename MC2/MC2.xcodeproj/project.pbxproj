@@ -10,6 +10,15 @@
 		2C0325DB2A3EDB2A005B8E0A /* CharacterVisualComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C0325DA2A3EDB2A005B8E0A /* CharacterVisualComponent.swift */; };
 		2C0325DC2A3EDB2A005B8E0A /* CharacterVisualComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C0325DA2A3EDB2A005B8E0A /* CharacterVisualComponent.swift */; };
 		2C0325DD2A3EDB2A005B8E0A /* CharacterVisualComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C0325DA2A3EDB2A005B8E0A /* CharacterVisualComponent.swift */; };
+		2C59F6082A4C80090028A035 /* cutscene-bar.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2C59F5FE2A4C80090028A035 /* cutscene-bar.mp3 */; };
+		2C59F6092A4C80090028A035 /* cutscene-office.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2C59F5FF2A4C80090028A035 /* cutscene-office.mp3 */; };
+		2C59F60A2A4C80090028A035 /* ambience.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2C59F6002A4C80090028A035 /* ambience.mp3 */; };
+		2C59F60B2A4C80090028A035 /* cutscene-bedroom.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2C59F6012A4C80090028A035 /* cutscene-bedroom.mp3 */; };
+		2C59F60C2A4C80090028A035 /* keyboard-click.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2C59F6032A4C80090028A035 /* keyboard-click.mp3 */; };
+		2C59F60D2A4C80090028A035 /* burn.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2C59F6042A4C80090028A035 /* burn.mp3 */; };
+		2C59F60E2A4C80090028A035 /* lighter.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2C59F6052A4C80090028A035 /* lighter.mp3 */; };
+		2C59F60F2A4C80090028A035 /* truck-horn.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2C59F6062A4C80090028A035 /* truck-horn.mp3 */; };
+		2C59F6102A4C80090028A035 /* book-page.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2C59F6072A4C80090028A035 /* book-page.mp3 */; };
 		2C92028C2A4BFAF8004FB043 /* BedroomScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 2C92028B2A4BFAF8004FB043 /* BedroomScene.sks */; };
 		3811E4CA2A4643DA00416B95 /* DialogResources.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3811E4C92A4643DA00416B95 /* DialogResources.swift */; };
 		3811E4CC2A4643E400416B95 /* TextureResources.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3811E4CB2A4643E400416B95 /* TextureResources.swift */; };
@@ -114,6 +123,15 @@
 
 /* Begin PBXFileReference section */
 		2C0325DA2A3EDB2A005B8E0A /* CharacterVisualComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterVisualComponent.swift; sourceTree = "<group>"; };
+		2C59F5FE2A4C80090028A035 /* cutscene-bar.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "cutscene-bar.mp3"; sourceTree = "<group>"; };
+		2C59F5FF2A4C80090028A035 /* cutscene-office.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "cutscene-office.mp3"; sourceTree = "<group>"; };
+		2C59F6002A4C80090028A035 /* ambience.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = ambience.mp3; sourceTree = "<group>"; };
+		2C59F6012A4C80090028A035 /* cutscene-bedroom.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "cutscene-bedroom.mp3"; sourceTree = "<group>"; };
+		2C59F6032A4C80090028A035 /* keyboard-click.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "keyboard-click.mp3"; sourceTree = "<group>"; };
+		2C59F6042A4C80090028A035 /* burn.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = burn.mp3; sourceTree = "<group>"; };
+		2C59F6052A4C80090028A035 /* lighter.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = lighter.mp3; sourceTree = "<group>"; };
+		2C59F6062A4C80090028A035 /* truck-horn.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "truck-horn.mp3"; sourceTree = "<group>"; };
+		2C59F6072A4C80090028A035 /* book-page.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "book-page.mp3"; sourceTree = "<group>"; };
 		2C92028B2A4BFAF8004FB043 /* BedroomScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = BedroomScene.sks; sourceTree = "<group>"; };
 		3811E4C92A4643DA00416B95 /* DialogResources.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DialogResources.swift; sourceTree = "<group>"; };
 		3811E4CB2A4643E400416B95 /* TextureResources.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextureResources.swift; sourceTree = "<group>"; };
@@ -196,6 +214,38 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2C59F5FC2A4C80010028A035 /* Sounds */ = {
+			isa = PBXGroup;
+			children = (
+				2C59F5FD2A4C80090028A035 /* Bgm */,
+				2C59F6022A4C80090028A035 /* Sfx */,
+			);
+			path = Sounds;
+			sourceTree = "<group>";
+		};
+		2C59F5FD2A4C80090028A035 /* Bgm */ = {
+			isa = PBXGroup;
+			children = (
+				2C59F5FE2A4C80090028A035 /* cutscene-bar.mp3 */,
+				2C59F5FF2A4C80090028A035 /* cutscene-office.mp3 */,
+				2C59F6002A4C80090028A035 /* ambience.mp3 */,
+				2C59F6012A4C80090028A035 /* cutscene-bedroom.mp3 */,
+			);
+			path = Bgm;
+			sourceTree = "<group>";
+		};
+		2C59F6022A4C80090028A035 /* Sfx */ = {
+			isa = PBXGroup;
+			children = (
+				2C59F6032A4C80090028A035 /* keyboard-click.mp3 */,
+				2C59F6042A4C80090028A035 /* burn.mp3 */,
+				2C59F6052A4C80090028A035 /* lighter.mp3 */,
+				2C59F6062A4C80090028A035 /* truck-horn.mp3 */,
+				2C59F6072A4C80090028A035 /* book-page.mp3 */,
+			);
+			path = Sfx;
+			sourceTree = "<group>";
+		};
 		3811E4C82A4643C800416B95 /* Data */ = {
 			isa = PBXGroup;
 			children = (
@@ -334,6 +384,7 @@
 		38763F362A3AA806004129A6 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				2C59F5FC2A4C80010028A035 /* Sounds */,
 				38763F0D2A3AA7AA004129A6 /* Assets.xcassets */,
 				38763F852A41E744004129A6 /* Scenes */,
 			);
@@ -494,16 +545,25 @@
 				F618B3CB2A4A811900358874 /* InputPasswordScene.sks in Resources */,
 				38763F0E2A3AA7AA004129A6 /* Assets.xcassets in Resources */,
 				2C92028C2A4BFAF8004FB043 /* BedroomScene.sks in Resources */,
+				2C59F60E2A4C80090028A035 /* lighter.mp3 in Resources */,
+				2C59F60B2A4C80090028A035 /* cutscene-bedroom.mp3 in Resources */,
 				38763F112A3AA7AA004129A6 /* LaunchScreen.storyboard in Resources */,
 				3811E4E72A475E7E00416B95 /* TestScene.sks in Resources */,
+				2C59F6102A4C80090028A035 /* book-page.mp3 in Resources */,
+				2C59F6082A4C80090028A035 /* cutscene-bar.mp3 in Resources */,
+				2C59F60C2A4C80090028A035 /* keyboard-click.mp3 in Resources */,
 				389893322A4C2AE900492F28 /* TitleScene.sks in Resources */,
 				38763F672A3B71C3004129A6 /* BarScene.sks in Resources */,
 				F618B3D82A4C058A00358874 /* PhotoAlbumGameScene.sks in Resources */,
 				38763F8B2A42DAA3004129A6 /* HospitalRoomScene.sks in Resources */,
+				2C59F60F2A4C80090028A035 /* truck-horn.mp3 in Resources */,
 				389893312A4C2AE900492F28 /* MainRoomScene.sks in Resources */,
 				38763F572A3B7127004129A6 /* OfficeRoomScene.sks in Resources */,
 				F618B3CC2A4A811900358874 /* MatchingNumberScene.sks in Resources */,
 				8C56D9492A43CFE40076283B /* Scribble-Regular.otf in Resources */,
+				2C59F60A2A4C80090028A035 /* ambience.mp3 in Resources */,
+				2C59F60D2A4C80090028A035 /* burn.mp3 in Resources */,
+				2C59F6092A4C80090028A035 /* cutscene-office.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

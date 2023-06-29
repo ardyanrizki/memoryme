@@ -139,7 +139,10 @@ enum ItemIdentifier: String, CaseIterable {
             ]
         case .vase:
             textures = [
-                .normal: SKTexture(imageNamed: TextureResources.vase)
+                .ripe: SKTexture(imageNamed: TextureResources.vaseRipe),
+                .budding: SKTexture(imageNamed: TextureResources.vaseBudding),
+                .partialBlossom: SKTexture(imageNamed: TextureResources.vasePartialBlossom),
+                .fullBlossom: SKTexture(imageNamed: TextureResources.vaseFullBlossom)
             ]
         case .bed:
             textures = [
@@ -241,7 +244,10 @@ enum ItemIdentifier: String, CaseIterable {
             ]
         case .topDoor:
             textures = [
-                .normal : SKTexture(imageNamed: TextureResources.upperDoor)
+                .normal : SKTexture(imageNamed: TextureResources.upperDoor),
+                .sketchy : SKTexture(imageNamed: TextureResources.upperDoorSketchy),
+                .vague : SKTexture(imageNamed: TextureResources.upperDoorVague),
+                .clear : SKTexture(imageNamed: TextureResources.upperDoorClear),
             ]
         case .lowerDoor:
             textures = [
@@ -249,7 +255,7 @@ enum ItemIdentifier: String, CaseIterable {
             ]
         case .sideDoor:
             textures = [
-                .normal : SKTexture(imageNamed: TextureResources.rightDoor)
+                .normal : SKTexture(imageNamed: TextureResources.sideDoor)
             ]
         }
         return textures
