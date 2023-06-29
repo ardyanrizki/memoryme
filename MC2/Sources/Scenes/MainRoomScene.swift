@@ -59,7 +59,10 @@ extension MainRoomScene {
         if gameState.getState(key: .sceneActivity) == .gameEventValue(.opening) {
             touchEventsEnabled = false
             player?.lay(completion: {
-                self.dialogBox?.start(dialog: DialogResources.opening_1_solo_seq1, from: self)
+                self.dialogBox?.startSequence(dialogs: [
+                    DialogResources.opening_1_solo_seq1,
+                    DialogResources.opening_1_solo_seq2
+                ], from: self)
                 self.touchEventsEnabled = true
             })
             gameState.setState(key: .sceneActivity, value: .gameEventValue(.exploring))
