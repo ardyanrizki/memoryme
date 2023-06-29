@@ -18,6 +18,7 @@ protocol SceneManagerProtocol: AnyObject {
     func presentMGPasswordScene()
     func presentMGMatchingNumbersScene()
     func presentMGPhotoAlbumScene()
+    func presentMGRadioScene()
 }
 
 class GameViewController: UIViewController {
@@ -26,8 +27,10 @@ class GameViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+//        presentTitleScene()
+//        presentMGPhotoAlbumScene()
+        presentMGRadioScene()
         setupGameState()
-        presentTitleScene()
     }
 
     override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
@@ -123,6 +126,13 @@ extension GameViewController: SceneManagerProtocol {
     //Mini Game 3 - Drag and drop photos to album
     func presentMGPhotoAlbumScene(){
         guard let scene = PhotoAlbumGameScene(fileNamed: Constants.photoAlbumScene) else {return}
+        let fade = SKTransition.fade(withDuration: 0.5)
+        present(scene: scene, transition: fade)
+    }
+    
+    //Mini Game 4 - Radio Scene
+    func presentMGRadioScene(){
+        guard let scene = RadioScene(fileNamed: Constants.radioScene) else {return}
         let fade = SKTransition.fade(withDuration: 0.5)
         present(scene: scene, transition: fade)
     }
