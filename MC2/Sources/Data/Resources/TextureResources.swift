@@ -64,7 +64,7 @@ struct TextureResources {
     static let laptop: TextureName = "laptop_static"
     static let lowerDoor: TextureName = "lower-door_static"
     
-    // MARK: Items in Office
+    // Items in Office
     static let bookshelf: TextureName = "bookshelf_static"
     static let bossDesk: TextureName = "boss-desk_static"
     static let officeChairFlipped: TextureName = "office-chair-flipped_static"

@@ -53,4 +53,10 @@ extension BarScene {
         
     }
     
+    // State update according game event.
+    func updateSaveStrangerEventState(strangerSaved: Bool) {
+        guard let gameState else { return }
+        gameState.setState(key: .strangerSaved, value: .boolValue(strangerSaved))
+    }
+    
 }

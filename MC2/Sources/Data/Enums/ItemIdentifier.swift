@@ -60,14 +60,15 @@ enum ItemIdentifier: String, CaseIterable {
     func getAllNodes(from scene: SKScene, zPosition: CGFloat = 1) -> [ItemNode] {
         var nodes = [ItemNode]()
         scene.children.forEach { node in
-            guard let nodeName = node.name, nodeName.contains(self.rawValue) else { return }
-            let splittedStr = nodeName.splitIdentifer()
-            guard splittedStr.first(where: { $0 == self.rawValue }) != nil else { return }
+            guard let nodeRawName = node.name, nodeRawName.contains(self.rawValue) else { return }
+            let splittedStr = nodeRawName.splitIdentifer()
+            guard let nodeName = splittedStr.first(where: { $0 == self.rawValue }) else { return }
             let textureType = splittedStr.compactMap { str in
                 ItemTextureType.allCases.first(where: { $0.rawValue == str })
             }.first
-            guard let node = scene.childNode(withName: nodeName) as? ItemNode else { return }
+            guard let node = scene.childNode(withName: nodeRawName) as? ItemNode else { return }
             node.identifier = self
+            node.name = String(nodeName)
             node.textures = getTextures()
             node.textureType = textureType ?? getTextures().first?.key
             node.texture = getTextures()[node.textureType ?? getTextures().first?.key ?? .normal]
