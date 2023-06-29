@@ -48,7 +48,7 @@ class PlayableScene: SKScene {
         nil
     }()
     
-    var stateCentral: GameStateCentral?
+    weak var gameState: GameState?
     
     /**
      Box to showing dialog or prompt.
@@ -150,6 +150,13 @@ class PlayableScene: SKScene {
             if let itemNode = item.node,
                player?.node?.intersects(itemNode) == true,
                let itemIdentifier = itemNode.identifier {
+                if itemNode.position.y < (player?.node?.position.y)! {
+                    itemNode.zPosition = 20
+                } else {
+                    if itemNode.zPosition > 10 {
+                        itemNode.zPosition = 10
+                    }
+                }
                 playerDidIntersect(with: itemIdentifier, node: itemNode)
             }
         }
@@ -209,12 +216,13 @@ class PlayableScene: SKScene {
      */
     private func findAllItemNodesInScene() -> [ItemNode] {
         var result = [ItemNode]()
-         ItemIdentifier.allCases.forEach { identifier in
-             result.append(contentsOf: identifier.getAllNodes(from: self))
+        ItemIdentifier.allCases.forEach { identifier in
+            result.append(contentsOf: identifier.getAllNodes(from: self))
         }
         return result
     }
     
+    // MARK: Overrideable Methods
     func touchDown(atPoint pos : CGPoint) {}
     
     func touchMoved(toPoint pos : CGPoint) {}

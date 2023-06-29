@@ -23,7 +23,7 @@ class MainRoomScene: PlayableScene, PlayableSceneProtocol {
     
     override func didMove(to view: SKView) {
         super.didMove(to: view)
-        startOpeningEvent()
+        startOpeningEventIfNeeded()
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -54,28 +54,91 @@ class MainRoomScene: PlayableScene, PlayableSceneProtocol {
 // MARK: Scene's Events
 extension MainRoomScene {
     
-    func startOpeningEvent() {
-        touchEventsEnabled = false
-        player?.lay(completion: {
-            self.dialogBox?.start(dialog: DialogResources.opening_1_solo_seq1, from: self)
-            self.touchEventsEnabled = true
-        })
+    func startOpeningEventIfNeeded() {
+        guard let gameState else { return }
+        if gameState.getState(key: .sceneActivity) == .gameEventValue(.opening) {
+            touchEventsEnabled = false
+            player?.lay(completion: {
+                self.dialogBox?.start(dialog: DialogResources.opening_1_solo_seq1, from: self)
+                self.touchEventsEnabled = true
+            })
+            gameState.setState(key: .sceneActivity, value: .gameEventValue(.exploring))
+        }
     }
     
-    func changeRoomSceneryAccordingCallEvent(isAccepted: Bool) {
+    // State updates according game event.
+    func changeRoomSceneryAccordingCallEvent() {
+        guard let gameState else { return }
         // If accepted, show opened frame. else show closed
+        if gameState.getState(key: .momsCallAccepted) == .boolValue(true) {
+            
+        } else {
+            
+        }
     }
     
-    func changeRoomSceneryAccordingPhotoAlbumEvent(isKept: Bool) {
+    // State updates according game event.
+    func changeRoomSceneryAccordingPhotoAlbumEvent() {
+        guard let gameState else { return }
         // If kept, show album in desk. else show broom
+        if gameState.getState(key: .friendsPhotosKept) == .boolValue(true) {
+            
+        } else {
+            
+        }
     }
     
-    func changeVase(stage: Int) {
+    // State updates according game event.
+    func changeVase() {
+        guard let gameState else { return }
         // Change base change stage: 1...3
+        let stage = gameState.getStates(of: [
+            .momsCallAccepted,
+            .friendsPhotosKept,
+            .strangerSaved
+        ]).count
+        
+        switch stage {
+        case 1:
+            break
+        case 2:
+            break
+        case 3:
+            break
+        default:
+            break
+        }
     }
     
-    func changeDoor(stage: Int) {
+    // State updates according game event.
+    func changeDoor() {
+        guard let gameState else { return }
         // Change base change stage: 1...3
+        let stage = gameState.getStates(of: [
+            .momsCallAccepted,
+            .friendsPhotosKept,
+            .strangerSaved
+        ]).count
+        
+        switch stage {
+        case 1:
+            break
+        case 2:
+            break
+        case 3:
+            break
+        default:
+            break
+        }
+    }
+    
+}
+
+// MARK: GameStateCentralDelegate
+extension MainRoomScene: GameStateCentralDelegate {
+    
+    func didUpdate(_ variable: StateKey?, value: StateValue?) {
+        // Use this function if need to trigger action everytime any state changed.
     }
     
 }

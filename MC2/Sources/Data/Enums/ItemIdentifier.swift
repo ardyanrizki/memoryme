@@ -60,14 +60,15 @@ enum ItemIdentifier: String, CaseIterable {
     func getAllNodes(from scene: SKScene, zPosition: CGFloat = 1) -> [ItemNode] {
         var nodes = [ItemNode]()
         scene.children.forEach { node in
-            guard let nodeName = node.name, nodeName.contains(self.rawValue) else { return }
-            let splittedStr = nodeName.splitIdentifer()
-            guard splittedStr.first(where: { $0 == self.rawValue }) != nil else { return }
+            guard let nodeRawName = node.name, nodeRawName.contains(self.rawValue) else { return }
+            let splittedStr = nodeRawName.splitIdentifer()
+            guard let nodeName = splittedStr.first(where: { $0 == self.rawValue }) else { return }
             let textureType = splittedStr.compactMap { str in
                 ItemTextureType.allCases.first(where: { $0.rawValue == str })
             }.first
-            guard let node = scene.childNode(withName: nodeName) as? ItemNode else { return }
+            guard let node = scene.childNode(withName: nodeRawName) as? ItemNode else { return }
             node.identifier = self
+            node.name = String(nodeName)
             node.textures = getTextures()
             node.textureType = textureType ?? getTextures().first?.key
             node.texture = getTextures()[node.textureType ?? getTextures().first?.key ?? .normal]
@@ -138,7 +139,10 @@ enum ItemIdentifier: String, CaseIterable {
             ]
         case .vase:
             textures = [
-                .normal: SKTexture(imageNamed: TextureResources.vase)
+                .ripe: SKTexture(imageNamed: TextureResources.vaseRipe),
+                .budding: SKTexture(imageNamed: TextureResources.vaseBudding),
+                .partialBlossom: SKTexture(imageNamed: TextureResources.vasePartialBlossom),
+                .fullBlossom: SKTexture(imageNamed: TextureResources.vaseFullBlossom)
             ]
         case .bed:
             textures = [
@@ -240,7 +244,10 @@ enum ItemIdentifier: String, CaseIterable {
             ]
         case .topDoor:
             textures = [
-                .normal : SKTexture(imageNamed: TextureResources.upperDoor)
+                .normal : SKTexture(imageNamed: TextureResources.upperDoor),
+                .sketchy : SKTexture(imageNamed: TextureResources.upperDoorSketchy),
+                .vague : SKTexture(imageNamed: TextureResources.upperDoorVague),
+                .clear : SKTexture(imageNamed: TextureResources.upperDoorClear),
             ]
         case .lowerDoor:
             textures = [
@@ -248,7 +255,7 @@ enum ItemIdentifier: String, CaseIterable {
             ]
         case .sideDoor:
             textures = [
-                .normal : SKTexture(imageNamed: TextureResources.rightDoor)
+                .normal : SKTexture(imageNamed: TextureResources.sideDoor)
             ]
         }
         return textures

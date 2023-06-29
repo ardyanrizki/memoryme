@@ -68,7 +68,6 @@ class PhotoAlbumGameScene: SKScene{
         
         let touchLocation = touch.location(in: self)
         
-    
         // TODO
         // loop throuugh to the polaroidNodes
         // check whether touchLocation contain corresponding the child node
@@ -124,8 +123,9 @@ class PhotoAlbumGameScene: SKScene{
             rightArrow?.isHidden = false
         }
         
+       
         for polaroidNode in polaroidNodes{
-            //target polaroid nodes per index
+
             if let targetNode = targetPolaroidNodes[polaroidNode.name!]{
                 
                 // check whether the polaroid node intersect with target node
@@ -134,7 +134,7 @@ class PhotoAlbumGameScene: SKScene{
                     // if yes, change polaroid node to the current target node
                     polaroidNode.position = targetNode.position
                     matchedPhotoCount += 1
-                    
+        
                     //remove node from polaroidNodes
                     if let index = polaroidNodes.firstIndex(of: polaroidNode) {
                         polaroidNodes.remove(at: index)
@@ -147,7 +147,7 @@ class PhotoAlbumGameScene: SKScene{
                     }
                     
                 }
-            }else{
+            } else {
                 
                 if let initialPosition = initialPolaroidPosition[polaroidNode.name!]{
                     polaroidNode.position = initialPosition
@@ -155,12 +155,7 @@ class PhotoAlbumGameScene: SKScene{
 
             }
         }
-        
-//        if matchedPhotoCount == 4 {
-//               // Set the alpha of arrowRight to 1
-//               rightArrow?.alpha = 1.0
-//        }
+
     }
-    
     
 }

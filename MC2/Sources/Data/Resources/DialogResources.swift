@@ -21,6 +21,7 @@ struct DialogResources {
     
     // MARK: Opening Scene
     static let opening_1_solo_seq1 = Dialog(Constants.mainCharacterName, prompt: "Where am I? I feel a bit dizzy.")
+    static let opening_1_solo_seq2 = Dialog(Constants.mainCharacterName, prompt: "Where is this? It looks so strange...")
     static let opening_2_officeDesk_alt1 = Dialog(Constants.mainCharacterName, prompt: "Oh! My family photo. It was a great night.")
     static let opening_3_officeDesk_alt2 = Dialog(Constants.mainCharacterName, prompt: "Sigh… There are still a lot of work to do.")
     static let opening_4_photoAlbum_alt1 = Dialog(Constants.mainCharacterName, prompt: "A collection of photos with my friends...")

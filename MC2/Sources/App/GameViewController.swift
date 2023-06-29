@@ -22,12 +22,15 @@ protocol SceneManagerProtocol: AnyObject {
 }
 
 class GameViewController: UIViewController {
+    
+    var gameState: GameState?
 
     override func viewDidLoad() {
         super.viewDidLoad()
 //        presentTitleScene()
 //        presentMGPhotoAlbumScene()
         presentMGRadioScene()
+        setupGameState()
     }
 
     override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
@@ -40,6 +43,11 @@ class GameViewController: UIViewController {
 
     override var prefersStatusBarHidden: Bool {
         return true
+    }
+    
+    private func setupGameState() {
+        gameState = GameState()
+        gameState?.setState(key: .sceneActivity, value: .gameEventValue(.opening))
     }
 }
 
@@ -55,6 +63,7 @@ extension GameViewController: SceneManagerProtocol {
     func presentMainRoomScene(playerPosition: PositionIdentifier) {
         guard let scene = MainRoomScene.sharedScene(playerPosition: playerPosition) else { return }
         scene.sceneManager = self
+        scene.gameState = gameState
         let fade = SKTransition.fade(withDuration: 0.5)
         present(scene: scene, transition: fade)
     }
@@ -62,6 +71,7 @@ extension GameViewController: SceneManagerProtocol {
     func presentOfficeRoomScene() {
         guard let scene = OfficeRoomScene.sharedScene(playerPosition: .officeEntrance) else { return }
         scene.sceneManager = self
+        scene.gameState = gameState
         let fade = SKTransition.fade(withDuration: 0.5)
         present(scene: scene, transition: fade)
     }
@@ -69,6 +79,7 @@ extension GameViewController: SceneManagerProtocol {
     func presentBedroomScene() {
         guard let scene = BedroomScene.sharedScene(playerPosition: .bedroomEntrance) else { return }
         scene.sceneManager = self
+        scene.gameState = gameState
         let fade = SKTransition.fade(withDuration: 0.5)
         present(scene: scene, transition: fade)
     }
@@ -76,6 +87,7 @@ extension GameViewController: SceneManagerProtocol {
     func presentBarScene() {
         guard let scene = BarScene.sharedScene(playerPosition: .barEntrance) else { return }
         scene.sceneManager = self
+        scene.gameState = gameState
         let fade = SKTransition.fade(withDuration: 0.5)
         present(scene: scene, transition: fade)
     }
@@ -83,6 +95,7 @@ extension GameViewController: SceneManagerProtocol {
     func presentHospitalRoomScene() {
         guard let scene = HospitalRoomScene.sharedScene(playerPosition: .hospitalEntrance) else { return }
         scene.sceneManager = self
+        scene.gameState = gameState
         let fade = SKTransition.fade(withDuration: 0.5)
         present(scene: scene, transition: fade)
     }
@@ -90,6 +103,7 @@ extension GameViewController: SceneManagerProtocol {
     func presentTestScene() {
         guard let scene = TestScene.sharedScene(playerPosition: .mainRoomOfficeDoor) else { return }
         scene.sceneManager = self
+        scene.gameState = gameState
         let fade = SKTransition.fade(withDuration: 0.5)
         present(scene: scene, transition: fade)
     }
