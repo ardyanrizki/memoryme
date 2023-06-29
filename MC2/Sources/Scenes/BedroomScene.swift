@@ -35,4 +35,10 @@ extension BedroomScene {
         
     }
     
+    // State update according game event.
+    func updateFriendsPhotosEventState(photosKept: Bool) {
+        guard let gameState else { return }
+        gameState.setState(key: .friendsPhotosKept, value: .boolValue(photosKept))
+    }
+    
 }

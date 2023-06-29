@@ -19,21 +19,16 @@ class OfficeRoomScene: PlayableScene, PlayableSceneProtocol {
     }
     
     override func playerDidContact(with itemIdentifier: ItemIdentifier, node: ItemNode) {
-        
         node.isShowBubble = true
     }
     
     override func playerDidIntersect(with itemIdentifier: ItemIdentifier, node: ItemNode) {
-        if node.position.y < (player?.node?.position.y)! {
-            node.zPosition = 20
-        } else {
-            if node.zPosition > 10 {
-                node.zPosition = 10
-            }
-        }
+        
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        
+    }
         guard let touch = touches.first else { return }
         
         let touchLocation = touch.location(in: self)
@@ -64,25 +59,6 @@ class OfficeRoomScene: PlayableScene, PlayableSceneProtocol {
     }
 }
 
-extension OfficeRoomScene {
-    func showPhotoFrame() {
-        let texture = SKTexture(imageNamed: TextureResources.familyPhotoFrame)
-        let familyPhotoFrame = SKSpriteNode(texture: texture)
-        familyPhotoFrame.position = CGPoint(x: frame.midX, y: frame.midY + 50)
-        familyPhotoFrame.size.width = 528
-        familyPhotoFrame.size.height = 640
-        
-        FactoryMethods.createOverlay(childNode: familyPhotoFrame, in: self)
-        
-        self.dialogBox?.startSequence(dialogs: [
-            DialogResources.office_1_photoframe_seq1,
-            DialogResources.office_2_photoframe_seq2,
-        ], from: self, completion: {
-            FactoryMethods.removeOverlay(in: self)
-        })
-    }
-}
-
 // MARK: Scene's Events
 extension OfficeRoomScene {
     
@@ -100,5 +76,28 @@ extension OfficeRoomScene {
     
     func startMatchNumberGame() {
         
+    }
+    
+    // State updates according game event.
+    func updateMomCallEventState(callAccepted: Bool) {
+        guard let gameState else { return }
+        gameState.setState(key: .momsCallAccepted, value: .boolValue(callAccepted))
+    }
+    
+    func showPhotoFrame() {
+        let texture = SKTexture(imageNamed: TextureResources.familyPhotoFrame)
+        let familyPhotoFrame = SKSpriteNode(texture: texture)
+        familyPhotoFrame.position = CGPoint(x: frame.midX, y: frame.midY + 50)
+        familyPhotoFrame.size.width = 528
+        familyPhotoFrame.size.height = 640
+        
+        FactoryMethods.createOverlay(childNode: familyPhotoFrame, in: self)
+        
+        self.dialogBox?.startSequence(dialogs: [
+            DialogResources.office_1_photoframe_seq1,
+            DialogResources.office_2_photoframe_seq2,
+        ], from: self, completion: {
+            FactoryMethods.removeOverlay(in: self)
+        })
     }
 }
