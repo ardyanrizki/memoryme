@@ -10,53 +10,55 @@ import GameplayKit
 
 class RadioScene: SKScene{
     
-    var radioTuner = SKSpriteNode(imageNamed: "radio-tuner")
-    var currentRotation: CGFloat = 0
+    var radioTuner: SKSpriteNode = SKSpriteNode()
+    let rotateRecognizer = UIRotationGestureRecognizer()
+    
+    var rotation: CGFloat = 0
+    
+    //remembers what the previous rotation was
+    var offset: CGFloat = 0
     
     override func didMove(to view: SKView) {
-//        radioTuner = SKSpriteNode(imageNamed: "radio-tuner")
-    }
-    
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        guard let touch = touches.first else{
-            return
+        if let radioTunerNode: SKSpriteNode = self.childNode(withName: "radio-tuner") as? SKSpriteNode{
+            radioTuner = radioTunerNode
         }
         
-        let touchLocation = touch.location(in: self)
-        
+        rotateRecognizer.addTarget(self, action: #selector(RadioScene.rotatedView(_:)))
+        self.view!.addGestureRecognizer(rotateRecognizer)
     }
     
-    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
-        guard let touch = touches.first else{
-            return
+    //Get information from gesture recognizer
+    @objc func rotatedView(_ sender:UIRotationGestureRecognizer){
+        
+        if (sender.state == .began){
+            print("began")
         }
         
-        let touchLocation = touch.location(in: self)
-        
-        if radioTuner.contains(touchLocation){
-            radioTuner.position = touchLocation
-            print("masuk")
+        if(sender.state == .changed){
+            print("rotated")
+            
+            rotation = CGFloat(sender.rotation) + self.offset
+            rotation = rotation * -1
+            
+            radioTuner.zRotation = rotation
         }
+        
+        if(sender.state == .ended){
+            print("ended")
+            
+            self.offset = radioTuner.zRotation
+            
+        }
+        
     }
     
-    override func update(_ currentTime: TimeInterval) {
-        rotateTuner()
-    }
+//    override func update(_ currentTime: TimeInterval) {
+//        <#code#>
+//    }
+//
+//    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
+//        <#code#>
+//    }
     
-    func rotateTuner(){
-        let rotationAmount: CGFloat = 0.1
-        
-        // Increment rotation
-              currentRotation += rotationAmount
-              
-          // Wrap rotation back to 0 degrees if it exceeds 360 degrees
-          if currentRotation > 360 {
-              currentRotation -= 360
-          }
-          
-          // Apply rotation to the tuner node
-          radioTuner.zRotation = currentRotation * .pi / 180.0
-        
-        
-    }
+
 }
