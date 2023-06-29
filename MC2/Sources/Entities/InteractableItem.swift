@@ -12,6 +12,13 @@ enum ItemTextureType: String, CaseIterable {
     case normal
     case tidy
     case messy
+    case ripe
+    case budding
+    case partialBlossom
+    case fullBlossom
+    case sketchy
+    case vague
+    case clear
 }
 
 class InteractableItem: GKEntity {

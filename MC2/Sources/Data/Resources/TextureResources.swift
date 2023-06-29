@@ -52,11 +52,17 @@ struct TextureResources {
     static let friendCharacterAtlasWalk: TextureAtlasName = "friend_walk"
     static let bartenderCharacterAtlasWalk: TextureAtlasName = "bartender_walk"
     
+    // MARK: - Shared items
+    static let sideDoor: TextureName = "side-door_static"
+    
     // MARK:  - Rooms's Items
     // Items in MainRoom
-    static let vase: TextureName = "vase_static"
+    static let vaseRipe: TextureName = "vase_ripe"
+    static let vaseBudding: TextureName = "vase_budding"
+    static let vasePartialBlossom: TextureName = "vase_partial-blossom"
+    static let vaseFullBlossom: TextureName = "vase_full-blossom"
     static let laptop: TextureName = "laptop_static"
-    static let lowerDoor: TextureName = "lower-door"
+    static let lowerDoor: TextureName = "lower-door_static"
     
     // MARK: Items in Office
     static let bookshelf: TextureName = "bookshelf_static"
@@ -65,7 +71,6 @@ struct TextureResources {
     static let officeChair: TextureName = "office-chair_static"
     static let officeDeskBehind: TextureName = "office-desk-behind_static"
     static let officeDeskFront: TextureName = "office-desk-front_static"
-    static let rightDoor: TextureName = "right-door_static"
     static let whiteboard: TextureName = "whiteboard_static"
     
     static let macbook: TextureName = "macbook"
@@ -100,6 +105,9 @@ struct TextureResources {
     static let stool: TextureName = "stool_static"
     static let tableAndChairs: TextureName = "table-and-chairs_static"
     static let upperDoor: TextureName = "upper-door_normal"
+    static let upperDoorSketchy: TextureName = "upper-door_sketchy"
+    static let upperDoorVague: TextureName = "upper-door_vague"
+    static let upperDoorClear: TextureName = "upper-door_clear"
     static let wallPot: TextureName = "wall-pot_static"
     
     // MARK: - Rooms's backgrounds
