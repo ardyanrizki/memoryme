@@ -69,6 +69,7 @@ class DialogBoxNode: SKShapeNode {
         
         let completionAction = SKAction.run {
             completion()
+            self.removeFromParent()
         }
         
         actions.append(completionAction)

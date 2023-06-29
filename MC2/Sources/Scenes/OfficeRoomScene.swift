@@ -34,21 +34,56 @@ class OfficeRoomScene: PlayableScene, PlayableSceneProtocol {
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-//        guard let touch = touches.first else { return }
-//        let touchLocation = touch.location(in: self)
-//        dialogBox?.handleTouch(on: touchLocation)
-//        for t in touches { self.touchDown(atPoint: t.location(in: self)) }
-        print("test")
-        let bubbleNodePhotoframe = childNode(withName: "bubblePhotoframe")
-        if bubbleNodePhotoframe?.alpha == 1 {
-            bubbleNodePhotoframe?.alpha = 0
-        }
-        let bubbleNodeMacbook = childNode(withName: "bubbleMacbook")
-        if bubbleNodeMacbook?.alpha == 1 {
-            bubbleNodeMacbook?.alpha = 0
+        guard let touch = touches.first else { return }
+        
+        let touchLocation = touch.location(in: self)
+        let touchedNode = self.nodes(at: touchLocation).first
+        
+        if touchedNode!.name == ItemIdentifier.bubble.rawValue {
+            // Indicate touched node does not have any parent
+            guard let parentNode = touchedNode?.parent else {
+                return
+            }
+            
+            switch(parentNode.name) {
+            case ItemIdentifier.macbook.rawValue:
+                // TODO: do action related to macbook
+                print("Touch bubble at Macbook")
+                break
+                
+            case ItemIdentifier.photoframe.rawValue:
+                showPhotoFrame()
+                break
+                
+            default:
+                
+                break
+            }
+        } else {
+            FactoryMethods.removeOverlay(in: self)
         }
     }
-    
+}
+
+extension OfficeRoomScene {
+    func showPhotoFrame() {
+        let texture = SKTexture(imageNamed: TextureResources.familyPhotoFrame)
+        let familyPhotoFrame = SKSpriteNode(texture: texture)
+        familyPhotoFrame.position = CGPoint(x: frame.midX, y: frame.midY)
+        familyPhotoFrame.zPosition = 100
+        familyPhotoFrame.size.width = 400
+        familyPhotoFrame.size.height = 600
+        familyPhotoFrame.alpha = 1
+        
+        FactoryMethods.createOverlay(childNode: familyPhotoFrame, in: self)
+        
+        self.dialogBox?.startSequence(dialogs: [
+            DialogResources.office_1_photoframe_seq1,
+            DialogResources.office_2_photoframe_seq2,
+        ], from: self, completion: {
+            FactoryMethods.removeOverlay(in: self)
+        })
+    }
 }
 
 // MARK: Scene's Events
