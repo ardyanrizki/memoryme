@@ -46,4 +46,29 @@ struct FactoryMethods {
         
         return dialogBox
     }
+    
+    /** Create an overlay look that can inject any child node*/
+    static func createOverlay(childNode: SKNode, in scene: SKScene) {
+        let overlayWrapper = SKNode()
+        overlayWrapper.name = Constants.overlayWrapper
+        
+        let overlayShape = SKShapeNode(rectOf: scene.size)
+        overlayShape.fillColor = SKColor.black
+        overlayShape.strokeColor = SKColor.black
+        overlayShape.alpha = 0.5
+        overlayShape.zPosition = 99
+        
+        overlayWrapper.addChild(overlayShape)
+        overlayWrapper.addChild(childNode)
+        scene.addChild(overlayWrapper)
+    }
+    
+    /** Remove overlay and its children */
+    static func removeOverlay(in scene: SKScene) {
+        guard let overlayWrapperNode = scene.childNode(withName: Constants.overlayWrapper) else {
+            return
+        }
+        
+        overlayWrapperNode.removeFromParent()
+    }
 }
