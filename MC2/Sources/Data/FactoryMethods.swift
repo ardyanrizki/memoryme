@@ -61,11 +61,15 @@ struct FactoryMethods {
         overlayShape.zPosition = defaultOverlayZPosition
         
         childNode.zPosition = defaultOverlayZPosition + 1
-        childNode.alpha = 1
+        childNode.alpha = 0
         
         overlayWrapper.addChild(overlayShape)
         overlayWrapper.addChild(childNode)
         scene.addChild(overlayWrapper)
+        
+        // Create an animation to scale up the fade alpha
+        let scaleAction = SKAction.fadeAlpha(to: 1.0, duration: 0.5)
+        childNode.run(scaleAction)
     }
     
     /** Remove overlay and its children */
