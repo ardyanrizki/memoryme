@@ -69,11 +69,9 @@ extension OfficeRoomScene {
     func showPhotoFrame() {
         let texture = SKTexture(imageNamed: TextureResources.familyPhotoFrame)
         let familyPhotoFrame = SKSpriteNode(texture: texture)
-        familyPhotoFrame.position = CGPoint(x: frame.midX, y: frame.midY)
-        familyPhotoFrame.zPosition = 100
-        familyPhotoFrame.size.width = 400
-        familyPhotoFrame.size.height = 600
-        familyPhotoFrame.alpha = 1
+        familyPhotoFrame.position = CGPoint(x: frame.midX, y: frame.midY + 50)
+        familyPhotoFrame.size.width = 528
+        familyPhotoFrame.size.height = 640
         
         FactoryMethods.createOverlay(childNode: familyPhotoFrame, in: self)
         

@@ -8,6 +8,8 @@
 import SpriteKit
 
 struct FactoryMethods {
+    static let defaultOverlayZPosition: CGFloat = 99.0
+    
     static func createPlayer(at position: CGPoint) -> Player {
         Player(at: position)
     }
@@ -56,7 +58,10 @@ struct FactoryMethods {
         overlayShape.fillColor = SKColor.black
         overlayShape.strokeColor = SKColor.black
         overlayShape.alpha = 0.5
-        overlayShape.zPosition = 99
+        overlayShape.zPosition = defaultOverlayZPosition
+        
+        childNode.zPosition = defaultOverlayZPosition + 1
+        childNode.alpha = 1
         
         overlayWrapper.addChild(overlayShape)
         overlayWrapper.addChild(childNode)
