@@ -47,8 +47,7 @@ class OfficeRoomScene: PlayableScene, PlayableSceneProtocol {
             
             switch(parentNode.name) {
             case ItemIdentifier.macbook.rawValue:
-                // TODO: do action related to macbook
-                print("Touch bubble at Macbook")
+                sceneManager?.presentMGPasswordScene()
                 break
                 
             case ItemIdentifier.photoframe.rawValue:
