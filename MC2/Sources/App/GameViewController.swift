@@ -98,14 +98,6 @@ extension GameViewController: SceneManagerProtocol {
         present(scene: scene, transition: fade)
     }
     
-    func presentTestScene() {
-        guard let scene = TestScene.sharedScene(playerPosition: .mainRoomOfficeDoor) else { return }
-        scene.sceneManager = self
-        scene.gameState = gameState
-        let fade = SKTransition.fade(withDuration: 0.5)
-        present(scene: scene, transition: fade)
-    }
-    
     //MARK: MINI GAME SCENES
     //Mini Game 1 - Input Password
     func presentMGPasswordScene(){
