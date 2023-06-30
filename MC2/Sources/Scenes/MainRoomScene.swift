@@ -24,6 +24,11 @@ class MainRoomScene: PlayableScene, PlayableSceneProtocol {
     override func didMove(to view: SKView) {
         super.didMove(to: view)
         startOpeningEventIfNeeded()
+        changeRoomSceneryAccordingCallEvent()
+        changeRoomSceneryAccordingPhotoAlbumEvent()
+        changeRoomSceneryAccordingStrangerEvent()
+        changeVase()
+        changeDoor()
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -56,13 +61,13 @@ extension MainRoomScene {
     
     func startOpeningEventIfNeeded() {
         guard let gameState else { return }
-        if gameState.getState(key: .sceneActivity) == .gameEventValue(.opening) {
+        if gameState.getState(key: .sceneActivity) == .sceneActivityValue(.opening) {
             touchEventsEnabled = false
             player?.lay(completion: {
                 self.dialogBox?.start(dialog: DialogResources.opening_1_solo_seq1, from: self)
                 self.touchEventsEnabled = true
             })
-            gameState.setState(key: .sceneActivity, value: .gameEventValue(.exploring))
+            gameState.setState(key: .sceneActivity, value: .sceneActivityValue(.exploring))
         }
     }
     
@@ -82,6 +87,17 @@ extension MainRoomScene {
         guard let gameState else { return }
         // If kept, show album in desk. else show broom
         if gameState.getState(key: .friendsPhotosKept) == .boolValue(true) {
+            let desk = interactableItems.first { $0.node?.identifier == .desk }
+        } else {
+            
+        }
+    }
+    
+    // State updates according game event.
+    func changeRoomSceneryAccordingStrangerEvent() {
+        guard let gameState else { return }
+        // If saved, show radio in desk.
+        if gameState.getState(key: .strangerSaved) == .boolValue(true) {
             
         } else {
             

@@ -68,10 +68,12 @@ enum ItemIdentifier: String, CaseIterable {
             }.first
             guard let node = scene.childNode(withName: nodeRawName) as? ItemNode else { return }
             node.identifier = self
-            node.name = String(nodeName)
+            node.name = nodeName
             node.textures = getTextures()
             node.textureType = textureType ?? getTextures().first?.key
-            node.texture = getTextures()[node.textureType ?? getTextures().first?.key ?? .normal]
+            if let texture = getTextures()[node.textureType ?? getTextures().first?.key ?? .normal] {
+                node.run(SKAction.setTexture(texture, resize: true))
+            }
             node.zPosition = zPosition
             nodes.append(node)
         }
@@ -84,7 +86,9 @@ enum ItemIdentifier: String, CaseIterable {
         node?.textures = getTextures()
         node?.textureType = textureType ?? getTextures().first?.key
         node?.name = self.rawValue
-        node?.texture = node?.textures?[node?.textureType ?? .normal]
+        if let texture = node?.textures?[node?.textureType ?? .normal] {
+            node?.run(SKAction.setTexture(texture, resize: true))
+        }
         node?.zPosition = zPosition
         return node
     }

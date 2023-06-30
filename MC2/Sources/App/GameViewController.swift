@@ -44,7 +44,7 @@ class GameViewController: UIViewController {
     
     private func setupGameState() {
         gameState = GameState()
-        gameState?.setState(key: .sceneActivity, value: .gameEventValue(.opening))
+        gameState?.setState(key: .sceneActivity, value: .sceneActivityValue(.opening))
     }
 }
 

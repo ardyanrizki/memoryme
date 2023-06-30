@@ -54,8 +54,7 @@ class InteractableItem: GKEntity {
         super.init()
         addingComponents(node: node, isAnimationable: isAnimationable)
         // Important! First texture always run for the first time as a default texture.
-        node.texture = firstTexture.value
-        
+        node.run(SKAction.setTexture(firstTexture.value, resize: true))
         if node.children.count > 0 {
             guard let bubbleNode = node.childNode(withName: "bubble") as? ItemNode else { return }
             node.bubbleDialog = InteractableItem(withNode: bubbleNode, textures: ItemIdentifier.bubble.getTextures(), isAnimationable: true)

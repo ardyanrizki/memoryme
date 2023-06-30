@@ -47,7 +47,7 @@ extension String {
     static let errorTextureNotFound = "error: texture not found"
     static let errorPhysicsBodyNotFound = "error: physics body not found"
     
-    func splitIdentifer(with separator: String = "_") -> [String.SubSequence] {
-        return self.split(separator: separator)
+    func splitIdentifer(with separator: String = "_") -> [String] {
+        return self.components(separatedBy: separator)
     }
 }
