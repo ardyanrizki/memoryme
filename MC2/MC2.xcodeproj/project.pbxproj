@@ -20,6 +20,7 @@
 		2C59F60F2A4C80090028A035 /* truck-horn.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2C59F6062A4C80090028A035 /* truck-horn.mp3 */; };
 		2C59F6102A4C80090028A035 /* book-page.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2C59F6072A4C80090028A035 /* book-page.mp3 */; };
 		2C92028C2A4BFAF8004FB043 /* BedroomScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 2C92028B2A4BFAF8004FB043 /* BedroomScene.sks */; };
+		2CA1E6542A4EC82E0076C3F3 /* KeypadNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CA1E6532A4EC82E0076C3F3 /* KeypadNode.swift */; };
 		3811E4CA2A4643DA00416B95 /* DialogResources.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3811E4C92A4643DA00416B95 /* DialogResources.swift */; };
 		3811E4CC2A4643E400416B95 /* TextureResources.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3811E4CB2A4643E400416B95 /* TextureResources.swift */; };
 		3811E4CE2A464E5A00416B95 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3811E4CD2A464E5A00416B95 /* Constants.swift */; };
@@ -31,8 +32,6 @@
 		3811E4DD2A472D8600416B95 /* WallNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3811E4DC2A472D8600416B95 /* WallNode.swift */; };
 		3811E4DF2A473BC700416B95 /* DialogBoxNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3811E4DE2A473BC700416B95 /* DialogBoxNode.swift */; };
 		3811E4E32A474D6000416B95 /* SceneChangeZoneNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3811E4E22A474D6000416B95 /* SceneChangeZoneNode.swift */; };
-		3811E4E52A475E5500416B95 /* TestScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3811E4E42A475E5500416B95 /* TestScene.swift */; };
-		3811E4E72A475E7E00416B95 /* TestScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 3811E4E62A475E7E00416B95 /* TestScene.sks */; };
 		3811E4E92A47F56B00416B95 /* ItemNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3811E4E82A47F56B00416B95 /* ItemNode.swift */; };
 		3811E4EA2A47F56B00416B95 /* ItemNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3811E4E82A47F56B00416B95 /* ItemNode.swift */; };
 		3811E4EB2A47F56B00416B95 /* ItemNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3811E4E82A47F56B00416B95 /* ItemNode.swift */; };
@@ -106,6 +105,11 @@
 		F618B3DC2A4DC25600358874 /* RadioScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = F618B3DB2A4DC25600358874 /* RadioScene.sks */; };
 		F618B3DE2A4EE6FF00358874 /* PhotoAlbumGameScene2.swift in Sources */ = {isa = PBXBuildFile; fileRef = F618B3DD2A4EE6FF00358874 /* PhotoAlbumGameScene2.swift */; };
 		F618B3E02A4EE71300358874 /* PhotoAlbumGameScene2.sks in Resources */ = {isa = PBXBuildFile; fileRef = F618B3DF2A4EE71300358874 /* PhotoAlbumGameScene2.sks */; };
+		F618B3D62A4C04BB00358874 /* PhotoAlbumGameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = F618B3D52A4C04BB00358874 /* PhotoAlbumGameScene.swift */; };
+		F618B3D82A4C058A00358874 /* PhotoAlbumGameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = F618B3D72A4C058A00358874 /* PhotoAlbumGameScene.sks */; };
+		F618B3DA2A4DC23200358874 /* RadioScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = F618B3D92A4DC23200358874 /* RadioScene.swift */; };
+		F618B3DC2A4DC25600358874 /* RadioScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = F618B3DB2A4DC25600358874 /* RadioScene.sks */; };
+
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -137,6 +141,7 @@
 		2C59F6062A4C80090028A035 /* truck-horn.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "truck-horn.mp3"; sourceTree = "<group>"; };
 		2C59F6072A4C80090028A035 /* book-page.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "book-page.mp3"; sourceTree = "<group>"; };
 		2C92028B2A4BFAF8004FB043 /* BedroomScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = BedroomScene.sks; sourceTree = "<group>"; };
+		2CA1E6532A4EC82E0076C3F3 /* KeypadNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeypadNode.swift; sourceTree = "<group>"; };
 		3811E4C92A4643DA00416B95 /* DialogResources.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DialogResources.swift; sourceTree = "<group>"; };
 		3811E4CB2A4643E400416B95 /* TextureResources.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextureResources.swift; sourceTree = "<group>"; };
 		3811E4CD2A464E5A00416B95 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -148,8 +153,6 @@
 		3811E4DC2A472D8600416B95 /* WallNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WallNode.swift; sourceTree = "<group>"; };
 		3811E4DE2A473BC700416B95 /* DialogBoxNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DialogBoxNode.swift; sourceTree = "<group>"; };
 		3811E4E22A474D6000416B95 /* SceneChangeZoneNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneChangeZoneNode.swift; sourceTree = "<group>"; };
-		3811E4E42A475E5500416B95 /* TestScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestScene.swift; sourceTree = "<group>"; };
-		3811E4E62A475E7E00416B95 /* TestScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = TestScene.sks; sourceTree = "<group>"; };
 		3811E4E82A47F56B00416B95 /* ItemNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemNode.swift; sourceTree = "<group>"; };
 		3811E4EC2A47F5B200416B95 /* ItemIdentifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemIdentifier.swift; sourceTree = "<group>"; };
 		38695C5F2A4980760028B8FD /* CGPoint+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGPoint+Extension.swift"; sourceTree = "<group>"; };
@@ -195,6 +198,11 @@
 		F618B3DB2A4DC25600358874 /* RadioScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = RadioScene.sks; sourceTree = "<group>"; };
 		F618B3DD2A4EE6FF00358874 /* PhotoAlbumGameScene2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoAlbumGameScene2.swift; sourceTree = "<group>"; };
 		F618B3DF2A4EE71300358874 /* PhotoAlbumGameScene2.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = PhotoAlbumGameScene2.sks; sourceTree = "<group>"; };
+		F618B3D52A4C04BB00358874 /* PhotoAlbumGameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoAlbumGameScene.swift; sourceTree = "<group>"; };
+		F618B3D72A4C058A00358874 /* PhotoAlbumGameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = PhotoAlbumGameScene.sks; sourceTree = "<group>"; };
+		F618B3D92A4DC23200358874 /* RadioScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadioScene.swift; sourceTree = "<group>"; };
+		F618B3DB2A4DC25600358874 /* RadioScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = RadioScene.sks; sourceTree = "<group>"; };
+
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -274,6 +282,7 @@
 				3811E4DE2A473BC700416B95 /* DialogBoxNode.swift */,
 				3811E4E22A474D6000416B95 /* SceneChangeZoneNode.swift */,
 				3811E4E82A47F56B00416B95 /* ItemNode.swift */,
+				2CA1E6532A4EC82E0076C3F3 /* KeypadNode.swift */,
 			);
 			path = Nodes;
 			sourceTree = "<group>";
@@ -383,7 +392,6 @@
 				38763F6A2A3B71D5004129A6 /* BarScene.swift */,
 				38763F862A42A600004129A6 /* HospitalRoomScene.swift */,
 				3811E4D32A4667F100416B95 /* PlayableScene.swift */,
-				3811E4E42A475E5500416B95 /* TestScene.swift */,
 				F618B3BA2A49A64300358874 /* Mini Games */,
 			);
 			path = Scenes;
@@ -424,6 +432,7 @@
 				3811E4E62A475E7E00416B95 /* TestScene.sks */,
 				F618B3D72A4C058A00358874 /* PhotoAlbumGameScene1.sks */,
 				F618B3DF2A4EE71300358874 /* PhotoAlbumGameScene2.sks */,
+				F618B3D72A4C058A00358874 /* PhotoAlbumGameScene.sks */,
 				F618B3DB2A4DC25600358874 /* RadioScene.sks */,
 			);
 			path = Scenes;
@@ -444,6 +453,7 @@
 				F618B3CE2A4A828F00358874 /* MatchingNumberScene.swift */,
 				F618B3D52A4C04BB00358874 /* PhotoAlbumGameScene1.swift */,
 				F618B3DD2A4EE6FF00358874 /* PhotoAlbumGameScene2.swift */,
+				F618B3D52A4C04BB00358874 /* PhotoAlbumGameScene.swift */,
 				F618B3D92A4DC23200358874 /* RadioScene.swift */,
 			);
 			path = "Mini Games";
@@ -560,7 +570,6 @@
 				2C59F60E2A4C80090028A035 /* lighter.mp3 in Resources */,
 				2C59F60B2A4C80090028A035 /* cutscene-bedroom.mp3 in Resources */,
 				38763F112A3AA7AA004129A6 /* LaunchScreen.storyboard in Resources */,
-				3811E4E72A475E7E00416B95 /* TestScene.sks in Resources */,
 				2C59F6102A4C80090028A035 /* book-page.mp3 in Resources */,
 				2C59F6082A4C80090028A035 /* cutscene-bar.mp3 in Resources */,
 				2C59F60C2A4C80090028A035 /* keyboard-click.mp3 in Resources */,
@@ -613,6 +622,9 @@
 				38763F4B2A3AF70A004129A6 /* ControlComponent.swift in Sources */,
 				F618B3D62A4C04BB00358874 /* PhotoAlbumGameScene1.swift in Sources */,
 				F618B3DA2A4DC23200358874 /* RadioScene.swift in Sources */,
+				F618B3D62A4C04BB00358874 /* PhotoAlbumGameScene.swift in Sources */,
+				F618B3DA2A4DC23200358874 /* RadioScene.swift in Sources */,
+				2CA1E6542A4EC82E0076C3F3 /* KeypadNode.swift in Sources */,
 				F618B3CF2A4A828F00358874 /* InputPasswordScene.swift in Sources */,
 				3811E4D22A46519B00416B95 /* PositionIdentifier.swift in Sources */,
 				38763F632A3B71AE004129A6 /* BedroomScene.swift in Sources */,
@@ -640,7 +652,6 @@
 				38763F3B2A3AEC30004129A6 /* Player.swift in Sources */,
 				3811E4D42A4667F100416B95 /* PlayableScene.swift in Sources */,
 				38695C602A4980760028B8FD /* CGPoint+Extension.swift in Sources */,
-				3811E4E52A475E5500416B95 /* TestScene.swift in Sources */,
 				38763F3F2A3AF2F6004129A6 /* SceneChangeZoneIdentifier.swift in Sources */,
 				3811E4CA2A4643DA00416B95 /* DialogResources.swift in Sources */,
 				3811E4E92A47F56B00416B95 /* ItemNode.swift in Sources */,
@@ -852,6 +863,8 @@
 				DEVELOPMENT_TEAM = RCY35MK3A6;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "MC2-Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = Me...Mory...Me;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.role-playing-games";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -880,6 +893,8 @@
 				DEVELOPMENT_TEAM = RCY35MK3A6;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "MC2-Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = Me...Mory...Me;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.role-playing-games";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;

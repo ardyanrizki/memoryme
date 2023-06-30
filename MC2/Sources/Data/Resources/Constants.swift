@@ -18,7 +18,6 @@ struct Constants {
     static let bartenderName = "Bartender"
     
     // Game scenes
-    static let testScene = "TestScene"
     static let titleScene = "TitleScene"
     static let mainRoomScene = "MainRoomScene"
     static let officeRoomScene = "OfficeRoomScene"
@@ -27,12 +26,17 @@ struct Constants {
     static let hospitalScene = "HospitalScene"
     static let inputPasswordScene = "InputPasswordScene"
     static let matchingNumberScene = "MatchingNumberScene"
+<<<<<<< HEAD
     static let photoAlbumScene1 = "PhotoAlbumGameScene1"
     static let photoAlbumScene2 = "PhotoAlbumGameScene2"
+=======
+    static let photoAlbumScene = "PhotoAlbumGameScene"
+>>>>>>> main
     static let radioScene = "RadioScene"
     
     // Default node names
     static let background = "background"
+    static let overlayWrapper = "overlayWrapper"
     
     // Action keys
     static let walkingAction = "walking"

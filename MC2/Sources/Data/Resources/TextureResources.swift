@@ -32,6 +32,10 @@ extension TextureAtlasName {
 
 struct TextureResources {
     
+    // MARK: - Generic
+    static let backButton: TextureName = "back-button"
+    static let incorrectPinText: TextureName = "incorrect-pin-text"
+    
     // MARK: - Characters
     // Character's statics
     static let mainCharacter: TextureName = "mory_static"
@@ -72,9 +76,9 @@ struct TextureResources {
     static let officeDeskBehind: TextureName = "office-desk-behind_static"
     static let officeDeskFront: TextureName = "office-desk-front_static"
     static let whiteboard: TextureName = "whiteboard_static"
-    
     static let macbook: TextureName = "macbook"
     static let photoframe: TextureName = "photoframe"
+    static let familyPhotoFrame: TextureName = "family-photo-frame"
     
     // Items in Bedroom
     // - Messy
@@ -134,4 +138,10 @@ struct TextureResources {
     static let polaroidFight: TextureName = "polaroid-fight"
     static let polaroidFriend: TextureName = "polaroid-friend"
     static let polaroidHappy: TextureName = "polaroid-happy"
+    
+    // MARK: Minigame - Laptop
+    static let macbookCloseUp: TextureName = "macbook_close-up"
+    static let macbookLoginScreen: TextureName = "macbook-login-screen"
+    static let macbookVerificationScreen: TextureName = "macbook-verification-screen"
+    static let macbookEmailScreen: TextureName = "macbook-email-screen"
 }

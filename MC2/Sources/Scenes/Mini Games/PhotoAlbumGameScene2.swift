@@ -8,6 +8,7 @@
 import SpriteKit
 import GameplayKit
 
+<<<<<<< HEAD:MC2/Sources/Scenes/Mini Games/PhotoAlbumGameScene2.swift
 class PhotoAlbumGameScene2: SKScene {
     
     var sceneManaager: SceneManagerProtocol
@@ -15,6 +16,11 @@ class PhotoAlbumGameScene2: SKScene {
     var photoAlbumFirst: SKSpriteNode!
     
     var photoAlbumSecond: SKSpriteNode!
+=======
+class PhotoAlbumGameScene: SKScene {
+    
+    var sceneManager: SceneManagerProtocol?
+>>>>>>> main:MC2/Sources/Scenes/Mini Games/PhotoAlbumGameScene.swift
     
     //polaroid array
     var polaroidNodes: [SKSpriteNode] = []
@@ -25,6 +31,7 @@ class PhotoAlbumGameScene2: SKScene {
     /** Target position of polaroids*/
     var targetPolaroidNodes = [String: SKSpriteNode]()
     
+<<<<<<< HEAD:MC2/Sources/Scenes/Mini Games/PhotoAlbumGameScene2.swift
     var arrowRight: SKSpriteNode!
     var arrowLeft: SKSpriteNode!
     
@@ -39,6 +46,13 @@ class PhotoAlbumGameScene2: SKScene {
         "polaroid-chocolate",
         "polaroid-friend"
     ]
+=======
+    /**Next arrow button**/
+    var rightArrow: SKSpriteNode?
+    
+    //flag to count photos matched
+    var matchedPhotoCount = 0
+>>>>>>> main:MC2/Sources/Scenes/Mini Games/PhotoAlbumGameScene.swift
     
     override func didMove(to view: SKView) {
         photoAlbumSecond = childNode(withName: "photo-album-2") as! SKSpriteNode
@@ -75,9 +89,16 @@ class PhotoAlbumGameScene2: SKScene {
             }
         }
         
+<<<<<<< HEAD:MC2/Sources/Scenes/Mini Games/PhotoAlbumGameScene2.swift
         photoAlbumFirst.alpha = 1
         photoAlbumSecond.alpha = 0
        
+=======
+        //Right arrow to next scene
+        rightArrow = self.childNode(withName: "arrow-right") as? SKSpriteNode
+        rightArrow?.isHidden = true
+        
+>>>>>>> main:MC2/Sources/Scenes/Mini Games/PhotoAlbumGameScene.swift
     }
     
     func handleRightArrowTap(){
@@ -158,11 +179,13 @@ class PhotoAlbumGameScene2: SKScene {
         // then remove the node from polaroidNodes
         // otherwise, use initial position to assign current selected node back to the origin position
         
-        guard let touch = touches.first else{
+        guard touches.first != nil else{
             return
         }
         
-        let touchLocation = touch.location(in: self)
+        if matchedPhotoCount == 4{
+            rightArrow?.isHidden = false
+        }
         
        
         for polaroidNode in polaroidNodes{
@@ -174,6 +197,7 @@ class PhotoAlbumGameScene2: SKScene {
                     
                     // if yes, change polaroid node to the current target node
                     polaroidNode.position = targetNode.position
+<<<<<<< HEAD:MC2/Sources/Scenes/Mini Games/PhotoAlbumGameScene2.swift
                     
                     if photoAtFirstAlbum.contains(polaroidNode.name!) {
                         //polaroidNode.name = polaroidNode.name! + "-done"
@@ -184,6 +208,9 @@ class PhotoAlbumGameScene2: SKScene {
                         polaroidNode.removeFromParent()
                         photoAlbumSecond.addChild(polaroidNode)
                     }
+=======
+                    matchedPhotoCount += 1
+>>>>>>> main:MC2/Sources/Scenes/Mini Games/PhotoAlbumGameScene.swift
         
                     //remove node from polaroidNodes
                     if let index = polaroidNodes.firstIndex(of: polaroidNode) {
@@ -207,5 +234,8 @@ class PhotoAlbumGameScene2: SKScene {
         }
 
     }
+<<<<<<< HEAD:MC2/Sources/Scenes/Mini Games/PhotoAlbumGameScene2.swift
     
+=======
+>>>>>>> main:MC2/Sources/Scenes/Mini Games/PhotoAlbumGameScene.swift
 }
