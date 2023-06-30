@@ -17,7 +17,8 @@ protocol SceneManagerProtocol: AnyObject {
     func presentHospitalRoomScene()
     func presentMGPasswordScene()
     func presentMGMatchingNumbersScene()
-    func presentMGPhotoAlbumScene()
+    func presentMGPhotoAlbumScene1()
+    func presentMGPhotoAlbumScene2()
     func presentMGRadioScene()
 }
 
@@ -28,8 +29,8 @@ class GameViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 //        presentTitleScene()
-//        presentMGPhotoAlbumScene()
-        presentMGRadioScene()
+         presentMGPhotoAlbumScene2()
+//        presentMGRadioScene()
         setupGameState()
     }
 
@@ -124,10 +125,16 @@ extension GameViewController: SceneManagerProtocol {
     }
     
     //Mini Game 3 - Drag and drop photos to album
-    func presentMGPhotoAlbumScene(){
-        guard let scene = PhotoAlbumGameScene(fileNamed: Constants.photoAlbumScene) else {return}
-        let fade = SKTransition.fade(withDuration: 0.5)
-        present(scene: scene, transition: fade)
+    func presentMGPhotoAlbumScene1(transition: SKTransition? = nil){
+        guard let scene = PhotoAlbumGameScene(fileNamed: Constants.photoAlbumScene1) else {return}
+        // let fade = SKTransition.fade(withDuration: 0.5)
+        present(scene: scene)
+    }
+    
+    func presentMGPhotoAlbumScene2(transition: SKTransition? = nil){
+        guard let scene = PhotoAlbumGameScene(fileNamed: Constants.photoAlbumScene2) else {return}
+        // let fade = SKTransition.fade(withDuration: 0.5)
+        present(scene: scene)
     }
     
     //Mini Game 4 - Radio Scene

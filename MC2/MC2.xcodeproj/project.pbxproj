@@ -100,10 +100,12 @@
 		F618B3CC2A4A811900358874 /* MatchingNumberScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = F618B3CA2A4A811900358874 /* MatchingNumberScene.sks */; };
 		F618B3CF2A4A828F00358874 /* InputPasswordScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = F618B3CD2A4A828F00358874 /* InputPasswordScene.swift */; };
 		F618B3D02A4A828F00358874 /* MatchingNumberScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = F618B3CE2A4A828F00358874 /* MatchingNumberScene.swift */; };
-		F618B3D62A4C04BB00358874 /* PhotoAlbumGameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = F618B3D52A4C04BB00358874 /* PhotoAlbumGameScene.swift */; };
-		F618B3D82A4C058A00358874 /* PhotoAlbumGameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = F618B3D72A4C058A00358874 /* PhotoAlbumGameScene.sks */; };
+		F618B3D62A4C04BB00358874 /* PhotoAlbumGameScene1.swift in Sources */ = {isa = PBXBuildFile; fileRef = F618B3D52A4C04BB00358874 /* PhotoAlbumGameScene1.swift */; };
+		F618B3D82A4C058A00358874 /* PhotoAlbumGameScene1.sks in Resources */ = {isa = PBXBuildFile; fileRef = F618B3D72A4C058A00358874 /* PhotoAlbumGameScene1.sks */; };
 		F618B3DA2A4DC23200358874 /* RadioScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = F618B3D92A4DC23200358874 /* RadioScene.swift */; };
 		F618B3DC2A4DC25600358874 /* RadioScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = F618B3DB2A4DC25600358874 /* RadioScene.sks */; };
+		F618B3DE2A4EE6FF00358874 /* PhotoAlbumGameScene2.swift in Sources */ = {isa = PBXBuildFile; fileRef = F618B3DD2A4EE6FF00358874 /* PhotoAlbumGameScene2.swift */; };
+		F618B3E02A4EE71300358874 /* PhotoAlbumGameScene2.sks in Resources */ = {isa = PBXBuildFile; fileRef = F618B3DF2A4EE71300358874 /* PhotoAlbumGameScene2.sks */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -187,10 +189,12 @@
 		F618B3CA2A4A811900358874 /* MatchingNumberScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = MatchingNumberScene.sks; sourceTree = "<group>"; };
 		F618B3CD2A4A828F00358874 /* InputPasswordScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputPasswordScene.swift; sourceTree = "<group>"; };
 		F618B3CE2A4A828F00358874 /* MatchingNumberScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MatchingNumberScene.swift; sourceTree = "<group>"; };
-		F618B3D52A4C04BB00358874 /* PhotoAlbumGameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoAlbumGameScene.swift; sourceTree = "<group>"; };
-		F618B3D72A4C058A00358874 /* PhotoAlbumGameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = PhotoAlbumGameScene.sks; sourceTree = "<group>"; };
+		F618B3D52A4C04BB00358874 /* PhotoAlbumGameScene1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoAlbumGameScene1.swift; sourceTree = "<group>"; };
+		F618B3D72A4C058A00358874 /* PhotoAlbumGameScene1.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = PhotoAlbumGameScene1.sks; sourceTree = "<group>"; };
 		F618B3D92A4DC23200358874 /* RadioScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadioScene.swift; sourceTree = "<group>"; };
 		F618B3DB2A4DC25600358874 /* RadioScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = RadioScene.sks; sourceTree = "<group>"; };
+		F618B3DD2A4EE6FF00358874 /* PhotoAlbumGameScene2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoAlbumGameScene2.swift; sourceTree = "<group>"; };
+		F618B3DF2A4EE71300358874 /* PhotoAlbumGameScene2.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = PhotoAlbumGameScene2.sks; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -418,7 +422,8 @@
 				38763F662A3B71C3004129A6 /* BarScene.sks */,
 				38763F8A2A42DAA3004129A6 /* HospitalRoomScene.sks */,
 				3811E4E62A475E7E00416B95 /* TestScene.sks */,
-				F618B3D72A4C058A00358874 /* PhotoAlbumGameScene.sks */,
+				F618B3D72A4C058A00358874 /* PhotoAlbumGameScene1.sks */,
+				F618B3DF2A4EE71300358874 /* PhotoAlbumGameScene2.sks */,
 				F618B3DB2A4DC25600358874 /* RadioScene.sks */,
 			);
 			path = Scenes;
@@ -437,7 +442,8 @@
 			children = (
 				F618B3CD2A4A828F00358874 /* InputPasswordScene.swift */,
 				F618B3CE2A4A828F00358874 /* MatchingNumberScene.swift */,
-				F618B3D52A4C04BB00358874 /* PhotoAlbumGameScene.swift */,
+				F618B3D52A4C04BB00358874 /* PhotoAlbumGameScene1.swift */,
+				F618B3DD2A4EE6FF00358874 /* PhotoAlbumGameScene2.swift */,
 				F618B3D92A4DC23200358874 /* RadioScene.swift */,
 			);
 			path = "Mini Games";
@@ -560,7 +566,7 @@
 				2C59F60C2A4C80090028A035 /* keyboard-click.mp3 in Resources */,
 				389893322A4C2AE900492F28 /* TitleScene.sks in Resources */,
 				38763F672A3B71C3004129A6 /* BarScene.sks in Resources */,
-				F618B3D82A4C058A00358874 /* PhotoAlbumGameScene.sks in Resources */,
+				F618B3D82A4C058A00358874 /* PhotoAlbumGameScene1.sks in Resources */,
 				38763F8B2A42DAA3004129A6 /* HospitalRoomScene.sks in Resources */,
 				F618B3DC2A4DC25600358874 /* RadioScene.sks in Resources */,
 				2C59F60F2A4C80090028A035 /* truck-horn.mp3 in Resources */,
@@ -570,6 +576,7 @@
 				8C56D9492A43CFE40076283B /* Scribble-Regular.otf in Resources */,
 				2C59F60A2A4C80090028A035 /* ambience.mp3 in Resources */,
 				2C59F60D2A4C80090028A035 /* burn.mp3 in Resources */,
+				F618B3E02A4EE71300358874 /* PhotoAlbumGameScene2.sks in Resources */,
 				2C59F6092A4C80090028A035 /* cutscene-office.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -604,7 +611,7 @@
 				3811E4D62A471DCD00416B95 /* PositionNode.swift in Sources */,
 				3811E4CC2A4643E400416B95 /* TextureResources.swift in Sources */,
 				38763F4B2A3AF70A004129A6 /* ControlComponent.swift in Sources */,
-				F618B3D62A4C04BB00358874 /* PhotoAlbumGameScene.swift in Sources */,
+				F618B3D62A4C04BB00358874 /* PhotoAlbumGameScene1.swift in Sources */,
 				F618B3DA2A4DC23200358874 /* RadioScene.swift in Sources */,
 				F618B3CF2A4A828F00358874 /* InputPasswordScene.swift in Sources */,
 				3811E4D22A46519B00416B95 /* PositionIdentifier.swift in Sources */,
@@ -612,6 +619,7 @@
 				3811E4DD2A472D8600416B95 /* WallNode.swift in Sources */,
 				3811E4D02A46517A00416B95 /* CharacterAnimationState.swift in Sources */,
 				38763F532A3AF789004129A6 /* RenderComponent.swift in Sources */,
+				F618B3DE2A4EE6FF00358874 /* PhotoAlbumGameScene2.swift in Sources */,
 				2C0325DB2A3EDB2A005B8E0A /* CharacterVisualComponent.swift in Sources */,
 				38763F872A42A600004129A6 /* HospitalRoomScene.swift in Sources */,
 				38763F072A3AA7A8004129A6 /* MainRoomScene.swift in Sources */,
@@ -841,7 +849,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = T84FHM7BL8;
+				DEVELOPMENT_TEAM = RCY35MK3A6;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "MC2-Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -869,7 +877,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = T84FHM7BL8;
+				DEVELOPMENT_TEAM = RCY35MK3A6;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "MC2-Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
