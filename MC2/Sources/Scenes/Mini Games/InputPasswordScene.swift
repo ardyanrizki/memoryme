@@ -8,16 +8,6 @@
 import SpriteKit
 import GameplayKit
 
-class KeyPad: SKSpriteNode{
-   var number = 0
-    
-    //initialize variable
-    func setup(){
-        //access "number" di userdata - check if its null - typecasting value to Int
-        number = userData?["number"] as! Int
-    }
-}
-
 class TextField: SKNode{ //-> Node kosong, SpriteNode = gambar
     
     //referensi node ke posisi
@@ -36,8 +26,6 @@ class TextField: SKNode{ //-> Node kosong, SpriteNode = gambar
     
     //representasi kombinasi yang sedang dimasukkan
     var enteredCombination = ""
-    
-    
     
     //initialize variable
     func setup(){
@@ -113,21 +101,25 @@ class TextField: SKNode{ //-> Node kosong, SpriteNode = gambar
         
         enteredCombination.removeLast()
     }
-    
 }
 
-
+// MARK: Overrided methods.
 class InputPasswordScene: SKScene {
     
     var sceneManager: SceneManagerProtocol?
     
-    var keypads: [KeyPad]! //declare suatu array namanya keypads dengan tipe KeyPad
+    var keypads: [KeypadNode]! //declare suatu array namanya keypads dengan tipe KeyPad
     var deleteButton: SKSpriteNode!
     var macbookLoginScreen: SKSpriteNode!
     var textField: TextField!
     
     // TODO: move this value to State Machine
     var touchEventsEnabled: Bool = true
+    
+    /**
+     Box to showing dialog or prompt.
+     */
+    var dialogBox: DialogBoxNode?
     
     override func didMove(to view: SKView) {//hanya dijalanin sekali pas awal scene
         //Nyari laptopNode dan dimasukin ke variabel
@@ -136,12 +128,12 @@ class InputPasswordScene: SKScene {
         macbookLoginScreen = childNode(withName: TextureResources.macbookLoginScreen) as? SKSpriteNode
         
         //assign array kosong ke keypads
-        keypads = [KeyPad]()
+        keypads = [KeypadNode]()
         
         //Looping untuk semua childnya
         for node in laptop.children{
             //cek apakah dia termasuk class Keypads
-            if let keypad = node as? KeyPad {
+            if let keypad = node as? KeypadNode {
                 keypad.setup()
                 keypads.append(keypad)
             }
@@ -152,12 +144,16 @@ class InputPasswordScene: SKScene {
         //kalau ga di type cast by default sknode
         textField = laptop.childNode(withName: "TextField") as? TextField
         textField.setup()
+        
+        setupDialogBox()
+        self.dialogBox?.start(dialog: DialogResources.office_3_computer, from: self)
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         guard touchEventsEnabled else { return }
         //detect touch location
         let location = touches.first!.location(in: self)
+
         
         for keypad in keypads{
             //cek apakah lokasi touch ada di keypad
@@ -192,7 +188,9 @@ class InputPasswordScene: SKScene {
     }
 }
 
+// MARK: Event method.
 extension InputPasswordScene {
+    
     func handleComplePin() {
         touchEventsEnabled = false
         macbookLoginScreen.alpha = 1
@@ -212,5 +210,14 @@ extension InputPasswordScene {
         
         let sequencedActions = SKAction.sequence(actions)
         macbookLoginScreen.run(sequencedActions)
+    }
+    
+    /**
+     Setup dialog box.
+     */
+    private func setupDialogBox() {
+        guard dialogBox == nil else { return }
+        let size = CGSize(width: frame.width - 200, height: 150)
+        dialogBox = FactoryMethods.createDialogBox(with: size, sceneFrame: frame)
     }
 }
