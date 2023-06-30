@@ -32,7 +32,7 @@ class TextField: SKNode{ //-> Node kosong, SpriteNode = gambar
     var digitCount = 0
     
     //ditentukan kode passcode untuk unlock
-    let unlockCombination = "2406"
+    let unlockCombination = "0508"
     
     //representasi kombinasi yang sedang dimasukkan
     var enteredCombination = ""
