@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum GameEvent {
+enum SceneActivity {
     case opening
     case exploring
     case dialog
@@ -27,7 +27,7 @@ enum StateValue: Equatable {
     case stringValue(String)
     case floatValue(Float)
     case boolValue(Bool)
-    case gameEventValue(GameEvent)
+    case sceneActivityValue(SceneActivity)
 }
 
 protocol GameStateCentralDelegate: AnyObject {

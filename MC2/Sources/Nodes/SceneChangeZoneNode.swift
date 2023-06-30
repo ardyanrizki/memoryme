@@ -17,7 +17,12 @@ class SceneChangeZoneNode: SKSpriteNode {
         physicsBody?.isDynamic = false
         physicsBody?.allowsRotation = false
         zPosition = 2
+#if DEBUG
+        color = .blue
         alpha = 0.5
+#else
+        alpha = 0
+#endif
     }
     
     func moveScene(with sceneManager: SceneManagerProtocol?, sceneBlocker: SceneBlockerProtocol? = nil) {
