@@ -34,7 +34,7 @@ struct DialogResources {
     
     // MARK: Office Scene
     static let office_1_photoframe_seq1 = Dialog(Constants.mainCharacterName, prompt: "This is my family photo. I think we took it last summer during mom’s birthday.")
-    static let office_2_photoframe_seq2 = Dialog(Constants.mainCharacterName, prompt: "It was a great night.") // There's date on frame to indicate as a pin
+    static let office_2_photoframe_seq2 = Dialog(Constants.mainCharacterName, prompt: "It was a great night...") // There's date on frame to indicate as a pin
     
     static let office_3_computer = Dialog(Constants.mainCharacterName, prompt: "My office computer. What was the pin again?") // Then, she type the pin.
     

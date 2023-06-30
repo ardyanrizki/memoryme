@@ -27,9 +27,7 @@ class GameViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-//        presentTitleScene()
-//        presentMGPhotoAlbumScene()
-        presentMGRadioScene()
+        presentTitleScene()
         setupGameState()
     }
 
@@ -112,6 +110,7 @@ extension GameViewController: SceneManagerProtocol {
     //Mini Game 1 - Input Password
     func presentMGPasswordScene(){
         guard let scene = InputPasswordScene(fileNamed: Constants.inputPasswordScene) else { return }
+        scene.sceneManager = self
         let fade = SKTransition.fade(withDuration: 0.5)
         present(scene: scene, transition: fade)
     }
@@ -119,6 +118,7 @@ extension GameViewController: SceneManagerProtocol {
     //Mini Game 2 - Matching Numbers
     func presentMGMatchingNumbersScene(){
         guard let scene = MatchingNumberScene(fileNamed: Constants.matchingNumberScene) else { return }
+        scene.sceneManager = self
         let fade = SKTransition.fade(withDuration: 0.5)
         present(scene: scene, transition: fade)
     }
@@ -126,6 +126,7 @@ extension GameViewController: SceneManagerProtocol {
     //Mini Game 3 - Drag and drop photos to album
     func presentMGPhotoAlbumScene(){
         guard let scene = PhotoAlbumGameScene(fileNamed: Constants.photoAlbumScene) else {return}
+        scene.sceneManager = self
         let fade = SKTransition.fade(withDuration: 0.5)
         present(scene: scene, transition: fade)
     }

@@ -32,6 +32,7 @@ struct Constants {
     
     // Default node names
     static let background = "background"
+    static let overlayWrapper = "overlayWrapper"
     
     // Action keys
     static let walkingAction = "walking"
