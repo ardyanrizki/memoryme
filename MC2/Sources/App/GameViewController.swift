@@ -119,8 +119,7 @@ extension GameViewController: SceneManagerProtocol {
     func presentMGMatchingNumbersScene(){
         guard let scene = MatchingNumberScene(fileNamed: Constants.matchingNumberScene) else { return }
         scene.sceneManager = self
-        let fade = SKTransition.fade(withDuration: 0.5)
-        present(scene: scene, transition: fade)
+        present(scene: scene)
     }
     
     //Mini Game 3 - Drag and drop photos to album
