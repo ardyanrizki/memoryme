@@ -28,6 +28,7 @@ struct Constants {
     static let inputPasswordScene = "InputPasswordScene"
     static let matchingNumberScene = "MatchingNumberScene"
     static let photoAlbumScene = "PhotoAlbumGameScene"
+    static let radioScene = "RadioScene"
     
     // Default node names
     static let background = "background"

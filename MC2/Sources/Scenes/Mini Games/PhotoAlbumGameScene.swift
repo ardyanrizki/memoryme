@@ -21,6 +21,12 @@ class PhotoAlbumGameScene: SKScene {
     /** Target position of polaroids*/
     var targetPolaroidNodes = [String: SKSpriteNode]()
     
+    /**Next arrow button**/
+    var rightArrow: SKSpriteNode?
+    
+    //flag to count photos matched
+    var matchedPhotoCount = 0
+    
     override func didMove(to view: SKView) {
         
         /** Calls parent scene named polaroidNotes**/
@@ -49,6 +55,11 @@ class PhotoAlbumGameScene: SKScene {
                 targetPolaroidNodes[childNode.name!] = childNode
             }
         }
+        
+        //Right arrow to next scene
+        rightArrow = self.childNode(withName: "arrow-right") as? SKSpriteNode
+        rightArrow?.isHidden = true
+        
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -110,7 +121,13 @@ class PhotoAlbumGameScene: SKScene {
         
         let touchLocation = touch.location(in: self)
         
+        if matchedPhotoCount == 4{
+            rightArrow?.isHidden = false
+        }
+        
+       
         for polaroidNode in polaroidNodes{
+
             if let targetNode = targetPolaroidNodes[polaroidNode.name!]{
                 
                 // check whether the polaroid node intersect with target node
@@ -118,7 +135,8 @@ class PhotoAlbumGameScene: SKScene {
                     
                     // if yes, change polaroid node to the current target node
                     polaroidNode.position = targetNode.position
-                    
+                    matchedPhotoCount += 1
+        
                     //remove node from polaroidNodes
                     if let index = polaroidNodes.firstIndex(of: polaroidNode) {
                         polaroidNodes.remove(at: index)
