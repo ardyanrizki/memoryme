@@ -46,7 +46,7 @@ class MatchingNumberScene: SKScene {
             let location = touch.location(in: self)
             
             //validation to check if they are "matchNumbers" child node
-            guard let matchNumbersNode = childNode(withName: "matchNumbers") as? SKNode else {
+            guard let matchNumbersNode = childNode(withName: "matchNumbers") else {
                 return
             }
             

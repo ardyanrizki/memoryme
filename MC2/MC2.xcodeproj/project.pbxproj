@@ -99,6 +99,8 @@
 		8C40A3942A4EBF6B00281EA1 /* PhotoAlbumGameSecondScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 8C40A3932A4EBF6B00281EA1 /* PhotoAlbumGameSecondScene.sks */; };
 		8C56D9492A43CFE40076283B /* Scribble-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 8C56D9482A43CFE40076283B /* Scribble-Regular.otf */; };
 		8C8B19D22A4F0FED00564645 /* PhotoAlbumGameSecondScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C8B19D12A4F0FED00564645 /* PhotoAlbumGameSecondScene.swift */; };
+		8C8B19D42A4F227900564645 /* BedroomSnapshots.sks in Resources */ = {isa = PBXBuildFile; fileRef = 8C8B19D32A4F227900564645 /* BedroomSnapshots.sks */; };
+		8C8B19D62A4F27BD00564645 /* BedroomSnapshotsScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C8B19D52A4F27BD00564645 /* BedroomSnapshotsScene.swift */; };
 		F618B3CB2A4A811900358874 /* InputPasswordScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = F618B3C92A4A811900358874 /* InputPasswordScene.sks */; };
 		F618B3CC2A4A811900358874 /* MatchingNumberScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = F618B3CA2A4A811900358874 /* MatchingNumberScene.sks */; };
 		F618B3CF2A4A828F00358874 /* InputPasswordScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = F618B3CD2A4A828F00358874 /* InputPasswordScene.swift */; };
@@ -189,6 +191,8 @@
 		8C56D9482A43CFE40076283B /* Scribble-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Scribble-Regular.otf"; sourceTree = "<group>"; };
 		8C56D94A2A43D0320076283B /* MC2-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "MC2-Info.plist"; sourceTree = "<group>"; };
 		8C8B19D12A4F0FED00564645 /* PhotoAlbumGameSecondScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoAlbumGameSecondScene.swift; sourceTree = "<group>"; };
+		8C8B19D32A4F227900564645 /* BedroomSnapshots.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = BedroomSnapshots.sks; sourceTree = "<group>"; };
+		8C8B19D52A4F27BD00564645 /* BedroomSnapshotsScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BedroomSnapshotsScene.swift; sourceTree = "<group>"; };
 		F618B3C92A4A811900358874 /* InputPasswordScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = InputPasswordScene.sks; sourceTree = "<group>"; };
 		F618B3CA2A4A811900358874 /* MatchingNumberScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = MatchingNumberScene.sks; sourceTree = "<group>"; };
 		F618B3CD2A4A828F00358874 /* InputPasswordScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputPasswordScene.swift; sourceTree = "<group>"; };
@@ -386,6 +390,7 @@
 				38763F862A42A600004129A6 /* HospitalRoomScene.swift */,
 				3811E4D32A4667F100416B95 /* PlayableScene.swift */,
 				3811E4E42A475E5500416B95 /* TestScene.swift */,
+				8C8B19D72A4F27C600564645 /* Snapshots */,
 				F618B3BA2A49A64300358874 /* Mini Games */,
 			);
 			path = Scenes;
@@ -428,6 +433,7 @@
 				F618B3DB2A4DC25600358874 /* RadioScene.sks */,
 				8C40A3912A4E7E5400281EA1 /* BedroomTidyScene.sks */,
 				8C40A3932A4EBF6B00281EA1 /* PhotoAlbumGameSecondScene.sks */,
+				8C8B19D32A4F227900564645 /* BedroomSnapshots.sks */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -438,6 +444,14 @@
 				8C56D9482A43CFE40076283B /* Scribble-Regular.otf */,
 			);
 			path = Fonts;
+			sourceTree = "<group>";
+		};
+		8C8B19D72A4F27C600564645 /* Snapshots */ = {
+			isa = PBXGroup;
+			children = (
+				8C8B19D52A4F27BD00564645 /* BedroomSnapshotsScene.swift */,
+			);
+			path = Snapshots;
 			sourceTree = "<group>";
 		};
 		F618B3BA2A49A64300358874 /* Mini Games */ = {
@@ -563,6 +577,7 @@
 				2C92028C2A4BFAF8004FB043 /* BedroomScene.sks in Resources */,
 				2C59F60E2A4C80090028A035 /* lighter.mp3 in Resources */,
 				8C40A3922A4E7E5400281EA1 /* BedroomTidyScene.sks in Resources */,
+				8C8B19D42A4F227900564645 /* BedroomSnapshots.sks in Resources */,
 				2C59F60B2A4C80090028A035 /* cutscene-bedroom.mp3 in Resources */,
 				38763F112A3AA7AA004129A6 /* LaunchScreen.storyboard in Resources */,
 				3811E4E72A475E7E00416B95 /* TestScene.sks in Resources */,
@@ -641,6 +656,7 @@
 				F618B3D02A4A828F00358874 /* MatchingNumberScene.swift in Sources */,
 				3811E4CE2A464E5A00416B95 /* Constants.swift in Sources */,
 				386D63512A4A744500BBC022 /* GameState.swift in Sources */,
+				8C8B19D62A4F27BD00564645 /* BedroomSnapshotsScene.swift in Sources */,
 				38763F3B2A3AEC30004129A6 /* Player.swift in Sources */,
 				3811E4D42A4667F100416B95 /* PlayableScene.swift in Sources */,
 				38695C602A4980760028B8FD /* CGPoint+Extension.swift in Sources */,

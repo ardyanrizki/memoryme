@@ -69,7 +69,7 @@ class BedroomScene: PlayableScene, PlayableSceneProtocol {
 extension BedroomScene {
     
     func firstEnterBedroom() {
-        guard let gameState else { return }
+//        guard let gameState else { return }
         let photoAlbumNode = childNode(withName: "photoAlbum")
         if photoAlbumNode != nil {
             self.dialogBox?.startSequence(dialogs: [

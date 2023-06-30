@@ -27,7 +27,7 @@ class PhotoAlbumGameSecondScene: PlayableScene {
     
     override func update(_ currentTime: TimeInterval) {
         if matchedPhotoCount == 2 {
-            sceneManager?.presentBedroomTidyScene()
+            sceneManager?.presentSnapshotBedroomScene()
         }
     }
     
@@ -60,10 +60,6 @@ class PhotoAlbumGameSecondScene: PlayableScene {
                 targetPolaroidNodes[childNode.name!] = childNode
             }
         }
-        
-        self.dialogBox?.startSequence(dialogs: [
-            DialogResources.bedroom_2_withPhoto_seq1
-        ], from: self)
         
         //Right arrow to next scene
         rightArrow = self.childNode(withName: "arrow-right") as? SKSpriteNode

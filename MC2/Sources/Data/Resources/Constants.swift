@@ -32,6 +32,9 @@ struct Constants {
     static let photoAlbumSecondScene = "PhotoAlbumGameSecondScene"
     static let radioScene = "RadioScene"
     
+    // Snapshots
+    static let bedroomSnapshotsScene = "BedroomSnapshots"
+    
     // Default node names
     static let background = "background"
     static let overlayWrapper = "overlayWrapper"

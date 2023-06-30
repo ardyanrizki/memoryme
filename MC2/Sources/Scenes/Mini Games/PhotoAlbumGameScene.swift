@@ -27,6 +27,13 @@ class PhotoAlbumGameScene: PlayableScene {
     
     var photoPicked: String = ""
     
+    override func update(_ currentTime: TimeInterval) {
+        if matchedPhotoCount == 4{
+            rightArrow = self.childNode(withName: "arrowRight") as? SKSpriteNode
+            rightArrow?.alpha = 1
+        }
+    }
+    
     override func didMove(to view: SKView) {
         setupDialogBox()
         
@@ -61,10 +68,6 @@ class PhotoAlbumGameScene: PlayableScene {
             DialogResources.bedroom_2_withPhoto_seq1
         ], from: self)
         
-        //Right arrow to next scene
-        rightArrow = self.childNode(withName: "arrow-right") as? SKSpriteNode
-        rightArrow?.isHidden = true
-        
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -89,7 +92,6 @@ class PhotoAlbumGameScene: PlayableScene {
         }
         switch(touchedNode!.name) {
         case "arrowRight":
-            print("arrow right click")
             sceneManager?.presentMGPhotoAlbumSecondScene()
             break
         default:
@@ -134,13 +136,6 @@ class PhotoAlbumGameScene: PlayableScene {
         guard let touch = touches.first else{
             return
         }
-        
-        let touchLocation = touch.location(in: self)
-        
-        if matchedPhotoCount == 4{
-            rightArrow?.isHidden = false
-        }
-        
        
         for polaroidNode in polaroidNodes{
 

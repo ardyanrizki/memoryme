@@ -206,8 +206,8 @@
             filePath = "Sources/Scenes/Mini Games/PhotoAlbumGameScene.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "179"
-            endingLineNumber = "179"
+            startingLineNumber = "174"
+            endingLineNumber = "174"
             landmarkName = "setupDialogBox()"
             landmarkType = "7">
          </BreakpointContent>
@@ -222,8 +222,8 @@
             filePath = "Sources/Scenes/Mini Games/PhotoAlbumGameScene.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "151"
-            endingLineNumber = "151"
+            startingLineNumber = "146"
+            endingLineNumber = "146"
             landmarkName = "touchesEnded(_:with:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -238,8 +238,8 @@
             filePath = "Sources/Scenes/Mini Games/PhotoAlbumGameScene.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "93"
-            endingLineNumber = "93"
+            startingLineNumber = "95"
+            endingLineNumber = "95"
             landmarkName = "touchesBegan(_:with:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -254,8 +254,8 @@
             filePath = "Sources/Scenes/Mini Games/PhotoAlbumGameScene.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "87"
-            endingLineNumber = "87"
+            startingLineNumber = "90"
+            endingLineNumber = "90"
             landmarkName = "touchesBegan(_:with:)"
             landmarkType = "7">
             <Locations>
@@ -290,6 +290,211 @@
                   offsetFromSymbolStart = "1008">
                </Location>
             </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "6883AA83-A4AA-49D9-807F-8C0FB8237E7D"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Sources/Scenes/Snapshots/BedroomSnapshotsScene.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "57"
+            endingLineNumber = "57"
+            landmarkName = "didMove(to:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "6883AA83-A4AA-49D9-807F-8C0FB8237E7D - 89894acbbe84e651"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "MC2.BedroomSnapshotsScene.didMove(to: __C.SKView) -&gt; ()"
+                  moduleName = "MC2"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/rivanma/Documents/ADA/memoryme-ada23/MC2/Sources/Scenes/Snapshots/BedroomSnapshotsScene.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "24"
+                  endingLineNumber = "24"
+                  offsetFromSymbolStart = "500">
+               </Location>
+               <Location
+                  uuid = "6883AA83-A4AA-49D9-807F-8C0FB8237E7D - 89894acbbe84e651"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "MC2.BedroomSnapshotsScene.didMove(to: __C.SKView) -&gt; ()"
+                  moduleName = "MC2"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/rivanma/Documents/ADA/memoryme-ada23/MC2/Sources/Scenes/Snapshots/BedroomSnapshotsScene.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "24"
+                  endingLineNumber = "24"
+                  offsetFromSymbolStart = "488">
+               </Location>
+               <Location
+                  uuid = "6883AA83-A4AA-49D9-807F-8C0FB8237E7D - 89894acbbe84e651"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "MC2.BedroomSnapshotsScene.didMove(to: __C.SKView) -&gt; ()"
+                  moduleName = "MC2"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/rivanma/Documents/ADA/memoryme-ada23/MC2/Sources/Scenes/Snapshots/BedroomSnapshotsScene.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "24"
+                  endingLineNumber = "24"
+                  offsetFromSymbolStart = "468">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "AC7A434D-48F2-4895-BEDD-5D797CAB1028"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Sources/Scenes/Snapshots/BedroomSnapshotsScene.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "73"
+            endingLineNumber = "73"
+            landmarkName = "touchesBegan(_:with:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "AC7A434D-48F2-4895-BEDD-5D797CAB1028 - 1cca5445fe44ede0"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "MC2.BedroomSnapshotsScene.touchesBegan(_: Swift.Set&lt;__C.UITouch&gt;, with: Swift.Optional&lt;__C.UIEvent&gt;) -&gt; ()"
+                  moduleName = "MC2"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/rivanma/Documents/ADA/memoryme-ada23/MC2/Sources/Scenes/Snapshots/BedroomSnapshotsScene.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "71"
+                  endingLineNumber = "71"
+                  offsetFromSymbolStart = "1180">
+               </Location>
+               <Location
+                  uuid = "AC7A434D-48F2-4895-BEDD-5D797CAB1028 - 1cca5445fe44ed64"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "MC2.BedroomSnapshotsScene.touchesBegan(_: Swift.Set&lt;__C.UITouch&gt;, with: Swift.Optional&lt;__C.UIEvent&gt;) -&gt; ()"
+                  moduleName = "MC2"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/rivanma/Documents/ADA/memoryme-ada23/MC2/Sources/Scenes/Snapshots/BedroomSnapshotsScene.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "75"
+                  endingLineNumber = "75"
+                  offsetFromSymbolStart = "1168">
+               </Location>
+               <Location
+                  uuid = "AC7A434D-48F2-4895-BEDD-5D797CAB1028 - 1cca5445fe44ee6c"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "MC2.BedroomSnapshotsScene.touchesBegan(_: Swift.Set&lt;__C.UITouch&gt;, with: Swift.Optional&lt;__C.UIEvent&gt;) -&gt; ()"
+                  moduleName = "MC2"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/rivanma/Documents/ADA/memoryme-ada23/MC2/Sources/Scenes/Snapshots/BedroomSnapshotsScene.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "83"
+                  endingLineNumber = "83"
+                  offsetFromSymbolStart = "560">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "40A20EDD-BDEA-4CBB-ACE3-29502AFBBBEE"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Sources/Scenes/Snapshots/BedroomSnapshotsScene.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "83"
+            endingLineNumber = "83"
+            landmarkName = "touchesBegan(_:with:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "40A20EDD-BDEA-4CBB-ACE3-29502AFBBBEE - 1cca5445fe44eecf"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "MC2.BedroomSnapshotsScene.touchesBegan(_: Swift.Set&lt;__C.UITouch&gt;, with: Swift.Optional&lt;__C.UIEvent&gt;) -&gt; ()"
+                  moduleName = "MC2"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/rivanma/Documents/ADA/memoryme-ada23/MC2/Sources/Scenes/Snapshots/BedroomSnapshotsScene.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "80"
+                  endingLineNumber = "80"
+                  offsetFromSymbolStart = "2148">
+               </Location>
+               <Location
+                  uuid = "40A20EDD-BDEA-4CBB-ACE3-29502AFBBBEE - 1cca5445fe44ee53"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "MC2.BedroomSnapshotsScene.touchesBegan(_: Swift.Set&lt;__C.UITouch&gt;, with: Swift.Optional&lt;__C.UIEvent&gt;) -&gt; ()"
+                  moduleName = "MC2"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/rivanma/Documents/ADA/memoryme-ada23/MC2/Sources/Scenes/Snapshots/BedroomSnapshotsScene.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "84"
+                  endingLineNumber = "84"
+                  offsetFromSymbolStart = "1964">
+               </Location>
+               <Location
+                  uuid = "40A20EDD-BDEA-4CBB-ACE3-29502AFBBBEE - 1cca5445fe44ee6c"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "MC2.BedroomSnapshotsScene.touchesBegan(_: Swift.Set&lt;__C.UITouch&gt;, with: Swift.Optional&lt;__C.UIEvent&gt;) -&gt; ()"
+                  moduleName = "MC2"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/rivanma/Documents/ADA/memoryme-ada23/MC2/Sources/Scenes/Snapshots/BedroomSnapshotsScene.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "83"
+                  endingLineNumber = "83"
+                  offsetFromSymbolStart = "560">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "FE5CAEAC-636C-46C9-A44F-43DA47E8BA9A"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Sources/Scenes/Snapshots/BedroomSnapshotsScene.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "84"
+            endingLineNumber = "84"
+            landmarkName = "touchesBegan(_:with:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

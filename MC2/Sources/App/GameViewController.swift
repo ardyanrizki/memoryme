@@ -21,6 +21,7 @@ protocol SceneManagerProtocol: AnyObject {
     func presentMGPhotoAlbumScene()
     func presentMGPhotoAlbumSecondScene()
     func presentMGRadioScene()
+    func presentSnapshotBedroomScene()
 }
 
 class GameViewController: UIViewController {
@@ -151,6 +152,14 @@ extension GameViewController: SceneManagerProtocol {
     //Mini Game 4 - Radio Scene
     func presentMGRadioScene(){
         guard let scene = RadioScene(fileNamed: Constants.radioScene) else {return}
+        let fade = SKTransition.fade(withDuration: 0.5)
+        present(scene: scene, transition: fade)
+    }
+    
+    //Snapshots Bedroom
+    func presentSnapshotBedroomScene(){
+        guard let scene = BedroomSnapshotsScene(fileNamed: Constants.bedroomSnapshotsScene) else {return}
+        scene.sceneManager = self
         let fade = SKTransition.fade(withDuration: 0.5)
         present(scene: scene, transition: fade)
     }
