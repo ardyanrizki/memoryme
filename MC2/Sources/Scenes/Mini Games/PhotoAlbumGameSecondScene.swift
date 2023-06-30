@@ -1,14 +1,14 @@
 //
-//  PhotoAlbumGameScene.swift
+//  PhotoAlbumGameSecondScene.swift
 //  MC2
 //
-//  Created by Clarabella Lius on 28/06/23.
+//  Created by Rivan Mohammad Akbar on 30/06/23.
 //
 
 import SpriteKit
 import GameplayKit
 
-class PhotoAlbumGameScene: PlayableScene {
+class PhotoAlbumGameSecondScene: PlayableScene {
     
     //polaroid array
     var polaroidNodes: [SKSpriteNode] = []
@@ -25,7 +25,11 @@ class PhotoAlbumGameScene: PlayableScene {
     //flag to count photos matched
     var matchedPhotoCount = 0
     
-    var photoPicked: String = ""
+    override func update(_ currentTime: TimeInterval) {
+        if matchedPhotoCount == 2 {
+            sceneManager?.presentBedroomTidyScene()
+        }
+    }
     
     override func didMove(to view: SKView) {
         setupDialogBox()
@@ -83,19 +87,26 @@ class PhotoAlbumGameScene: PlayableScene {
         // otherwise, do nothing
         for polaroidNode in polaroidNodes {
             if polaroidNode.contains(touchLocation) {
-                photoPicked = polaroidNode.name!
                 polaroidNode.position = touchLocation
             }
         }
-        switch(touchedNode!.name) {
-        case "arrowRight":
-            print("arrow right click")
-            sceneManager?.presentMGPhotoAlbumSecondScene()
-            break
-        default:
+        
+//        if touchedNode!.name == "arrowRight" {
+//            // Indicate touched node does not have any parent
+//            guard let parentNode = touchedNode?.parent else {
+//                return
+//            }
             
-            break
-        }
+            switch(touchedNode!.name) {
+            case "arrowLeft":
+                print("arrow left click")
+                sceneManager?.presentMGPhotoAlbumScene()
+                break
+            default:
+                
+                break
+            }
+//        }
     }
     
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -113,7 +124,7 @@ class PhotoAlbumGameScene: PlayableScene {
         let touchLocation = touch.location(in: self)
         
         for polaroidNode in polaroidNodes{
-            if polaroidNode.contains(touchLocation) && photoPicked == polaroidNode.name {
+            if polaroidNode.contains(touchLocation){
                 polaroidNode.position = touchLocation
             }
         }
@@ -134,13 +145,6 @@ class PhotoAlbumGameScene: PlayableScene {
         guard let touch = touches.first else{
             return
         }
-        
-        let touchLocation = touch.location(in: self)
-        
-        if matchedPhotoCount == 4{
-            rightArrow?.isHidden = false
-        }
-        
        
         for polaroidNode in polaroidNodes{
 
@@ -181,3 +185,4 @@ class PhotoAlbumGameScene: PlayableScene {
         dialogBox = FactoryMethods.createDialogBox(with: size, sceneFrame: frame)
     }
 }
+

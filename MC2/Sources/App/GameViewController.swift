@@ -13,11 +13,13 @@ protocol SceneManagerProtocol: AnyObject {
     func presentMainRoomScene(playerPosition: PositionIdentifier)
     func presentOfficeRoomScene()
     func presentBedroomScene()
+    func presentBedroomTidyScene()
     func presentBarScene()
     func presentHospitalRoomScene()
     func presentMGPasswordScene()
     func presentMGMatchingNumbersScene()
     func presentMGPhotoAlbumScene()
+    func presentMGPhotoAlbumSecondScene()
     func presentMGRadioScene()
 }
 
@@ -82,6 +84,14 @@ extension GameViewController: SceneManagerProtocol {
         present(scene: scene, transition: fade)
     }
     
+    func presentBedroomTidyScene() {
+        guard let scene = BedroomScene.sharedSceneTidy(playerPosition: .bedroomEntrance) else { return }
+        scene.sceneManager = self
+        scene.gameState = gameState
+        let fade = SKTransition.fade(withDuration: 0.5)
+        present(scene: scene, transition: fade)
+    }
+    
     func presentBarScene() {
         guard let scene = BarScene.sharedScene(playerPosition: .barEntrance) else { return }
         scene.sceneManager = self
@@ -126,6 +136,13 @@ extension GameViewController: SceneManagerProtocol {
     //Mini Game 3 - Drag and drop photos to album
     func presentMGPhotoAlbumScene(){
         guard let scene = PhotoAlbumGameScene(fileNamed: Constants.photoAlbumScene) else {return}
+        scene.sceneManager = self
+        let fade = SKTransition.fade(withDuration: 0.5)
+        present(scene: scene, transition: fade)
+    }
+    
+    func presentMGPhotoAlbumSecondScene() {
+        guard let scene = PhotoAlbumGameSecondScene(fileNamed: Constants.photoAlbumSecondScene) else {return}
         scene.sceneManager = self
         let fade = SKTransition.fade(withDuration: 0.5)
         present(scene: scene, transition: fade)

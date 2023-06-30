@@ -18,6 +18,12 @@ class BedroomScene: PlayableScene, PlayableSceneProtocol {
         return scene
     }
     
+    static func sharedSceneTidy(playerPosition position: PositionIdentifier) -> BedroomScene? {
+        let scene = BedroomScene(fileNamed: Constants.bedroomTidyScene)
+        scene?.setup(playerPosition: position)
+        return scene
+    }
+    
     override func didMove(to view: SKView) {
         super.didMove(to: view)
         firstEnterBedroom()
@@ -64,9 +70,16 @@ extension BedroomScene {
     
     func firstEnterBedroom() {
         guard let gameState else { return }
-        self.dialogBox?.startSequence(dialogs: [
-            DialogResources.bedroom_1_solo_seq1
-        ], from: self)
+        let photoAlbumNode = childNode(withName: "photoAlbum")
+        if photoAlbumNode != nil {
+            self.dialogBox?.startSequence(dialogs: [
+                DialogResources.bedroom_1_solo_seq1
+            ], from: self)
+        } else {
+            self.dialogBox?.startSequence(dialogs: [
+                DialogResources.bedroom_3_withPhoto_seq2
+            ], from: self)
+        }
     }
     
     func startSeeingAlbumEvent() {

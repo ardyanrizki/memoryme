@@ -142,24 +142,8 @@
             filePath = "Sources/Scenes/BedroomScene.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "66"
-            endingLineNumber = "66"
-            landmarkName = "firstEnterBedroom()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "DF809979-E4F3-459C-B89A-6DF52C0FB362"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Sources/Scenes/BedroomScene.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "68"
-            endingLineNumber = "68"
+            startingLineNumber = "72"
+            endingLineNumber = "72"
             landmarkName = "firstEnterBedroom()"
             landmarkType = "7">
          </BreakpointContent>
@@ -222,8 +206,8 @@
             filePath = "Sources/Scenes/Mini Games/PhotoAlbumGameScene.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "192"
-            endingLineNumber = "192"
+            startingLineNumber = "179"
+            endingLineNumber = "179"
             landmarkName = "setupDialogBox()"
             landmarkType = "7">
          </BreakpointContent>
@@ -232,62 +216,30 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "59770365-EC50-456D-8B52-19F97815CAFB"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Sources/Scenes/Mini Games/PhotoAlbumGameScene.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "164"
-            endingLineNumber = "164"
-            landmarkName = "touchesEnded(_:with:)"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "59770365-EC50-456D-8B52-19F97815CAFB - 89ed120108bf2f51"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "MC2.PhotoAlbumGameScene.touchesEnded(_: Swift.Set&lt;__C.UITouch&gt;, with: Swift.Optional&lt;__C.UIEvent&gt;) -&gt; ()"
-                  moduleName = "MC2"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/rivanma/Documents/ADA/memoryme-ada23/MC2/Sources/Scenes/Mini%20Games/PhotoAlbumGameScene.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "164"
-                  endingLineNumber = "164"
-                  offsetFromSymbolStart = "1160">
-               </Location>
-               <Location
-                  uuid = "59770365-EC50-456D-8B52-19F97815CAFB - 89ed120108bf2f93"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "MC2.PhotoAlbumGameScene.touchesEnded(_: Swift.Set&lt;__C.UITouch&gt;, with: Swift.Optional&lt;__C.UIEvent&gt;) -&gt; ()"
-                  moduleName = "MC2"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/rivanma/Documents/ADA/memoryme-ada23/MC2/Sources/Scenes/Mini%20Games/PhotoAlbumGameScene.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "166"
-                  endingLineNumber = "166"
-                  offsetFromSymbolStart = "1160">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "DF1DAF66-B378-4C79-B19A-F0D6A4C53EF9"
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Sources/Scenes/Mini Games/PhotoAlbumGameScene.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "89"
-            endingLineNumber = "89"
+            startingLineNumber = "151"
+            endingLineNumber = "151"
+            landmarkName = "touchesEnded(_:with:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "30F4503A-7A1E-4EFD-B186-9513B4E0F193"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Sources/Scenes/Mini Games/PhotoAlbumGameScene.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "93"
+            endingLineNumber = "93"
             landmarkName = "touchesBegan(_:with:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -295,7 +247,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "C8E967EC-E4F3-4C6F-8F5A-FBAE5A079908"
+            uuid = "5D2AE115-83E3-4FD6-B414-FA089B5CCBC5"
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
@@ -308,22 +260,7 @@
             landmarkType = "7">
             <Locations>
                <Location
-                  uuid = "C8E967EC-E4F3-4C6F-8F5A-FBAE5A079908 - c56b78aa4bbd208d"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "MC2.PhotoAlbumGameScene.touchesMoved(_: Swift.Set&lt;__C.UITouch&gt;, with: Swift.Optional&lt;__C.UIEvent&gt;) -&gt; ()"
-                  moduleName = "MC2"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/rivanma/Documents/ADA/memoryme-ada23/MC2/Sources/Scenes/Mini%20Games/PhotoAlbumGameScene.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "96"
-                  endingLineNumber = "96"
-                  offsetFromSymbolStart = "72">
-               </Location>
-               <Location
-                  uuid = "C8E967EC-E4F3-4C6F-8F5A-FBAE5A079908 - 50bc32e1001eda80"
+                  uuid = "5D2AE115-83E3-4FD6-B414-FA089B5CCBC5 - 50bc32e1001eda6f"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
@@ -333,30 +270,12 @@
                   urlString = "file:///Users/rivanma/Documents/ADA/memoryme-ada23/MC2/Sources/Scenes/Mini%20Games/PhotoAlbumGameScene.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "88"
-                  endingLineNumber = "88"
-                  offsetFromSymbolStart = "744">
+                  startingLineNumber = "87"
+                  endingLineNumber = "87"
+                  offsetFromSymbolStart = "720">
                </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "7E77E5D9-DAC7-48CA-9F1E-9C4252115D7B"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Sources/Scenes/Mini Games/PhotoAlbumGameScene.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "97"
-            endingLineNumber = "97"
-            landmarkName = "touchesBegan(_:with:)"
-            landmarkType = "7">
-            <Locations>
                <Location
-                  uuid = "7E77E5D9-DAC7-48CA-9F1E-9C4252115D7B - 50bc32e1001edbda"
+                  uuid = "5D2AE115-83E3-4FD6-B414-FA089B5CCBC5 - 50bc32e1001eda6f"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
@@ -366,168 +285,9 @@
                   urlString = "file:///Users/rivanma/Documents/ADA/memoryme-ada23/MC2/Sources/Scenes/Mini%20Games/PhotoAlbumGameScene.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "98"
-                  endingLineNumber = "98"
-                  offsetFromSymbolStart = "1580">
-               </Location>
-               <Location
-                  uuid = "7E77E5D9-DAC7-48CA-9F1E-9C4252115D7B - 50bc32e1001edbb9"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "MC2.PhotoAlbumGameScene.touchesBegan(_: Swift.Set&lt;__C.UITouch&gt;, with: Swift.Optional&lt;__C.UIEvent&gt;) -&gt; ()"
-                  moduleName = "MC2"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/rivanma/Documents/ADA/memoryme-ada23/MC2/Sources/Scenes/Mini%20Games/PhotoAlbumGameScene.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "97"
-                  endingLineNumber = "97"
-                  offsetFromSymbolStart = "1632">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "2392F5C2-1E90-48E4-B912-7ED09A44E025"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Sources/Scenes/Mini Games/PhotoAlbumGameScene.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "103"
-            endingLineNumber = "103"
-            landmarkName = "touchesBegan(_:with:)"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "2392F5C2-1E90-48E4-B912-7ED09A44E025 - 50bc32e1001ee45e"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "MC2.PhotoAlbumGameScene.touchesBegan(_: Swift.Set&lt;__C.UITouch&gt;, with: Swift.Optional&lt;__C.UIEvent&gt;) -&gt; ()"
-                  moduleName = "MC2"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/rivanma/Documents/ADA/memoryme-ada23/MC2/Sources/Scenes/Mini%20Games/PhotoAlbumGameScene.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "102"
-                  endingLineNumber = "102"
-                  offsetFromSymbolStart = "2160">
-               </Location>
-               <Location
-                  uuid = "2392F5C2-1E90-48E4-B912-7ED09A44E025 - 50bc32e1001ee45e"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "MC2.PhotoAlbumGameScene.touchesBegan(_: Swift.Set&lt;__C.UITouch&gt;, with: Swift.Optional&lt;__C.UIEvent&gt;) -&gt; ()"
-                  moduleName = "MC2"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/rivanma/Documents/ADA/memoryme-ada23/MC2/Sources/Scenes/Mini%20Games/PhotoAlbumGameScene.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "102"
-                  endingLineNumber = "102"
-                  offsetFromSymbolStart = "2324">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "43213A47-238B-4E0D-B0CA-2C470051C537"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Sources/Scenes/Mini Games/PhotoAlbumGameScene.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "99"
-            endingLineNumber = "99"
-            landmarkName = "touchesBegan(_:with:)"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "43213A47-238B-4E0D-B0CA-2C470051C537 - 50bc32e1001edbfb"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "MC2.PhotoAlbumGameScene.touchesBegan(_: Swift.Set&lt;__C.UITouch&gt;, with: Swift.Optional&lt;__C.UIEvent&gt;) -&gt; ()"
-                  moduleName = "MC2"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/rivanma/Documents/ADA/memoryme-ada23/MC2/Sources/Scenes/Mini%20Games/PhotoAlbumGameScene.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "99"
-                  endingLineNumber = "99"
-                  offsetFromSymbolStart = "1852">
-               </Location>
-               <Location
-                  uuid = "43213A47-238B-4E0D-B0CA-2C470051C537 - 50bc32e1001ee41c"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "MC2.PhotoAlbumGameScene.touchesBegan(_: Swift.Set&lt;__C.UITouch&gt;, with: Swift.Optional&lt;__C.UIEvent&gt;) -&gt; ()"
-                  moduleName = "MC2"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/rivanma/Documents/ADA/memoryme-ada23/MC2/Sources/Scenes/Mini%20Games/PhotoAlbumGameScene.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "100"
-                  endingLineNumber = "100"
-                  offsetFromSymbolStart = "1992">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "30F4503A-7A1E-4EFD-B186-9513B4E0F193"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Sources/Scenes/Mini Games/PhotoAlbumGameScene.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "105"
-            endingLineNumber = "105"
-            landmarkName = "touchesBegan(_:with:)"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "30F4503A-7A1E-4EFD-B186-9513B4E0F193 - 50bc32e1001ee4f3"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "MC2.PhotoAlbumGameScene.touchesBegan(_: Swift.Set&lt;__C.UITouch&gt;, with: Swift.Optional&lt;__C.UIEvent&gt;) -&gt; ()"
-                  moduleName = "MC2"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/rivanma/Documents/ADA/memoryme-ada23/MC2/Sources/Scenes/Mini%20Games/PhotoAlbumGameScene.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "107"
-                  endingLineNumber = "107"
-                  offsetFromSymbolStart = "2732">
-               </Location>
-               <Location
-                  uuid = "30F4503A-7A1E-4EFD-B186-9513B4E0F193 - 50bc32e1001ee4d2"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "MC2.PhotoAlbumGameScene.touchesBegan(_: Swift.Set&lt;__C.UITouch&gt;, with: Swift.Optional&lt;__C.UIEvent&gt;) -&gt; ()"
-                  moduleName = "MC2"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/rivanma/Documents/ADA/memoryme-ada23/MC2/Sources/Scenes/Mini%20Games/PhotoAlbumGameScene.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "106"
-                  endingLineNumber = "106"
-                  offsetFromSymbolStart = "2976">
+                  startingLineNumber = "87"
+                  endingLineNumber = "87"
+                  offsetFromSymbolStart = "1008">
                </Location>
             </Locations>
          </BreakpointContent>
