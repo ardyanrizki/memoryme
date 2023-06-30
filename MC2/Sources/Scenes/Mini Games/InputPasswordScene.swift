@@ -116,6 +116,11 @@ class InputPasswordScene: SKScene {
     // TODO: move this value to State Machine
     var touchEventsEnabled: Bool = true
     
+    /**
+     Box to showing dialog or prompt.
+     */
+    var dialogBox: DialogBoxNode?
+    
     override func didMove(to view: SKView) {//hanya dijalanin sekali pas awal scene
         //Nyari laptopNode dan dimasukin ke variabel
         let laptop = childNode(withName: TextureResources.macbookCloseUp)!
@@ -139,12 +144,16 @@ class InputPasswordScene: SKScene {
         //kalau ga di type cast by default sknode
         textField = laptop.childNode(withName: "TextField") as? TextField
         textField.setup()
+        
+        setupDialogBox()
+        self.dialogBox?.start(dialog: DialogResources.office_3_computer, from: self)
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         guard touchEventsEnabled else { return }
         //detect touch location
         let location = touches.first!.location(in: self)
+
         
         for keypad in keypads{
             //cek apakah lokasi touch ada di keypad
@@ -181,6 +190,7 @@ class InputPasswordScene: SKScene {
 
 // MARK: Event method.
 extension InputPasswordScene {
+    
     func handleComplePin() {
         touchEventsEnabled = false
         macbookLoginScreen.alpha = 1
@@ -200,5 +210,14 @@ extension InputPasswordScene {
         
         let sequencedActions = SKAction.sequence(actions)
         macbookLoginScreen.run(sequencedActions)
+    }
+    
+    /**
+     Setup dialog box.
+     */
+    private func setupDialogBox() {
+        guard dialogBox == nil else { return }
+        let size = CGSize(width: frame.width - 200, height: 150)
+        dialogBox = FactoryMethods.createDialogBox(with: size, sceneFrame: frame)
     }
 }
