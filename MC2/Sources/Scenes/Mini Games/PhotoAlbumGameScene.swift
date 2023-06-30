@@ -8,9 +8,7 @@
 import SpriteKit
 import GameplayKit
 
-class PhotoAlbumGameScene: SKScene {
-    
-    var sceneManager: SceneManagerProtocol?
+class PhotoAlbumGameScene: PlayableScene {
     
     //polaroid array
     var polaroidNodes: [SKSpriteNode] = []
@@ -28,6 +26,7 @@ class PhotoAlbumGameScene: SKScene {
     var matchedPhotoCount = 0
     
     override func didMove(to view: SKView) {
+        setupDialogBox()
         
         /** Calls parent scene named polaroidNotes**/
         if let parentNode = childNode(withName: "polaroidNodes") {
@@ -56,6 +55,10 @@ class PhotoAlbumGameScene: SKScene {
             }
         }
         
+        self.dialogBox?.startSequence(dialogs: [
+            DialogResources.bedroom_2_withPhoto_seq1
+        ], from: self)
+        
         //Right arrow to next scene
         rightArrow = self.childNode(withName: "arrow-right") as? SKSpriteNode
         rightArrow?.isHidden = true
@@ -69,6 +72,7 @@ class PhotoAlbumGameScene: SKScene {
         }
         
         let touchLocation = touch.location(in: self)
+        let touchedNode = self.nodes(at: touchLocation).first
         
         // TODO
         // loop throuugh to the polaroidNodes
@@ -80,6 +84,31 @@ class PhotoAlbumGameScene: SKScene {
                 polaroidNode.position = touchLocation
             }
         }
+        
+//        if touchedNode!.name == "arrowRight" {
+//            // Indicate touched node does not have any parent
+//            guard let parentNode = touchedNode?.parent else {
+//                return
+//            }
+            
+            switch(touchedNode!.name) {
+            case "arrowRight":
+                print("arrow right click")
+                let photoAlbum = self.childNode(withName: "photo-album-1") as? SKSpriteNode
+                photoAlbum?.texture = SKTexture(imageNamed: "photo-album-2")
+//                sceneManager?.presentMGPhotoAlbumScene()
+                break
+            case "arrowLeft":
+                print("arrow left click")
+                let photoAlbum = self.childNode(withName: "photo-album-1") as? SKSpriteNode
+                photoAlbum?.texture = SKTexture(imageNamed: "photo-album-1")
+//                sceneManager?.presentMGPhotoAlbumScene()
+                break
+            default:
+                
+                break
+            }
+//        }
     }
     
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -157,5 +186,11 @@ class PhotoAlbumGameScene: SKScene {
 
             }
         }
+    }
+    
+    func setupDialogBox() {
+        guard dialogBox == nil else { return }
+        let size = CGSize(width: frame.width - 200, height: 150)
+        dialogBox = FactoryMethods.createDialogBox(with: size, sceneFrame: frame)
     }
 }

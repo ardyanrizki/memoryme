@@ -18,10 +18,56 @@ class BedroomScene: PlayableScene, PlayableSceneProtocol {
         return scene
     }
     
+    override func didMove(to view: SKView) {
+        super.didMove(to: view)
+        firstEnterBedroom()
+    }
+    
+    override func playerDidContact(with itemIdentifier: ItemIdentifier, node: ItemNode) {
+        node.isShowBubble = true
+    }
+    
+    override func playerDidIntersect(with itemIdentifier: ItemIdentifier, node: ItemNode) {
+        
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        guard let touch = touches.first else { return }
+        
+        let touchLocation = touch.location(in: self)
+        let touchedNode = self.nodes(at: touchLocation).first
+        
+        if touchedNode!.name == ItemIdentifier.bubble.rawValue {
+            // Indicate touched node does not have any parent
+            guard let parentNode = touchedNode?.parent else {
+                return
+            }
+            
+            switch(parentNode.name) {
+            case ItemIdentifier.photoAlbum.rawValue:
+                sceneManager?.presentMGPhotoAlbumScene()
+                break
+                
+            default:
+                
+                break
+            }
+        } else {
+            FactoryMethods.removeOverlay(in: self)
+        }
+    }
+    
 }
 
 // MARK: Scene's Events
 extension BedroomScene {
+    
+    func firstEnterBedroom() {
+        guard let gameState else { return }
+        self.dialogBox?.startSequence(dialogs: [
+            DialogResources.bedroom_1_solo_seq1
+        ], from: self)
+    }
     
     func startSeeingAlbumEvent() {
         
