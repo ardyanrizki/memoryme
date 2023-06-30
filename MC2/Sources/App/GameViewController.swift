@@ -24,13 +24,13 @@ protocol SceneManagerProtocol: AnyObject {
 class GameViewController: UIViewController {
     
     var gameState: GameState?
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         presentTitleScene()
         setupGameState()
     }
-
+    
     override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
         if UIDevice.current.userInterfaceIdiom == .phone {
             return .allButUpsideDown
@@ -38,14 +38,14 @@ class GameViewController: UIViewController {
             return .all
         }
     }
-
+    
     override var prefersStatusBarHidden: Bool {
         return true
     }
     
     private func setupGameState() {
         gameState = GameState()
-        gameState?.setState(key: .sceneActivity, value: .gameEventValue(.opening))
+        gameState?.setState(key: .sceneActivity, value: .sceneActivityValue(.opening))
     }
 }
 
@@ -98,14 +98,6 @@ extension GameViewController: SceneManagerProtocol {
         present(scene: scene, transition: fade)
     }
     
-    func presentTestScene() {
-        guard let scene = TestScene.sharedScene(playerPosition: .mainRoomOfficeDoor) else { return }
-        scene.sceneManager = self
-        scene.gameState = gameState
-        let fade = SKTransition.fade(withDuration: 0.5)
-        present(scene: scene, transition: fade)
-    }
-    
     //MARK: MINI GAME SCENES
     //Mini Game 1 - Input Password
     func presentMGPasswordScene(){
@@ -136,7 +128,7 @@ extension GameViewController: SceneManagerProtocol {
         let fade = SKTransition.fade(withDuration: 0.5)
         present(scene: scene, transition: fade)
     }
-
+    
 }
 
 extension GameViewController {
@@ -157,7 +149,11 @@ extension GameViewController {
             scene.physicsBody = SKPhysicsBody(edgeLoopFrom: scene.frame)
             scene.physicsWorld.gravity = CGVector.zero
             view.ignoresSiblingOrder = true
+#if DEBUG
             view.showsPhysics = true
+#else
+            view.showsPhysics = false
+#endif
             view.showsFPS = true
             view.showsNodeCount = true
         }

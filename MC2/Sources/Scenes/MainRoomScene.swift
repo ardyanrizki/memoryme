@@ -77,7 +77,7 @@ extension MainRoomScene {
     
     func startOpeningEventIfNeeded() {
         guard let gameState else { return }
-        if gameState.getState(key: .sceneActivity) == .gameEventValue(.opening) {
+        if gameState.getState(key: .sceneActivity) == .sceneActivityValue(.opening) {
             touchEventsEnabled = false
             player?.lay(completion: {
                 self.dialogBox?.startSequence(dialogs: [
@@ -86,7 +86,7 @@ extension MainRoomScene {
                 ], from: self)
                 self.touchEventsEnabled = true
             })
-            gameState.setState(key: .sceneActivity, value: .gameEventValue(.exploring))
+            gameState.setState(key: .sceneActivity, value: .sceneActivityValue(.exploring))
         }
     }
     

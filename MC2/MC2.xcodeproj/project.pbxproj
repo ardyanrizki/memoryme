@@ -31,8 +31,6 @@
 		3811E4DD2A472D8600416B95 /* WallNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3811E4DC2A472D8600416B95 /* WallNode.swift */; };
 		3811E4DF2A473BC700416B95 /* DialogBoxNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3811E4DE2A473BC700416B95 /* DialogBoxNode.swift */; };
 		3811E4E32A474D6000416B95 /* SceneChangeZoneNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3811E4E22A474D6000416B95 /* SceneChangeZoneNode.swift */; };
-		3811E4E52A475E5500416B95 /* TestScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3811E4E42A475E5500416B95 /* TestScene.swift */; };
-		3811E4E72A475E7E00416B95 /* TestScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 3811E4E62A475E7E00416B95 /* TestScene.sks */; };
 		3811E4E92A47F56B00416B95 /* ItemNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3811E4E82A47F56B00416B95 /* ItemNode.swift */; };
 		3811E4EA2A47F56B00416B95 /* ItemNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3811E4E82A47F56B00416B95 /* ItemNode.swift */; };
 		3811E4EB2A47F56B00416B95 /* ItemNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3811E4E82A47F56B00416B95 /* ItemNode.swift */; };
@@ -146,8 +144,6 @@
 		3811E4DC2A472D8600416B95 /* WallNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WallNode.swift; sourceTree = "<group>"; };
 		3811E4DE2A473BC700416B95 /* DialogBoxNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DialogBoxNode.swift; sourceTree = "<group>"; };
 		3811E4E22A474D6000416B95 /* SceneChangeZoneNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneChangeZoneNode.swift; sourceTree = "<group>"; };
-		3811E4E42A475E5500416B95 /* TestScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestScene.swift; sourceTree = "<group>"; };
-		3811E4E62A475E7E00416B95 /* TestScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = TestScene.sks; sourceTree = "<group>"; };
 		3811E4E82A47F56B00416B95 /* ItemNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemNode.swift; sourceTree = "<group>"; };
 		3811E4EC2A47F5B200416B95 /* ItemIdentifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemIdentifier.swift; sourceTree = "<group>"; };
 		38695C5F2A4980760028B8FD /* CGPoint+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGPoint+Extension.swift"; sourceTree = "<group>"; };
@@ -379,7 +375,6 @@
 				38763F6A2A3B71D5004129A6 /* BarScene.swift */,
 				38763F862A42A600004129A6 /* HospitalRoomScene.swift */,
 				3811E4D32A4667F100416B95 /* PlayableScene.swift */,
-				3811E4E42A475E5500416B95 /* TestScene.swift */,
 				F618B3BA2A49A64300358874 /* Mini Games */,
 			);
 			path = Scenes;
@@ -417,7 +412,6 @@
 				38763F562A3B7127004129A6 /* OfficeRoomScene.sks */,
 				38763F662A3B71C3004129A6 /* BarScene.sks */,
 				38763F8A2A42DAA3004129A6 /* HospitalRoomScene.sks */,
-				3811E4E62A475E7E00416B95 /* TestScene.sks */,
 				F618B3D72A4C058A00358874 /* PhotoAlbumGameScene.sks */,
 				F618B3DB2A4DC25600358874 /* RadioScene.sks */,
 			);
@@ -554,7 +548,6 @@
 				2C59F60E2A4C80090028A035 /* lighter.mp3 in Resources */,
 				2C59F60B2A4C80090028A035 /* cutscene-bedroom.mp3 in Resources */,
 				38763F112A3AA7AA004129A6 /* LaunchScreen.storyboard in Resources */,
-				3811E4E72A475E7E00416B95 /* TestScene.sks in Resources */,
 				2C59F6102A4C80090028A035 /* book-page.mp3 in Resources */,
 				2C59F6082A4C80090028A035 /* cutscene-bar.mp3 in Resources */,
 				2C59F60C2A4C80090028A035 /* keyboard-click.mp3 in Resources */,
@@ -632,7 +625,6 @@
 				38763F3B2A3AEC30004129A6 /* Player.swift in Sources */,
 				3811E4D42A4667F100416B95 /* PlayableScene.swift in Sources */,
 				38695C602A4980760028B8FD /* CGPoint+Extension.swift in Sources */,
-				3811E4E52A475E5500416B95 /* TestScene.swift in Sources */,
 				38763F3F2A3AF2F6004129A6 /* SceneChangeZoneIdentifier.swift in Sources */,
 				3811E4CA2A4643DA00416B95 /* DialogResources.swift in Sources */,
 				3811E4E92A47F56B00416B95 /* ItemNode.swift in Sources */,
@@ -844,6 +836,8 @@
 				DEVELOPMENT_TEAM = T84FHM7BL8;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "MC2-Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = Me...Mory...Me;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.role-playing-games";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -872,6 +866,8 @@
 				DEVELOPMENT_TEAM = T84FHM7BL8;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "MC2-Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = Me...Mory...Me;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.role-playing-games";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;

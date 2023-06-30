@@ -115,11 +115,9 @@ class PhotoAlbumGameScene: SKScene {
         // then remove the node from polaroidNodes
         // otherwise, use initial position to assign current selected node back to the origin position
         
-        guard let touch = touches.first else{
+        guard touches.first != nil else{
             return
         }
-        
-        let touchLocation = touch.location(in: self)
         
         if matchedPhotoCount == 4{
             rightArrow?.isHidden = false
