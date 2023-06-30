@@ -66,5 +66,20 @@ class MatchingNumberScene: SKScene {
             }
         }
     }
+    
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        guard let touch = touches.first else {
+            return
+        }
+        
+        guard let backLabelNode = childNode(withName: TextureResources.backButton) as? SKSpriteNode else {
+            return
+        }
+        
+        let touchedLocation = touch.location(in: self)
+        if backLabelNode.contains(touchedLocation) {
+            sceneManager?.presentOfficeRoomScene()
+        }
+    }
 }
 

@@ -102,7 +102,7 @@ class InputPasswordScene: SKScene {
     
     override func didMove(to view: SKView) {//hanya dijalanin sekali pas awal scene
         //Nyari laptopNode dan dimasukin ke variabel
-        let laptop = childNode(withName: "MacbookLogin")!
+        let laptop = childNode(withName: "macbook")!
         
         //assign array kosong ke keypads
         keypads = [KeyPad]()
@@ -144,7 +144,7 @@ class InputPasswordScene: SKScene {
             return
         }
         
-        guard let backLabelNode = childNode(withName: "backLabelNode") as? SKLabelNode else {
+        guard let backLabelNode = childNode(withName: TextureResources.backButton) as? SKSpriteNode else {
             return
         }
         
@@ -152,6 +152,5 @@ class InputPasswordScene: SKScene {
         if backLabelNode.contains(touchedLocation) {
             sceneManager?.presentOfficeRoomScene()
         }
-        
     }
 }

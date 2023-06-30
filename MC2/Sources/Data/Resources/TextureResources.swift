@@ -32,6 +32,9 @@ extension TextureAtlasName {
 
 struct TextureResources {
     
+    // MARK: - Generic
+    static let backButton: TextureName = "back-button"
+    
     // MARK: - Characters
     // Character's statics
     static let mainCharacter: TextureName = "mory_static"
