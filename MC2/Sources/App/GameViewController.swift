@@ -27,9 +27,7 @@ class GameViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-//        presentTitleScene()
-//        presentMGPhotoAlbumScene()
-        presentMGRadioScene()
+        presentTitleScene()
         setupGameState()
     }
 
