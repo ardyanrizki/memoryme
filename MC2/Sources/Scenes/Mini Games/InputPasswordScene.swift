@@ -26,6 +26,7 @@ class TextField: SKNode{ //-> Node kosong, SpriteNode = gambar
     
     //array untuk tampung yang sudah diketik
     var numberNodes = [SKSpriteNode]()
+    var incorrectPinText: SKSpriteNode!
     
     //representasi berapa angka di text fieldnya
     var digitCount = 0
@@ -36,10 +37,16 @@ class TextField: SKNode{ //-> Node kosong, SpriteNode = gambar
     //representasi kombinasi yang sedang dimasukkan
     var enteredCombination = ""
     
+    
+    
     //initialize variable
     func setup(){
         for pos in self.children{
-            positionNodes.append(pos)
+            if pos.name == TextureResources.incorrectPinText {
+                incorrectPinText = self.childNode(withName: TextureResources.incorrectPinText) as? SKSpriteNode
+            } else {
+                positionNodes.append(pos)
+            }
         }
     }
     
@@ -72,6 +79,8 @@ class TextField: SKNode{ //-> Node kosong, SpriteNode = gambar
         if digitCount == 4 {
             if enteredCombination == unlockCombination {
                 print("anda benar!!! pindah scene")
+            } else {
+                incorrectPinText.alpha = 1
             }
         }
     }
@@ -82,6 +91,11 @@ class TextField: SKNode{ //-> Node kosong, SpriteNode = gambar
         
         //representasi jumlah digit berkurang
         digitCount -= 1
+        
+        // hide incorrect pin if it displayed previously
+        if incorrectPinText.alpha > 0 {
+            incorrectPinText.alpha = 0
+        }
         
         //remove dari scene
         numberNodes[digitCount].removeFromParent()
@@ -105,7 +119,7 @@ class InputPasswordScene: SKScene {
     
     override func didMove(to view: SKView) {//hanya dijalanin sekali pas awal scene
         //Nyari laptopNode dan dimasukin ke variabel
-        let laptop = childNode(withName: "macbook")!
+        let laptop = childNode(withName: "macbookClose")!
         
         //assign array kosong ke keypads
         keypads = [KeyPad]()

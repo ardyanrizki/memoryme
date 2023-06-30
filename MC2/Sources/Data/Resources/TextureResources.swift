@@ -34,6 +34,7 @@ struct TextureResources {
     
     // MARK: - Generic
     static let backButton: TextureName = "back-button"
+    static let incorrectPinText: TextureName = "incorrect-pin-text"
     
     // MARK: - Characters
     // Character's statics
