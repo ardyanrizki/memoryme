@@ -126,6 +126,9 @@ class InputPasswordScene: SKScene {
     var macbookLoginScreen: SKSpriteNode!
     var textField: TextField!
     
+    // TODO: move this value to State Machine
+    var touchEventsEnabled: Bool = true
+    
     override func didMove(to view: SKView) {//hanya dijalanin sekali pas awal scene
         //Nyari laptopNode dan dimasukin ke variabel
         let laptop = childNode(withName: TextureResources.macbookCloseUp)!
@@ -152,6 +155,7 @@ class InputPasswordScene: SKScene {
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        guard touchEventsEnabled else { return }
         //detect touch location
         let location = touches.first!.location(in: self)
         
@@ -171,6 +175,8 @@ class InputPasswordScene: SKScene {
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        guard touchEventsEnabled else { return }
+        
         guard let touch = touches.first else {
             return
         }
@@ -188,6 +194,7 @@ class InputPasswordScene: SKScene {
 
 extension InputPasswordScene {
     func handleComplePin() {
+        touchEventsEnabled = false
         macbookLoginScreen.alpha = 1
         
         let fadeAction = SKAction.fadeAlpha(to: 0, duration: 0.5)

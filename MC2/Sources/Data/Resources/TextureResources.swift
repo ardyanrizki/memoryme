@@ -143,4 +143,5 @@ struct TextureResources {
     static let macbookCloseUp: TextureName = "macbook_close-up"
     static let macbookLoginScreen: TextureName = "macbook-login-screen"
     static let macbookVerificationScreen: TextureName = "macbook-verification-screen"
+    static let macbookEmailScreen: TextureName = "macbook-email-screen"
 }
