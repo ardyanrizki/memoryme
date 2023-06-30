@@ -18,6 +18,7 @@ protocol SceneManagerProtocol: AnyObject {
     func presentMGPasswordScene()
     func presentMGMatchingNumbersScene()
     func presentMGPhotoAlbumScene()
+    func presentMGRadioScene()
 }
 
 class GameViewController: UIViewController {
@@ -28,8 +29,9 @@ class GameViewController: UIViewController {
         super.viewDidLoad()
         setupGameState()
         presentTitleScene()
+        setupGameState()
     }
-
+    
     override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
         if UIDevice.current.userInterfaceIdiom == .phone {
             return .allButUpsideDown
@@ -37,7 +39,7 @@ class GameViewController: UIViewController {
             return .all
         }
     }
-
+    
     override var prefersStatusBarHidden: Bool {
         return true
     }
@@ -97,18 +99,11 @@ extension GameViewController: SceneManagerProtocol {
         present(scene: scene, transition: fade)
     }
     
-    func presentTestScene() {
-        guard let scene = TestScene.sharedScene(playerPosition: .mainRoomOfficeDoor) else { return }
-        scene.sceneManager = self
-        scene.gameState = gameState
-        let fade = SKTransition.fade(withDuration: 0.5)
-        present(scene: scene, transition: fade)
-    }
-    
     //MARK: MINI GAME SCENES
     //Mini Game 1 - Input Password
     func presentMGPasswordScene(){
         guard let scene = InputPasswordScene(fileNamed: Constants.inputPasswordScene) else { return }
+        scene.sceneManager = self
         let fade = SKTransition.fade(withDuration: 0.5)
         present(scene: scene, transition: fade)
     }
@@ -116,17 +111,25 @@ extension GameViewController: SceneManagerProtocol {
     //Mini Game 2 - Matching Numbers
     func presentMGMatchingNumbersScene(){
         guard let scene = MatchingNumberScene(fileNamed: Constants.matchingNumberScene) else { return }
-        let fade = SKTransition.fade(withDuration: 0.5)
-        present(scene: scene, transition: fade)
+        scene.sceneManager = self
+        present(scene: scene)
     }
     
     //Mini Game 3 - Drag and drop photos to album
     func presentMGPhotoAlbumScene(){
         guard let scene = PhotoAlbumGameScene(fileNamed: Constants.photoAlbumScene) else {return}
+        scene.sceneManager = self
         let fade = SKTransition.fade(withDuration: 0.5)
         present(scene: scene, transition: fade)
     }
-
+    
+    //Mini Game 4 - Radio Scene
+    func presentMGRadioScene(){
+        guard let scene = RadioScene(fileNamed: Constants.radioScene) else {return}
+        let fade = SKTransition.fade(withDuration: 0.5)
+        present(scene: scene, transition: fade)
+    }
+    
 }
 
 extension GameViewController {
@@ -147,7 +150,11 @@ extension GameViewController {
             scene.physicsBody = SKPhysicsBody(edgeLoopFrom: scene.frame)
             scene.physicsWorld.gravity = CGVector.zero
             view.ignoresSiblingOrder = true
+#if DEBUG
             view.showsPhysics = true
+#else
+            view.showsPhysics = false
+#endif
             view.showsFPS = true
             view.showsNodeCount = true
         }

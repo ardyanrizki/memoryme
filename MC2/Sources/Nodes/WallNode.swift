@@ -15,6 +15,11 @@ class WallNode: SKSpriteNode {
         physicsBody?.affectedByGravity = false
         physicsBody?.isDynamic = false
         physicsBody?.allowsRotation = false
+#if DEBUG
+        color = .red
+        alpha = 0.5
+#else
         alpha = 0
+#endif
     }
 }

@@ -4,10 +4,33 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>MC2.xcscheme_^#shared#^_</key>
+		<key>MC2 (Debug).xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>0</integer>
+		</dict>
+		<key>MC2 (Release).xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>1</integer>
+		</dict>
+	</dict>
+	<key>SuppressBuildableAutocreation</key>
+	<dict>
+		<key>38763EFC2A3AA7A8004129A6</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>38763F152A3AA7AA004129A6</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>38763F1F2A3AA7AA004129A6</key>
+		<dict>
+			<key>primary</key>
+			<true/>
 		</dict>
 	</dict>
 </dict>

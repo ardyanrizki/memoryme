@@ -58,11 +58,9 @@ extension TitleScene {
                 let resetAction = SKAction.run {
                     if background.intersects(childNode) {
                         // childNode.position = CGPoint(x: childNode.position.x + 150, y: childNode.position.y + 400)
-                        print("\(childNode.name) still on screen")
                         childNode.position = carouselChildren[0].position
                     } else {
                         // childNode.position = CGPoint(x: originX + 450, y: originY + 1200)
-                        print("\(childNode.name) out off screen")
                         childNode.position = carouselChildren[0].position
                     }
                 }
