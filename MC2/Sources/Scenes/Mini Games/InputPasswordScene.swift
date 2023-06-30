@@ -61,6 +61,9 @@ class TextField: SKNode{ //-> Node kosong, SpriteNode = gambar
         numberSprite.position = positionNodes[digitCount].parent!.convert(
             positionNodes[digitCount].position, to: scene!)
         
+        // Workaround to set pin number's z position same as the screen
+        numberSprite.zPosition = 2
+        
         enteredCombination += "\(number)"
         
         //nambahin representasi jumlah digit
