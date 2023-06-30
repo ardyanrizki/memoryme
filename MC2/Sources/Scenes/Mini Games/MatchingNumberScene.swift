@@ -10,7 +10,9 @@ import GameplayKit
 
 
 
-class MatchingNumberScene: SKScene{
+class MatchingNumberScene: SKScene {
+    
+    var sceneManager: SceneManagerProtocol?
     
     //array yang menampung 2 variabel untuk cek apakah ud match
     var currentSelectKeypads: [SKSpriteNode] = []
@@ -63,7 +65,6 @@ class MatchingNumberScene: SKScene{
                 currentSelectKeypads.append(touchedNode)
             }
         }
-        
     }
 }
 

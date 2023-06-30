@@ -8,7 +8,9 @@
 import SpriteKit
 import GameplayKit
 
-class PhotoAlbumGameScene: SKScene{
+class PhotoAlbumGameScene: SKScene {
+    
+    var sceneManager: SceneManagerProtocol?
     
     //polaroid array
     var polaroidNodes: [SKSpriteNode] = []
@@ -138,6 +140,4 @@ class PhotoAlbumGameScene: SKScene{
             }
         }
     }
-    
-    
 }

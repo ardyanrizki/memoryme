@@ -92,7 +92,9 @@ class TextField: SKNode{ //-> Node kosong, SpriteNode = gambar
 }
 
 
-class InputPasswordScene: SKScene{
+class InputPasswordScene: SKScene {
+    
+    var sceneManager: SceneManagerProtocol?
     
     var keypads: [KeyPad]! //declare suatu array namanya keypads dengan tipe KeyPad
     var deleteButton: SKSpriteNode!
@@ -135,5 +137,21 @@ class InputPasswordScene: SKScene{
         if deleteButton.contains(location) {
             textField.deleteNumber()
         }
+    }
+    
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        guard let touch = touches.first else {
+            return
+        }
+        
+        guard let backLabelNode = childNode(withName: "backLabelNode") as? SKLabelNode else {
+            return
+        }
+        
+        let touchedLocation = touch.location(in: self)
+        if backLabelNode.contains(touchedLocation) {
+            sceneManager?.presentOfficeRoomScene()
+        }
+        
     }
 }
