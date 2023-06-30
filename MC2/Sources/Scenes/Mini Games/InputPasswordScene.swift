@@ -8,16 +8,6 @@
 import SpriteKit
 import GameplayKit
 
-class KeyPad: SKSpriteNode{
-   var number = 0
-    
-    //initialize variable
-    func setup(){
-        //access "number" di userdata - check if its null - typecasting value to Int
-        number = userData?["number"] as! Int
-    }
-}
-
 class TextField: SKNode{ //-> Node kosong, SpriteNode = gambar
     
     //referensi node ke posisi
@@ -36,8 +26,6 @@ class TextField: SKNode{ //-> Node kosong, SpriteNode = gambar
     
     //representasi kombinasi yang sedang dimasukkan
     var enteredCombination = ""
-    
-    
     
     //initialize variable
     func setup(){
@@ -113,15 +101,14 @@ class TextField: SKNode{ //-> Node kosong, SpriteNode = gambar
         
         enteredCombination.removeLast()
     }
-    
 }
 
-
+// MARK: Overrided methods.
 class InputPasswordScene: SKScene {
     
     var sceneManager: SceneManagerProtocol?
     
-    var keypads: [KeyPad]! //declare suatu array namanya keypads dengan tipe KeyPad
+    var keypads: [KeypadNode]! //declare suatu array namanya keypads dengan tipe KeyPad
     var deleteButton: SKSpriteNode!
     var macbookLoginScreen: SKSpriteNode!
     var textField: TextField!
@@ -136,12 +123,12 @@ class InputPasswordScene: SKScene {
         macbookLoginScreen = childNode(withName: TextureResources.macbookLoginScreen) as? SKSpriteNode
         
         //assign array kosong ke keypads
-        keypads = [KeyPad]()
+        keypads = [KeypadNode]()
         
         //Looping untuk semua childnya
         for node in laptop.children{
             //cek apakah dia termasuk class Keypads
-            if let keypad = node as? KeyPad {
+            if let keypad = node as? KeypadNode {
                 keypad.setup()
                 keypads.append(keypad)
             }
@@ -192,6 +179,7 @@ class InputPasswordScene: SKScene {
     }
 }
 
+// MARK: Event method.
 extension InputPasswordScene {
     func handleComplePin() {
         touchEventsEnabled = false

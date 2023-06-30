@@ -20,6 +20,7 @@
 		2C59F60F2A4C80090028A035 /* truck-horn.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2C59F6062A4C80090028A035 /* truck-horn.mp3 */; };
 		2C59F6102A4C80090028A035 /* book-page.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2C59F6072A4C80090028A035 /* book-page.mp3 */; };
 		2C92028C2A4BFAF8004FB043 /* BedroomScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 2C92028B2A4BFAF8004FB043 /* BedroomScene.sks */; };
+		2CA1E6542A4EC82E0076C3F3 /* KeypadNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CA1E6532A4EC82E0076C3F3 /* KeypadNode.swift */; };
 		3811E4CA2A4643DA00416B95 /* DialogResources.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3811E4C92A4643DA00416B95 /* DialogResources.swift */; };
 		3811E4CC2A4643E400416B95 /* TextureResources.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3811E4CB2A4643E400416B95 /* TextureResources.swift */; };
 		3811E4CE2A464E5A00416B95 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3811E4CD2A464E5A00416B95 /* Constants.swift */; };
@@ -135,6 +136,7 @@
 		2C59F6062A4C80090028A035 /* truck-horn.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "truck-horn.mp3"; sourceTree = "<group>"; };
 		2C59F6072A4C80090028A035 /* book-page.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "book-page.mp3"; sourceTree = "<group>"; };
 		2C92028B2A4BFAF8004FB043 /* BedroomScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = BedroomScene.sks; sourceTree = "<group>"; };
+		2CA1E6532A4EC82E0076C3F3 /* KeypadNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeypadNode.swift; sourceTree = "<group>"; };
 		3811E4C92A4643DA00416B95 /* DialogResources.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DialogResources.swift; sourceTree = "<group>"; };
 		3811E4CB2A4643E400416B95 /* TextureResources.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextureResources.swift; sourceTree = "<group>"; };
 		3811E4CD2A464E5A00416B95 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -270,6 +272,7 @@
 				3811E4DE2A473BC700416B95 /* DialogBoxNode.swift */,
 				3811E4E22A474D6000416B95 /* SceneChangeZoneNode.swift */,
 				3811E4E82A47F56B00416B95 /* ItemNode.swift */,
+				2CA1E6532A4EC82E0076C3F3 /* KeypadNode.swift */,
 			);
 			path = Nodes;
 			sourceTree = "<group>";
@@ -606,6 +609,7 @@
 				38763F4B2A3AF70A004129A6 /* ControlComponent.swift in Sources */,
 				F618B3D62A4C04BB00358874 /* PhotoAlbumGameScene.swift in Sources */,
 				F618B3DA2A4DC23200358874 /* RadioScene.swift in Sources */,
+				2CA1E6542A4EC82E0076C3F3 /* KeypadNode.swift in Sources */,
 				F618B3CF2A4A828F00358874 /* InputPasswordScene.swift in Sources */,
 				3811E4D22A46519B00416B95 /* PositionIdentifier.swift in Sources */,
 				38763F632A3B71AE004129A6 /* BedroomScene.swift in Sources */,
