@@ -50,7 +50,11 @@ class TextField: SKNode{ //-> Node kosong, SpriteNode = gambar
         }
     }
     
-    func fillNumber(number: Int){ //fungsi untuk munculin angka kalau di click keypad
+    // fungsi untuk munculin angka kalau di click keypad
+    func fillNumber(
+        number: Int,
+        completion: (() -> Void)
+    ) {
         
         if digitCount >= 4 { return }
         
@@ -78,7 +82,11 @@ class TextField: SKNode{ //-> Node kosong, SpriteNode = gambar
         
         if digitCount == 4 {
             if enteredCombination == unlockCombination {
-                print("anda benar!!! pindah scene")
+                for numberNode in numberNodes {
+                    numberNode.alpha = 0
+                }
+                
+                completion()
             } else {
                 incorrectPinText.alpha = 1
             }
@@ -115,11 +123,14 @@ class InputPasswordScene: SKScene {
     
     var keypads: [KeyPad]! //declare suatu array namanya keypads dengan tipe KeyPad
     var deleteButton: SKSpriteNode!
+    var macbookLoginScreen: SKSpriteNode!
     var textField: TextField!
     
     override func didMove(to view: SKView) {//hanya dijalanin sekali pas awal scene
         //Nyari laptopNode dan dimasukin ke variabel
-        let laptop = childNode(withName: "macbookClose")!
+        let laptop = childNode(withName: TextureResources.macbookCloseUp)!
+        
+        macbookLoginScreen = childNode(withName: TextureResources.macbookLoginScreen) as? SKSpriteNode
         
         //assign array kosong ke keypads
         keypads = [KeyPad]()
@@ -147,7 +158,10 @@ class InputPasswordScene: SKScene {
         for keypad in keypads{
             //cek apakah lokasi touch ada di keypad
             if keypad.contains(location) {
-                textField.fillNumber(number: keypad.number)
+                textField.fillNumber(
+                    number: keypad.number,
+                    completion: handleComplePin
+                )
             }
         }
         
@@ -169,5 +183,27 @@ class InputPasswordScene: SKScene {
         if backLabelNode.contains(touchedLocation) {
             sceneManager?.presentOfficeRoomScene()
         }
+    }
+}
+
+extension InputPasswordScene {
+    func handleComplePin() {
+        macbookLoginScreen.alpha = 1
+        
+        let fadeAction = SKAction.fadeAlpha(to: 0, duration: 0.5)
+        let intervalAction = SKAction.wait(forDuration: 0.5)
+        let presentNewScreen = SKAction.run {
+            self.sceneManager?.presentMGMatchingNumbersScene()
+        }
+        
+        var actions = [SKAction]()
+        actions.append(contentsOf: [
+            fadeAction,
+            intervalAction,
+            presentNewScreen
+        ])
+        
+        let sequencedActions = SKAction.sequence(actions)
+        macbookLoginScreen.run(sequencedActions)
     }
 }
