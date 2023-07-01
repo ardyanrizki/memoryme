@@ -8,9 +8,13 @@
 import SpriteKit
 import GameplayKit
 
-class PhotoAlbumGameScene: SKScene {
+class PhotoAlbumGameScene1: SKScene {
     
-    var sceneManager: SceneManagerProtocol?
+    var sceneManaager: SceneManagerProtocol
+    
+    var photoAlbumFirst: SKSpriteNode!
+    
+    var photoAlbumSecond: SKSpriteNode!
     
     //polaroid array
     var polaroidNodes: [SKSpriteNode] = []
@@ -21,13 +25,29 @@ class PhotoAlbumGameScene: SKScene {
     /** Target position of polaroids*/
     var targetPolaroidNodes = [String: SKSpriteNode]()
     
-    /**Next arrow button**/
-    var rightArrow: SKSpriteNode?
+    var arrowRight: SKSpriteNode!
+    var arrowLeft: SKSpriteNode!
     
-    //flag to count photos matched
-    var matchedPhotoCount = 0
+    var photoAtFirstAlbum: [String] = [
+        "polaroid-boyfriend",
+        "polaroid-birthday",
+        "polaroid-bracelet",
+        "polaroid-fight"
+    ]
+    
+    var photoAtSecondAlbum: [String] = [
+        "polaroid-chocolate",
+        "polaroid-friend"
+    ]
     
     override func didMove(to view: SKView) {
+        
+        photoAlbumFirst = childNode(withName: "photo-album-1") as! SKSpriteNode
+//        photoAlbumSecond = childNode(withName: "photo-album-2") as! SKSpriteNode
+        
+        /**Arrows**/
+        arrowRight = childNode(withName: "arrowRight") as! SKSpriteNode
+        arrowLeft = childNode(withName: "arrowLeft") as! SKSpriteNode
         
         /** Calls parent scene named polaroidNotes**/
         if let parentNode = childNode(withName: "polaroidNodes") {
@@ -47,20 +67,77 @@ class PhotoAlbumGameScene: SKScene {
         
         // add dictionary. key: target child node, value: current position of the node
         /**Loop through targetPosition**/
-        if let targetParentNode = childNode(withName: "targetPositionNodes") {
+        if let targetPhotoAlbumFirst = childNode(withName: "photo-album-1"),
+          let targetPhotoAlbumSecond = childNode(withName: "photo-album-2") {
             
             /**Sets the children of targetNodePosition**/
-            let childrenNodes = targetParentNode.children as! [SKSpriteNode]
-            for (_, childNode) in childrenNodes.enumerated() {
+            let targetChildrenFirst = targetPhotoAlbumFirst.children as! [SKSpriteNode]
+            let targetChildrenSecond = targetPhotoAlbumSecond.children as! [SKSpriteNode]
+            
+            for (_, childNode) in targetChildrenFirst.enumerated() {
+                targetPolaroidNodes[childNode.name!] = childNode
+            }
+            
+            for (_, childNode) in targetChildrenSecond.enumerated() {
                 targetPolaroidNodes[childNode.name!] = childNode
             }
         }
         
-        //Right arrow to next scene
-        rightArrow = self.childNode(withName: "arrow-right") as? SKSpriteNode
-        rightArrow?.isHidden = true
+        arrowRight?.alpha = 1
+        arrowLeft?.alpha = 0
+        
+        photoAlbumFirst.alpha = 1
+        photoAlbumSecond.alpha = 0
+       
+    }
+    
+    func handleRightArrowTap(){
+//        // Check if there is a current background image node
+//        guard let currentBackgroundImageNode = backgroundImageNode else {
+//            return
+//        }
+    
+        // Create a new background image node for the next photo album
+        // let newBackgroundImageNode = childNode(withName: "photo-album-2") as! SKSpriteNode
+//        newBackgroundImageNode.zPosition = currentBackgroundImageNode.zPosition + 1  // Set the z position to be one higher than the current background
+        
+        // Update the z positions of the background image nodes
+        
+        // Change photo album first z-position to -2
+        // Set the z position of the new background to be the same as the current backgrorund
+        photoAlbumFirst.alpha = 0
+        photoAlbumSecond.alpha = 1
+        
+        //Hide right arrow Button
+        arrowRight?.alpha = 0
+        arrowLeft?.alpha = 1
+        
+        //Hide polaroids
+        
+        sceneManaager.presentMGPhotoAlbumScene2()
         
     }
+    
+    func handleLeftArrowTap(){
+//        guard let currentBackgroundImageNode = backgroundImageNode else {
+//
+//               return
+//           }
+           
+//           let newBackgroundImageNode = childNode(withName: "photo-album-1") as! SKSpriteNode
+//           newBackgroundImageNode.zPosition = currentBackgroundImageNode.zPosition + 1
+//
+//           currentBackgroundImageNode.removeFromParent()
+//           backgroundImageNode = newBackgroundImageNode
+        
+        // Set the z position of the new background to be the same as the current backgrorund
+        photoAlbumSecond.alpha = 0
+        photoAlbumFirst.alpha = 1
+           
+        arrowRight?.alpha = 1
+        arrowLeft?.alpha = 0
+           
+       }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         
@@ -75,10 +152,21 @@ class PhotoAlbumGameScene: SKScene {
         // check whether touchLocation contain corresponding the child node
         // if yes, change the child node position to the current touchLocation
         // otherwise, do nothing
+        
         for polaroidNode in polaroidNodes {
             if polaroidNode.contains(touchLocation) {
                 polaroidNode.position = touchLocation
             }
+        }
+        
+        if arrowLeft.contains(touchLocation) {
+            print("tapped left")
+            handleLeftArrowTap()
+        }
+        
+        if arrowRight.contains(touchLocation) {
+            print("tapped right")
+            handleRightArrowTap()
         }
     }
     
@@ -101,7 +189,6 @@ class PhotoAlbumGameScene: SKScene {
                 polaroidNode.position = touchLocation
             }
         }
-        
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -115,13 +202,11 @@ class PhotoAlbumGameScene: SKScene {
         // then remove the node from polaroidNodes
         // otherwise, use initial position to assign current selected node back to the origin position
         
-        guard touches.first != nil else{
+        guard let touch = touches.first else{
             return
         }
         
-        if matchedPhotoCount == 4{
-            rightArrow?.isHidden = false
-        }
+        let touchLocation = touch.location(in: self)
         
        
         for polaroidNode in polaroidNodes{
@@ -133,7 +218,16 @@ class PhotoAlbumGameScene: SKScene {
                     
                     // if yes, change polaroid node to the current target node
                     polaroidNode.position = targetNode.position
-                    matchedPhotoCount += 1
+                    
+                    if photoAtFirstAlbum.contains(polaroidNode.name!) {
+                        //polaroidNode.name = polaroidNode.name! + "-done"
+                        polaroidNode.removeFromParent()
+                        photoAlbumFirst.addChild(polaroidNode)
+                    } else if photoAtSecondAlbum.contains(polaroidNode.name!) {
+                        // polaroidNode.name = polaroidNode.name! + "-done"
+                        polaroidNode.removeFromParent()
+                        photoAlbumSecond.addChild(polaroidNode)
+                    }
         
                     //remove node from polaroidNodes
                     if let index = polaroidNodes.firstIndex(of: polaroidNode) {
@@ -155,5 +249,7 @@ class PhotoAlbumGameScene: SKScene {
 
             }
         }
+
     }
+    
 }

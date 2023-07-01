@@ -17,8 +17,10 @@ protocol SceneManagerProtocol: AnyObject {
     func presentHospitalRoomScene()
     func presentMGPasswordScene()
     func presentMGMatchingNumbersScene()
+    func presentMGPhotoAlbumScene2()
     func presentMGPhotoAlbumScene()
     func presentMGRadioScene()
+    func presentCrashQTEScene()
 }
 
 class GameViewController: UIViewController {
@@ -27,7 +29,9 @@ class GameViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        presentTitleScene()
+//        presentTitleScene()
+        presentCrashQTEScene()
+//        presentMGRadioScene()
         setupGameState()
     }
     
@@ -50,6 +54,12 @@ class GameViewController: UIViewController {
 }
 
 extension GameViewController: SceneManagerProtocol {
+    func presentMGPhotoAlbumScene2() {
+        guard let scene = TitleScene(fileNamed: Constants.photoAlbumScene2) else { return }
+        scene.sceneManager = self
+        let fade = SKTransition.fade(withDuration: 0.5)
+        present(scene: scene, transition: fade)
+    }
     
     func presentTitleScene() {
         guard let scene = TitleScene(fileNamed: Constants.titleScene) else { return }
@@ -115,6 +125,18 @@ extension GameViewController: SceneManagerProtocol {
     }
     
     //Mini Game 3 - Drag and drop photos to album
+//    func presentMGPhotoAlbumScene1(transition: SKTransition? = nil){
+//        guard let scene = PhotoAlbumGameScene(fileNamed: Constants.photoAlbumScene1) else {return}
+//        // let fade = SKTransition.fade(withDuration: 0.5)
+//        present(scene: scene)
+//    }
+//
+    func presentMGPhotoAlbumScene2(transition: SKTransition? = nil){
+        guard let scene = PhotoAlbumGameScene(fileNamed: Constants.photoAlbumScene2) else {return}
+        // let fade = SKTransition.fade(withDuration: 0.5)
+        present(scene: scene)
+    }
+    
     func presentMGPhotoAlbumScene(){
         guard let scene = PhotoAlbumGameScene(fileNamed: Constants.photoAlbumScene) else {return}
         scene.sceneManager = self
@@ -125,6 +147,13 @@ extension GameViewController: SceneManagerProtocol {
     //Mini Game 4 - Radio Scene
     func presentMGRadioScene(){
         guard let scene = RadioScene(fileNamed: Constants.radioScene) else {return}
+        let fade = SKTransition.fade(withDuration: 0.5)
+        present(scene: scene, transition: fade)
+    }
+    
+    //Mini Game 5 - QTE
+    func presentCrashQTEScene(){
+        guard let scene = CrashQTEScene(fileNamed: Constants.crashQTEScene) else {return}
         let fade = SKTransition.fade(withDuration: 0.5)
         present(scene: scene, transition: fade)
     }
