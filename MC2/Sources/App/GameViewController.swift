@@ -31,7 +31,8 @@ class GameViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        presentTitleScene()
+//        presentTitleScene()
+        presentMGRadioScene()
         setupGameState()
     }
     

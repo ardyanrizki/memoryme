@@ -15,7 +15,9 @@
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "84"
-            endingLineNumber = "84">
+            endingLineNumber = "84"
+            landmarkName = "startOpeningEventIfNeeded()"
+            landmarkType = "7">
             <Locations>
                <Location
                   uuid = "A5E0AE53-A416-4751-B34C-91C3698A7146 - 3e1ee2a97c92c7a5"
@@ -126,6 +128,84 @@
                   startingLineNumber = "53"
                   endingLineNumber = "53"
                   offsetFromSymbolStart = "2068">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "2885EFBE-5864-466D-8C87-96B0FB42F124"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Sources/Scenes/Mini Games/RadioScene.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "97"
+            endingLineNumber = "97"
+            landmarkName = "touchesMoved(_:with:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "2885EFBE-5864-466D-8C87-96B0FB42F124 - 4ca1e12192847af2"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "MC2.RadioScene.touchesMoved(_: Swift.Set&lt;__C.UITouch&gt;, with: Swift.Optional&lt;__C.UIEvent&gt;) -&gt; ()"
+                  moduleName = "MC2"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/rivanma/Documents/ADA/clara-main/MC2/Sources/Scenes/Mini%20Games/RadioScene.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "114"
+                  endingLineNumber = "114"
+                  offsetFromSymbolStart = "3080">
+               </Location>
+               <Location
+                  uuid = "2885EFBE-5864-466D-8C87-96B0FB42F124 - 4ca1e12192847af2"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "MC2.RadioScene.touchesMoved(_: Swift.Set&lt;__C.UITouch&gt;, with: Swift.Optional&lt;__C.UIEvent&gt;) -&gt; ()"
+                  moduleName = "MC2"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/rivanma/Documents/ADA/clara-main/MC2/Sources/Scenes/Mini%20Games/RadioScene.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "114"
+                  endingLineNumber = "114"
+                  offsetFromSymbolStart = "3640">
+               </Location>
+               <Location
+                  uuid = "2885EFBE-5864-466D-8C87-96B0FB42F124 - 4ca1e12192846725"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "MC2.RadioScene.touchesMoved(_: Swift.Set&lt;__C.UITouch&gt;, with: Swift.Optional&lt;__C.UIEvent&gt;) -&gt; ()"
+                  moduleName = "MC2"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/rivanma/Documents/ADA/clara-main/MC2/Sources/Scenes/Mini%20Games/RadioScene.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "97"
+                  endingLineNumber = "97"
+                  offsetFromSymbolStart = "3832">
+               </Location>
+               <Location
+                  uuid = "2885EFBE-5864-466D-8C87-96B0FB42F124 - 4ca1e12192846725"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "MC2.RadioScene.touchesMoved(_: Swift.Set&lt;__C.UITouch&gt;, with: Swift.Optional&lt;__C.UIEvent&gt;) -&gt; ()"
+                  moduleName = "MC2"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/rivanma/Documents/ADA/clara-main/MC2/Sources/Scenes/Mini%20Games/RadioScene.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "97"
+                  endingLineNumber = "97"
+                  offsetFromSymbolStart = "3272">
                </Location>
             </Locations>
          </BreakpointContent>

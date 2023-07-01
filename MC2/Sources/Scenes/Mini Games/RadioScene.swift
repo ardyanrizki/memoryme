@@ -21,7 +21,7 @@ class RadioScene: SKScene{
     var previousAngleOffset: CGFloat = 0
     var draggingTouch: UITouch?
     
-    var audioPlayer: AVAudioPlayer?
+    var audioPlayer: AVAudioPlayer!
     var isPlayingSound: Bool = false
   
     override func didMove(to view: SKView) {
@@ -29,14 +29,8 @@ class RadioScene: SKScene{
         radioPointer = self.childNode(withName: "radio-pointer") as? SKSpriteNode
         targetFrequencyNode = self.childNode(withName: "targetFrequencyNode")
         
-        do {
-             let audioPath = Bundle.main.path(forResource: "cutscene-bar", ofType: "mp3")
-             audioPlayer = try AVAudioPlayer(contentsOf: URL(fileURLWithPath: audioPath!))
-             audioPlayer?.prepareToPlay()
-             audioPlayer?.numberOfLoops = -1 // Loop indefinitely
-         } catch {
-             print("Error loading audio file: \(error.localizedDescription)")
-         }
+        // Play the initial background music
+        playBackgroundMusic(filename: "radio-static.mp3")
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) { // panggil sekali
@@ -98,12 +92,12 @@ class RadioScene: SKScene{
             radioTuner.zRotation = newRotation
             
             radioPointer.position.x = getPositionFromAngle(newRotation.toDegrees())
-            
-            if radioPointer.position.x == targetFrequencyNode.position.x {
-                audioPlayer?.play()
+            print(radioPointer.position.x)
+            if radioPointer.position.x > 120 && radioPointer.position.x < 160 && !isPlayingSound {
+                changeBackgroundMusic(filename: "cutscene-bar.mp3")
                 isPlayingSound = true
-            }else{
-                audioPlayer?.stop()
+            } else if isPlayingSound && (radioPointer.position.x <= 120 || radioPointer.position.x >= 160) {
+                changeBackgroundMusic(filename: "radio-static.mp3")
                 isPlayingSound = false
             }
         }
@@ -142,6 +136,47 @@ class RadioScene: SKScene{
         if let draggingTouch, draggingTouch == touch{
             self.draggingTouch = nil
         }
+    }
+
+}
+
+extension RadioScene {
+    func playBackgroundMusic(filename: String) {
+        // Stop the current background music if playing
+        stopBackgroundMusic()
+        
+        // Get the path to the new music file
+        let filePath = Bundle.main.path(forResource: filename, ofType: nil)
+        if let path = filePath {
+            let url = URL(fileURLWithPath: path)
+            
+            do {
+                // Create the audio player
+                audioPlayer = try AVAudioPlayer(contentsOf: url)
+                
+                // Configure the audio player settings
+                audioPlayer.numberOfLoops = -1 // Loop indefinitely
+                audioPlayer.volume = 0.5 // Adjust the volume as needed
+                
+                // Play the background music
+                audioPlayer.play()
+            } catch {
+                // Error handling if the audio player fails to initialize
+                print("Could not create audio player: \(error.localizedDescription)")
+            }
+        } else {
+            print("Music file not found: \(filename)")
+        }
+    }
+    
+    func stopBackgroundMusic() {
+        audioPlayer?.stop()
+        audioPlayer = nil
+    }
+    
+    // Example function to change the background music during gameplay
+    func changeBackgroundMusic(filename: String) {
+        playBackgroundMusic(filename: filename)
     }
 
 }

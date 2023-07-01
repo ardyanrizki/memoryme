@@ -99,6 +99,7 @@
 		8C2D91A42A50239900231238 /* BedroomTidyScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 8C2D91A32A50239900231238 /* BedroomTidyScene.sks */; };
 		8C2D91A62A50246600231238 /* PhotoAlbumGameSecondScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 8C2D91A52A50246600231238 /* PhotoAlbumGameSecondScene.sks */; };
 		8C2D91A82A5024B700231238 /* BedroomSnapshots.sks in Resources */ = {isa = PBXBuildFile; fileRef = 8C2D91A72A5024B700231238 /* BedroomSnapshots.sks */; };
+		8C2D91AA2A502EC200231238 /* radio-static.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8C2D91A92A502EC200231238 /* radio-static.mp3 */; };
 		8C56D9492A43CFE40076283B /* Scribble-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 8C56D9482A43CFE40076283B /* Scribble-Regular.otf */; };
 		F618B3CB2A4A811900358874 /* InputPasswordScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = F618B3C92A4A811900358874 /* InputPasswordScene.sks */; };
 		F618B3CC2A4A811900358874 /* MatchingNumberScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = F618B3CA2A4A811900358874 /* MatchingNumberScene.sks */; };
@@ -191,6 +192,7 @@
 		8C2D91A32A50239900231238 /* BedroomTidyScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = BedroomTidyScene.sks; sourceTree = "<group>"; };
 		8C2D91A52A50246600231238 /* PhotoAlbumGameSecondScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = PhotoAlbumGameSecondScene.sks; sourceTree = "<group>"; };
 		8C2D91A72A5024B700231238 /* BedroomSnapshots.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = BedroomSnapshots.sks; sourceTree = "<group>"; };
+		8C2D91A92A502EC200231238 /* radio-static.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "radio-static.mp3"; sourceTree = "<group>"; };
 		8C56D9482A43CFE40076283B /* Scribble-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Scribble-Regular.otf"; sourceTree = "<group>"; };
 		8C56D94A2A43D0320076283B /* MC2-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "MC2-Info.plist"; sourceTree = "<group>"; };
 		F618B3C92A4A811900358874 /* InputPasswordScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = InputPasswordScene.sks; sourceTree = "<group>"; };
@@ -253,6 +255,7 @@
 		2C59F6022A4C80090028A035 /* Sfx */ = {
 			isa = PBXGroup;
 			children = (
+				8C2D91A92A502EC200231238 /* radio-static.mp3 */,
 				2C59F6032A4C80090028A035 /* keyboard-click.mp3 */,
 				2C59F6042A4C80090028A035 /* burn.mp3 */,
 				2C59F6052A4C80090028A035 /* lighter.mp3 */,
@@ -583,6 +586,7 @@
 				2C59F60B2A4C80090028A035 /* cutscene-bedroom.mp3 in Resources */,
 				38763F112A3AA7AA004129A6 /* LaunchScreen.storyboard in Resources */,
 				2C59F6102A4C80090028A035 /* book-page.mp3 in Resources */,
+				8C2D91AA2A502EC200231238 /* radio-static.mp3 in Resources */,
 				2C59F6082A4C80090028A035 /* cutscene-bar.mp3 in Resources */,
 				8C2D91A82A5024B700231238 /* BedroomSnapshots.sks in Resources */,
 				2C59F60C2A4C80090028A035 /* keyboard-click.mp3 in Resources */,
