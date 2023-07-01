@@ -130,7 +130,7 @@ extension MatchingNumberScene {
         
         // To handle back button
         if backLabelNode.contains(touchedLocation) {
-            sceneManager?.presentOfficeRoomScene()
+            sceneManager?.presentOfficeRoomScene(playerPosition: .officeAfterMiniGameEntrance)
             return
         }
         

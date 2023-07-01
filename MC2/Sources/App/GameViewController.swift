@@ -11,7 +11,7 @@ import SpriteKit
 protocol SceneManagerProtocol: AnyObject {
     func presentTitleScene()
     func presentMainRoomScene(playerPosition: PositionIdentifier)
-    func presentOfficeRoomScene()
+    func presentOfficeRoomScene(playerPosition: PositionIdentifier)
     func presentBedroomScene()
     func presentBedroomTidyScene()
     func presentBarScene()
@@ -22,6 +22,7 @@ protocol SceneManagerProtocol: AnyObject {
     func presentMGPhotoAlbumSecondScene()
     func presentMGRadioScene()
     func presentCrashQTEScene()
+    func presentOfficeSnapshotScene()
     func presentSnapshotBedroomScene()
 }
 
@@ -31,7 +32,10 @@ class GameViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        presentTitleScene()
+        // presentTitleScene()
+        // presentMGMatchingNumbersScene()
+        // presentOfficeSnapshotScene()
+        presentOfficeRoomScene(playerPosition: .officeEntrance)
         setupGameState()
     }
     
@@ -70,8 +74,8 @@ extension GameViewController: SceneManagerProtocol {
         present(scene: scene, transition: fade)
     }
     
-    func presentOfficeRoomScene() {
-        guard let scene = OfficeRoomScene.sharedScene(playerPosition: .officeEntrance) else { return }
+    func presentOfficeRoomScene(playerPosition: PositionIdentifier) {
+        guard let scene = OfficeRoomScene.sharedScene(playerPosition: playerPosition) else { return }
         scene.sceneManager = self
         scene.gameState = gameState
         let fade = SKTransition.fade(withDuration: 0.5)
@@ -156,7 +160,17 @@ extension GameViewController: SceneManagerProtocol {
         present(scene: scene, transition: fade)
     }
     
-    //Snapshots Bedroom
+    // MARK: SNAPSHOTS
+    // Office Snapshots
+    func presentOfficeSnapshotScene() {
+        guard let scene = OfficeSnapshotsScene(fileNamed: Constants.officeSnapshotsScene) else {return}
+        scene.sceneManager = self
+        
+        let fade = SKTransition.fade(with: .white, duration: 1.5)
+        present(scene: scene, transition: fade)
+    }
+    
+    // Bedroom Snapshots
     func presentSnapshotBedroomScene(){
         guard let scene = BedroomSnapshotsScene(fileNamed: Constants.bedroomSnapshotsScene) else {return}
         scene.sceneManager = self

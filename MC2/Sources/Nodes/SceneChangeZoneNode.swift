@@ -32,7 +32,7 @@ class SceneChangeZoneNode: SKSpriteNode {
         
         switch identifier {
         case .toOffice:
-            sceneManager?.presentOfficeRoomScene()
+            sceneManager?.presentOfficeRoomScene(playerPosition: .officeEntrance)
         case .toBedroom:
             sceneManager?.presentBedroomScene()
         case .toBar:
