@@ -22,15 +22,18 @@ struct Constants {
     static let mainRoomScene = "MainRoomScene"
     static let officeRoomScene = "OfficeRoomScene"
     static let bedroomScene = "BedroomScene"
+    static let bedroomTidyScene = "BedroomTidyScene"
     static let barScene = "BarScene"
     static let hospitalScene = "HospitalScene"
     static let inputPasswordScene = "InputPasswordScene"
     static let matchingNumberScene = "MatchingNumberScene"
-    static let photoAlbumScene1 = "PhotoAlbumGameScene1"
-    static let photoAlbumScene2 = "PhotoAlbumGameScene2"
     static let photoAlbumScene = "PhotoAlbumGameScene"
+    static let photoAlbumSecondScene = "PhotoAlbumGameSecondScene"
     static let radioScene = "RadioScene"
     static let crashQTEScene = "CrashQTEScene"
+    
+    // Snapshots
+    static let bedroomSnapshotsScene = "BedroomSnapshots"
     
     // Default node names
     static let background = "background"

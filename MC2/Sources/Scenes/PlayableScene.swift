@@ -188,6 +188,13 @@ class PlayableScene: SKScene {
         }
     }
     
+    func timeout(after seconds: TimeInterval, node: SKNode, completion: @escaping () -> Void) {
+        let waitAction = SKAction.wait(forDuration: seconds)
+        let completionAction = SKAction.run(completion)
+        let sequenceAction = SKAction.sequence([waitAction, completionAction])
+        node.run(sequenceAction)
+    }
+    
     private func stopPlayerWhenDidContact() {
         guard let component = player?.component(ofType: ControlComponent.self) as? ControlComponent else { return }
         component.stopWalking()
