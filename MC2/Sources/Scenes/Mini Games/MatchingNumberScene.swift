@@ -56,6 +56,7 @@ class MatchingNumberScene: SKScene {
             DialogResources.office_6_email_seq3
         ], from: self, completion: {
             self.touchEventsEnabled = true
+            self.sceneManager?.presentOfficeSnapshotScene()
         })
     }
 }
