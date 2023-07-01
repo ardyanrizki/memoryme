@@ -7,22 +7,49 @@
 
 import SpriteKit
 import GameplayKit
+import AVFoundation
 
-class RadioScene: SKScene{
-<<<<<<< HEAD
-
+class RadioScene: SKScene, SKPhysicsContactDelegate{
+    
     var radioTuner: SKSpriteNode!
     var radioPointer: SKSpriteNode!
+    var radioPointerPosition: CGPoint = .zero
+    var horizontalDistance: CGFloat = 0.0
     //starting angle dari touch kita
     var startingAngle: CGFloat = 0
     //starting angle dari radio
     var radioStartingAngle: CGFloat = 0
     var draggingTouch: UITouch?
-  
+    
+    var targetFrequencyNode: SKSpriteNode!
+    var startNode: SKNode!
+    var endNode: SKNode!
+    
+    var audioPlayer: AVAudioPlayer?
+    var isPlayingSound: Bool = false
+    
     override func didMove(to view: SKView) {
         radioTuner = self.childNode(withName: "radio-tuner") as? SKSpriteNode
         radioPointer = self.childNode(withName: "radio-pointer") as? SKSpriteNode
-    
+        radioPointerPosition = radioPointer.position
+        targetFrequencyNode = self.childNode(withName: "targetFrequencyNode") as? SKSpriteNode
+        startNode = self.childNode(withName: "startNode")
+        endNode = self.childNode(withName: "endNode")
+        
+        //horizontal distance between line of FM
+        if startNode != nil && endNode != nil{
+            horizontalDistance = abs(endNode.position.x - startNode.position.x)
+        }
+        
+        do {
+            let audioPath = Bundle.main.path(forResource: "cutscene-bar", ofType: "mp3")
+            audioPlayer = try AVAudioPlayer(contentsOf: URL(fileURLWithPath: audioPath!))
+            audioPlayer?.prepareToPlay()
+            audioPlayer?.numberOfLoops = -1 // Loop indefinitely
+        } catch {
+            print("Error loading audio file: \(error.localizedDescription)")
+        }
+        
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) { // panggil sekali
@@ -60,8 +87,9 @@ class RadioScene: SKScene{
             
             //atan2 = tan -> posisi ke derajat
             let angle = atan2(direction.y, direction.x)
+            
             //perubahan angle
-            let angleChange = angle - startingAngle
+            var angleChange = angle - startingAngle
             
             //convert dari derajat ke radian krn zrotation hanya dlm bentuk radian
             radioTuner.zRotation = radioStartingAngle + angleChange
@@ -73,9 +101,28 @@ class RadioScene: SKScene{
             //menentukan maximum rotation -> pakai fungsi min
             radioTuner.zRotation = max(radioTuner.zRotation, (-269.0).toRadians())
             
-            print(radioTuner.zRotation.toDegrees())
+            let fullRotationAngle: CGFloat = (90.0 + 269.0).toRadians()
+            let normalizedDistance = (radioTuner.zRotation - radioStartingAngle) / fullRotationAngle
+            
+            let targetX = startNode.position.x - (normalizedDistance * horizontalDistance)
+            
+            // Set the boundaries
+            let minX = startNode.position.x
+            let maxX = endNode.position.x
+            
+            // Limit the pointer's position within the boundaries
+            radioPointer.position.x = max(min(targetX, maxX), minX)
+            
+            let intersectsTargetNode = radioPointer.frame.intersects(targetFrequencyNode.frame)
+                       
+           if intersectsTargetNode && !isPlayingSound {
+               audioPlayer?.play()
+               isPlayingSound = true
+           } else if !intersectsTargetNode && isPlayingSound {
+               audioPlayer?.stop()
+               isPlayingSound = false
+           }
         }
-        
         
     }
     
@@ -97,7 +144,6 @@ class RadioScene: SKScene{
             self.draggingTouch = nil
         }
     }
-
 }
 
 extension Double {
@@ -114,58 +160,6 @@ extension CGFloat {
         return self * .pi / 180.0
     }
 }
-=======
-    
-    var radioTuner: SKSpriteNode = SKSpriteNode()
-    let rotateRecognizer = UIRotationGestureRecognizer()
-    
-    var rotation: CGFloat = 0
-    
-    //remembers what the previous rotation was
-    var offset: CGFloat = 0
-    
-    override func didMove(to view: SKView) {
-        if let radioTunerNode: SKSpriteNode = self.childNode(withName: "radio-tuner") as? SKSpriteNode{
-            radioTuner = radioTunerNode
-        }
-        
-        rotateRecognizer.addTarget(self, action: #selector(RadioScene.rotatedView(_:)))
-        self.view!.addGestureRecognizer(rotateRecognizer)
-    }
-    
-    //Get information from gesture recognizer
-    @objc func rotatedView(_ sender:UIRotationGestureRecognizer){
-        
-        if (sender.state == .began){
-            print("began")
-        }
-        
-        if(sender.state == .changed){
-            print("rotated")
-            
-            rotation = CGFloat(sender.rotation) + self.offset
-            rotation = rotation * -1
-            
-            radioTuner.zRotation = rotation
-        }
-        
-        if(sender.state == .ended){
-            print("ended")
-            
-            self.offset = radioTuner.zRotation
-            
-        }
-        
-    }
-    
-//    override func update(_ currentTime: TimeInterval) {
-//        <#code#>
-//    }
-//
-//    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
-//        <#code#>
-//    }
     
 
-}
->>>>>>> main
+

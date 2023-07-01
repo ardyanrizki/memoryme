@@ -26,13 +26,11 @@ struct Constants {
     static let hospitalScene = "HospitalScene"
     static let inputPasswordScene = "InputPasswordScene"
     static let matchingNumberScene = "MatchingNumberScene"
-<<<<<<< HEAD
     static let photoAlbumScene1 = "PhotoAlbumGameScene1"
     static let photoAlbumScene2 = "PhotoAlbumGameScene2"
-=======
     static let photoAlbumScene = "PhotoAlbumGameScene"
->>>>>>> main
     static let radioScene = "RadioScene"
+    static let crashQTEScene = "CrashQTEScene"
     
     // Default node names
     static let background = "background"
