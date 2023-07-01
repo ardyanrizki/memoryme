@@ -69,7 +69,7 @@ struct DialogResources {
     
     // MARK: Bedroom Scene
     static let bedroom_1_solo_seq1 = Dialog(Constants.mainCharacterName, prompt: "So messy, what happened to my bedroom..?")
-    static let bedroom_2_withPhoto_seq1 = Dialog(Constants.mainCharacterName, prompt: " Hmmm I need to put these photos to its places.")
+    static let bedroom_2_withPhoto_seq1 = Dialog(Constants.mainCharacterName, prompt: " Hmmm I need to put these photos to their places.")
     static let bedroom_3_withPhoto_seq2 = Dialog(Constants.mainCharacterName, prompt: "Done! It looks tidy. Bet I got some cleaning skills now.")
     static let bedroom_4_withPhoto_seq3 = Dialog(Constants.mainCharacterName, prompt: "Hmm, I’m having mixed feelings. What should I do with this album?")
     // Alternative 1: Keep album.
