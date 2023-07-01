@@ -1,5 +1,5 @@
 //
-//  OfficeCutScene.swift
+//  OfficeSnapshotsScene.swift
 //  MC2
 //
 //  Created by Ivan on 01/07/23.
@@ -44,12 +44,12 @@ class OfficeSnapshotsScene: SKScene {
             let tapContinueSequence = SKAction.sequence([
                 SKAction.wait(forDuration: delayedTapContinueDuration),
                 fadeInAction,
-                touchEnabledAction
+                SKAction.run { self.touchEventsEnabled = true }
             ])
             
             tapContinueLabel.run(tapContinueSequence)
         } else {
-            tapContinueLabel.run(touchEnabledAction)
+            self.touchEventsEnabled = true
         }
     }
     
@@ -67,6 +67,7 @@ class OfficeSnapshotsScene: SKScene {
         tapContinueLabel.run(fadeOutTapAction)
     }
     
+    /** Inject tap to continue label on the bottom-right of corner */
     func createTapContinueLabel() {
         tapContinueLabel = SKLabelNode(fontNamed: Constants.fontName)
         tapContinueLabel.text = "Tap to continue"
@@ -89,8 +90,6 @@ extension OfficeSnapshotsScene {
         createTapContinueLabel()
         
         animateShowingSnapshot(for: memoryNodes[0])
-        
-        currentSnapshotIndex = 0
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {        
@@ -111,11 +110,29 @@ extension OfficeSnapshotsScene {
             animateShowingSnapshot(for: nextSnapshotNode, isShowTapContinue: isLastSnapshot)
         } else {
             let touchedLocation = touch.location(in: self)
-            let momCalledSnapshotNode = memoryNodes[currentSnapshotIndex]
+            if let touchedNode = self.nodes(at: touchedLocation).first {
             
-            for answerNode in momCalledSnapshotNode.children {
-                if answerNode.contains(touchedLocation) {
-                    // TODO
+                switch(touchedNode.name) {
+                case Constants.acceptNode:
+                    // TODO: doing action if accepting the phone
+                    let whiteFade = SKTransition.fade(with: .white, duration: 1)
+                    sceneManager?.presentOfficeRoomScene(
+                        playerPosition: .officeAfterMiniGameEntrance,
+                        transition: whiteFade
+                    )
+                    break
+                    
+                case Constants.declineNode:
+                    // TODO: doing action if decline the phone
+                    let whiteFade = SKTransition.fade(with: .white, duration: 1)
+                    sceneManager?.presentOfficeRoomScene(
+                        playerPosition: .officeAfterMiniGameEntrance,
+                        transition: whiteFade
+                    )
+                    break
+                    
+                default:
+                    break
                 }
             }
         }
