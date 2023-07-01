@@ -9,47 +9,34 @@ import SpriteKit
 import GameplayKit
 import AVFoundation
 
-class RadioScene: SKScene, SKPhysicsContactDelegate{
-    
+class RadioScene: SKScene{
+
     var radioTuner: SKSpriteNode!
     var radioPointer: SKSpriteNode!
-    var radioPointerPosition: CGPoint = .zero
-    var horizontalDistance: CGFloat = 0.0
+    var targetFrequencyNode: SKNode!
     //starting angle dari touch kita
     var startingAngle: CGFloat = 0
     //starting angle dari radio
     var radioStartingAngle: CGFloat = 0
+    var previousAngleOffset: CGFloat = 0
     var draggingTouch: UITouch?
-    
-    var targetFrequencyNode: SKSpriteNode!
-    var startNode: SKNode!
-    var endNode: SKNode!
     
     var audioPlayer: AVAudioPlayer?
     var isPlayingSound: Bool = false
-    
+  
     override func didMove(to view: SKView) {
         radioTuner = self.childNode(withName: "radio-tuner") as? SKSpriteNode
         radioPointer = self.childNode(withName: "radio-pointer") as? SKSpriteNode
-        radioPointerPosition = radioPointer.position
-        targetFrequencyNode = self.childNode(withName: "targetFrequencyNode") as? SKSpriteNode
-        startNode = self.childNode(withName: "startNode")
-        endNode = self.childNode(withName: "endNode")
-        
-        //horizontal distance between line of FM
-        if startNode != nil && endNode != nil{
-            horizontalDistance = abs(endNode.position.x - startNode.position.x)
-        }
+        targetFrequencyNode = self.childNode(withName: "targetFrequencyNode")
         
         do {
-            let audioPath = Bundle.main.path(forResource: "cutscene-bar", ofType: "mp3")
-            audioPlayer = try AVAudioPlayer(contentsOf: URL(fileURLWithPath: audioPath!))
-            audioPlayer?.prepareToPlay()
-            audioPlayer?.numberOfLoops = -1 // Loop indefinitely
-        } catch {
-            print("Error loading audio file: \(error.localizedDescription)")
-        }
-        
+             let audioPath = Bundle.main.path(forResource: "cutscene-bar", ofType: "mp3")
+             audioPlayer = try AVAudioPlayer(contentsOf: URL(fileURLWithPath: audioPath!))
+             audioPlayer?.prepareToPlay()
+             audioPlayer?.numberOfLoops = -1 // Loop indefinitely
+         } catch {
+             print("Error loading audio file: \(error.localizedDescription)")
+         }
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) { // panggil sekali
@@ -63,11 +50,17 @@ class RadioScene: SKScene, SKPhysicsContactDelegate{
             draggingTouch = touch
             
             //untuk menjadikan tengah radio tuner sebagai anchor
-            let direction = CGPoint(x: touchLocation.x - radioTuner.position.x, y: touchLocation.y - radioTuner.position.y)
+            let touchLocationInRadio = CGPoint(x: touchLocation.x - radioTuner.position.x, y: touchLocation.y - radioTuner.position.y)
             
             //detect angle awal waktu di touch radio tunernya
-            startingAngle = atan2(direction.y, direction.x)
-            radioStartingAngle = radioTuner.zRotation
+            startingAngle = atan2(touchLocationInRadio.x, touchLocationInRadio.y)
+            previousAngleOffset = 0.0
+            
+            var radioRotation = radioTuner.zRotation
+            if radioRotation > 0.0 {
+                radioRotation -= (360.0).toRadians()
+            }
+            radioStartingAngle = radioRotation
         }
     }
     
@@ -81,49 +74,55 @@ class RadioScene: SKScene, SKPhysicsContactDelegate{
         
         //dicek apakah jari yg bergerak sama dengan jari yg sentuh radio tuner di awal
         if let draggingTouch, draggingTouch == touch{
+            let touchLocationInRadio = CGPoint(x: touchLocation.x - radioTuner.position.x, y: touchLocation.y - radioTuner.position.y)
             
-            //untuk menjadikan tengah radio tuner sebagai anchor
-            let direction = CGPoint(x: touchLocation.x - radioTuner.position.x, y: touchLocation.y - radioTuner.position.y)
+            let currentAngle = atan2(touchLocationInRadio.x, touchLocationInRadio.y)
+            var angleOffset = currentAngle - startingAngle
+             
+            let angleDifference = angleOffset - previousAngleOffset
+            if angleDifference >= (270.0).toRadians() {
+                let multiplier = getAngleMultiplier(Int(angleDifference.toDegrees()))
+                angleOffset -= (360.0 * Double(multiplier)).toRadians()
+            }
+            else if angleDifference <= (-270.0).toRadians() {
+                let multiplier = getAngleMultiplier(Int(-angleDifference.toDegrees()))
+                angleOffset += (360.0 * Double(multiplier)).toRadians()
+            }
             
-            //atan2 = tan -> posisi ke derajat
-            let angle = atan2(direction.y, direction.x)
+            previousAngleOffset = angleOffset
             
-            //perubahan angle
-            var angleChange = angle - startingAngle
+            var newRotation = radioStartingAngle - angleOffset
+            newRotation = min(newRotation, (0.0).toRadians())
+            newRotation = max(newRotation, (-359.0).toRadians())
             
-            //convert dari derajat ke radian krn zrotation hanya dlm bentuk radian
-            radioTuner.zRotation = radioStartingAngle + angleChange
+            radioTuner.zRotation = newRotation
             
-            //menentukan minimum rotation -> pakai fungsi max
-            //zrotation dan 359 dibandingkan, bakal diambil yang lebih kecil
-            radioTuner.zRotation = min(radioTuner.zRotation, (90.0).toRadians())
+            radioPointer.position.x = getPositionFromAngle(newRotation.toDegrees())
             
-            //menentukan maximum rotation -> pakai fungsi min
-            radioTuner.zRotation = max(radioTuner.zRotation, (-269.0).toRadians())
-            
-            let fullRotationAngle: CGFloat = (90.0 + 269.0).toRadians()
-            let normalizedDistance = (radioTuner.zRotation - radioStartingAngle) / fullRotationAngle
-            
-            let targetX = startNode.position.x - (normalizedDistance * horizontalDistance)
-            
-            // Set the boundaries
-            let minX = startNode.position.x
-            let maxX = endNode.position.x
-            
-            // Limit the pointer's position within the boundaries
-            radioPointer.position.x = max(min(targetX, maxX), minX)
-            
-            let intersectsTargetNode = radioPointer.frame.intersects(targetFrequencyNode.frame)
-                       
-           if intersectsTargetNode && !isPlayingSound {
-               audioPlayer?.play()
-               isPlayingSound = true
-           } else if !intersectsTargetNode && isPlayingSound {
-               audioPlayer?.stop()
-               isPlayingSound = false
-           }
+            if radioPointer.position.x == targetFrequencyNode.position.x {
+                audioPlayer?.play()
+                isPlayingSound = true
+            }else{
+                audioPlayer?.stop()
+                isPlayingSound = false
+            }
         }
+    }
+    
+    func getAngleMultiplier(_ number: Int) -> Int {
+        let normalizedNumber = (number - 270) % (360 * 360)
+        let result = (normalizedNumber / 360) + 1
+        return result
+    }
+    
+    func getPositionFromAngle(_ value: Double) -> Double {
+        let fromMin = 0.0
+        let fromMax = -359.0
+        let toMin = -320.0
+        let toMax = 270.0
         
+        let linearInterpolation = (value - fromMin) * (toMax - toMin) / (fromMax - fromMin) + toMin
+        return linearInterpolation
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) { //panggil sekali
@@ -144,6 +143,7 @@ class RadioScene: SKScene, SKPhysicsContactDelegate{
             self.draggingTouch = nil
         }
     }
+
 }
 
 extension Double {
@@ -151,7 +151,6 @@ extension Double {
         return self * .pi / 180.0
     }
 }
-
 extension CGFloat {
     func toDegrees() -> Double {
         return self / .pi * 180.0
@@ -160,6 +159,3 @@ extension CGFloat {
         return self * .pi / 180.0
     }
 }
-    
-
-
