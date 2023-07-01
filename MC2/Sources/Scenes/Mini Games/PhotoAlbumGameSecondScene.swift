@@ -1,14 +1,14 @@
 //
-//  PhotoAlbumGameScene.swift
+//  PhotoAlbumGameSecondScene.swift
 //  MC2
 //
-//  Created by Clarabella Lius on 28/06/23.
+//  Created by Rivan Mohammad Akbar on 01/07/23.
 //
 
 import SpriteKit
 import GameplayKit
 
-class PhotoAlbumGameScene: PlayableScene {
+class PhotoAlbumGameSecondScene: PlayableScene {
     
     //polaroid array
     var polaroidNodes: [SKSpriteNode] = []
@@ -25,12 +25,18 @@ class PhotoAlbumGameScene: PlayableScene {
     //flag to count photos matched
     var matchedPhotoCount = 0
     
-    var photoPicked: String = ""
+    var showCompleteDialog: Bool = false
     
     override func update(_ currentTime: TimeInterval) {
-        if matchedPhotoCount == 4{
-            rightArrow = self.childNode(withName: "arrow-right") as? SKSpriteNode
-            rightArrow?.alpha = 1
+        if matchedPhotoCount == 2 && !showCompleteDialog {
+            self.dialogBox?.startSequence(dialogs: [
+                DialogResources.bedroom_4_withPhoto_seq3
+            ], from: self)
+            timeout(after: 6.0, node: self) {
+                // This code will be executed after 5 seconds
+                self.sceneManager?.presentSnapshotBedroomScene()
+            }
+            showCompleteDialog = true
         }
     }
     
@@ -64,10 +70,6 @@ class PhotoAlbumGameScene: PlayableScene {
             }
         }
         
-        self.dialogBox?.startSequence(dialogs: [
-            DialogResources.bedroom_2_withPhoto_seq1
-        ], from: self)
-        
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -86,18 +88,15 @@ class PhotoAlbumGameScene: PlayableScene {
         // otherwise, do nothing
         for polaroidNode in polaroidNodes {
             if polaroidNode.contains(touchLocation) {
-                photoPicked = polaroidNode.name!
                 polaroidNode.position = touchLocation
             }
         }
         switch(touchedNode?.name) {
-            case "arrow-right":
-                sceneManager?.presentMGPhotoAlbumSecondScene()
-                break
             case "back-button":
                 sceneManager?.presentBedroomScene()
                 break
             default:
+                
                 break
         }
     }
@@ -117,7 +116,7 @@ class PhotoAlbumGameScene: PlayableScene {
         let touchLocation = touch.location(in: self)
         
         for polaroidNode in polaroidNodes{
-            if polaroidNode.contains(touchLocation) && photoPicked == polaroidNode.name {
+            if polaroidNode.contains(touchLocation){
                 polaroidNode.position = touchLocation
             }
         }
@@ -178,3 +177,5 @@ class PhotoAlbumGameScene: PlayableScene {
         dialogBox = FactoryMethods.createDialogBox(with: size, sceneFrame: frame)
     }
 }
+
+

@@ -25,7 +25,8 @@ class TitleScene: SKScene {
             let location = touch.location(in: self)
             
             if playButton.contains(location) {
-                sceneManager?.presentMainRoomScene(playerPosition: .mainRoomStart)
+//                sceneManager?.presentMainRoomScene(playerPosition: .mainRoomStart)
+                sceneManager?.presentSnapshotBedroomScene()
             }
         }
     }

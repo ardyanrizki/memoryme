@@ -15,7 +15,9 @@
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "84"
-            endingLineNumber = "84">
+            endingLineNumber = "84"
+            landmarkName = "startOpeningEventIfNeeded()"
+            landmarkType = "7">
             <Locations>
                <Location
                   uuid = "A5E0AE53-A416-4751-B34C-91C3698A7146 - 3e1ee2a97c92c7a5"

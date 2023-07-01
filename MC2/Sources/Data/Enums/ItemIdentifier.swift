@@ -32,17 +32,22 @@ enum ItemIdentifier: String, CaseIterable {
     
     // MARK: Items in Bedroom
     case bed = "bed"
+    case bedTidy = "bedTidy"
     case book = "book"
     case bookshelf = "bookshelf"
+    case bookshelfTidy = "bookshelfTidy"
     case chair = "chair"
     case clothes = "clothes"
     case curtain = "curtain"
     case computer = "computer"
     case desk = "desk"
+    case deskTidy = "deskTidy"
     case photoAlbum = "photoAlbum"
     case pillow = "pillow"
     case wardrobe = "wardrobe"
+    case wardrobeTidy = "wardrobeTidy"
     case window = "window"
+    case windowTidy = "windowTidy"
     
     //MARK: Items in Bar
     case barIslandLeft = "barIslandLeft"
@@ -146,8 +151,11 @@ enum ItemIdentifier: String, CaseIterable {
             ]
         case .bed:
             textures = [
-                .tidy: SKTexture(imageNamed: TextureResources.bedTidy),
                 .messy: SKTexture(imageNamed: TextureResources.bedMessy)
+            ]
+        case .bedTidy:
+            textures = [
+                .tidy: SKTexture(imageNamed: TextureResources.bedTidy)
             ]
         case .book:
             textures = [
@@ -155,8 +163,11 @@ enum ItemIdentifier: String, CaseIterable {
             ]
         case .bookshelf:
             textures = [
-                .tidy: SKTexture(imageNamed: TextureResources.bookshelfTidy),
                 .messy: SKTexture(imageNamed: TextureResources.bookshelfMessy)
+            ]
+        case .bookshelfTidy:
+            textures = [
+                .tidy: SKTexture(imageNamed: TextureResources.bookshelfTidy)
             ]
         case .chair:
             textures = [
@@ -176,8 +187,11 @@ enum ItemIdentifier: String, CaseIterable {
             ]
         case .desk:
             textures = [
-                .tidy: SKTexture(imageNamed: TextureResources.deskTidy),
                 .messy: SKTexture(imageNamed: TextureResources.deskMessy)
+            ]
+        case .deskTidy:
+            textures = [
+                .tidy: SKTexture(imageNamed: TextureResources.deskTidy)
             ]
         case .photoAlbum:
             textures = [
@@ -189,15 +203,20 @@ enum ItemIdentifier: String, CaseIterable {
             ]
         case .wardrobe:
             textures = [
-                .tidy: SKTexture(imageNamed: TextureResources.wardrobeTidy),
                 .messy: SKTexture(imageNamed: TextureResources.wardrobeMessy)
+            ]
+        case .wardrobeTidy:
+            textures = [
+                .tidy: SKTexture(imageNamed: TextureResources.wardrobeTidy)
             ]
         case .window:
             textures = [
-                .tidy: SKTexture(imageNamed: TextureResources.windowTidy),
                 .messy: SKTexture(imageNamed: TextureResources.windowMessy)
             ]
-            
+        case .windowTidy:
+            textures = [
+                .tidy: SKTexture(imageNamed: TextureResources.windowTidy)
+            ]
         case .barIslandLeft:
             textures = [
                 .normal : SKTexture(imageNamed: TextureResources.barIslandLeft)
@@ -288,12 +307,16 @@ enum ItemIdentifier: String, CaseIterable {
             return nil
         case .bed:
             return CGSize(width: size.width, height: size.height * 0.8)
+        case .bedTidy:
+            return CGSize(width: size.width, height: size.height * 0.8)
         case .book:
             return nil
         case .bookshelf:
-            return nil
+            return CGSize(width: size.width, height: size.height * 0.8)
+        case .bookshelfTidy:
+            return CGSize(width: size.width, height: size.height * 0.8)
         case .chair:
-            return nil
+            return CGSize(width: size.width, height: size.height * 0.6)
         case .clothes:
             return nil
         case .curtain:
@@ -301,14 +324,20 @@ enum ItemIdentifier: String, CaseIterable {
         case .computer:
             return nil
         case .desk:
-            return nil
+            return CGSize(width: size.width, height: size.height * 0.8)
+        case .deskTidy:
+            return CGSize(width: size.width, height: size.height * 0.6)
         case .photoAlbum:
             return nil
         case .pillow:
             return nil
         case .wardrobe:
-            return nil
+            return CGSize(width: size.width, height: size.height * 0.8)
+        case .wardrobeTidy:
+            return CGSize(width: size.width, height: size.height * 0.8)
         case .window:
+            return nil
+        case .windowTidy:
             return nil
         case .barIslandLeft:
             return CGSize(width: size.width, height: size.height * 0.6)

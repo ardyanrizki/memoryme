@@ -13,12 +13,15 @@ protocol SceneManagerProtocol: AnyObject {
     func presentMainRoomScene(playerPosition: PositionIdentifier)
     func presentOfficeRoomScene()
     func presentBedroomScene()
+    func presentBedroomTidyScene()
     func presentBarScene()
     func presentHospitalRoomScene()
     func presentMGPasswordScene()
     func presentMGMatchingNumbersScene()
     func presentMGPhotoAlbumScene()
+    func presentMGPhotoAlbumSecondScene()
     func presentMGRadioScene()
+    func presentSnapshotBedroomScene()
 }
 
 class GameViewController: UIViewController {
@@ -82,6 +85,14 @@ extension GameViewController: SceneManagerProtocol {
         present(scene: scene, transition: fade)
     }
     
+    func presentBedroomTidyScene() {
+        guard let scene = BedroomScene.sharedSceneTidy(playerPosition: .bedroomEntrance) else { return }
+        scene.sceneManager = self
+        scene.gameState = gameState
+        let fade = SKTransition.fade(withDuration: 0.5)
+        present(scene: scene, transition: fade)
+    }
+    
     func presentBarScene() {
         guard let scene = BarScene.sharedScene(playerPosition: .barEntrance) else { return }
         scene.sceneManager = self
@@ -122,10 +133,25 @@ extension GameViewController: SceneManagerProtocol {
         present(scene: scene, transition: fade)
     }
     
+    func presentMGPhotoAlbumSecondScene() {
+        guard let scene = PhotoAlbumGameSecondScene(fileNamed: Constants.photoAlbumSecondScene) else {return}
+        scene.sceneManager = self
+        let fade = SKTransition.fade(withDuration: 0.5)
+        present(scene: scene, transition: fade)
+    }
+    
     //Mini Game 4 - Radio Scene
     func presentMGRadioScene(){
         guard let scene = RadioScene(fileNamed: Constants.radioScene) else {return}
         let fade = SKTransition.fade(withDuration: 0.5)
+        present(scene: scene, transition: fade)
+    }
+    
+    //Snapshots Bedroom
+    func presentSnapshotBedroomScene(){
+        guard let scene = BedroomSnapshotsScene(fileNamed: Constants.bedroomSnapshotsScene) else {return}
+        scene.sceneManager = self
+        let fade = SKTransition.fade(withDuration: 1.5)
         present(scene: scene, transition: fade)
     }
     

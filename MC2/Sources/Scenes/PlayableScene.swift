@@ -162,6 +162,13 @@ class PlayableScene: SKScene {
         }
     }
     
+    func timeout(after seconds: TimeInterval, node: SKNode, completion: @escaping () -> Void) {
+        let waitAction = SKAction.wait(forDuration: seconds)
+        let completionAction = SKAction.run(completion)
+        let sequenceAction = SKAction.sequence([waitAction, completionAction])
+        node.run(sequenceAction)
+    }
+    
     private func detectContactsWithItem(contact: SKPhysicsContact) {
         if (contact.bodyA.categoryBitMask == PhysicsType.character.rawValue ||
             contact.bodyA.categoryBitMask == PhysicsType.character.rawValue) {
