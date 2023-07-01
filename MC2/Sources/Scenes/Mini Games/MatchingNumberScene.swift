@@ -130,7 +130,8 @@ extension MatchingNumberScene {
         
         // To handle back button
         if backLabelNode.contains(touchedLocation) {
-            sceneManager?.presentOfficeRoomScene(playerPosition: .officeAfterMiniGameEntrance)
+            let fade = SKTransition.fade(withDuration: 0.5)
+            sceneManager?.presentOfficeRoomScene(playerPosition: .officeAfterMiniGameEntrance, transition: fade)
             return
         }
         

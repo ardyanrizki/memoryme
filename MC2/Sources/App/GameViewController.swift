@@ -11,7 +11,7 @@ import SpriteKit
 protocol SceneManagerProtocol: AnyObject {
     func presentTitleScene()
     func presentMainRoomScene(playerPosition: PositionIdentifier)
-    func presentOfficeRoomScene(playerPosition: PositionIdentifier)
+    func presentOfficeRoomScene(playerPosition: PositionIdentifier, transition: SKTransition?)
     func presentBedroomScene()
     func presentBedroomTidyScene()
     func presentBarScene()
@@ -33,9 +33,8 @@ class GameViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // presentTitleScene()
-        // presentMGMatchingNumbersScene()
+        presentMGMatchingNumbersScene()
         // presentOfficeSnapshotScene()
-        presentOfficeRoomScene(playerPosition: .officeEntrance)
         setupGameState()
     }
     
@@ -74,12 +73,11 @@ extension GameViewController: SceneManagerProtocol {
         present(scene: scene, transition: fade)
     }
     
-    func presentOfficeRoomScene(playerPosition: PositionIdentifier) {
+    func presentOfficeRoomScene(playerPosition: PositionIdentifier, transition: SKTransition? = nil) {
         guard let scene = OfficeRoomScene.sharedScene(playerPosition: playerPosition) else { return }
         scene.sceneManager = self
         scene.gameState = gameState
-        let fade = SKTransition.fade(withDuration: 0.5)
-        present(scene: scene, transition: fade)
+        present(scene: scene, transition: transition)
     }
     
     func presentBedroomScene() {
