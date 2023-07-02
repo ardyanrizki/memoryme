@@ -54,12 +54,13 @@ class OfficeSnapshotsScene: SKScene {
     }
     
     /** hide snapshot and its tap continue */
-    func animateHidingSnapshot(for node: SKSpriteNode) {
+    func animateHidingSnapshot(for node: SKSpriteNode, completion: @escaping () -> Void = {}) {
         let fadeOutAction = SKAction.fadeOut(withDuration: fadeDuration)
         let fadeOutTapAction = SKAction.group([
             fadeOutAction,
             SKAction.run {
                 self.touchEventsEnabled = false
+                completion()
             }
         ])
                 
@@ -104,10 +105,11 @@ extension OfficeSnapshotsScene {
             let nextSnapshotNode = memoryNodes[currentSnapshotIndex + 1]
             
             currentSnapshotIndex += 1
-            let isLastSnapshot = currentSnapshotIndex < memoryNodes.count - 1
+            let isLastSnapshot = currentSnapshotIndex == memoryNodes.count - 1
             
-            animateHidingSnapshot(for: currentSnapshotNode)
-            animateShowingSnapshot(for: nextSnapshotNode, isShowTapContinue: isLastSnapshot)
+            animateHidingSnapshot(for: currentSnapshotNode) {
+                self.animateShowingSnapshot(for: nextSnapshotNode, isShowTapContinue: !isLastSnapshot)
+            }
         } else {
             let touchedLocation = touch.location(in: self)
             if let touchedNode = self.nodes(at: touchedLocation).first {
@@ -125,6 +127,7 @@ extension OfficeSnapshotsScene {
                 case Constants.declineNode:
                     // TODO: doing action if decline the phone
                     let whiteFade = SKTransition.fade(with: .white, duration: 1)
+                    
                     sceneManager?.presentOfficeRoomScene(
                         playerPosition: .officeAfterMiniGameEntrance,
                         transition: whiteFade

@@ -1,5 +1,5 @@
 //
-//  BedroomSnapshotsScene.swift
+//  BarSnapshotsScene.swift
 //  MC2
 //
 //  Created by Rivan Mohammad Akbar on 01/07/23.
@@ -8,10 +8,14 @@
 import SpriteKit
 import GameplayKit
 
-class BedroomSnapshotsScene: PlayableScene {
+class BarSnapshotsScene: PlayableScene {
     
     //flag to count photos matched
     var clicked = 0
+    
+    var choice: String = ""
+    
+    var firstCutscene: String = ""
     
     private var overlayNode: SKSpriteNode!
     
@@ -20,16 +24,16 @@ class BedroomSnapshotsScene: PlayableScene {
         var selectedScene = ""
         switch clicked {
         case 1:
-            previousScene = "memory-2a"
-            selectedScene = "memory-2b"
+            previousScene = "memory-3a"
+            selectedScene = "memory-3b"
             break
         case 2:
-            previousScene = "memory-2b"
-            selectedScene = "memory-2c"
+            previousScene = "memory-3b"
+            selectedScene = "memory-3c-s1"
             break
         case 3:
-            previousScene = "memory-2c"
-            selectedScene = "memory-2d"
+            previousScene = "memory-3c-s1"
+            selectedScene = "memory-3c-s2"
             break
         default:
             break
@@ -37,10 +41,13 @@ class BedroomSnapshotsScene: PlayableScene {
         if selectedScene != "" {
             self.childNode(withName: previousScene)?.alpha = 0
             self.childNode(withName: selectedScene)?.alpha = 1
-            if selectedScene == "memory-2d" {
-                self.childNode(withName: "keep-button")?.alpha = 1
-                self.childNode(withName: "burn-button")?.alpha = 1
-                self.childNode(withName: "tap-label")?.alpha = 0
+            if selectedScene == "memory-3b" {
+                self.sceneManager?.presentCrashQTEScene()
+            }
+            if selectedScene == "memory-3c-s2" {
+//                self.childNode(withName: "keep-button")?.alpha = 1
+//                self.childNode(withName: "burn-button")?.alpha = 1
+//                self.childNode(withName: "tap-label")?.alpha = 0
             }
         }
     }
@@ -84,25 +91,25 @@ class BedroomSnapshotsScene: PlayableScene {
             }
         }
         
-        if touchedNode?.name == "burn-button" {
-            dialogBox?.startSequence(dialogs: [
-                DialogResources.bedroom_4_withPhoto_alt2_seq2
-            ], from: self)
-            timeout(after: 6.0, node: self) {
-                // This code will be executed after 5 seconds
-                self.sceneManager?.presentBedroomScene()
-            }
-        }
-        
-        if touchedNode?.name == "keep-button" {
-            dialogBox?.startSequence(dialogs: [
-                DialogResources.bedroom_4_withPhoto_alt1_seq1
-            ], from: self)
-            timeout(after: 6.0, node: self) {
-                // This code will be executed after 5 seconds
-                self.sceneManager?.presentBedroomTidyScene()
-            }
-        }
+//        if touchedNode?.name == "burn-button" {
+//            dialogBox?.startSequence(dialogs: [
+//                DialogResources.bedroom_4_withPhoto_alt2_seq2
+//            ], from: self)
+//            timeout(after: 6.0, node: self) {
+//                // This code will be executed after 5 seconds
+//                self.sceneManager?.presentBedroomScene()
+//            }
+//        }
+//
+//        if touchedNode?.name == "keep-button" {
+//            dialogBox?.startSequence(dialogs: [
+//                DialogResources.bedroom_4_withPhoto_alt1_seq1
+//            ], from: self)
+//            timeout(after: 6.0, node: self) {
+//                // This code will be executed after 5 seconds
+//                self.sceneManager?.presentBedroomTidyScene()
+//            }
+//        }
     }
     
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -119,5 +126,6 @@ class BedroomSnapshotsScene: PlayableScene {
         dialogBox = FactoryMethods.createDialogBox(with: size, sceneFrame: frame)
     }
 }
+
 
 

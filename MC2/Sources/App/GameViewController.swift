@@ -24,6 +24,7 @@ protocol SceneManagerProtocol: AnyObject {
     func presentCrashQTEScene()
     func presentOfficeSnapshotScene()
     func presentSnapshotBedroomScene()
+    func presentSnapshotBarScene(state: String, first: String)
 }
 
 class GameViewController: UIViewController {
@@ -147,6 +148,7 @@ extension GameViewController: SceneManagerProtocol {
     //Mini Game 4 - Radio Scene
     func presentMGRadioScene(){
         guard let scene = RadioScene(fileNamed: Constants.radioScene) else {return}
+        scene.sceneManager = self
         let fade = SKTransition.fade(withDuration: 0.5)
         present(scene: scene, transition: fade)
     }
@@ -154,6 +156,7 @@ extension GameViewController: SceneManagerProtocol {
     //Mini Game 5 - QTE
     func presentCrashQTEScene(){
         guard let scene = CrashQTEScene(fileNamed: Constants.crashQTEScene) else {return}
+        scene.sceneManager = self
         let fade = SKTransition.fade(withDuration: 0.5)
         present(scene: scene, transition: fade)
     }
@@ -171,6 +174,16 @@ extension GameViewController: SceneManagerProtocol {
     // Bedroom Snapshots
     func presentSnapshotBedroomScene(){
         guard let scene = BedroomSnapshotsScene(fileNamed: Constants.bedroomSnapshotsScene) else {return}
+        scene.sceneManager = self
+        let fade = SKTransition.fade(withDuration: 1.5)
+        present(scene: scene, transition: fade)
+    }
+    
+    //Snapshots Bar
+    func presentSnapshotBarScene(state: String, first: String) {
+        guard let scene = BarSnapshotsScene(fileNamed: Constants.barSnapshotsScene) else {return}
+        scene.firstCutscene = "first"
+        scene.choice = ""
         scene.sceneManager = self
         let fade = SKTransition.fade(withDuration: 1.5)
         present(scene: scene, transition: fade)

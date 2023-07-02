@@ -35,6 +35,7 @@ struct Constants {
     // Snapshots
     static let officeSnapshotsScene = "OfficeSnapshotsScene"
     static let bedroomSnapshotsScene = "BedroomSnapshots"
+    static let barSnapshotsScene = "BarSnapshots"
     
     // Snapsht - Office
     static let acceptNode = "acceptNode"

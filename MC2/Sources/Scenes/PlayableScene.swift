@@ -7,6 +7,7 @@
 
 import SpriteKit
 import GameplayKit
+import AVFoundation
 
 protocol PlayableSceneProtocol {
     associatedtype T: SKScene
@@ -56,6 +57,8 @@ class PlayableScene: SKScene {
     var dialogBox: DialogBoxNode?
     
     var sceneBlocker: SceneBlockerProtocol?
+    
+    var audioPlayer: AVAudioPlayer!
     
     private var timeOnLastFrame: TimeInterval = 0
     
@@ -227,6 +230,45 @@ class PlayableScene: SKScene {
             result.append(contentsOf: identifier.getAllNodes(from: self))
         }
         return result
+    }
+    
+    // MARK: Background Music
+    func playBackgroundMusic(filename: String) {
+        // Stop the current background music if playing
+        stopBackgroundMusic()
+        
+        // Get the path to the new music file
+        let filePath = Bundle.main.path(forResource: filename, ofType: nil)
+        if let path = filePath {
+            let url = URL(fileURLWithPath: path)
+            
+            do {
+                // Create the audio player
+                audioPlayer = try AVAudioPlayer(contentsOf: url)
+                
+                // Configure the audio player settings
+                audioPlayer.numberOfLoops = -1 // Loop indefinitely
+                audioPlayer.volume = 0.5 // Adjust the volume as needed
+                
+                // Play the background music
+                audioPlayer.play()
+            } catch {
+                // Error handling if the audio player fails to initialize
+                print("Could not create audio player: \(error.localizedDescription)")
+            }
+        } else {
+            print("Music file not found: \(filename)")
+        }
+    }
+    
+    func stopBackgroundMusic() {
+        audioPlayer?.stop()
+        audioPlayer = nil
+    }
+    
+    // Example function to change the background music during gameplay
+    func changeBackgroundMusic(filename: String) {
+        playBackgroundMusic(filename: filename)
     }
     
     // MARK: Overrideable Methods
