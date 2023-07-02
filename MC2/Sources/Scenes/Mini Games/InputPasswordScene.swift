@@ -183,7 +183,8 @@ class InputPasswordScene: SKScene {
         
         let touchedLocation = touch.location(in: self)
         if backLabelNode.contains(touchedLocation) {
-            sceneManager?.presentOfficeRoomScene(playerPosition: .computerSpot)
+            let fade = SKTransition.fade(withDuration: 0.5)
+            sceneManager?.presentOfficeRoomScene(playerPosition: .computerSpot, transition: fade)
         }
     }
 }

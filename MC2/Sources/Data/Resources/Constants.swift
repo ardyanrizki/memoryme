@@ -33,7 +33,12 @@ struct Constants {
     static let crashQTEScene = "CrashQTEScene"
     
     // Snapshots
+    static let officeSnapshotsScene = "OfficeSnapshotsScene"
     static let bedroomSnapshotsScene = "BedroomSnapshots"
+    
+    // Snapsht - Office
+    static let acceptNode = "acceptNode"
+    static let declineNode = "declineNode"
     
     // Default node names
     static let background = "background"

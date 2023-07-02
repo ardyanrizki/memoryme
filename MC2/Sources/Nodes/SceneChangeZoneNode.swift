@@ -32,7 +32,8 @@ class SceneChangeZoneNode: SKSpriteNode {
         
         switch identifier {
         case .toOffice:
-            sceneManager?.presentOfficeRoomScene(playerPosition: .officeEntrance)
+            let fade =  SKTransition.fade(withDuration: 0.5)
+            sceneManager?.presentOfficeRoomScene(playerPosition: .officeEntrance, transition: fade)
         case .toBedroom:
             sceneManager?.presentBedroomScene(playerPosition: .bedroomEntrance)
         case .toBar:
