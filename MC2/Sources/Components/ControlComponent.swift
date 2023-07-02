@@ -12,15 +12,21 @@ class ControlComponent: GKComponent {
     
     private var renderComponent: RenderComponent
     private var animationComponent: AnimationComponent?
+    private var soundComponent: SoundComponent?
     
     private var targetLocation: CGPoint?
     
     var moveSpeed: CGFloat = 300.0
     
-    init(renderComponent: RenderComponent, animationComponent: AnimationComponent?) {
+    init(
+        renderComponent: RenderComponent,
+        animationComponent: AnimationComponent?,
+        soundComponent: SoundComponent
+    ) {
         self.renderComponent = renderComponent
         super.init()
         self.animationComponent = animationComponent
+        self.soundComponent = soundComponent
     }
     
     required init?(coder: NSCoder) {
@@ -31,6 +37,12 @@ class ControlComponent: GKComponent {
         let node = renderComponent.node
         if let targetLocation, (node.position - targetLocation).length() > 10 {
             animationComponent?.animate(for: .walk, timePerFrame: 0.2, withKey: Constants.walkingAction)
+            
+            if soundComponent?.soundPlayer != nil {
+                soundComponent?.soundPlayer?.rate = 2.5
+                soundComponent?.soundPlayer?.play()
+            }
+            
             let direction = (targetLocation - node.position).normalized()
             let movement = moveSpeed * seconds * direction
             node.position += movement
@@ -46,6 +58,10 @@ class ControlComponent: GKComponent {
             // On target location
             if animationComponent?.animationKey == Constants.walkingAction {
                 stopWalking()
+                
+                if soundComponent?.soundPlayer != nil {
+                    soundComponent?.soundPlayer?.stop()
+                }
             }
         }
     }

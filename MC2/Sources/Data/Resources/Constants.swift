@@ -65,4 +65,8 @@ struct Constants {
     static let walkingAction = "walking"
     static let idleAction = "idle"
     static let layAction = "lay"
+    
+    // Sound
+    static let ambience = "ambience.mp3"
+    static let footSteps = "foot-steps.mp3"
 }

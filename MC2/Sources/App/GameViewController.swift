@@ -7,6 +7,7 @@
 
 import UIKit
 import SpriteKit
+import AVFoundation
 
 protocol SceneManagerProtocol: AnyObject {
     func presentTitleScene()
@@ -29,11 +30,14 @@ protocol SceneManagerProtocol: AnyObject {
 class GameViewController: UIViewController {
     
     var gameState: GameState?
-
+    
+    var audioPlayer: AVAudioPlayer!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         presentTitleScene()
         setupGameState()
+        playBackgroundMusic(filename: Constants.ambience)
     }
     
     override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
@@ -51,6 +55,45 @@ class GameViewController: UIViewController {
     private func setupGameState() {
         gameState = GameState()
         gameState?.setState(key: .sceneActivity, value: .sceneActivityValue(.opening))
+    }
+}
+
+// MARK: Audio Player
+extension GameViewController {
+    
+    // TODO: duplicate code from PlayableScene
+    func stopBackgroundMusic() {
+        audioPlayer?.stop()
+        audioPlayer = nil
+    }
+    
+    // TODO: duplicate code from PlayableScene
+    func playBackgroundMusic(filename: String) {
+        // Stop the current background music if playing
+        stopBackgroundMusic()
+        
+        // Get the path to the new music file
+        let filePath = Bundle.main.path(forResource: filename, ofType: nil)
+        if let path = filePath {
+            let url = URL(fileURLWithPath: path)
+            
+            do {
+                // Create the audio player
+                audioPlayer = try AVAudioPlayer(contentsOf: url)
+                
+                // Configure the audio player settings
+                audioPlayer.numberOfLoops = -1 // Loop indefinitely
+                audioPlayer.volume = 0.5 // Adjust the volume as needed
+                
+                // Play the background music
+                audioPlayer.play()
+            } catch {
+                // Error handling if the audio player fails to initialize
+                print("Could not create audio player: \(error.localizedDescription)")
+            }
+        } else {
+            print("Music file not found: \(filename)")
+        }
     }
 }
 
