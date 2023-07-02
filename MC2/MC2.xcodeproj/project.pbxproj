@@ -21,6 +21,8 @@
 		2C59F6102A4C80090028A035 /* book-page.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2C59F6072A4C80090028A035 /* book-page.mp3 */; };
 		2C92028C2A4BFAF8004FB043 /* BedroomScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 2C92028B2A4BFAF8004FB043 /* BedroomScene.sks */; };
 		2CA1E6542A4EC82E0076C3F3 /* KeypadNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CA1E6532A4EC82E0076C3F3 /* KeypadNode.swift */; };
+		2CDB8CAF2A50535A0071390D /* OfficeSnapshotsScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CDB8CAE2A50535A0071390D /* OfficeSnapshotsScene.swift */; };
+		2CDB8CB12A50536B0071390D /* OfficeSnapshotsScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 2CDB8CB02A50536B0071390D /* OfficeSnapshotsScene.sks */; };
 		3811E4CA2A4643DA00416B95 /* DialogResources.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3811E4C92A4643DA00416B95 /* DialogResources.swift */; };
 		3811E4CC2A4643E400416B95 /* TextureResources.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3811E4CB2A4643E400416B95 /* TextureResources.swift */; };
 		3811E4CE2A464E5A00416B95 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3811E4CD2A464E5A00416B95 /* Constants.swift */; };
@@ -142,6 +144,8 @@
 		2C59F6072A4C80090028A035 /* book-page.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "book-page.mp3"; sourceTree = "<group>"; };
 		2C92028B2A4BFAF8004FB043 /* BedroomScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = BedroomScene.sks; sourceTree = "<group>"; };
 		2CA1E6532A4EC82E0076C3F3 /* KeypadNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeypadNode.swift; sourceTree = "<group>"; };
+		2CDB8CAE2A50535A0071390D /* OfficeSnapshotsScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OfficeSnapshotsScene.swift; sourceTree = "<group>"; };
+		2CDB8CB02A50536B0071390D /* OfficeSnapshotsScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = OfficeSnapshotsScene.sks; sourceTree = "<group>"; };
 		3811E4C92A4643DA00416B95 /* DialogResources.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DialogResources.swift; sourceTree = "<group>"; };
 		3811E4CB2A4643E400416B95 /* TextureResources.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextureResources.swift; sourceTree = "<group>"; };
 		3811E4CD2A464E5A00416B95 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -436,6 +440,7 @@
 				F65867D62A4F448B0030C3A1 /* CrashQTEScene.sks */,
 				8C2D91A32A50239900231238 /* BedroomTidyScene.sks */,
 				8C2D91A52A50246600231238 /* PhotoAlbumGameSecondScene.sks */,
+				2CDB8CB02A50536B0071390D /* OfficeSnapshotsScene.sks */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -443,6 +448,7 @@
 		8C2D91A02A50229800231238 /* Snapshots */ = {
 			isa = PBXGroup;
 			children = (
+				2CDB8CAE2A50535A0071390D /* OfficeSnapshotsScene.swift */,
 				8C2D91A12A5022C700231238 /* BedroomSnapshotsScene.swift */,
 			);
 			path = Snapshots;
@@ -576,6 +582,7 @@
 				38763F0C2A3AA7A8004129A6 /* Main.storyboard in Resources */,
 				F618B3CB2A4A811900358874 /* InputPasswordScene.sks in Resources */,
 				38763F0E2A3AA7AA004129A6 /* Assets.xcassets in Resources */,
+				2CDB8CB12A50536B0071390D /* OfficeSnapshotsScene.sks in Resources */,
 				8C2D91A62A50246600231238 /* PhotoAlbumGameSecondScene.sks in Resources */,
 				2C92028C2A4BFAF8004FB043 /* BedroomScene.sks in Resources */,
 				2C59F60E2A4C80090028A035 /* lighter.mp3 in Resources */,
@@ -661,6 +668,7 @@
 				38763F6B2A3B71D5004129A6 /* BarScene.swift in Sources */,
 				F618B3D02A4A828F00358874 /* MatchingNumberScene.swift in Sources */,
 				3811E4CE2A464E5A00416B95 /* Constants.swift in Sources */,
+				2CDB8CAF2A50535A0071390D /* OfficeSnapshotsScene.swift in Sources */,
 				386D63512A4A744500BBC022 /* GameState.swift in Sources */,
 				38763F3B2A3AEC30004129A6 /* Player.swift in Sources */,
 				3811E4D42A4667F100416B95 /* PlayableScene.swift in Sources */,
