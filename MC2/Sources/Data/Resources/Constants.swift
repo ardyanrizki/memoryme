@@ -52,6 +52,7 @@ struct Constants {
     
     // Sound
     static let ambience = "ambience.mp3"
+    static let footSteps = "foot-steps.mp3"
 }
 
 extension String {
