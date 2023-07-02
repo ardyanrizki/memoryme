@@ -12,7 +12,7 @@ enum ItemIdentifier: String, CaseIterable {
     case bubble = "bubble"
     
     // MARK: Items in Office
-    case topDoor = "topDoor"
+    case upperDoor = "upperDoor"
     case lowerDoor = "lowerDoor"
     case sideDoor = "sideDoor"
     
@@ -29,6 +29,10 @@ enum ItemIdentifier: String, CaseIterable {
     
     // MARK: Items in MainRoom
     case vase = "vase"
+    case mainWindow = "mainWindow"
+    case broom = "broom"
+    case mainDesk = "mainDesk"
+    case radioTable = "radioTable"
     
     // MARK: Items in Bedroom
     case bed = "bed"
@@ -59,7 +63,6 @@ enum ItemIdentifier: String, CaseIterable {
     case tableAndChairs = "tableAndChairs"
     case tableAndChairs2 = "tableAndChairs3"
     case tableAndChairs3 = "tableAndChairs2"
-    case upperDoor = "upperDoor"
     case wallPot = "wallPot"
     
     func getAllNodes(from scene: SKScene, zPosition: CGFloat = 1) -> [ItemNode] {
@@ -76,7 +79,7 @@ enum ItemIdentifier: String, CaseIterable {
             node.name = nodeName
             node.textures = getTextures()
             node.textureType = textureType ?? getTextures().first?.key
-            if let texture = getTextures()[node.textureType ?? getTextures().first?.key ?? .normal] {
+            if let type = node.textureType ?? getTextures().first?.key, let texture = getTextures()[type] {
                 node.run(SKAction.setTexture(texture, resize: true))
             }
             node.zPosition = zPosition
@@ -153,6 +156,11 @@ enum ItemIdentifier: String, CaseIterable {
                 .partialBlossom: SKTexture(imageNamed: TextureResources.vasePartialBlossom),
                 .fullBlossom: SKTexture(imageNamed: TextureResources.vaseFullBlossom)
             ]
+        case .mainWindow:
+            textures = [
+                .opened: SKTexture(imageNamed: TextureResources.mainWindowOpened),
+                .closed: SKTexture(imageNamed: TextureResources.mainWindowClosed),
+                ]
         case .bed:
             textures = [
                 .messy: SKTexture(imageNamed: TextureResources.bedMessy)
@@ -257,15 +265,11 @@ enum ItemIdentifier: String, CaseIterable {
             textures = [
                 .normal : SKTexture(imageNamed: TextureResources.tableAndChairs)
             ]
-        case .upperDoor:
-            textures = [
-                .normal : SKTexture(imageNamed: TextureResources.upperDoor)
-            ]
         case .wallPot:
             textures = [
                 .normal : SKTexture(imageNamed: TextureResources.wallPot)
             ]
-        case .topDoor:
+        case .upperDoor:
             textures = [
                 .normal : SKTexture(imageNamed: TextureResources.upperDoor),
                 .sketchy : SKTexture(imageNamed: TextureResources.upperDoorSketchy),
@@ -279,6 +283,20 @@ enum ItemIdentifier: String, CaseIterable {
         case .sideDoor:
             textures = [
                 .normal : SKTexture(imageNamed: TextureResources.sideDoor)
+            ]
+        case .broom:
+            textures = [
+                .normal : SKTexture(imageNamed: TextureResources.broom)
+            ]
+        case .mainDesk:
+            textures = [
+                .normal : SKTexture(imageNamed: TextureResources.mainDeskNormal),
+                .closed : SKTexture(imageNamed: TextureResources.mainDeskClosed),
+                .opened : SKTexture(imageNamed: TextureResources.mainDeskOpened)
+            ]
+        case .radioTable:
+            textures = [
+                .normal : SKTexture(imageNamed: TextureResources.radioTable)
             ]
         }
         return textures
@@ -365,12 +383,18 @@ enum ItemIdentifier: String, CaseIterable {
             return CGSize(width: size.width, height: size.height)
         case .wallPot:
             return nil
-        case .topDoor:
-            return nil
         case .lowerDoor:
             return nil
         case .sideDoor:
             return nil
+        case .mainWindow:
+            return nil
+        case .broom:
+            return CGSize(width: size.width, height: size.height)
+        case .mainDesk:
+            return CGSize(width: size.width, height: size.height)
+        case .radioTable:
+            return CGSize(width: size.width, height: size.height * 0.6)
         }
     }
 }

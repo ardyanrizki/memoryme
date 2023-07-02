@@ -25,7 +25,7 @@ struct Constants {
     static let bedroomTidyScene = "BedroomTidyScene"
     static let barScene = "BarScene"
     static let hospitalScene = "HospitalScene"
-    static let inputPasswordScene = "InputPasswordScene"
+    static let inputPinScene = "InputPinScene"
     static let matchingNumberScene = "MatchingNumberScene"
     static let photoAlbumScene = "PhotoAlbumScene"
     static let photoAlbumSecondScene = "PhotoAlbumGameSecondScene"
@@ -35,11 +35,27 @@ struct Constants {
     // Snapshots
     static let officeSnapshotsScene = "OfficeSnapshotsScene"
     static let bedroomSnapshotsScene = "BedroomSnapshots"
-    static let barSnapshotsScene = "BarSnapshots"
+    static let barSnapshotsScene = "BarSnapshotsScene"
     
-    // Snapsht - Office
+    // Snapshots: Office
     static let acceptNode = "acceptNode"
     static let declineNode = "declineNode"
+    
+    // Snapshots: Bedroom
+    static let secondMemoryA = "memory-2a"
+    static let secondMemoryB = "memory-2b"
+    static let secondMemoryC = "memory-2c"
+    static let secondMemoryD = "memory-2d"
+    static let keepButton = "keep-button"
+    static let burnButton = "burn-button"
+    static let tapLabel = "tap-label"
+    static let tapToContinue = "Tap to continue"
+    
+    
+    // Photo album game
+    static let backButtonName = "back-button"
+    static let targetPositionNodes = "targetPositionNodes"
+    static let polaroidNodes = "polaroidNodes"
     
     // Default node names
     static let background = "background"
@@ -49,18 +65,4 @@ struct Constants {
     static let walkingAction = "walking"
     static let idleAction = "idle"
     static let layAction = "lay"
-}
-
-extension String {
-    static let emptyString = ""
-    
-    // Error text
-    static let initCoderNotImplemented = "init(coder:) has not been implemented"
-    static let errorNodeNotFound = "error: node not found"
-    static let errorTextureNotFound = "error: texture not found"
-    static let errorPhysicsBodyNotFound = "error: physics body not found"
-    
-    func splitIdentifer(with separator: String = "_") -> [String] {
-        return self.components(separatedBy: separator)
-    }
 }

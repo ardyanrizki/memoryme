@@ -19,6 +19,8 @@ enum ItemTextureType: String, CaseIterable {
     case sketchy
     case vague
     case clear
+    case closed
+    case opened
 }
 
 class InteractableItem: GKEntity {
@@ -48,13 +50,29 @@ class InteractableItem: GKEntity {
         }
     }
     
+    func hidePhysicsBody() {
+        node?.isHidden = true
+        for case let component as PhysicsComponent in components {
+            return component.type = nil
+        }
+    }
+    
+    func showPhysicsBody() {
+        node?.isHidden = false
+        for case let component as PhysicsComponent in components {
+            return component.type = .item
+        }
+    }
+    
     init(withNode node: ItemNode, textures: [ItemTextureType: SKTexture], isAnimationable: Bool = false) {
         guard let firstTexture = textures.first else { fatalError(.errorTextureNotFound) }
         
         super.init()
         addingComponents(node: node, isAnimationable: isAnimationable)
         // Important! First texture always run for the first time as a default texture.
-        node.run(SKAction.setTexture(firstTexture.value, resize: true))
+        if node.texture == nil {
+            node.run(SKAction.setTexture(firstTexture.value, resize: true))
+        }
         if node.children.count > 0 {
             guard let bubbleNode = node.childNode(withName: "bubble") as? ItemNode else { return }
             node.bubbleDialog = InteractableItem(withNode: bubbleNode, textures: ItemIdentifier.bubble.getTextures(), isAnimationable: true)

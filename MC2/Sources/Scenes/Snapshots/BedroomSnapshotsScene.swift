@@ -8,17 +8,6 @@
 import SpriteKit
 import GameplayKit
 
-extension Constants {
-    static let secondMemoryA = "memory-2a"
-    static let secondMemoryB = "memory-2b"
-    static let secondMemoryC = "memory-2c"
-    static let secondMemoryD = "memory-2d"
-    static let keepButton = "keep-button"
-    static let burnButton = "burn-button"
-    static let tapLabel = "tap-label"
-    static let tapToContinue = "Tap to continue"
-}
-
 class BedroomSnapshotsScene: PlayableScene {
     
     // Flag to count photos matched.

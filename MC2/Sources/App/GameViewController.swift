@@ -15,7 +15,7 @@ protocol SceneManagerProtocol: AnyObject {
     func presentBedroomScene(playerPosition: PositionIdentifier)
     func presentBarScene()
     func presentHospitalRoomScene()
-    func presentMGPasswordScene()
+    func presentMGInputPinScene()
     func presentMGMatchingNumbersScene()
     func presentMGPhotoAlbumScene()
     func presentMGPhotoAlbumSecondScene()
@@ -32,8 +32,7 @@ class GameViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // presentTitleScene()
-        presentMGMatchingNumbersScene()
+        presentTitleScene()
         setupGameState()
     }
     
@@ -106,9 +105,9 @@ extension GameViewController: SceneManagerProtocol {
     }
     
     //MARK: MINI GAME SCENES
-    //Mini Game 1 - Input Password
-    func presentMGPasswordScene() {
-        guard let scene = InputPasswordScene(fileNamed: Constants.inputPasswordScene) else { return }
+    //Mini Game 1 - Input Pin
+    func presentMGInputPinScene() {
+        guard let scene = InputPinScene(fileNamed: Constants.inputPinScene) else { return }
         scene.sceneManager = self
         //        scene.gameState = gameState
         let fade = SKTransition.fade(withDuration: 0.5)
@@ -191,6 +190,7 @@ extension GameViewController: SceneManagerProtocol {
 }
 
 extension GameViewController {
+    
     private func present(scene: SKScene, transition: SKTransition? = nil){
         if let view = self.view as! SKView? {
             if let gestureRecognizers = view.gestureRecognizers {
@@ -217,4 +217,5 @@ extension GameViewController {
 #endif
         }
     }
+    
 }

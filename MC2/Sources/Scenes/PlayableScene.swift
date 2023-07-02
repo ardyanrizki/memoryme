@@ -14,13 +14,16 @@ protocol PlayableSceneProtocol {
     static func sharedScene(playerPosition: PositionIdentifier) -> T?
 }
 
-protocol SceneBlockerProtocol: AnyObject {
+protocol SceneBlockerProtocol {
     func isAllowToPresentScene(_ identifier: SceneChangeZoneIdentifier) -> Bool
+    func sceneBlockedHandler(_ identifier: SceneChangeZoneIdentifier)
 }
 
 class PlayableScene: SKScene {
     
     weak var sceneManager: SceneManagerProtocol?
+    
+    var touchEventsEnabled: Bool = true
     
     /**
      Collection of character position's points.
@@ -333,9 +336,9 @@ extension PlayableScene {
 
 // MARK: SKPhysicsContactDelegate methods.
 extension PlayableScene: SKPhysicsContactDelegate {
-    
+
     func didBegin(_ contact: SKPhysicsContact) {
         detectContactsWithItem(contact: contact)
     }
-    
+
 }

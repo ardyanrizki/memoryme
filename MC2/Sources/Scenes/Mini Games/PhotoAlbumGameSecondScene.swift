@@ -8,12 +8,6 @@
 import SpriteKit
 import GameplayKit
 
-extension Constants {
-    static let backButtonName = "back-button"
-    static let targetPositionNodes = "targetPositionNodes"
-    static let polaroidNodes = "polaroidNodes"
-}
-
 class PhotoAlbumGameSecondScene: PlayableScene {
     
     //polaroid array

@@ -170,17 +170,3 @@ extension RadioScene {
         dialogBox = FactoryMethods.createDialogBox(with: size, sceneFrame: frame)
     }
 }
-
-extension Double {
-    func toRadians() -> Double {
-        return self * .pi / 180.0
-    }
-}
-extension CGFloat {
-    func toDegrees() -> Double {
-        return self / .pi * 180.0
-    }
-    func toRadians() -> Double {
-        return self * .pi / 180.0
-    }
-}

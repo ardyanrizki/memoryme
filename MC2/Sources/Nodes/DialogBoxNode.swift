@@ -19,7 +19,7 @@ class DialogBoxNode: SKShapeNode {
     
     private var isTypingPrompt: Bool = false
     
-    func start(dialog: Dialog, from scene: SKScene, withInterval interval: TimeInterval = 1.0) {
+    func start(dialog: Dialog, from scene: SKScene, withInterval interval: TimeInterval = 1.0, completion: @escaping (() -> Void) = { }) {
         guard isShowing == false else { return }
         
         clearLabelText()
@@ -38,6 +38,7 @@ class DialogBoxNode: SKShapeNode {
         
         let completionAction = SKAction.run {
             self.removeFromParent()
+            completion()
         }
         
         let sequenceAction = SKAction.sequence([

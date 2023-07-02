@@ -63,14 +63,19 @@ extension BedroomScene {
         guard let gameState else { return }
         if !gameState.stateExisted(.friendsPhotosKept) {
             let photoAlbumNode = childNode(withName: ItemIdentifier.photoAlbum.rawValue)
+            isUserInteractionEnabled = false
             if photoAlbumNode != nil {
                 self.dialogBox?.startSequence(dialogs: [
                     DialogResources.bedroom_1_solo_seq1
-                ], from: self)
+                ], from: self, completion: {
+                    self.isUserInteractionEnabled = true
+                })
             } else {
                 self.dialogBox?.startSequence(dialogs: [
                     DialogResources.bedroom_3_withPhoto_seq2
-                ], from: self)
+                ], from: self, completion: {
+                    self.isUserInteractionEnabled = true
+                })
             }
         }
     }

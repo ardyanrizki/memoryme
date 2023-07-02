@@ -8,7 +8,7 @@
 import SpriteKit
 import GameplayKit
 
-class TextField: SKNode{ //-> Node kosong, SpriteNode = gambar
+class TextField: SKNode { //-> Node kosong, SpriteNode = gambar
     
     //referensi node ke posisi
     //sekalian assign array kosong
@@ -104,7 +104,7 @@ class TextField: SKNode{ //-> Node kosong, SpriteNode = gambar
 }
 
 // MARK: Overrided methods.
-class InputPasswordScene: SKScene {
+class InputPinScene: SKScene {
     
     var sceneManager: SceneManagerProtocol?
     
@@ -190,7 +190,7 @@ class InputPasswordScene: SKScene {
 }
 
 // MARK: Event method.
-extension InputPasswordScene {
+extension InputPinScene {
     
     func handleComplePin() {
         touchEventsEnabled = false
