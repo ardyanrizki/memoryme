@@ -24,6 +24,11 @@ class MainRoomScene: PlayableScene, PlayableSceneProtocol {
     override func didMove(to view: SKView) {
         super.didMove(to: view)
         startOpeningEventIfNeeded()
+        changeRoomSceneryAccordingCallEvent()
+        changeRoomSceneryAccordingPhotoAlbumEvent()
+        changeRoomSceneryAccordingStrangerEvent()
+        changeVase()
+        changeDoor()
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -107,6 +112,17 @@ extension MainRoomScene {
         guard let gameState else { return }
         // If kept, show album in desk. else show broom
         if gameState.getState(key: .friendsPhotosKept) == .boolValue(true) {
+            let desk = interactableItems.first { $0.node?.identifier == .desk }
+        } else {
+            
+        }
+    }
+    
+    // State updates according game event.
+    func changeRoomSceneryAccordingStrangerEvent() {
+        guard let gameState else { return }
+        // If saved, show radio in desk.
+        if gameState.getState(key: .strangerSaved) == .boolValue(true) {
             
         } else {
             

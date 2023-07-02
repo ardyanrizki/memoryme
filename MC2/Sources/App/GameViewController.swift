@@ -29,12 +29,11 @@ protocol SceneManagerProtocol: AnyObject {
 class GameViewController: UIViewController {
     
     var gameState: GameState?
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         // presentTitleScene()
         presentMGMatchingNumbersScene()
-        // presentOfficeSnapshotScene()
         setupGameState()
     }
     
@@ -165,7 +164,7 @@ extension GameViewController: SceneManagerProtocol {
     func presentOfficeSnapshotsScene() {
         guard let scene = OfficeSnapshotsScene(fileNamed: Constants.officeSnapshotsScene) else {return}
         scene.sceneManager = self
-        
+        scene.gameState = gameState
         let fade = SKTransition.fade(with: .white, duration: 1.5)
         present(scene: scene, transition: fade)
     }

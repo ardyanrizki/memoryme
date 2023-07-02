@@ -19,7 +19,9 @@ class OfficeRoomScene: PlayableScene, PlayableSceneProtocol {
     }
     
     override func playerDidContact(with itemIdentifier: ItemIdentifier, node: ItemNode) {
-        node.isShowBubble = true
+        if itemIdentifier == .macbook, gameState?.getState(key: .momsCallAccepted) != nil {
+            node.isShowBubble = false
+        }
     }
     
     override func playerDidIntersect(with itemIdentifier: ItemIdentifier, node: ItemNode) {
@@ -91,6 +93,8 @@ extension OfficeRoomScene {
         familyPhotoFrame.size.width = 528
         familyPhotoFrame.size.height = 640
         
+        isUserInteractionEnabled = false
+        
         FactoryMethods.createOverlay(childNode: familyPhotoFrame, in: self)
         
         self.dialogBox?.startSequence(dialogs: [
@@ -98,6 +102,7 @@ extension OfficeRoomScene {
             DialogResources.office_2_photoframe_seq2,
         ], from: self, completion: {
             FactoryMethods.removeOverlay(in: self)
+            self.isUserInteractionEnabled = true
         })
     }
 }

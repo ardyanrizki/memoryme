@@ -12,7 +12,12 @@ class ItemNode: SKSpriteNode {
     
     var textures: [ItemTextureType: SKTexture]?
     
-    var textureType: ItemTextureType?
+    var textureType: ItemTextureType? {
+        didSet {
+            guard let textureType, let newTexture = textures?[textureType] else { return }
+            run(SKAction.setTexture(newTexture, resize: true))
+        }
+    }
     
     var bubbleDialog: InteractableItem?
     

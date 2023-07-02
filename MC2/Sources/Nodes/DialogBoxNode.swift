@@ -15,6 +15,8 @@ class DialogBoxNode: SKShapeNode {
     
     var isShowing: Bool = false
     
+    var activePromptText: String?
+    
     private var isTypingPrompt: Bool = false
     
     func start(dialog: Dialog, from scene: SKScene, withInterval interval: TimeInterval = 1.0) {
@@ -103,6 +105,7 @@ class DialogBoxNode: SKShapeNode {
         
         let startTyping = SKAction.run {
             self.isTypingPrompt = true
+            self.activePromptText = dialog.prompt
         }
         
         let characters = Array(dialog.prompt)
@@ -117,14 +120,17 @@ class DialogBoxNode: SKShapeNode {
         
         let endTyping = SKAction.run {
             self.isTypingPrompt = false
+            self.activePromptText = nil
         }
         
         return SKAction.sequence([startTyping, repeatedTyping, endTyping])
     }
     
     func skipTyping() {
-        guard isTypingPrompt == true else { return }
-        // TODO: Create method to skip typing animation.
+        guard isTypingPrompt == true, let activePromptText else { return }
+        removeAllActions()
+        promptLabel?.text = activePromptText
+        isTypingPrompt = false
     }
     
     func hide() {
@@ -138,8 +144,9 @@ class DialogBoxNode: SKShapeNode {
         if contains(touchLocation) == true {
             // Skip `dialogBox` typing animation if running.
             skipTyping()
+        } else if isTypingPrompt == false {
+            hide()
         }
-        hide()
     }
     
     private func clearLabelText() {
