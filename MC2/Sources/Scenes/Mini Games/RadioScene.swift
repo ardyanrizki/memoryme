@@ -7,9 +7,8 @@
 
 import SpriteKit
 import GameplayKit
-import AVFoundation
 
-class RadioScene: SKScene{
+class RadioScene: PlayableScene{
 
     var radioTuner: SKSpriteNode!
     var radioPointer: SKSpriteNode!
@@ -21,16 +20,21 @@ class RadioScene: SKScene{
     var previousAngleOffset: CGFloat = 0
     var draggingTouch: UITouch?
     
-    var audioPlayer: AVAudioPlayer!
     var isPlayingSound: Bool = false
   
     override func didMove(to view: SKView) {
+        setupDialogBox()
+        
         radioTuner = self.childNode(withName: "radio-tuner") as? SKSpriteNode
         radioPointer = self.childNode(withName: "radio-pointer") as? SKSpriteNode
         targetFrequencyNode = self.childNode(withName: "targetFrequencyNode")
         
         // Play the initial background music
         playBackgroundMusic(filename: "radio-static.mp3")
+        
+        self.dialogBox?.startSequence(dialogs: [
+            DialogResources.bar_2_solo_seq1
+        ], from: self)
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) { // panggil sekali
@@ -38,6 +42,7 @@ class RadioScene: SKScene{
         guard let touch = touches.first else { return }
         //menyimpan lokasi touch
         let touchLocation = touch.location(in: self)
+        let touchedNode = self.nodes(at: touchLocation).first
         
         if radioTuner.contains(touchLocation) {
             //saat touch radio, id nya disimpan
@@ -55,6 +60,14 @@ class RadioScene: SKScene{
                 radioRotation -= (360.0).toRadians()
             }
             radioStartingAngle = radioRotation
+        }
+        
+        switch(touchedNode?.name) {
+            case "back-button":
+                sceneManager?.presentBarScene()
+                break
+            default:
+                break
         }
     }
     
@@ -96,6 +109,16 @@ class RadioScene: SKScene{
             if radioPointer.position.x > 120 && radioPointer.position.x < 160 && !isPlayingSound {
                 changeBackgroundMusic(filename: "cutscene-bar.mp3")
                 isPlayingSound = true
+                timeout(after: 1.5, node: self) {
+                    self.dialogBox?.startSequence(dialogs: [
+                        DialogResources.bar_3_solo_seq1
+                    ], from: self)
+                }
+                if radioPointer.position.x > 120 && radioPointer.position.x < 160 {
+                    timeout(after: 3.0, node: self) {
+                        self.sceneManager?.presentSnapshotBarScene(state: "", first: "first")
+                    }
+                }
             } else if isPlayingSound && (radioPointer.position.x <= 120 || radioPointer.position.x >= 160) {
                 changeBackgroundMusic(filename: "radio-static.mp3")
                 isPlayingSound = false
@@ -141,44 +164,11 @@ class RadioScene: SKScene{
 }
 
 extension RadioScene {
-    func playBackgroundMusic(filename: String) {
-        // Stop the current background music if playing
-        stopBackgroundMusic()
-        
-        // Get the path to the new music file
-        let filePath = Bundle.main.path(forResource: filename, ofType: nil)
-        if let path = filePath {
-            let url = URL(fileURLWithPath: path)
-            
-            do {
-                // Create the audio player
-                audioPlayer = try AVAudioPlayer(contentsOf: url)
-                
-                // Configure the audio player settings
-                audioPlayer.numberOfLoops = -1 // Loop indefinitely
-                audioPlayer.volume = 0.5 // Adjust the volume as needed
-                
-                // Play the background music
-                audioPlayer.play()
-            } catch {
-                // Error handling if the audio player fails to initialize
-                print("Could not create audio player: \(error.localizedDescription)")
-            }
-        } else {
-            print("Music file not found: \(filename)")
-        }
+    func setupDialogBox() {
+        guard dialogBox == nil else { return }
+        let size = CGSize(width: frame.width - 200, height: 150)
+        dialogBox = FactoryMethods.createDialogBox(with: size, sceneFrame: frame)
     }
-    
-    func stopBackgroundMusic() {
-        audioPlayer?.stop()
-        audioPlayer = nil
-    }
-    
-    // Example function to change the background music during gameplay
-    func changeBackgroundMusic(filename: String) {
-        playBackgroundMusic(filename: filename)
-    }
-
 }
 
 extension Double {

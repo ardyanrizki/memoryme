@@ -23,6 +23,7 @@ protocol SceneManagerProtocol: AnyObject {
     func presentMGRadioScene()
     func presentCrashQTEScene()
     func presentSnapshotBedroomScene()
+    func presentSnapshotBarScene(state: String, first: String)
 }
 
 class GameViewController: UIViewController {
@@ -31,7 +32,10 @@ class GameViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        presentTitleScene()
+//        presentTitleScene()
+//        presentBarScene()
+//        presentSnapshotBarScene(state: "", first: "init")
+//        presentCrashQTEScene()
         setupGameState()
     }
     
@@ -145,6 +149,7 @@ extension GameViewController: SceneManagerProtocol {
     //Mini Game 4 - Radio Scene
     func presentMGRadioScene(){
         guard let scene = RadioScene(fileNamed: Constants.radioScene) else {return}
+        scene.sceneManager = self
         let fade = SKTransition.fade(withDuration: 0.5)
         present(scene: scene, transition: fade)
     }
@@ -152,6 +157,7 @@ extension GameViewController: SceneManagerProtocol {
     //Mini Game 5 - QTE
     func presentCrashQTEScene(){
         guard let scene = CrashQTEScene(fileNamed: Constants.crashQTEScene) else {return}
+        scene.sceneManager = self
         let fade = SKTransition.fade(withDuration: 0.5)
         present(scene: scene, transition: fade)
     }
@@ -159,6 +165,16 @@ extension GameViewController: SceneManagerProtocol {
     //Snapshots Bedroom
     func presentSnapshotBedroomScene(){
         guard let scene = BedroomSnapshotsScene(fileNamed: Constants.bedroomSnapshotsScene) else {return}
+        scene.sceneManager = self
+        let fade = SKTransition.fade(withDuration: 1.5)
+        present(scene: scene, transition: fade)
+    }
+    
+    //Snapshots Bar
+    func presentSnapshotBarScene(state: String, first: String) {
+        guard let scene = BarSnapshotsScene(fileNamed: Constants.barSnapshotsScene) else {return}
+        scene.firstCutscene = "first"
+        scene.choice = ""
         scene.sceneManager = self
         let fade = SKTransition.fade(withDuration: 1.5)
         present(scene: scene, transition: fade)

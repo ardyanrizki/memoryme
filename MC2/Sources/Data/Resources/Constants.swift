@@ -34,6 +34,7 @@ struct Constants {
     
     // Snapshots
     static let bedroomSnapshotsScene = "BedroomSnapshots"
+    static let barSnapshotsScene = "BarSnapshots"
     
     // Default node names
     static let background = "background"
