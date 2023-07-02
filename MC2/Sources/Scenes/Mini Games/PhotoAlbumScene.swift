@@ -8,7 +8,7 @@
 import SpriteKit
 import GameplayKit
 
-class PhotoAlbumGameScene: PlayableScene {
+class PhotoAlbumScene: PlayableScene {
     
     //polaroid array
     var polaroidNodes: [SKSpriteNode] = []
@@ -95,7 +95,7 @@ class PhotoAlbumGameScene: PlayableScene {
                 sceneManager?.presentMGPhotoAlbumSecondScene()
                 break
             case "back-button":
-                sceneManager?.presentBedroomScene()
+            sceneManager?.presentBedroomScene(playerPosition: .photoAlbumSpot)
                 break
             default:
                 break
@@ -135,7 +135,7 @@ class PhotoAlbumGameScene: PlayableScene {
         // then remove the node from polaroidNodes
         // otherwise, use initial position to assign current selected node back to the origin position
         
-        guard let touch = touches.first else{
+        guard touches.first != nil else{
             return
         }
        

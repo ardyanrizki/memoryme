@@ -183,7 +183,7 @@ class InputPasswordScene: SKScene {
         
         let touchedLocation = touch.location(in: self)
         if backLabelNode.contains(touchedLocation) {
-            sceneManager?.presentOfficeRoomScene()
+            sceneManager?.presentOfficeRoomScene(playerPosition: .computerSpot)
         }
     }
 }

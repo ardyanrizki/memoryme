@@ -17,6 +17,9 @@ enum PositionIdentifier: String, CaseIterable {
     case hospitalEntrance = "hospitalEntrance"
     case barEntrance = "barEntrance"
     case bedroomEntrance = "bedroomEntrance"
+    case computerSpot = "computerSpot"
+    case bedroomCenter = "bedroomCenter"
+    case photoAlbumSpot = "photoAlbumSpot"
     
     func getNode(from scene: SKScene) -> PositionNode? {
         let node = scene.childNode(withName: self.rawValue) as? PositionNode

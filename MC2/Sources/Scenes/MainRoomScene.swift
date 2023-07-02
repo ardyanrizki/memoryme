@@ -83,8 +83,9 @@ extension MainRoomScene {
                 self.dialogBox?.startSequence(dialogs: [
                     DialogResources.opening_1_solo_seq1,
                     DialogResources.opening_1_solo_seq2
-                ], from: self)
-                self.touchEventsEnabled = true
+                ], from: self, completion: {
+                    self.touchEventsEnabled = true
+                })
             })
             gameState.setState(key: .sceneActivity, value: .sceneActivityValue(.exploring))
         }

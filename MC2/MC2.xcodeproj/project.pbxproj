@@ -19,7 +19,7 @@
 		2C59F60E2A4C80090028A035 /* lighter.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2C59F6052A4C80090028A035 /* lighter.mp3 */; };
 		2C59F60F2A4C80090028A035 /* truck-horn.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2C59F6062A4C80090028A035 /* truck-horn.mp3 */; };
 		2C59F6102A4C80090028A035 /* book-page.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2C59F6072A4C80090028A035 /* book-page.mp3 */; };
-		2C92028C2A4BFAF8004FB043 /* BedroomScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 2C92028B2A4BFAF8004FB043 /* BedroomScene.sks */; };
+		2C92028C2A4BFAF8004FB043 /* BedroomMessyScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 2C92028B2A4BFAF8004FB043 /* BedroomMessyScene.sks */; };
 		2CA1E6542A4EC82E0076C3F3 /* KeypadNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CA1E6532A4EC82E0076C3F3 /* KeypadNode.swift */; };
 		3811E4CA2A4643DA00416B95 /* DialogResources.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3811E4C92A4643DA00416B95 /* DialogResources.swift */; };
 		3811E4CC2A4643E400416B95 /* TextureResources.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3811E4CB2A4643E400416B95 /* TextureResources.swift */; };
@@ -104,10 +104,10 @@
 		F618B3CC2A4A811900358874 /* MatchingNumberScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = F618B3CA2A4A811900358874 /* MatchingNumberScene.sks */; };
 		F618B3CF2A4A828F00358874 /* InputPasswordScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = F618B3CD2A4A828F00358874 /* InputPasswordScene.swift */; };
 		F618B3D02A4A828F00358874 /* MatchingNumberScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = F618B3CE2A4A828F00358874 /* MatchingNumberScene.swift */; };
-		F618B3D82A4C058A00358874 /* PhotoAlbumGameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = F618B3D72A4C058A00358874 /* PhotoAlbumGameScene.sks */; };
+		F618B3D82A4C058A00358874 /* PhotoAlbumScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = F618B3D72A4C058A00358874 /* PhotoAlbumScene.sks */; };
 		F618B3DA2A4DC23200358874 /* RadioScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = F618B3D92A4DC23200358874 /* RadioScene.swift */; };
 		F618B3DC2A4DC25600358874 /* RadioScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = F618B3DB2A4DC25600358874 /* RadioScene.sks */; };
-		F618B3DE2A4EE6FF00358874 /* PhotoAlbumGameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = F618B3DD2A4EE6FF00358874 /* PhotoAlbumGameScene.swift */; };
+		F618B3DE2A4EE6FF00358874 /* PhotoAlbumScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = F618B3DD2A4EE6FF00358874 /* PhotoAlbumScene.swift */; };
 		F65867D52A4F44770030C3A1 /* CrashQTEScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = F65867D42A4F44770030C3A1 /* CrashQTEScene.swift */; };
 		F65867D72A4F448B0030C3A1 /* CrashQTEScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = F65867D62A4F448B0030C3A1 /* CrashQTEScene.sks */; };
 /* End PBXBuildFile section */
@@ -140,7 +140,7 @@
 		2C59F6052A4C80090028A035 /* lighter.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = lighter.mp3; sourceTree = "<group>"; };
 		2C59F6062A4C80090028A035 /* truck-horn.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "truck-horn.mp3"; sourceTree = "<group>"; };
 		2C59F6072A4C80090028A035 /* book-page.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "book-page.mp3"; sourceTree = "<group>"; };
-		2C92028B2A4BFAF8004FB043 /* BedroomScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = BedroomScene.sks; sourceTree = "<group>"; };
+		2C92028B2A4BFAF8004FB043 /* BedroomMessyScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = BedroomMessyScene.sks; sourceTree = "<group>"; };
 		2CA1E6532A4EC82E0076C3F3 /* KeypadNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeypadNode.swift; sourceTree = "<group>"; };
 		3811E4C92A4643DA00416B95 /* DialogResources.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DialogResources.swift; sourceTree = "<group>"; };
 		3811E4CB2A4643E400416B95 /* TextureResources.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextureResources.swift; sourceTree = "<group>"; };
@@ -197,10 +197,10 @@
 		F618B3CA2A4A811900358874 /* MatchingNumberScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = MatchingNumberScene.sks; sourceTree = "<group>"; };
 		F618B3CD2A4A828F00358874 /* InputPasswordScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputPasswordScene.swift; sourceTree = "<group>"; };
 		F618B3CE2A4A828F00358874 /* MatchingNumberScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MatchingNumberScene.swift; sourceTree = "<group>"; };
-		F618B3D72A4C058A00358874 /* PhotoAlbumGameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = PhotoAlbumGameScene.sks; sourceTree = "<group>"; };
+		F618B3D72A4C058A00358874 /* PhotoAlbumScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = PhotoAlbumScene.sks; sourceTree = "<group>"; };
 		F618B3D92A4DC23200358874 /* RadioScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadioScene.swift; sourceTree = "<group>"; };
 		F618B3DB2A4DC25600358874 /* RadioScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = RadioScene.sks; sourceTree = "<group>"; };
-		F618B3DD2A4EE6FF00358874 /* PhotoAlbumGameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoAlbumGameScene.swift; sourceTree = "<group>"; };
+		F618B3DD2A4EE6FF00358874 /* PhotoAlbumScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoAlbumScene.swift; sourceTree = "<group>"; };
 		F65867D42A4F44770030C3A1 /* CrashQTEScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrashQTEScene.swift; sourceTree = "<group>"; };
 		F65867D62A4F448B0030C3A1 /* CrashQTEScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = CrashQTEScene.sks; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -422,22 +422,30 @@
 		38763F852A41E744004129A6 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
-				3898932F2A4C2AE900492F28 /* MainRoomScene.sks */,
+				389893352A511D0E00492F28 /* Mini Games */,
 				389893302A4C2AE900492F28 /* TitleScene.sks */,
-				2C92028B2A4BFAF8004FB043 /* BedroomScene.sks */,
-				F618B3C92A4A811900358874 /* InputPasswordScene.sks */,
-				F618B3CA2A4A811900358874 /* MatchingNumberScene.sks */,
+				3898932F2A4C2AE900492F28 /* MainRoomScene.sks */,
 				38763F562A3B7127004129A6 /* OfficeRoomScene.sks */,
+				2C92028B2A4BFAF8004FB043 /* BedroomMessyScene.sks */,
+				8C2D91A32A50239900231238 /* BedroomTidyScene.sks */,
 				38763F662A3B71C3004129A6 /* BarScene.sks */,
 				38763F8A2A42DAA3004129A6 /* HospitalRoomScene.sks */,
-				F618B3D72A4C058A00358874 /* PhotoAlbumGameScene.sks */,
 				8C2D91A72A5024B700231238 /* BedroomSnapshots.sks */,
 				F618B3DB2A4DC25600358874 /* RadioScene.sks */,
 				F65867D62A4F448B0030C3A1 /* CrashQTEScene.sks */,
-				8C2D91A32A50239900231238 /* BedroomTidyScene.sks */,
 				8C2D91A52A50246600231238 /* PhotoAlbumGameSecondScene.sks */,
 			);
 			path = Scenes;
+			sourceTree = "<group>";
+		};
+		389893352A511D0E00492F28 /* Mini Games */ = {
+			isa = PBXGroup;
+			children = (
+				F618B3C92A4A811900358874 /* InputPasswordScene.sks */,
+				F618B3CA2A4A811900358874 /* MatchingNumberScene.sks */,
+				F618B3D72A4C058A00358874 /* PhotoAlbumScene.sks */,
+			);
+			path = "Mini Games";
 			sourceTree = "<group>";
 		};
 		8C2D91A02A50229800231238 /* Snapshots */ = {
@@ -461,7 +469,7 @@
 			children = (
 				F618B3CD2A4A828F00358874 /* InputPasswordScene.swift */,
 				F618B3CE2A4A828F00358874 /* MatchingNumberScene.swift */,
-				F618B3DD2A4EE6FF00358874 /* PhotoAlbumGameScene.swift */,
+				F618B3DD2A4EE6FF00358874 /* PhotoAlbumScene.swift */,
 				F618B3D92A4DC23200358874 /* RadioScene.swift */,
 				F65867D42A4F44770030C3A1 /* CrashQTEScene.swift */,
 				8C2D919E2A50223200231238 /* PhotoAlbumGameSecondScene.swift */,
@@ -577,7 +585,7 @@
 				F618B3CB2A4A811900358874 /* InputPasswordScene.sks in Resources */,
 				38763F0E2A3AA7AA004129A6 /* Assets.xcassets in Resources */,
 				8C2D91A62A50246600231238 /* PhotoAlbumGameSecondScene.sks in Resources */,
-				2C92028C2A4BFAF8004FB043 /* BedroomScene.sks in Resources */,
+				2C92028C2A4BFAF8004FB043 /* BedroomMessyScene.sks in Resources */,
 				2C59F60E2A4C80090028A035 /* lighter.mp3 in Resources */,
 				F65867D72A4F448B0030C3A1 /* CrashQTEScene.sks in Resources */,
 				2C59F60B2A4C80090028A035 /* cutscene-bedroom.mp3 in Resources */,
@@ -588,7 +596,7 @@
 				2C59F60C2A4C80090028A035 /* keyboard-click.mp3 in Resources */,
 				389893322A4C2AE900492F28 /* TitleScene.sks in Resources */,
 				38763F672A3B71C3004129A6 /* BarScene.sks in Resources */,
-				F618B3D82A4C058A00358874 /* PhotoAlbumGameScene.sks in Resources */,
+				F618B3D82A4C058A00358874 /* PhotoAlbumScene.sks in Resources */,
 				38763F8B2A42DAA3004129A6 /* HospitalRoomScene.sks in Resources */,
 				8C2D91A42A50239900231238 /* BedroomTidyScene.sks in Resources */,
 				F618B3DC2A4DC25600358874 /* RadioScene.sks in Resources */,
@@ -642,7 +650,7 @@
 				3811E4DD2A472D8600416B95 /* WallNode.swift in Sources */,
 				3811E4D02A46517A00416B95 /* CharacterAnimationState.swift in Sources */,
 				38763F532A3AF789004129A6 /* RenderComponent.swift in Sources */,
-				F618B3DE2A4EE6FF00358874 /* PhotoAlbumGameScene.swift in Sources */,
+				F618B3DE2A4EE6FF00358874 /* PhotoAlbumScene.swift in Sources */,
 				2C0325DB2A3EDB2A005B8E0A /* CharacterVisualComponent.swift in Sources */,
 				38763F872A42A600004129A6 /* HospitalRoomScene.swift in Sources */,
 				38763F072A3AA7A8004129A6 /* MainRoomScene.swift in Sources */,

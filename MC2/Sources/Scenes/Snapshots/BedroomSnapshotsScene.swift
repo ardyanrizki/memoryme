@@ -8,63 +8,79 @@
 import SpriteKit
 import GameplayKit
 
+extension Constants {
+    static let secondMemoryA = "memory-2a"
+    static let secondMemoryB = "memory-2b"
+    static let secondMemoryC = "memory-2c"
+    static let secondMemoryD = "memory-2d"
+    static let keepButton = "keep-button"
+    static let burnButton = "burn-button"
+    static let tapLabel = "tap-label"
+    static let tapToContinue = "Tap to continue"
+}
+
 class BedroomSnapshotsScene: PlayableScene {
     
-    //flag to count photos matched
-    var clicked = 0
+    // Flag to count photos matched.
+    var pageIndex = 0
     
-    var photoPicked: String = ""
+    var photoPicked: String = .emptyString
     
     private var overlayNode: SKSpriteNode!
     
     override func update(_ currentTime: TimeInterval) {
-        var previousScene = ""
-        var selectedScene = ""
-        switch clicked {
+        var previousScene: String = .emptyString
+        var selectedScene: String = .emptyString
+        switch pageIndex {
         case 1:
-            previousScene = "memory-2a"
-            selectedScene = "memory-2b"
+            previousScene = Constants.secondMemoryA
+            selectedScene = Constants.secondMemoryB
             break
         case 2:
-            previousScene = "memory-2b"
-            selectedScene = "memory-2c"
+            previousScene = Constants.secondMemoryB
+            selectedScene = Constants.secondMemoryC
             break
         case 3:
-            previousScene = "memory-2c"
-            selectedScene = "memory-2d"
+            previousScene = Constants.secondMemoryC
+            selectedScene = Constants.secondMemoryD
             break
         default:
             break
         }
-        if selectedScene != "" {
+        if selectedScene != .emptyString {
             self.childNode(withName: previousScene)?.alpha = 0
             self.childNode(withName: selectedScene)?.alpha = 1
-            if selectedScene == "memory-2d" {
-                self.childNode(withName: "keep-button")?.alpha = 1
-                self.childNode(withName: "burn-button")?.alpha = 1
-                self.childNode(withName: "tap-label")?.alpha = 0
+            if selectedScene == Constants.secondMemoryD {
+                self.childNode(withName: Constants.keepButton)?.alpha = 1
+                self.childNode(withName: Constants.burnButton)?.alpha = 1
+                self.childNode(withName: Constants.tapLabel)?.alpha = 0
             }
         }
     }
     
     override func didMove(to view: SKView) {
         setupDialogBox()
-        
+        addPromptLabelToScene()
+        addOverlayToScene()
+    }
+    
+    func addPromptLabelToScene() {
         let promptLabel = SKLabelNode(fontNamed: Constants.fontName)
-        promptLabel.text = "Tap to continue"
-        promptLabel.name = "tap-label"
+        promptLabel.text = Constants.tapToContinue
+        promptLabel.name = Constants.tapLabel
         promptLabel.fontSize = 40
         promptLabel.fontColor = .black
         promptLabel.position = CGPoint(x: frame.maxX - 250, y: (frame.minY + 50))
         promptLabel.horizontalAlignmentMode = .left
         promptLabel.zPosition = 100
         self.addChild(promptLabel)
-        
-        // Create the overlay node with the size of the scene
+    }
+    
+    func addOverlayToScene() {
         overlayNode = SKSpriteNode(color: UIColor.black.withAlphaComponent(0.5), size: frame.size)
         overlayNode.position = CGPoint(x: frame.midX, y: frame.midY)
-        overlayNode.zPosition = 100 // Place the overlay above other nodes
-        overlayNode.alpha = 0 // Initially hidden
+        overlayNode.zPosition = 100 // Place the overlay above other nodes.
+        overlayNode.alpha = 0 // Initially hidden.
         self.addChild(overlayNode)
     }
     
@@ -76,51 +92,38 @@ class BedroomSnapshotsScene: PlayableScene {
         let touchLocation = touch.location(in: self)
         let touchedNode = self.nodes(at: touchLocation).first
         
-        if clicked < 3 {
-            // Animate the fade effect
+        if pageIndex < 3 {
+            // Animate the fade effect.
             let fadeInAction = SKAction.fadeIn(withDuration: 0.5)
             let fadeOutAction = SKAction.fadeOut(withDuration: 0.5)
             overlayNode.run(SKAction.sequence([fadeInAction, fadeOutAction]))
             timeout(after: 0.5, node: self) {
-                self.clicked += 1
+                self.pageIndex += 1
             }
         }
         
-        if touchedNode?.name == "burn-button" {
+        if touchedNode?.name == Constants.burnButton {
             dialogBox?.startSequence(dialogs: [
                 DialogResources.bedroom_4_withPhoto_alt2_seq2
             ], from: self)
             timeout(after: 6.0, node: self) {
-                // This code will be executed after 5 seconds
-                self.sceneManager?.presentBedroomScene()
+                // This code will be executed after 5 seconds.
+                self.gameState?.setState(key: .friendsPhotosKept, value: .boolValue(false))
+                self.sceneManager?.presentBedroomScene(playerPosition: .photoAlbumSpot)
             }
         }
         
-        if touchedNode?.name == "keep-button" {
+        if touchedNode?.name == Constants.keepButton {
             dialogBox?.startSequence(dialogs: [
                 DialogResources.bedroom_4_withPhoto_alt1_seq1
             ], from: self)
             timeout(after: 6.0, node: self) {
-                // This code will be executed after 5 seconds
-                self.sceneManager?.presentBedroomTidyScene()
+                // This code will be executed after 5 seconds.
+                self.gameState?.setState(key: .friendsPhotosKept, value: .boolValue(true))
+                self.sceneManager?.presentBedroomScene(playerPosition: .bedroomCenter)
             }
         }
     }
-    
-    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
-        
-    }
-    
-    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        
-    }
-    
-//    func timeout(after seconds: TimeInterval, node: SKNode, completion: @escaping () -> Void) {
-//        let waitAction = SKAction.wait(forDuration: seconds)
-//        let completionAction = SKAction.run(completion)
-//        let sequenceAction = SKAction.sequence([waitAction, completionAction])
-//        node.run(sequenceAction)
-//    }
     
     func setupDialogBox() {
         guard dialogBox == nil else { return }

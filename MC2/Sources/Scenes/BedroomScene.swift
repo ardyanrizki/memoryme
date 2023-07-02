@@ -12,29 +12,24 @@ class BedroomScene: PlayableScene, PlayableSceneProtocol {
     
     typealias T = BedroomScene
     
-    static func sharedScene(playerPosition position: PositionIdentifier) -> BedroomScene? {
-        let scene = BedroomScene(fileNamed: Constants.bedroomScene)
+    static func sharedScene(playerPosition: PositionIdentifier) -> BedroomScene? {
+        return nil 
+    }
+    
+    static func sharedScene(isTidy: Bool = true, playerPosition position: PositionIdentifier) -> BedroomScene? {
+        var scene = BedroomScene(fileNamed: isTidy ? Constants.bedroomTidyScene : Constants.bedroomMessyScene)
         scene?.setup(playerPosition: position)
         return scene
     }
     
-    static func sharedSceneTidy(playerPosition position: PositionIdentifier) -> BedroomScene? {
-        let scene = BedroomScene(fileNamed: Constants.bedroomTidyScene)
-        scene?.setup(playerPosition: position)
-        return scene
-    }
     
     override func didMove(to view: SKView) {
         super.didMove(to: view)
-        firstEnterBedroom()
+        startFirstTimeEnteringEventIfNeeded()
     }
     
     override func playerDidContact(with itemIdentifier: ItemIdentifier, node: ItemNode) {
         node.isShowBubble = true
-    }
-    
-    override func playerDidIntersect(with itemIdentifier: ItemIdentifier, node: ItemNode) {
-        
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -45,17 +40,13 @@ class BedroomScene: PlayableScene, PlayableSceneProtocol {
         
         if touchedNode!.name == ItemIdentifier.bubble.rawValue {
             // Indicate touched node does not have any parent
-            guard let parentNode = touchedNode?.parent else {
-                return
-            }
+            guard let parentNode = touchedNode?.parent else { return }
             
             switch(parentNode.name) {
             case ItemIdentifier.photoAlbum.rawValue:
                 sceneManager?.presentMGPhotoAlbumScene()
                 break
-                
             default:
-                
                 break
             }
         } else {
@@ -68,17 +59,19 @@ class BedroomScene: PlayableScene, PlayableSceneProtocol {
 // MARK: Scene's Events
 extension BedroomScene {
     
-    func firstEnterBedroom() {
-//        guard let gameState else { return }
-        let photoAlbumNode = childNode(withName: "photoAlbum")
-        if photoAlbumNode != nil {
-            self.dialogBox?.startSequence(dialogs: [
-                DialogResources.bedroom_1_solo_seq1
-            ], from: self)
-        } else {
-            self.dialogBox?.startSequence(dialogs: [
-                DialogResources.bedroom_3_withPhoto_seq2
-            ], from: self)
+    func startFirstTimeEnteringEventIfNeeded() {
+        guard let gameState else { return }
+        if !gameState.stateExisted(.friendsPhotosKept) {
+            let photoAlbumNode = childNode(withName: ItemIdentifier.photoAlbum.rawValue)
+            if photoAlbumNode != nil {
+                self.dialogBox?.startSequence(dialogs: [
+                    DialogResources.bedroom_1_solo_seq1
+                ], from: self)
+            } else {
+                self.dialogBox?.startSequence(dialogs: [
+                    DialogResources.bedroom_3_withPhoto_seq2
+                ], from: self)
+            }
         }
     }
     
