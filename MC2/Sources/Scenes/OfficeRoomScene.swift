@@ -31,10 +31,6 @@ class OfficeRoomScene: PlayableScene, PlayableSceneProtocol {
         }
     }
     
-    override func playerDidIntersect(with itemIdentifier: ItemIdentifier, node: ItemNode) {
-        
-    }
-    
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         guard let touch = touches.first else { return }
         

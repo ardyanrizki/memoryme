@@ -62,9 +62,9 @@ class MainRoomScene: PlayableScene, PlayableSceneProtocol {
         super.didMove(to: view)
         setupSceneBlocker()
         startOpeningEventIfNeeded()
-        changeRoomSceneryAccordingCallEvent()
-        changeRoomSceneryAccordingPhotoAlbumEvent()
-        changeRoomSceneryAccordingStrangerEvent()
+        changeDeskAccordingMomsCallAndPhotoAlbumEvent()
+        changeBroomAccordingPhotoAlbumEvent()
+        changeRadioTableAccordingStrangerEvent()
         changeVaseAccordingAllMemories()
         changeDoorAccordingAllMemories()
         changeWindowsAccordingAllMemories()
@@ -140,50 +140,46 @@ extension MainRoomScene {
     }
     
     // State updates according game event.
-    func changeRoomSceneryAccordingCallEvent() {
+    func changeBroomAccordingPhotoAlbumEvent() {
         guard let gameState else { return }
-        // If accepted, show opened frame. else show closed
-        let mainDesk = interactableItems.first { $0.node?.identifier == .mainDesk }
-        guard gameState.stateExisted(.momsCallAccepted) else {
-            mainDesk?.hidePhysicsBody()
-            return
-        }
-        mainDesk?.showPhysicsBody()
-        if gameState.getState(key: .momsCallAccepted) == .boolValue(true) {
-            mainDesk?.textureType = .opened
-        } else {
-            mainDesk?.textureType = .closed
-        }
-    }
-    
-    // State updates according game event.
-    func changeRoomSceneryAccordingPhotoAlbumEvent() {
-        guard let gameState else { return }
-        // If kept, show album in desk. else show broom
-        let mainDesk = interactableItems.first { $0.node?.identifier == .mainDesk }
         let broom = interactableItems.first { $0.node?.identifier == .broom }
         
-        guard gameState.stateExisted(.friendsPhotosKept) else {
-            mainDesk?.hidePhysicsBody()
-            broom?.hidePhysicsBody()
+        if gameState.stateExisted(.friendsPhotosKept),
+           gameState.getState(key: .friendsPhotosKept) == .boolValue(false)
+        {
+            broom?.showPhysicsBody()
             return
         }
         
-        if gameState.getState(key: .friendsPhotosKept) == .boolValue(true) {
-            mainDesk?.showPhysicsBody()
-            broom?.hidePhysicsBody()
-            
-            if gameState.getState(key: .momsCallAccepted) != .boolValue(true) {
-                mainDesk?.textureType = .normal
-            }
-        } else {
-            mainDesk?.hidePhysicsBody()
-            broom?.showPhysicsBody()
-        }
+        broom?.hidePhysicsBody()
     }
     
     // State updates according game event.
-    func changeRoomSceneryAccordingStrangerEvent() {
+    func changeDeskAccordingMomsCallAndPhotoAlbumEvent() {
+        guard let gameState else { return }
+        let mainDesk = interactableItems.first { $0.node?.identifier == .mainDesk }
+        
+        if gameState.stateExisted(.momsCallAccepted) {
+            mainDesk?.showPhysicsBody()
+            if gameState.getState(key: .momsCallAccepted) == .boolValue(true) {
+                mainDesk?.textureType = .opened
+            } else {
+                mainDesk?.textureType = .closed
+            }
+            return
+        }
+        
+        if gameState.stateExisted(.friendsPhotosKept) {
+            mainDesk?.showPhysicsBody()
+            mainDesk?.textureType = .normal
+            return
+        }
+        
+        mainDesk?.hidePhysicsBody()
+    }
+    
+    // State updates according game event.
+    func changeRadioTableAccordingStrangerEvent() {
         let radioTable = interactableItems.first { $0.node?.identifier == .radioTable }
         
         guard let gameState else { return }

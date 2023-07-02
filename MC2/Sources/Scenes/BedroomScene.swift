@@ -29,7 +29,11 @@ class BedroomScene: PlayableScene, PlayableSceneProtocol {
     }
     
     override func playerDidContact(with itemIdentifier: ItemIdentifier, node: ItemNode) {
-        node.isShowBubble = true
+        if itemIdentifier == .photoAlbum, gameState?.getState(key: .friendsPhotosKept) != nil {
+            node.isShowBubble = false
+        } else {
+            node.isShowBubble = true
+        }
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -44,7 +48,9 @@ class BedroomScene: PlayableScene, PlayableSceneProtocol {
             
             switch(parentNode.name) {
             case ItemIdentifier.photoAlbum.rawValue:
-                sceneManager?.presentMGPhotoAlbumScene()
+                if gameState?.stateExisted(.friendsPhotosKept) == false {
+                    sceneManager?.presentMGPhotoAlbumScene()
+                }
                 break
             default:
                 break

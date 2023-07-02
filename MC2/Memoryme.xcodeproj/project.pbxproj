@@ -171,16 +171,16 @@
 		38695C5F2A4980760028B8FD /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		386D63262A49E32400BBC022 /* InteractableItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InteractableItem.swift; sourceTree = "<group>"; };
 		386D63502A4A744500BBC022 /* GameState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameState.swift; sourceTree = "<group>"; };
-		38763EFD2A3AA7A8004129A6 /* MC2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MC2.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		38763EFD2A3AA7A8004129A6 /* Memoryme.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Memoryme.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		38763F002A3AA7A8004129A6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		38763F062A3AA7A8004129A6 /* MainRoomScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainRoomScene.swift; sourceTree = "<group>"; usesTabs = 0; };
 		38763F082A3AA7A8004129A6 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 		38763F0B2A3AA7A8004129A6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		38763F0D2A3AA7AA004129A6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		38763F102A3AA7AA004129A6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		38763F162A3AA7AA004129A6 /* MC2Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MC2Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		38763F162A3AA7AA004129A6 /* MemorymeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MemorymeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		38763F1A2A3AA7AA004129A6 /* MC2Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MC2Tests.swift; sourceTree = "<group>"; };
-		38763F202A3AA7AA004129A6 /* MC2UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MC2UITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		38763F202A3AA7AA004129A6 /* MemorymeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MemorymeUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		38763F242A3AA7AA004129A6 /* MC2UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MC2UITests.swift; sourceTree = "<group>"; };
 		38763F262A3AA7AA004129A6 /* MC2UITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MC2UITestsLaunchTests.swift; sourceTree = "<group>"; };
 		38763F3A2A3AEC30004129A6 /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
@@ -208,7 +208,7 @@
 		8C2D91B32A50593F00231238 /* BarSnapshotsScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = BarSnapshotsScene.sks; sourceTree = "<group>"; };
 		8C2D91B52A5064CB00231238 /* BarSnapshotsScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarSnapshotsScene.swift; sourceTree = "<group>"; };
 		8C56D9482A43CFE40076283B /* Scribble-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Scribble-Regular.otf"; sourceTree = "<group>"; };
-		8C56D94A2A43D0320076283B /* MC2-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "MC2-Info.plist"; sourceTree = "<group>"; };
+		8C56D94A2A43D0320076283B /* Memoryme-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Memoryme-Info.plist"; sourceTree = "<group>"; };
 		F618B3C92A4A811900358874 /* InputPinScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = InputPinScene.sks; sourceTree = "<group>"; };
 		F618B3CA2A4A811900358874 /* MatchingNumberScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = MatchingNumberScene.sks; sourceTree = "<group>"; };
 		F618B3CD2A4A828F00358874 /* InputPinScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputPinScene.swift; sourceTree = "<group>"; };
@@ -337,7 +337,7 @@
 		38763EF42A3AA7A8004129A6 = {
 			isa = PBXGroup;
 			children = (
-				8C56D94A2A43D0320076283B /* MC2-Info.plist */,
+				8C56D94A2A43D0320076283B /* Memoryme-Info.plist */,
 				38763EFF2A3AA7A8004129A6 /* Sources */,
 				38763F192A3AA7AA004129A6 /* Tests */,
 				38763F232A3AA7AA004129A6 /* UITests */,
@@ -348,9 +348,9 @@
 		38763EFE2A3AA7A8004129A6 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				38763EFD2A3AA7A8004129A6 /* MC2.app */,
-				38763F162A3AA7AA004129A6 /* MC2Tests.xctest */,
-				38763F202A3AA7AA004129A6 /* MC2UITests.xctest */,
+				38763EFD2A3AA7A8004129A6 /* Memoryme.app */,
+				38763F162A3AA7AA004129A6 /* MemorymeTests.xctest */,
+				38763F202A3AA7AA004129A6 /* MemorymeUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -528,9 +528,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		38763EFC2A3AA7A8004129A6 /* MC2 */ = {
+		38763EFC2A3AA7A8004129A6 /* Memoryme */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 38763F2A2A3AA7AA004129A6 /* Build configuration list for PBXNativeTarget "MC2" */;
+			buildConfigurationList = 38763F2A2A3AA7AA004129A6 /* Build configuration list for PBXNativeTarget "Memoryme" */;
 			buildPhases = (
 				38763EF92A3AA7A8004129A6 /* Sources */,
 				38763EFA2A3AA7A8004129A6 /* Frameworks */,
@@ -540,14 +540,14 @@
 			);
 			dependencies = (
 			);
-			name = MC2;
+			name = Memoryme;
 			productName = MC2;
-			productReference = 38763EFD2A3AA7A8004129A6 /* MC2.app */;
+			productReference = 38763EFD2A3AA7A8004129A6 /* Memoryme.app */;
 			productType = "com.apple.product-type.application";
 		};
-		38763F152A3AA7AA004129A6 /* MC2Tests */ = {
+		38763F152A3AA7AA004129A6 /* MemorymeTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 38763F2D2A3AA7AA004129A6 /* Build configuration list for PBXNativeTarget "MC2Tests" */;
+			buildConfigurationList = 38763F2D2A3AA7AA004129A6 /* Build configuration list for PBXNativeTarget "MemorymeTests" */;
 			buildPhases = (
 				38763F122A3AA7AA004129A6 /* Sources */,
 				38763F132A3AA7AA004129A6 /* Frameworks */,
@@ -558,14 +558,14 @@
 			dependencies = (
 				38763F182A3AA7AA004129A6 /* PBXTargetDependency */,
 			);
-			name = MC2Tests;
+			name = MemorymeTests;
 			productName = MC2Tests;
-			productReference = 38763F162A3AA7AA004129A6 /* MC2Tests.xctest */;
+			productReference = 38763F162A3AA7AA004129A6 /* MemorymeTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		38763F1F2A3AA7AA004129A6 /* MC2UITests */ = {
+		38763F1F2A3AA7AA004129A6 /* MemorymeUITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 38763F302A3AA7AA004129A6 /* Build configuration list for PBXNativeTarget "MC2UITests" */;
+			buildConfigurationList = 38763F302A3AA7AA004129A6 /* Build configuration list for PBXNativeTarget "MemorymeUITests" */;
 			buildPhases = (
 				38763F1C2A3AA7AA004129A6 /* Sources */,
 				38763F1D2A3AA7AA004129A6 /* Frameworks */,
@@ -576,9 +576,9 @@
 			dependencies = (
 				38763F222A3AA7AA004129A6 /* PBXTargetDependency */,
 			);
-			name = MC2UITests;
+			name = MemorymeUITests;
 			productName = MC2UITests;
-			productReference = 38763F202A3AA7AA004129A6 /* MC2UITests.xctest */;
+			productReference = 38763F202A3AA7AA004129A6 /* MemorymeUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
@@ -604,7 +604,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 38763EF82A3AA7A8004129A6 /* Build configuration list for PBXProject "MC2" */;
+			buildConfigurationList = 38763EF82A3AA7A8004129A6 /* Build configuration list for PBXProject "Memoryme" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -617,9 +617,9 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				38763EFC2A3AA7A8004129A6 /* MC2 */,
-				38763F152A3AA7AA004129A6 /* MC2Tests */,
-				38763F1F2A3AA7AA004129A6 /* MC2UITests */,
+				38763EFC2A3AA7A8004129A6 /* Memoryme */,
+				38763F152A3AA7AA004129A6 /* MemorymeTests */,
+				38763F1F2A3AA7AA004129A6 /* MemorymeUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -787,12 +787,12 @@
 /* Begin PBXTargetDependency section */
 		38763F182A3AA7AA004129A6 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 38763EFC2A3AA7A8004129A6 /* MC2 */;
+			target = 38763EFC2A3AA7A8004129A6 /* Memoryme */;
 			targetProxy = 38763F172A3AA7AA004129A6 /* PBXContainerItemProxy */;
 		};
 		38763F222A3AA7AA004129A6 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 38763EFC2A3AA7A8004129A6 /* MC2 */;
+			target = 38763EFC2A3AA7A8004129A6 /* Memoryme */;
 			targetProxy = 38763F212A3AA7AA004129A6 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -937,15 +937,16 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = T84FHM7BL8;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "MC2-Info.plist";
+				INFOPLIST_FILE = "Memoryme-Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = Me...Mory...Me;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.role-playing-games";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UIRequiresFullScreen = YES;
 				INFOPLIST_KEY_UIStatusBarHidden = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -953,11 +954,14 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = info.ardyan.MC2;
+				PRODUCT_BUNDLE_IDENTIFIER = info.ardyan.memoryme;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Debug;
 		};
@@ -967,15 +971,16 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = T84FHM7BL8;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "MC2-Info.plist";
+				INFOPLIST_FILE = "Memoryme-Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = Me...Mory...Me;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.role-playing-games";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UIRequiresFullScreen = YES;
 				INFOPLIST_KEY_UIStatusBarHidden = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -983,11 +988,14 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = info.ardyan.MC2;
+				PRODUCT_BUNDLE_IDENTIFIER = info.ardyan.memoryme;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Release;
 		};
@@ -1002,12 +1010,12 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = info.ardyan.MC2Tests;
+				PRODUCT_BUNDLE_IDENTIFIER = info.ardyan.memorymeTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MC2.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/MC2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Memoryme.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Memoryme";
 			};
 			name = Debug;
 		};
@@ -1022,12 +1030,12 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = info.ardyan.MC2Tests;
+				PRODUCT_BUNDLE_IDENTIFIER = info.ardyan.memorymeTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MC2.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/MC2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Memoryme.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Memoryme";
 			};
 			name = Release;
 		};
@@ -1040,7 +1048,7 @@
 				DEVELOPMENT_TEAM = T84FHM7BL8;
 				GENERATE_INFOPLIST_FILE = YES;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = info.ardyan.MC2UITests;
+				PRODUCT_BUNDLE_IDENTIFIER = info.ardyan.memorymeUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
@@ -1058,7 +1066,7 @@
 				DEVELOPMENT_TEAM = T84FHM7BL8;
 				GENERATE_INFOPLIST_FILE = YES;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = info.ardyan.MC2UITests;
+				PRODUCT_BUNDLE_IDENTIFIER = info.ardyan.memorymeUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
@@ -1070,7 +1078,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		38763EF82A3AA7A8004129A6 /* Build configuration list for PBXProject "MC2" */ = {
+		38763EF82A3AA7A8004129A6 /* Build configuration list for PBXProject "Memoryme" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				38763F282A3AA7AA004129A6 /* Debug */,
@@ -1079,7 +1087,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		38763F2A2A3AA7AA004129A6 /* Build configuration list for PBXNativeTarget "MC2" */ = {
+		38763F2A2A3AA7AA004129A6 /* Build configuration list for PBXNativeTarget "Memoryme" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				38763F2B2A3AA7AA004129A6 /* Debug */,
@@ -1088,7 +1096,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		38763F2D2A3AA7AA004129A6 /* Build configuration list for PBXNativeTarget "MC2Tests" */ = {
+		38763F2D2A3AA7AA004129A6 /* Build configuration list for PBXNativeTarget "MemorymeTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				38763F2E2A3AA7AA004129A6 /* Debug */,
@@ -1097,7 +1105,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		38763F302A3AA7AA004129A6 /* Build configuration list for PBXNativeTarget "MC2UITests" */ = {
+		38763F302A3AA7AA004129A6 /* Build configuration list for PBXNativeTarget "MemorymeUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				38763F312A3AA7AA004129A6 /* Debug */,
