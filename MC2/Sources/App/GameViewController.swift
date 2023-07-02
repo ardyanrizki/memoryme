@@ -7,6 +7,7 @@
 
 import UIKit
 import SpriteKit
+import AVFoundation
 
 protocol SceneManagerProtocol: AnyObject {
     func presentTitleScene()
@@ -31,12 +32,13 @@ class GameViewController: UIViewController {
     
     var gameState: GameState?
     
+    var audioPlayer: AVAudioPlayer!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // presentTitleScene()
-        presentMGMatchingNumbersScene()
-        // presentOfficeSnapshotScene()
+        presentTitleScene()
         setupGameState()
+        playBackgroundMusic(filename: Constants.ambience)
     }
     
     override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
