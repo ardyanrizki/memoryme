@@ -8,7 +8,7 @@
 import SpriteKit
 import GameplayKit
  
-class CrashQTEScene: SKScene{
+class CrashQTEScene: PlayableScene{
     
     var rectangle: SKSpriteNode!
     var swipeArrow: SKSpriteNode!

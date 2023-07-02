@@ -23,7 +23,7 @@ class BedroomSnapshotsScene: PlayableScene {
     
     // Flag to count photos matched.
     var pageIndex = 0
-    
+
     var photoPicked: String = .emptyString
     
     private var overlayNode: SKSpriteNode!

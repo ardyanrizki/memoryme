@@ -7,9 +7,8 @@
 
 import SpriteKit
 import GameplayKit
-import AVFoundation
 
-class RadioScene: SKScene{
+class RadioScene: PlayableScene{
 
     var radioTuner: SKSpriteNode!
     var radioPointer: SKSpriteNode!
@@ -21,22 +20,21 @@ class RadioScene: SKScene{
     var previousAngleOffset: CGFloat = 0
     var draggingTouch: UITouch?
     
-    var audioPlayer: AVAudioPlayer?
     var isPlayingSound: Bool = false
   
     override func didMove(to view: SKView) {
+        setupDialogBox()
+        
         radioTuner = self.childNode(withName: "radio-tuner") as? SKSpriteNode
         radioPointer = self.childNode(withName: "radio-pointer") as? SKSpriteNode
         targetFrequencyNode = self.childNode(withName: "targetFrequencyNode")
         
-        do {
-             let audioPath = Bundle.main.path(forResource: "cutscene-bar", ofType: "mp3")
-             audioPlayer = try AVAudioPlayer(contentsOf: URL(fileURLWithPath: audioPath!))
-             audioPlayer?.prepareToPlay()
-             audioPlayer?.numberOfLoops = -1 // Loop indefinitely
-         } catch {
-             print("Error loading audio file: \(error.localizedDescription)")
-         }
+        // Play the initial background music
+        playBackgroundMusic(filename: "radio-static.mp3")
+        
+        self.dialogBox?.startSequence(dialogs: [
+            DialogResources.bar_2_solo_seq1
+        ], from: self)
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) { // panggil sekali
@@ -44,6 +42,7 @@ class RadioScene: SKScene{
         guard let touch = touches.first else { return }
         //menyimpan lokasi touch
         let touchLocation = touch.location(in: self)
+        let touchedNode = self.nodes(at: touchLocation).first
         
         if radioTuner.contains(touchLocation) {
             //saat touch radio, id nya disimpan
@@ -61,6 +60,14 @@ class RadioScene: SKScene{
                 radioRotation -= (360.0).toRadians()
             }
             radioStartingAngle = radioRotation
+        }
+        
+        switch(touchedNode?.name) {
+            case "back-button":
+                sceneManager?.presentBarScene()
+                break
+            default:
+                break
         }
     }
     
@@ -98,12 +105,22 @@ class RadioScene: SKScene{
             radioTuner.zRotation = newRotation
             
             radioPointer.position.x = getPositionFromAngle(newRotation.toDegrees())
-            
-            if radioPointer.position.x == targetFrequencyNode.position.x {
-                audioPlayer?.play()
+            print(radioPointer.position.x)
+            if radioPointer.position.x > 120 && radioPointer.position.x < 160 && !isPlayingSound {
+                changeBackgroundMusic(filename: "cutscene-bar.mp3")
                 isPlayingSound = true
-            }else{
-                audioPlayer?.stop()
+                timeout(after: 1.5, node: self) {
+                    self.dialogBox?.startSequence(dialogs: [
+                        DialogResources.bar_3_solo_seq1
+                    ], from: self)
+                }
+                if radioPointer.position.x > 120 && radioPointer.position.x < 160 {
+                    timeout(after: 3.0, node: self) {
+                        self.sceneManager?.presentBarSnapshotsScene(state: "", first: "first")
+                    }
+                }
+            } else if isPlayingSound && (radioPointer.position.x <= 120 || radioPointer.position.x >= 160) {
+                changeBackgroundMusic(filename: "radio-static.mp3")
                 isPlayingSound = false
             }
         }
@@ -144,6 +161,14 @@ class RadioScene: SKScene{
         }
     }
 
+}
+
+extension RadioScene {
+    func setupDialogBox() {
+        guard dialogBox == nil else { return }
+        let size = CGSize(width: frame.width - 200, height: 150)
+        dialogBox = FactoryMethods.createDialogBox(with: size, sceneFrame: frame)
+    }
 }
 
 extension Double {
