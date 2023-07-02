@@ -8,7 +8,7 @@
 import SpriteKit
 import GameplayKit
 
-class TextField: SKNode{ //-> Node kosong, SpriteNode = gambar
+class TextField: SKNode { //-> Node kosong, SpriteNode = gambar
     
     //referensi node ke posisi
     //sekalian assign array kosong
@@ -104,7 +104,7 @@ class TextField: SKNode{ //-> Node kosong, SpriteNode = gambar
 }
 
 // MARK: Overrided methods.
-class InputPasswordScene: SKScene {
+class InputPinScene: SKScene {
     
     var sceneManager: SceneManagerProtocol?
     
@@ -184,13 +184,13 @@ class InputPasswordScene: SKScene {
         let touchedLocation = touch.location(in: self)
         if backLabelNode.contains(touchedLocation) {
             let fade = SKTransition.fade(withDuration: 0.5)
-            sceneManager?.presentOfficeRoomScene(playerPosition: .officeAfterMiniGameEntrance, transition: fade)
+            sceneManager?.presentOfficeRoomScene(playerPosition: .computerSpot, transition: fade)
         }
     }
 }
 
 // MARK: Event method.
-extension InputPasswordScene {
+extension InputPinScene {
     
     func handleComplePin() {
         touchEventsEnabled = false

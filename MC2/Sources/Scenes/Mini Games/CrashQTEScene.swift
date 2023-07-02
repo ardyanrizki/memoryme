@@ -74,7 +74,7 @@ class CrashQTEScene: PlayableScene{
         isDraggingArrow = false
         let minX = rectangle.frame.minX
         let maxX = rectangle.frame.maxX
-        let value = (swipeArrow.position.x - minX) / (maxX - minX)
+        let _ = (swipeArrow.position.x - minX) / (maxX - minX)
     }
     
 }

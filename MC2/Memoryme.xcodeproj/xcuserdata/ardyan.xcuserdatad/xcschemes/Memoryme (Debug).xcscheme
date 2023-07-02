@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "38763EFC2A3AA7A8004129A6"
-               BuildableName = "MC2.app"
-               BlueprintName = "MC2"
-               ReferencedContainer = "container:MC2.xcodeproj">
+               BuildableName = "Memoryme.app"
+               BlueprintName = "Memoryme"
+               ReferencedContainer = "container:Memoryme.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -35,9 +35,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "38763F152A3AA7AA004129A6"
-               BuildableName = "MC2Tests.xctest"
-               BlueprintName = "MC2Tests"
-               ReferencedContainer = "container:MC2.xcodeproj">
+               BuildableName = "MemorymeTests.xctest"
+               BlueprintName = "MemorymeTests"
+               ReferencedContainer = "container:Memoryme.xcodeproj">
             </BuildableReference>
          </TestableReference>
          <TestableReference
@@ -46,9 +46,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "38763F1F2A3AA7AA004129A6"
-               BuildableName = "MC2UITests.xctest"
-               BlueprintName = "MC2UITests"
-               ReferencedContainer = "container:MC2.xcodeproj">
+               BuildableName = "MemorymeUITests.xctest"
+               BlueprintName = "MemorymeUITests"
+               ReferencedContainer = "container:Memoryme.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -68,9 +68,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "38763EFC2A3AA7A8004129A6"
-            BuildableName = "MC2.app"
-            BlueprintName = "MC2"
-            ReferencedContainer = "container:MC2.xcodeproj">
+            BuildableName = "Memoryme.app"
+            BlueprintName = "Memoryme"
+            ReferencedContainer = "container:Memoryme.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </LaunchAction>
@@ -85,9 +85,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "38763EFC2A3AA7A8004129A6"
-            BuildableName = "MC2.app"
-            BlueprintName = "MC2"
-            ReferencedContainer = "container:MC2.xcodeproj">
+            BuildableName = "Memoryme.app"
+            BlueprintName = "Memoryme"
+            ReferencedContainer = "container:Memoryme.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

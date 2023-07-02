@@ -79,7 +79,7 @@ class BarSnapshotsScene: PlayableScene {
         }
         
         let touchLocation = touch.location(in: self)
-        let touchedNode = self.nodes(at: touchLocation).first
+        let _ = self.nodes(at: touchLocation).first
         
         if clicked < 3 {
             // Animate the fade effect
@@ -90,26 +90,6 @@ class BarSnapshotsScene: PlayableScene {
                 self.clicked += 1
             }
         }
-        
-//        if touchedNode?.name == "burn-button" {
-//            dialogBox?.startSequence(dialogs: [
-//                DialogResources.bedroom_4_withPhoto_alt2_seq2
-//            ], from: self)
-//            timeout(after: 6.0, node: self) {
-//                // This code will be executed after 5 seconds
-//                self.sceneManager?.presentBedroomScene()
-//            }
-//        }
-//
-//        if touchedNode?.name == "keep-button" {
-//            dialogBox?.startSequence(dialogs: [
-//                DialogResources.bedroom_4_withPhoto_alt1_seq1
-//            ], from: self)
-//            timeout(after: 6.0, node: self) {
-//                // This code will be executed after 5 seconds
-//                self.sceneManager?.presentBedroomTidyScene()
-//            }
-//        }
     }
     
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {

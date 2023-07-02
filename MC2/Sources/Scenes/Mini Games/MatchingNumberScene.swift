@@ -56,7 +56,7 @@ class MatchingNumberScene: SKScene {
             DialogResources.office_6_email_seq3
         ], from: self, completion: {
             self.touchEventsEnabled = true
-            self.sceneManager?.presentOfficeSnapshotScene()
+            self.sceneManager?.presentOfficeSnapshotsScene()
         })
     }
 }
@@ -131,7 +131,7 @@ extension MatchingNumberScene {
         // To handle back button
         if backLabelNode.contains(touchedLocation) {
             let fade = SKTransition.fade(withDuration: 0.5)
-            sceneManager?.presentOfficeRoomScene(playerPosition: .officeAfterMiniGameEntrance, transition: fade)
+            sceneManager?.presentOfficeRoomScene(playerPosition: .computerSpot, transition: fade)
             return
         }
         

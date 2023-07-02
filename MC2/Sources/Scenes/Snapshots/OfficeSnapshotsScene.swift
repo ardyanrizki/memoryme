@@ -13,6 +13,8 @@ class OfficeSnapshotsScene: SKScene {
     
     weak var sceneManager: SceneManagerProtocol?
     
+    weak var gameState: GameState?
+    
     var memoryNodes: [SKSpriteNode]!
     
     /** tap contnue label node */
@@ -27,11 +29,13 @@ class OfficeSnapshotsScene: SKScene {
     
     let delayDuration: TimeInterval = 2.0
     
+    var dialogBox: DialogBoxNode?
+    
     /** show snapshot and its tap continue */
     func animateShowingSnapshot(for node: SKSpriteNode, isShowTapContinue: Bool = true) {
         let delayedTapContinueDuration = delayDuration + 2
         let fadeInAction = SKAction.fadeIn(withDuration: fadeDuration)
-        let touchEnabledAction = SKAction.run { self.touchEventsEnabled = true }
+        _ = SKAction.run { self.touchEventsEnabled = true }
         
         let snapshotSequence = SKAction.sequence([
             SKAction.wait(forDuration: delayDuration),
@@ -80,6 +84,39 @@ class OfficeSnapshotsScene: SKScene {
         tapContinueLabel.alpha = 0
         addChild(tapContinueLabel)
     }
+    
+    func startMomsCallDialog(completion: @escaping () -> Void) {
+        dialogBox?.startSequence(dialogs: [
+            DialogResources.office_7_onphone_seq1,
+            DialogResources.office_8_onphone_seq2,
+            DialogResources.office_9_onphone_seq3,
+            DialogResources.office_10_onphone_seq4,
+            DialogResources.office_11_onphone_seq5,
+            DialogResources.office_12_onphone_seq6,
+            DialogResources.office_13_onphone_seq7,
+            DialogResources.office_14_onphone_seq8,
+            DialogResources.office_15_onphone_seq9,
+            DialogResources.office_16_onphone_seq10,
+            DialogResources.office_17_onphone_seq11,
+            DialogResources.office_18_onphone_seq12,
+            DialogResources.office_19_onphone_seq13,
+            DialogResources.office_20_onphone_seq14,
+            DialogResources.office_21_onphone_seq15,
+            DialogResources.office_22_onphone_seq16,
+            DialogResources.office_23_onphone_seq17,
+            DialogResources.office_24_onphone_seq18,
+            DialogResources.office_25_onphone_seq19,
+            DialogResources.office_26_onphone_seq20,
+            DialogResources.office_27_onphone_seq21,
+            DialogResources.office_28_onphone_seq22
+        ], from: self, completion: {
+            completion()
+        })
+    }
+    
+    func rejectedMomsCallDialog(completion: @escaping (() -> Void)) {
+        dialogBox?.start(dialog: DialogResources.office_29_rejectPhone, from: self, completion: completion)
+    }
 }
 
 // MARK: Overrided methods.
@@ -87,6 +124,8 @@ extension OfficeSnapshotsScene {
         
     override func didMove(to view: SKView) {
         memoryNodes = childNode(withName: "MemoryNodes")!.children as? [SKSpriteNode]
+        let size = CGSize(width: frame.width - 200, height: 150)
+        dialogBox = FactoryMethods.createDialogBox(with: size, sceneFrame: frame)
         
         createTapContinueLabel()
         
@@ -116,23 +155,30 @@ extension OfficeSnapshotsScene {
             
                 switch(touchedNode.name) {
                 case Constants.acceptNode:
-                    // TODO: doing action if accepting the phone
-                    let whiteFade = SKTransition.fade(with: .white, duration: 1)
-                    sceneManager?.presentOfficeRoomScene(
-                        playerPosition: .officeAfterMiniGameEntrance,
-                        transition: whiteFade
-                    )
-                    break
+                    // Doing action if accepting the phone.
+                    let currentSnapshotNode = memoryNodes[currentSnapshotIndex]
+                    animateHidingSnapshot(for: currentSnapshotNode) {
+                        self.gameState?.setState(key: .momsCallAccepted, value: .boolValue(true))
+                        
+                        self.startMomsCallDialog {
+                            let whiteFade = SKTransition.fade(with: .white, duration: 1)
+                            self.sceneManager?.presentOfficeRoomScene(
+                                playerPosition: .computerSpot,
+                                transition: whiteFade
+                            )
+                        }
+                    }
                     
                 case Constants.declineNode:
-                    // TODO: doing action if decline the phone
-                    let whiteFade = SKTransition.fade(with: .white, duration: 1)
-                    
-                    sceneManager?.presentOfficeRoomScene(
-                        playerPosition: .officeAfterMiniGameEntrance,
-                        transition: whiteFade
-                    )
-                    break
+                    // Doing action if decline the phone.
+                    gameState?.setState(key: .momsCallAccepted, value: .boolValue(false))
+                    rejectedMomsCallDialog {
+                        let whiteFade = SKTransition.fade(with: .white, duration: 1)
+                        self.sceneManager?.presentOfficeRoomScene(
+                            playerPosition: .computerSpot,
+                            transition: whiteFade
+                        )
+                    }
                     
                 default:
                     break

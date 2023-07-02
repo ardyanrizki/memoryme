@@ -8,10 +8,29 @@
 import SpriteKit
 import GameplayKit
 
-class MainRoomScene: PlayableScene, PlayableSceneProtocol {
+class MainRoomSceneBlocker: SceneBlockerProtocol {
     
-    // TODO: move this value to State Machine
-    var touchEventsEnabled: Bool = true
+    var completion: ((SceneChangeZoneIdentifier) -> Void)?
+    
+    init(withCompletion completion: @escaping (SceneChangeZoneIdentifier) -> Void) {
+        self.completion = completion
+    }
+    
+    func isAllowToPresentScene(_ identifier: SceneChangeZoneIdentifier) -> Bool {
+        switch identifier {
+        case .toOffice, .toBedroom:
+            return true
+        default:
+            return false
+        }
+    }
+    
+    func sceneBlockedHandler(_ identifier: SceneChangeZoneIdentifier) {
+        completion?(identifier)
+    }
+}
+
+class MainRoomScene: PlayableScene, PlayableSceneProtocol {
     
     typealias T = MainRoomScene
     
@@ -21,9 +40,38 @@ class MainRoomScene: PlayableScene, PlayableSceneProtocol {
         return scene
     }
     
+    func setupSceneBlocker() {
+        sceneBlocker = MainRoomSceneBlocker(withCompletion: { identifier in
+            switch identifier {
+            case .toBar:
+                Cooldown.shared.startCooldown(duration: 5) {
+                    if self.touchEventsEnabled {
+                        self.touchEventsEnabled = false
+                        self.dialogBox?.start(dialog: DialogResources.toBarBlockedFallback, from: self, completion: {
+                            self.touchEventsEnabled = true
+                        })
+                    }
+                }
+            default:
+                break
+            }
+        })
+    }
+    
     override func didMove(to view: SKView) {
         super.didMove(to: view)
+        setupSceneBlocker()
         startOpeningEventIfNeeded()
+        changeDeskAccordingMomsCallAndPhotoAlbumEvent()
+        changeBroomAccordingPhotoAlbumEvent()
+        changeRadioTableAccordingStrangerEvent()
+        changeVaseAccordingAllMemories()
+        changeDoorAccordingAllMemories()
+        changeWindowsAccordingAllMemories()
+    }
+    
+    override func playerDidContact(with itemIdentifier: ItemIdentifier, node: ItemNode) {
+        node.isShowBubble = false
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -42,9 +90,9 @@ class MainRoomScene: PlayableScene, PlayableSceneProtocol {
             
             switch(parentNode.name) {
             case ItemIdentifier.vase.rawValue:
-                self.dialogBox?.start(dialog: DialogResources.opening_8_vase, from: self)
-                break
-                
+                self.dialogBox?.start(dialog: DialogResources.opening_8_vase, from: self, completion: {
+                    self.isUserInteractionEnabled = false
+                })
             default:
                 break
             }
@@ -83,39 +131,99 @@ extension MainRoomScene {
                 self.dialogBox?.startSequence(dialogs: [
                     DialogResources.opening_1_solo_seq1,
                     DialogResources.opening_1_solo_seq2
-                ], from: self)
-                self.touchEventsEnabled = true
+                ], from: self, completion: {
+                    self.touchEventsEnabled = true
+                })
             })
             gameState.setState(key: .sceneActivity, value: .sceneActivityValue(.exploring))
         }
     }
     
     // State updates according game event.
-    func changeRoomSceneryAccordingCallEvent() {
+    func changeBroomAccordingPhotoAlbumEvent() {
         guard let gameState else { return }
-        // If accepted, show opened frame. else show closed
-        if gameState.getState(key: .momsCallAccepted) == .boolValue(true) {
-            
+        let broom = interactableItems.first { $0.node?.identifier == .broom }
+        
+        if gameState.stateExisted(.friendsPhotosKept),
+           gameState.getState(key: .friendsPhotosKept) == .boolValue(false)
+        {
+            broom?.showPhysicsBody()
+            return
+        }
+        
+        broom?.hidePhysicsBody()
+    }
+    
+    // State updates according game event.
+    func changeDeskAccordingMomsCallAndPhotoAlbumEvent() {
+        guard let gameState else { return }
+        let mainDesk = interactableItems.first { $0.node?.identifier == .mainDesk }
+        
+        if gameState.stateExisted(.momsCallAccepted) {
+            mainDesk?.showPhysicsBody()
+            if gameState.getState(key: .momsCallAccepted) == .boolValue(true) {
+                mainDesk?.textureType = .opened
+            } else {
+                mainDesk?.textureType = .closed
+            }
+            return
+        }
+        
+        if gameState.stateExisted(.friendsPhotosKept) {
+            mainDesk?.showPhysicsBody()
+            mainDesk?.textureType = .normal
+            return
+        }
+        
+        mainDesk?.hidePhysicsBody()
+    }
+    
+    // State updates according game event.
+    func changeRadioTableAccordingStrangerEvent() {
+        let radioTable = interactableItems.first { $0.node?.identifier == .radioTable }
+        
+        guard let gameState else { return }
+        // If saved, show radio in desk.
+        if gameState.getState(key: .strangerSaved) == .boolValue(true) {
+            radioTable?.showPhysicsBody()
         } else {
-            
+            radioTable?.hidePhysicsBody()
         }
     }
     
     // State updates according game event.
-    func changeRoomSceneryAccordingPhotoAlbumEvent() {
+    func changeVaseAccordingAllMemories() {
         guard let gameState else { return }
-        // If kept, show album in desk. else show broom
-        if gameState.getState(key: .friendsPhotosKept) == .boolValue(true) {
-            
-        } else {
-            
+        
+        guard let vase = interactableItems.first (where: { $0.node?.identifier == .vase }) else { return }
+        
+        let stage = gameState.getStates(of: [
+            .momsCallAccepted,
+            .friendsPhotosKept,
+            .strangerSaved
+        ]).count
+        
+        
+        switch stage {
+        case 0:
+            vase.textureType = .ripe
+        case 1:
+            vase.textureType = .budding
+        case 2:
+            vase.textureType = .partialBlossom
+        case 3:
+            vase.textureType = .fullBlossom
+        default:
+            break
         }
     }
     
     // State updates according game event.
-    func changeVase() {
+    func changeDoorAccordingAllMemories() {
         guard let gameState else { return }
-        // Change base change stage: 1...3
+        
+        guard let door = interactableItems.first (where: { $0.node?.identifier == .upperDoor }) else { return }
+        
         let stage = gameState.getStates(of: [
             .momsCallAccepted,
             .friendsPhotosKept,
@@ -123,36 +231,48 @@ extension MainRoomScene {
         ]).count
         
         switch stage {
+        case 0:
+            door.textureType = .sketchy
         case 1:
-            break
+            door.textureType = .vague
         case 2:
-            break
+            door.textureType = .clear
         case 3:
-            break
+            door.textureType = .normal
         default:
             break
         }
     }
     
-    // State updates according game event.
-    func changeDoor() {
+    func changeWindowsAccordingAllMemories() {
         guard let gameState else { return }
-        // Change base change stage: 1...3
+        let windows = interactableItems.filter({ $0.node?.identifier == .mainWindow })
+        guard windows.count > 1 else { return }
         let stage = gameState.getStates(of: [
             .momsCallAccepted,
             .friendsPhotosKept,
             .strangerSaved
         ]).count
-        
+        var openedWindowCount = 0
         switch stage {
+        case 0:
+            openedWindowCount = 0
         case 1:
-            break
+            openedWindowCount = 1
         case 2:
-            break
+            openedWindowCount = 2
         case 3:
-            break
+            openedWindowCount = 2
         default:
-            break
+            openedWindowCount = 0
+        }
+        windows.forEach { window in
+            if openedWindowCount > 0 {
+                window.textureType = .opened
+                openedWindowCount -= 1
+            } else {
+                window.textureType = .closed
+            }
         }
     }
     

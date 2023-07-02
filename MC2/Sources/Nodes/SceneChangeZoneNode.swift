@@ -28,13 +28,17 @@ class SceneChangeZoneNode: SKSpriteNode {
     func moveScene(with sceneManager: SceneManagerProtocol?, sceneBlocker: SceneBlockerProtocol? = nil) {
         guard let identifier else { return }
         
-        if let sceneBlocker, sceneBlocker.isAllowToPresentScene(identifier) { return }
+        if let sceneBlocker, !sceneBlocker.isAllowToPresentScene(identifier) {
+            sceneBlocker.sceneBlockedHandler(identifier)
+            return
+        }
         
         switch identifier {
         case .toOffice:
-            sceneManager?.presentOfficeRoomScene(playerPosition: .officeEntrance, transition: SKTransition.fade(withDuration: 0.5))
+            let fade =  SKTransition.fade(withDuration: 0.5)
+            sceneManager?.presentOfficeRoomScene(playerPosition: .officeEntrance, transition: fade)
         case .toBedroom:
-            sceneManager?.presentBedroomScene()
+            sceneManager?.presentBedroomScene(playerPosition: .bedroomEntrance)
         case .toBar:
             sceneManager?.presentBarScene()
         case .toHospital:

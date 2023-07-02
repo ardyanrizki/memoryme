@@ -17,7 +17,15 @@ enum PhysicsType: UInt32 {
 
 class PhysicsComponent: GKComponent {
     
-    public var physicsBody: SKPhysicsBody?
+    public var type: PhysicsType? {
+        didSet {
+            if let type {
+                setupPhysicsBody(for: type)
+            } else {
+                renderComponent.node.physicsBody = nil
+            }
+        }
+    }
     
     private var renderComponent: RenderComponent
     
@@ -25,6 +33,7 @@ class PhysicsComponent: GKComponent {
         self.renderComponent = renderComponent
         super.init()
         setupPhysicsBody(for: type)
+        self.type = type
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -76,7 +85,5 @@ class PhysicsComponent: GKComponent {
         case .sceneChangeZone:
             break
         }
-        
-        self.physicsBody = node.physicsBody
     }
 }

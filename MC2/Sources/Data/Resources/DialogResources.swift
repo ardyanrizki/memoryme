@@ -19,6 +19,9 @@ struct Dialog {
 
 struct DialogResources {
     
+    // MARK: Fallbacks
+    static let toBarBlockedFallback = Dialog(Constants.mainCharacterName, prompt: "The door is tightly closed")
+    
     // MARK: Opening Scene
     static let opening_1_solo_seq1 = Dialog(Constants.mainCharacterName, prompt: "Where am I? I feel a bit dizzy.")
     static let opening_1_solo_seq2 = Dialog(Constants.mainCharacterName, prompt: "Where is this? It looks so strange...")
@@ -33,6 +36,7 @@ struct DialogResources {
     static let opening_10_manifestedDoor = Dialog(Constants.mainCharacterName, prompt: "Huh, the scribble became a door. Should I enter?") // Choice to 1. Enter; 2. Later
     
     // MARK: Office Scene
+    static let office_1_solo_seq1 = Dialog(Constants.mainCharacterName, prompt: "Office, really? Is it a good idea to come here?")
     static let office_1_photoframe_seq1 = Dialog(Constants.mainCharacterName, prompt: "This is my family photo. I think we took it last summer during mom’s birthday.")
     static let office_2_photoframe_seq2 = Dialog(Constants.mainCharacterName, prompt: "It was a great night...") // There's date on frame to indicate as a pin
     
@@ -63,9 +67,9 @@ struct DialogResources {
     static let office_25_onphone_seq19 = Dialog(nil, prompt: "“beep”")
     static let office_26_onphone_seq20 = Dialog(Constants.mainCharacterName, prompt: "...")
     static let office_27_onphone_seq21 = Dialog(Constants.mainCharacterName, prompt: "I feel motivated.")
-    static let office_29_onphone_seq22 = Dialog(Constants.mainCharacterName, prompt: "Let’s get this work done.")
+    static let office_28_onphone_seq22 = Dialog(Constants.mainCharacterName, prompt: "Let’s get this work done.")
     
-    static let office_30_rejectPhone = Dialog(Constants.mainCharacterName, prompt: "I need to get this work done asap.")
+    static let office_29_rejectPhone = Dialog(Constants.mainCharacterName, prompt: "I need to get this work done asap.")
     
     // MARK: Bedroom Scene
     static let bedroom_1_solo_seq1 = Dialog(Constants.mainCharacterName, prompt: "So messy, what happened to my bedroom..?")

@@ -18,12 +18,17 @@ class OfficeRoomScene: PlayableScene, PlayableSceneProtocol {
         return scene
     }
     
-    override func playerDidContact(with itemIdentifier: ItemIdentifier, node: ItemNode) {
-        node.isShowBubble = true
+    override func didMove(to view: SKView) {
+        super.didMove(to: view)
+        startFirstTimeEnteringEventIfNeeded()
     }
     
-    override func playerDidIntersect(with itemIdentifier: ItemIdentifier, node: ItemNode) {
-        
+    override func playerDidContact(with itemIdentifier: ItemIdentifier, node: ItemNode) {
+        if itemIdentifier == .macbook, gameState?.getState(key: .momsCallAccepted) != nil {
+            node.isShowBubble = false
+        } else {
+            node.isShowBubble = true
+        }
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -34,52 +39,19 @@ class OfficeRoomScene: PlayableScene, PlayableSceneProtocol {
         
         if touchedNode!.name == ItemIdentifier.bubble.rawValue {
             // Indicate touched node does not have any parent
-            guard let parentNode = touchedNode?.parent else {
-                return
-            }
+            guard let parentNode = touchedNode?.parent else { return }
             
             switch(parentNode.name) {
             case ItemIdentifier.macbook.rawValue:
-                sceneManager?.presentMGPasswordScene()
-                break
-                
+                startInputPinGame()
             case ItemIdentifier.photoframe.rawValue:
                 showPhotoFrame()
-                break
-                
             default:
-                
                 break
             }
         } else {
             FactoryMethods.removeOverlay(in: self)
         }
-    }
-}
-
-// MARK: Scene's Events
-extension OfficeRoomScene {
-    
-    func startMomsCallEvent() {
-        
-    }
-    
-    func startAngryManagerSnapshots() {
-        
-    }
-    
-    func startInputPinGame() {
-        
-    }
-    
-    func startMatchNumberGame() {
-        
-    }
-    
-    // State updates according game event.
-    func updateMomCallEventState(callAccepted: Bool) {
-        guard let gameState else { return }
-        gameState.setState(key: .momsCallAccepted, value: .boolValue(callAccepted))
     }
     
     func showPhotoFrame() {
@@ -89,6 +61,8 @@ extension OfficeRoomScene {
         familyPhotoFrame.size.width = 528
         familyPhotoFrame.size.height = 640
         
+        isUserInteractionEnabled = false
+        
         FactoryMethods.createOverlay(childNode: familyPhotoFrame, in: self)
         
         self.dialogBox?.startSequence(dialogs: [
@@ -96,6 +70,38 @@ extension OfficeRoomScene {
             DialogResources.office_2_photoframe_seq2,
         ], from: self, completion: {
             FactoryMethods.removeOverlay(in: self)
+            self.isUserInteractionEnabled = true
         })
+    }
+}
+
+// MARK: Scene's Events
+extension OfficeRoomScene {
+    
+    func startFirstTimeEnteringEventIfNeeded() {
+        guard let gameState else { return }
+        if !gameState.stateExisted(.momsCallAccepted) {
+            isUserInteractionEnabled = false
+            self.dialogBox?.startSequence(dialogs: [
+                DialogResources.office_1_solo_seq1
+            ], from: self, completion: {
+                self.isUserInteractionEnabled = true
+            })
+        }
+    }
+    
+    func startMomsCallEvent() {
+        
+    }
+    
+    func startInputPinGame() {
+        guard gameState?.getState(key: .momsCallAccepted) == nil else { return }
+        sceneManager?.presentMGInputPinScene()
+    }
+    
+    // State updates according game event.
+    func updateMomCallEventState(callAccepted: Bool) {
+        guard let gameState else { return }
+        gameState.setState(key: .momsCallAccepted, value: .boolValue(callAccepted))
     }
 }
