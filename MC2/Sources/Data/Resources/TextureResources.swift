@@ -54,7 +54,8 @@ struct TextureResources {
     static let momCharacterAtlasWalk: TextureAtlasName = "mom_walk"
     static let bossCharacterAtlasWalk: TextureAtlasName = "boss_walk"
     static let friendCharacterAtlasWalk: TextureAtlasName = "friend_walk"
-    static let bartenderCharacterAtlasWalk: TextureAtlasName = "bartender_walk"
+    static let bartenderCharacterAtlasIdle: TextureAtlasName = "bartender_idle_atlas"
+    static let bartenderCharacterAtlasWalk: TextureAtlasName = "bartender_walk_atlas"
     
     // MARK: - Shared items
     static let sideDoor: TextureName = "side-door_static"

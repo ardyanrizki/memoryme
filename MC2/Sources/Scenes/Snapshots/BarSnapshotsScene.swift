@@ -15,9 +15,56 @@ class BarSnapshotsScene: PlayableScene {
     
     var choice: String = ""
     
-    var firstCutscene: String = ""
+    /** tap contnue label node */
+    var tapContinueLabel: SKLabelNode!
+    
+    /** Track current snapshot that already seen */
+    var currentSnapshotIndex: Int = 0
+    
+    var touchEventsEnabled: Bool = false
+    
+    let fadeDuration: TimeInterval = 1.0
+    
+    let delayDuration: TimeInterval = 2.0
     
     private var overlayNode: SKSpriteNode!
+    
+    /** show snapshot and its tap continue */
+    func animateShowingSnapshot(for node: SKSpriteNode) {
+        let delayedTapContinueDuration = delayDuration + 2
+        let fadeInAction = SKAction.fadeIn(withDuration: fadeDuration)
+        let touchEnabledAction = SKAction.run { self.touchEventsEnabled = true }
+        
+        let snapshotSequence = SKAction.sequence([
+            SKAction.wait(forDuration: delayDuration),
+            fadeInAction
+        ])
+        
+        node.run(snapshotSequence)
+        
+        let tapContinueSequence = SKAction.sequence([
+            SKAction.wait(forDuration: delayedTapContinueDuration),
+            fadeInAction,
+            SKAction.run { self.touchEventsEnabled = true }
+        ])
+        
+        tapContinueLabel.run(tapContinueSequence)
+    }
+    
+    /** hide snapshot and its tap continue */
+    func animateHidingSnapshot(for node: SKSpriteNode, completion: @escaping () -> Void = {}) {
+        let fadeOutAction = SKAction.fadeOut(withDuration: fadeDuration)
+        let fadeOutTapAction = SKAction.group([
+            fadeOutAction,
+            SKAction.run {
+                self.touchEventsEnabled = false
+                completion()
+            }
+        ])
+                
+        node.run(fadeOutAction)
+        tapContinueLabel.run(fadeOutTapAction)
+    }
     
     override func update(_ currentTime: TimeInterval) {
         var previousScene = ""
@@ -29,11 +76,11 @@ class BarSnapshotsScene: PlayableScene {
             break
         case 2:
             previousScene = "memory-3b"
-            selectedScene = "memory-3c-s1"
+            selectedScene = self.choice == "fail" ? "memory-3d-d1" : "memory-3c-s1"
             break
         case 3:
-            previousScene = "memory-3c-s1"
-            selectedScene = "memory-3c-s2"
+            previousScene = self.choice == "fail" ? "memory-3d-d1" : "memory-3c-s1"
+            selectedScene = self.choice == "fail" ? "memory-3d-d2" : "memory-3c-s2"
             break
         default:
             break
@@ -44,16 +91,19 @@ class BarSnapshotsScene: PlayableScene {
             if selectedScene == "memory-3b" {
                 self.sceneManager?.presentCrashQTEScene()
             }
-            if selectedScene == "memory-3c-s2" {
-//                self.childNode(withName: "keep-button")?.alpha = 1
-//                self.childNode(withName: "burn-button")?.alpha = 1
-//                self.childNode(withName: "tap-label")?.alpha = 0
-            }
         }
     }
     
     override func didMove(to view: SKView) {
         setupDialogBox()
+        playBackgroundMusic(filename: Constants.cutsceneBar)
+        if choice != "" {
+            let initScene = "memory-3a"
+            let selectedScene = self.choice == "fail" ? "memory-3d-d1" : "memory-3c-s1"
+            self.childNode(withName: initScene)?.alpha = 0
+            self.childNode(withName: selectedScene)?.alpha = 1
+            clicked = 2
+        }
         
         let promptLabel = SKLabelNode(fontNamed: Constants.fontName)
         promptLabel.text = "Tap to continue"
@@ -89,27 +139,10 @@ class BarSnapshotsScene: PlayableScene {
             timeout(after: 0.5, node: self) {
                 self.clicked += 1
             }
+        } else {
+            self.stopBackgroundMusic()
+            self.sceneManager?.presentBarScene(playerPosition: .barAfterMiniGameEntrance, transition: SKTransition.fade(withDuration: 0.5))
         }
-        
-//        if touchedNode?.name == "burn-button" {
-//            dialogBox?.startSequence(dialogs: [
-//                DialogResources.bedroom_4_withPhoto_alt2_seq2
-//            ], from: self)
-//            timeout(after: 6.0, node: self) {
-//                // This code will be executed after 5 seconds
-//                self.sceneManager?.presentBedroomScene()
-//            }
-//        }
-//
-//        if touchedNode?.name == "keep-button" {
-//            dialogBox?.startSequence(dialogs: [
-//                DialogResources.bedroom_4_withPhoto_alt1_seq1
-//            ], from: self)
-//            timeout(after: 6.0, node: self) {
-//                // This code will be executed after 5 seconds
-//                self.sceneManager?.presentBedroomTidyScene()
-//            }
-//        }
     }
     
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {

@@ -18,6 +18,10 @@ class BarScene: PlayableScene, PlayableSceneProtocol {
         return scene
     }
     
+//    override func setup(playerPosition: PositionIdentifier) {
+//        setupNPC(at: PositionIdentifier.bartenderPosition, from: positions)
+//    }
+    
     override func didMove(to view: SKView) {
         super.didMove(to: view)
         firstEnterBar()

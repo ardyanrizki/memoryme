@@ -52,6 +52,11 @@ struct Constants {
     
     // Sound
     static let ambience = "ambience.mp3"
+    static let cutsceneBar = "cutscene-bar.mp3"
+    
+    // Sound Effect
+    static let radioStatic = "radio-static.mp3"
+    static let truckHorn = "truck-horn.mp3"
 }
 
 extension String {

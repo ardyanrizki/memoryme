@@ -104,6 +104,9 @@
 		8C2D91AA2A502EC200231238 /* radio-static.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8C2D91A92A502EC200231238 /* radio-static.mp3 */; };
 		8C2D91B42A50593F00231238 /* BarSnapshots.sks in Resources */ = {isa = PBXBuildFile; fileRef = 8C2D91B32A50593F00231238 /* BarSnapshots.sks */; };
 		8C2D91B62A5064CB00231238 /* BarSnapshotsScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C2D91B52A5064CB00231238 /* BarSnapshotsScene.swift */; };
+		8C2D91B82A51FB9D00231238 /* NPC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C2D91B72A51FB9D00231238 /* NPC.swift */; };
+		8C2D91B92A51FB9D00231238 /* NPC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C2D91B72A51FB9D00231238 /* NPC.swift */; };
+		8C2D91BA2A51FB9D00231238 /* NPC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C2D91B72A51FB9D00231238 /* NPC.swift */; };
 		8C56D9492A43CFE40076283B /* Scribble-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 8C56D9482A43CFE40076283B /* Scribble-Regular.otf */; };
 		F618B3CB2A4A811900358874 /* InputPasswordScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = F618B3C92A4A811900358874 /* InputPasswordScene.sks */; };
 		F618B3CC2A4A811900358874 /* MatchingNumberScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = F618B3CA2A4A811900358874 /* MatchingNumberScene.sks */; };
@@ -201,6 +204,7 @@
 		8C2D91A92A502EC200231238 /* radio-static.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "radio-static.mp3"; sourceTree = "<group>"; };
 		8C2D91B32A50593F00231238 /* BarSnapshots.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = BarSnapshots.sks; sourceTree = "<group>"; };
 		8C2D91B52A5064CB00231238 /* BarSnapshotsScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarSnapshotsScene.swift; sourceTree = "<group>"; };
+		8C2D91B72A51FB9D00231238 /* NPC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NPC.swift; sourceTree = "<group>"; };
 		8C56D9482A43CFE40076283B /* Scribble-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Scribble-Regular.otf"; sourceTree = "<group>"; };
 		8C56D94A2A43D0320076283B /* MC2-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "MC2-Info.plist"; sourceTree = "<group>"; };
 		F618B3C92A4A811900358874 /* InputPasswordScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = InputPasswordScene.sks; sourceTree = "<group>"; };
@@ -377,6 +381,7 @@
 			children = (
 				38763F3A2A3AEC30004129A6 /* Player.swift */,
 				386D63262A49E32400BBC022 /* InteractableItem.swift */,
+				8C2D91B72A51FB9D00231238 /* NPC.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -673,6 +678,7 @@
 				38763F012A3AA7A8004129A6 /* AppDelegate.swift in Sources */,
 				8C2D91A22A5022C700231238 /* BedroomSnapshotsScene.swift in Sources */,
 				38763F7E2A41E3E3004129A6 /* TitleScene.swift in Sources */,
+				8C2D91B82A51FB9D00231238 /* NPC.swift in Sources */,
 				F65867D52A4F44770030C3A1 /* CrashQTEScene.swift in Sources */,
 				38763F472A3AF657004129A6 /* AnimationComponent.swift in Sources */,
 				3811E4E32A474D6000416B95 /* SceneChangeZoneNode.swift in Sources */,
@@ -702,6 +708,7 @@
 				38763F882A42A600004129A6 /* HospitalRoomScene.swift in Sources */,
 				38763F502A3AF748004129A6 /* PhysicsComponent.swift in Sources */,
 				38763F482A3AF657004129A6 /* AnimationComponent.swift in Sources */,
+				8C2D91B92A51FB9D00231238 /* NPC.swift in Sources */,
 				38763F542A3AF789004129A6 /* RenderComponent.swift in Sources */,
 				386D63282A49E32400BBC022 /* InteractableItem.swift in Sources */,
 				38763F1B2A3AA7AA004129A6 /* MC2Tests.swift in Sources */,
@@ -730,6 +737,7 @@
 				38763F272A3AA7AA004129A6 /* MC2UITestsLaunchTests.swift in Sources */,
 				38763F512A3AF748004129A6 /* PhysicsComponent.swift in Sources */,
 				38763F652A3B71AE004129A6 /* BedroomScene.swift in Sources */,
+				8C2D91BA2A51FB9D00231238 /* NPC.swift in Sources */,
 				38763F552A3AF789004129A6 /* RenderComponent.swift in Sources */,
 				38763F6D2A3B71D5004129A6 /* BarScene.swift in Sources */,
 				38763F802A41E3E3004129A6 /* TitleScene.swift in Sources */,

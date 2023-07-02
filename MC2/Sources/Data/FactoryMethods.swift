@@ -14,6 +14,10 @@ struct FactoryMethods {
         Player(at: position)
     }
     
+    static func createNPC(at position: CGPoint) -> NPC {
+        NPC(at: position)
+    }
+    
     static func createInteractableItem(with identifier: ItemIdentifier, at position: CGPoint, in scene: SKScene) -> InteractableItem {
         InteractableItem(withIdentifier: identifier, at: position, in: scene)
     }

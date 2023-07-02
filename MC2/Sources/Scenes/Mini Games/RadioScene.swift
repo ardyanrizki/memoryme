@@ -64,7 +64,7 @@ class RadioScene: PlayableScene{
         
         switch(touchedNode?.name) {
             case "back-button":
-                sceneManager?.presentBarScene()
+                sceneManager?.presentBarScene(playerPosition: .barAfterMiniGameEntrance, transition: SKTransition.fade(withDuration: 0.5))
                 break
             default:
                 break
@@ -106,20 +106,18 @@ class RadioScene: PlayableScene{
             
             radioPointer.position.x = getPositionFromAngle(newRotation.toDegrees())
             print(radioPointer.position.x)
-            if radioPointer.position.x > 120 && radioPointer.position.x < 160 && !isPlayingSound {
+            if radioPointer.position.x > 120 && !isPlayingSound {
                 changeBackgroundMusic(filename: "cutscene-bar.mp3")
                 isPlayingSound = true
-                timeout(after: 1.5, node: self) {
-                    self.dialogBox?.startSequence(dialogs: [
-                        DialogResources.bar_3_solo_seq1
-                    ], from: self)
-                }
-                if radioPointer.position.x > 120 && radioPointer.position.x < 160 {
-                    timeout(after: 3.0, node: self) {
-                        self.sceneManager?.presentSnapshotBarScene(state: "", first: "first")
+                self.dialogBox?.startSequence(dialogs: [
+                    DialogResources.bar_3_solo_seq1
+                ], from: self)
+                if radioPointer.position.x > 120 {
+                    timeout(after: 1.0, node: self) {
+                        self.sceneManager?.presentSnapshotBarScene(state: "")
                     }
                 }
-            } else if isPlayingSound && (radioPointer.position.x <= 120 || radioPointer.position.x >= 160) {
+            } else if isPlayingSound && (radioPointer.position.x <= 120) {
                 changeBackgroundMusic(filename: "radio-static.mp3")
                 isPlayingSound = false
             }
