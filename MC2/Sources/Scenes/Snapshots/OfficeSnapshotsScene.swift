@@ -13,6 +13,8 @@ class OfficeSnapshotsScene: SKScene {
     
     weak var sceneManager: SceneManagerProtocol?
     
+    weak var gameState: GameState?
+    
     var memoryNodes: [SKSpriteNode]!
     
     /** tap contnue label node */
@@ -114,23 +116,21 @@ extension OfficeSnapshotsScene {
             
                 switch(touchedNode.name) {
                 case Constants.acceptNode:
-                    // TODO: doing action if accepting the phone
+                    // Doing action if accepting the phone.
+                    gameState?.setState(key: .momsCallAccepted, value: .boolValue(true))
                     let whiteFade = SKTransition.fade(with: .white, duration: 1)
                     sceneManager?.presentOfficeRoomScene(
                         playerPosition: .computerSpot,
                         transition: whiteFade
                     )
-                    break
-                    
                 case Constants.declineNode:
-                    // TODO: doing action if decline the phone
+                    // Doing action if decline the phone.
+                    gameState?.setState(key: .momsCallAccepted, value: .boolValue(false))
                     let whiteFade = SKTransition.fade(with: .white, duration: 1)
                     sceneManager?.presentOfficeRoomScene(
                         playerPosition: .computerSpot,
                         transition: whiteFade
                     )
-                    break
-                    
                 default:
                     break
                 }

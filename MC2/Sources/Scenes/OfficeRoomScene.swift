@@ -40,7 +40,9 @@ class OfficeRoomScene: PlayableScene, PlayableSceneProtocol {
             
             switch(parentNode.name) {
             case ItemIdentifier.macbook.rawValue:
-                sceneManager?.presentMGPasswordScene()
+                if gameState?.getState(key: .momsCallAccepted) == nil {
+                    sceneManager?.presentMGPasswordScene()
+                }
                 break
                 
             case ItemIdentifier.photoframe.rawValue:

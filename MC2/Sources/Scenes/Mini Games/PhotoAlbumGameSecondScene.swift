@@ -40,7 +40,7 @@ class PhotoAlbumGameSecondScene: PlayableScene {
             ], from: self)
             timeout(after: 6.0, node: self) {
                 // This code will be executed after 5 seconds
-                self.sceneManager?.presentSnapshotBedroomScene()
+                self.sceneManager?.presentBedroomSnapshotsScene()
             }
             showCompleteDialog = true
         }

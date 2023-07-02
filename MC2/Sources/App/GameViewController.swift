@@ -21,8 +21,8 @@ protocol SceneManagerProtocol: AnyObject {
     func presentMGPhotoAlbumSecondScene()
     func presentMGRadioScene()
     func presentCrashQTEScene()
-    func presentOfficeSnapshotScene()
-    func presentSnapshotBedroomScene()
+    func presentOfficeSnapshotsScene()
+    func presentBedroomSnapshotsScene()
 }
 
 class GameViewController: UIViewController {
@@ -159,7 +159,7 @@ extension GameViewController: SceneManagerProtocol {
     
     // MARK: SNAPSHOTS
     // Office Snapshots
-    func presentOfficeSnapshotScene() {
+    func presentOfficeSnapshotsScene() {
         guard let scene = OfficeSnapshotsScene(fileNamed: Constants.officeSnapshotsScene) else {return}
         scene.sceneManager = self
         
@@ -168,7 +168,7 @@ extension GameViewController: SceneManagerProtocol {
     }
     
     // Bedroom Snapshots
-    func presentSnapshotBedroomScene(){
+    func presentBedroomSnapshotsScene(){
         guard let scene = BedroomSnapshotsScene(fileNamed: Constants.bedroomSnapshotsScene) else {return}
         scene.sceneManager = self
         scene.gameState = gameState

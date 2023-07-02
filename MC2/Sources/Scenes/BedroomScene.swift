@@ -17,7 +17,7 @@ class BedroomScene: PlayableScene, PlayableSceneProtocol {
     }
     
     static func sharedScene(isTidy: Bool = true, playerPosition position: PositionIdentifier) -> BedroomScene? {
-        var scene = BedroomScene(fileNamed: isTidy ? Constants.bedroomTidyScene : Constants.bedroomMessyScene)
+        let scene = BedroomScene(fileNamed: isTidy ? Constants.bedroomTidyScene : Constants.bedroomMessyScene)
         scene?.setup(playerPosition: position)
         return scene
     }
