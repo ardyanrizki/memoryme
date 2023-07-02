@@ -51,8 +51,18 @@ struct Constants {
     static let layAction = "lay"
     
     // Sound
+    //BGM
     static let ambience = "ambience.mp3"
+    
+    //SFX
     static let footSteps = "foot-steps.mp3"
+    static let click = "keyboard-click.mp3"
+    static let door = "door.mp3"
+    static let phone = "phone.mp3"
+    static let cutSceneOffice = "cutscene-office.mp3"
+    static let burn = "burn.mp3"
+    static let lighter = "lighter.mp3"
+    static let cutSceneBedroom = "cutscene-bedroom.mp3"
 }
 
 extension String {

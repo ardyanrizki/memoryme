@@ -10,8 +10,18 @@ import GameplayKit
 
 class BedroomSnapshotsScene: PlayableScene {
     
+    weak var gameViewController: GameViewController?
+    var burnSFX = SoundComponent(soundFile: Constants.burn)
+    var lighterSFX = SoundComponent(soundFile: Constants.lighter)
+    var cutSceneBedroom = SoundComponent(soundFile: Constants.cutSceneBedroom)
+    
     //flag to count photos matched
     var clicked = 0
+    
+    /**Stop any background music**/
+    override func stopBackgroundMusic() {
+        gameViewController?.stopBackgroundMusic()
+    }
     
     private var overlayNode: SKSpriteNode!
     
@@ -46,6 +56,9 @@ class BedroomSnapshotsScene: PlayableScene {
     }
     
     override func didMove(to view: SKView) {
+        self.stopBackgroundMusic()
+        cutSceneBedroom.soundPlayer?.play()
+        
         setupDialogBox()
         
         let promptLabel = SKLabelNode(fontNamed: Constants.fontName)
@@ -64,6 +77,7 @@ class BedroomSnapshotsScene: PlayableScene {
         overlayNode.zPosition = 100 // Place the overlay above other nodes
         overlayNode.alpha = 0 // Initially hidden
         self.addChild(overlayNode)
+        
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -82,9 +96,13 @@ class BedroomSnapshotsScene: PlayableScene {
             timeout(after: 0.5, node: self) {
                 self.clicked += 1
             }
+        }else if clicked == 3{
+            lighterSFX.soundPlayer?.play()
         }
         
         if touchedNode?.name == "burn-button" {
+            burnSFX.soundPlayer?.play()
+            
             dialogBox?.startSequence(dialogs: [
                 DialogResources.bedroom_4_withPhoto_alt2_seq2
             ], from: self)
@@ -111,6 +129,13 @@ class BedroomSnapshotsScene: PlayableScene {
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         
+    }
+    
+    override func willMove(from view: SKView) {
+        if gameViewController?.isBedroomSnapShotScenePlaying == true {
+            gameViewController?.stopBackgroundMusic()
+            gameViewController?.playBackgroundMusic(filename: Constants.ambience)
+        }
     }
     
     func setupDialogBox() {

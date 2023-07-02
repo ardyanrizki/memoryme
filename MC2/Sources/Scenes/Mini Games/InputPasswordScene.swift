@@ -7,6 +7,7 @@
 
 import SpriteKit
 import GameplayKit
+import AVFoundation
 
 class TextField: SKNode{ //-> Node kosong, SpriteNode = gambar
     
@@ -113,6 +114,9 @@ class InputPasswordScene: SKScene {
     var macbookLoginScreen: SKSpriteNode!
     var textField: TextField!
     
+//    var audioPlayer: AVAudioPlayer?
+    var soundComponent: SoundComponent!
+    
     // TODO: move this value to State Machine
     var touchEventsEnabled: Bool = true
     
@@ -124,6 +128,8 @@ class InputPasswordScene: SKScene {
     override func didMove(to view: SKView) {//hanya dijalanin sekali pas awal scene
         //Nyari laptopNode dan dimasukin ke variabel
         let laptop = childNode(withName: TextureResources.macbookCloseUp)!
+
+        soundComponent = SoundComponent(soundFile: Constants.click)
         
         macbookLoginScreen = childNode(withName: TextureResources.macbookLoginScreen) as? SKSpriteNode
         
@@ -162,11 +168,13 @@ class InputPasswordScene: SKScene {
                     number: keypad.number,
                     completion: handleComplePin
                 )
+                soundComponent.soundPlayer?.play()
             }
         }
         
         if deleteButton.contains(location) {
             textField.deleteNumber()
+            soundComponent.soundPlayer?.play()
         }
     }
     

@@ -12,7 +12,7 @@ import AVFoundation
 protocol SceneManagerProtocol: AnyObject {
     func presentTitleScene()
     func presentMainRoomScene(playerPosition: PositionIdentifier)
-    func presentOfficeRoomScene(playerPosition: PositionIdentifier, transition: SKTransition?)
+    func presentOfficeRoomScene(playerPosition: PositionIdentifier,transition: SKTransition?)
     func presentBedroomScene()
     func presentBedroomTidyScene()
     func presentBarScene()
@@ -28,11 +28,12 @@ protocol SceneManagerProtocol: AnyObject {
     func presentSnapshotBarScene(state: String, first: String)
 }
 
-class GameViewController: UIViewController {
+class GameViewController: UIViewController, AVAudioPlayerDelegate {
     
     var gameState: GameState?
     
     var audioPlayer: AVAudioPlayer!
+//    var isBedroomSnapShotScenePlaying: Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -82,12 +83,19 @@ extension GameViewController {
                 // Create the audio player
                 audioPlayer = try AVAudioPlayer(contentsOf: url)
                 
+                // Set the delegate of the audio player to self
+                audioPlayer.delegate = self
+                
                 // Configure the audio player settings
                 audioPlayer.numberOfLoops = -1 // Loop indefinitely
                 audioPlayer.volume = 0.5 // Adjust the volume as needed
                 
                 // Play the background music
                 audioPlayer.play()
+                
+//                // Update isCutscenePlaying based on the filename
+//                isBedroomSnapShotScenePlaying = filename.contains(Constants.cutSceneBedroom)
+                
             } catch {
                 // Error handling if the audio player fails to initialize
                 print("Could not create audio player: \(error.localizedDescription)")
@@ -95,6 +103,10 @@ extension GameViewController {
         } else {
             print("Music file not found: \(filename)")
         }
+    }
+    
+    func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool) {
+        stopBackgroundMusic()
     }
 }
 
@@ -207,13 +219,18 @@ extension GameViewController: SceneManagerProtocol {
     func presentOfficeSnapshotScene() {
         guard let scene = OfficeSnapshotsScene(fileNamed: Constants.officeSnapshotsScene) else {return}
         scene.sceneManager = self
-        
         let fade = SKTransition.fade(with: .white, duration: 1.5)
         present(scene: scene, transition: fade)
     }
     
     // Bedroom Snapshots
     func presentSnapshotBedroomScene(){
+        // Stop the background music
+        stopBackgroundMusic()
+        
+        // Play the cutSceneBedroom music
+        playBackgroundMusic(filename: Constants.cutSceneBedroom)
+        
         guard let scene = BedroomSnapshotsScene(fileNamed: Constants.bedroomSnapshotsScene) else {return}
         scene.sceneManager = self
         let fade = SKTransition.fade(withDuration: 1.5)
