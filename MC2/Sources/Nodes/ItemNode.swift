@@ -12,7 +12,12 @@ class ItemNode: SKSpriteNode {
     
     var textures: [ItemTextureType: SKTexture]?
     
-    var textureType: ItemTextureType?
+    var textureType: ItemTextureType? {
+        didSet {
+            guard let textureType, let newTexture = textures?[textureType] else { return }
+            run(SKAction.setTexture(newTexture, resize: true))
+        }
+    }
     
     var bubbleDialog: InteractableItem?
     
@@ -23,9 +28,9 @@ class ItemNode: SKSpriteNode {
     }
     
     func createInteractableItem(in scene: SKScene, withTextureType textureType: ItemTextureType?) -> InteractableItem {
-        guard let identifier, let node = identifier.createNode(in: scene, withTextureType: textureType) else { fatalError(.errorNodeNotFound) }
+        guard let identifier else { fatalError(.errorIdentifierNotFound) }
         let textures = identifier.getTextures()
-        return InteractableItem(withNode: node, textures: textures)
+        return InteractableItem(withNode: self, textures: textures)
     }
     
     private func animateBubble(stop: Bool = false) {

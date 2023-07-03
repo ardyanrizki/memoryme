@@ -68,6 +68,13 @@ struct TextureResources {
     static let vaseFullBlossom: TextureName = "vase_full-blossom"
     static let laptop: TextureName = "laptop_static"
     static let lowerDoor: TextureName = "lower-door_static"
+    static let mainWindowClosed: TextureName = "main-window_closed"
+    static let mainWindowOpened: TextureName = "main-window_opened"
+    static let broom: TextureName = "broom"
+    static let mainDeskNormal: TextureName = "main-desk_normal"
+    static let mainDeskClosed: TextureName = "main-desk_closed"
+    static let mainDeskOpened: TextureName = "main-desk_opened"
+    static let radioTable = "radio-table"
     
     // Items in Office
     static let bookshelf: TextureName = "bookshelf_static"

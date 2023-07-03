@@ -13,19 +13,18 @@ protocol SceneManagerProtocol: AnyObject {
     func presentTitleScene()
     func presentMainRoomScene(playerPosition: PositionIdentifier)
     func presentOfficeRoomScene(playerPosition: PositionIdentifier, transition: SKTransition?)
-    func presentBedroomScene()
-    func presentBedroomTidyScene()
+    func presentBedroomScene(playerPosition: PositionIdentifier)
     func presentBarScene(playerPosition: PositionIdentifier, transition: SKTransition?)
     func presentHospitalRoomScene()
-    func presentMGPasswordScene()
+    func presentMGInputPinScene()
     func presentMGMatchingNumbersScene()
     func presentMGPhotoAlbumScene()
     func presentMGPhotoAlbumSecondScene()
     func presentMGRadioScene()
     func presentCrashQTEScene()
-    func presentOfficeSnapshotScene()
-    func presentSnapshotBedroomScene()
-    func presentSnapshotBarScene(state: String)
+    func presentOfficeSnapshotsScene()
+    func presentBedroomSnapshotsScene()
+    func presentBarSnapshotsScene(state: String)
 }
 
 class GameViewController: UIViewController {
@@ -134,16 +133,10 @@ extension GameViewController: SceneManagerProtocol {
         present(scene: scene, transition: transition)
     }
     
-    func presentBedroomScene() {
-        guard let scene = BedroomScene.sharedScene(playerPosition: .bedroomEntrance) else { return }
-        scene.sceneManager = self
-        scene.gameState = gameState
-        let fade = SKTransition.fade(withDuration: 0.5)
-        present(scene: scene, transition: fade)
-    }
-    
-    func presentBedroomTidyScene() {
-        guard let scene = BedroomScene.sharedSceneTidy(playerPosition: .bedroomEntrance) else { return }
+    func presentBedroomScene(playerPosition: PositionIdentifier) {
+        guard let gameState else { return }
+        let isTidy = gameState.getState(key: .friendsPhotosKept)?.isEqual(with: true) ?? false
+        guard let scene = BedroomScene.sharedScene(isTidy: isTidy ? true : false, playerPosition: playerPosition) else { return }
         scene.sceneManager = self
         scene.gameState = gameState
         let fade = SKTransition.fade(withDuration: 0.5)
@@ -168,74 +161,81 @@ extension GameViewController: SceneManagerProtocol {
     }
     
     //MARK: MINI GAME SCENES
-    //Mini Game 1 - Input Password
-    func presentMGPasswordScene(){
-        guard let scene = InputPasswordScene(fileNamed: Constants.inputPasswordScene) else { return }
+    //Mini Game 1 - Input Pin
+    func presentMGInputPinScene() {
+        guard let scene = InputPinScene(fileNamed: Constants.inputPinScene) else { return }
         scene.sceneManager = self
+        //        scene.gameState = gameState
         let fade = SKTransition.fade(withDuration: 0.5)
         present(scene: scene, transition: fade)
     }
     
     //Mini Game 2 - Matching Numbers
-    func presentMGMatchingNumbersScene(){
+    func presentMGMatchingNumbersScene() {
         guard let scene = MatchingNumberScene(fileNamed: Constants.matchingNumberScene) else { return }
         scene.sceneManager = self
+        //        scene.gameState = gameState
         present(scene: scene)
     }
     
     //Mini Game 3 - Drag and drop photos to album
-
-    func presentMGPhotoAlbumScene(){
-        guard let scene = PhotoAlbumGameScene(fileNamed: Constants.photoAlbumScene) else {return}
+    
+    func presentMGPhotoAlbumScene() {
+        guard let scene = PhotoAlbumScene(fileNamed: Constants.photoAlbumScene) else { return }
         scene.sceneManager = self
+        scene.gameState = gameState
         let fade = SKTransition.fade(withDuration: 0.5)
         present(scene: scene, transition: fade)
     }
     
     func presentMGPhotoAlbumSecondScene() {
-        guard let scene = PhotoAlbumGameSecondScene(fileNamed: Constants.photoAlbumSecondScene) else {return}
+        guard let scene = PhotoAlbumGameSecondScene(fileNamed: Constants.photoAlbumSecondScene) else { return }
         scene.sceneManager = self
+        scene.gameState = gameState
         let fade = SKTransition.fade(withDuration: 0.5)
         present(scene: scene, transition: fade)
     }
     
     //Mini Game 4 - Radio Scene
-    func presentMGRadioScene(){
+    func presentMGRadioScene() {
         guard let scene = RadioScene(fileNamed: Constants.radioScene) else {return}
         scene.sceneManager = self
+        //        scene.gameState = gameState
         let fade = SKTransition.fade(withDuration: 0.5)
         present(scene: scene, transition: fade)
         stopBackgroundMusic()
     }
     
     //Mini Game 5 - QTE
-    func presentCrashQTEScene(){
+    func presentCrashQTEScene() {
         guard let scene = CrashQTEScene(fileNamed: Constants.crashQTEScene) else {return}
         scene.sceneManager = self
+        //        scene.gameState = gameState
         let fade = SKTransition.fade(withDuration: 0.5)
         present(scene: scene, transition: fade)
     }
     
     // MARK: SNAPSHOTS
     // Office Snapshots
-    func presentOfficeSnapshotScene() {
+    func presentOfficeSnapshotsScene() {
         guard let scene = OfficeSnapshotsScene(fileNamed: Constants.officeSnapshotsScene) else {return}
         scene.sceneManager = self
-        
+        scene.gameState = gameState
         let fade = SKTransition.fade(with: .white, duration: 1.5)
         present(scene: scene, transition: fade)
     }
     
     // Bedroom Snapshots
-    func presentSnapshotBedroomScene(){
+    func presentBedroomSnapshotsScene() {
         guard let scene = BedroomSnapshotsScene(fileNamed: Constants.bedroomSnapshotsScene) else {return}
         scene.sceneManager = self
+        scene.gameState = gameState
         let fade = SKTransition.fade(withDuration: 1.5)
         present(scene: scene, transition: fade)
     }
     
     //Snapshots Bar
-    func presentSnapshotBarScene(state: String) {
+    func presentBarSnapshotsScene(state: String) {
         guard let scene = BarSnapshotsScene(fileNamed: Constants.barSnapshotsScene) else {return}
         scene.choice = state
         scene.sceneManager = self
@@ -247,6 +247,7 @@ extension GameViewController: SceneManagerProtocol {
 }
 
 extension GameViewController {
+    
     private func present(scene: SKScene, transition: SKTransition? = nil){
         if let view = self.view as! SKView? {
             if let gestureRecognizers = view.gestureRecognizers {
@@ -266,11 +267,12 @@ extension GameViewController {
             view.ignoresSiblingOrder = true
 #if DEBUG
             view.showsPhysics = true
+            view.showsFPS = true
+            view.showsNodeCount = true
 #else
             view.showsPhysics = false
 #endif
-            view.showsFPS = true
-            view.showsNodeCount = true
         }
     }
+    
 }

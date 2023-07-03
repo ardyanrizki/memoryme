@@ -34,7 +34,7 @@ class PhotoAlbumGameSecondScene: PlayableScene {
             ], from: self)
             timeout(after: 6.0, node: self) {
                 // This code will be executed after 5 seconds
-                self.sceneManager?.presentSnapshotBedroomScene()
+                self.sceneManager?.presentBedroomSnapshotsScene()
             }
             showCompleteDialog = true
         }
@@ -44,7 +44,7 @@ class PhotoAlbumGameSecondScene: PlayableScene {
         setupDialogBox()
         
         /** Calls parent scene named polaroidNotes**/
-        if let parentNode = childNode(withName: "polaroidNodes") {
+        if let parentNode = childNode(withName: Constants.polaroidNodes) {
             /**Sets the children of polaroidNodes  as SKSpriteNode**/
             let childrenNodes = parentNode.children as! [SKSpriteNode]
             
@@ -61,7 +61,7 @@ class PhotoAlbumGameSecondScene: PlayableScene {
         
         // add dictionary. key: target child node, value: current position of the node
         /**Loop through targetPosition**/
-        if let targetParentNode = childNode(withName: "targetPositionNodes") {
+        if let targetParentNode = childNode(withName: Constants.targetPositionNodes) {
             
             /**Sets the children of targetNodePosition**/
             let childrenNodes = targetParentNode.children as! [SKSpriteNode]
@@ -73,10 +73,7 @@ class PhotoAlbumGameSecondScene: PlayableScene {
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        
-        guard let touch = touches.first else{
-            return
-        }
+        guard let touch = touches.first else { return }
         
         let touchLocation = touch.location(in: self)
         let touchedNode = self.nodes(at: touchLocation).first
@@ -92,11 +89,10 @@ class PhotoAlbumGameSecondScene: PlayableScene {
             }
         }
         switch(touchedNode?.name) {
-            case "back-button":
-                sceneManager?.presentBedroomScene()
+        case Constants.backButtonName:
+            sceneManager?.presentBedroomScene(playerPosition: .photoAlbumSpot)
                 break
             default:
-                
                 break
         }
     }
@@ -134,13 +130,11 @@ class PhotoAlbumGameSecondScene: PlayableScene {
         // then remove the node from polaroidNodes
         // otherwise, use initial position to assign current selected node back to the origin position
         
-        guard let touch = touches.first else{
-            return
-        }
+        guard touches.first != nil else { return }
        
         for polaroidNode in polaroidNodes{
 
-            if let targetNode = targetPolaroidNodes[polaroidNode.name!]{
+            if let targetNode = targetPolaroidNodes[polaroidNode.name!] {
                 
                 // check whether the polaroid node intersect with target node
                 if polaroidNode.intersects(targetNode){
@@ -154,19 +148,15 @@ class PhotoAlbumGameSecondScene: PlayableScene {
                         polaroidNodes.remove(at: index)
                     }
                     
-                }else{
-                    
+                } else {
                     if let initialPosition = initialPolaroidPosition[polaroidNode.name!]{
                         polaroidNode.position = initialPosition
                     }
-                    
                 }
             } else {
-                
                 if let initialPosition = initialPolaroidPosition[polaroidNode.name!]{
                     polaroidNode.position = initialPosition
                 }
-
             }
         }
     }

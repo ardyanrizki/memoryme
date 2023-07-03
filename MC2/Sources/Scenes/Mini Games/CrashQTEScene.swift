@@ -45,7 +45,7 @@ class CrashQTEScene: PlayableScene{
         if swipeArrow.intersects(goalNode) {
             print("goal")
             counterTimer.invalidate()
-            self.sceneManager?.presentSnapshotBarScene(state: "success")
+            self.sceneManager?.presentBarSnapshotsScene(state: "success")
         }
     }
     
@@ -63,7 +63,7 @@ class CrashQTEScene: PlayableScene{
         if counter == 0{
             counterTimer.invalidate()
            //move to scene fail
-            self.sceneManager?.presentSnapshotBarScene(state: "fail")
+            self.sceneManager?.presentBarSnapshotsScene(state: "fail")
         }
         
     }
@@ -94,7 +94,7 @@ class CrashQTEScene: PlayableScene{
         isDraggingArrow = false
         let minX = rectangle.frame.minX
         let maxX = rectangle.frame.maxX
-        let value = (swipeArrow.position.x - minX) / (maxX - minX)
+        let _ = (swipeArrow.position.x - minX) / (maxX - minX)
     }
     
 }

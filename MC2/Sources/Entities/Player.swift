@@ -87,12 +87,18 @@ class Player: GKEntity {
         let physicsComponent = PhysicsComponent(type: .character, renderComponent: renderComponent)
         addComponent(physicsComponent)
         
+        let walkingSoundComponent = SoundComponent(soundFile: Constants.footSteps)
+        
         // MARK: Animation Component
         let animationComponent = AnimationComponent(renderComponent: renderComponent, characterVisualComponent: characterVisualComponent)
         addComponent(animationComponent)
         
         // MARK: Control Component
-        let controlComponent = ControlComponent(renderComponent: renderComponent, animationComponent: animationComponent)
+        let controlComponent = ControlComponent(
+            renderComponent: renderComponent,
+            animationComponent: animationComponent,
+            soundComponent: walkingSoundComponent
+        )
         addComponent(controlComponent)
     }
 }

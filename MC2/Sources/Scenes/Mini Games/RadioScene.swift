@@ -114,7 +114,7 @@ class RadioScene: PlayableScene{
                 ], from: self)
                 if radioPointer.position.x > 120 {
                     timeout(after: 1.0, node: self) {
-                        self.sceneManager?.presentSnapshotBarScene(state: "")
+                        self.sceneManager?.presentBarSnapshotsScene(state: "")
                     }
                 }
             } else if isPlayingSound && (radioPointer.position.x <= 120) {
@@ -166,19 +166,5 @@ extension RadioScene {
         guard dialogBox == nil else { return }
         let size = CGSize(width: frame.width - 200, height: 150)
         dialogBox = FactoryMethods.createDialogBox(with: size, sceneFrame: frame)
-    }
-}
-
-extension Double {
-    func toRadians() -> Double {
-        return self * .pi / 180.0
-    }
-}
-extension CGFloat {
-    func toDegrees() -> Double {
-        return self / .pi * 180.0
-    }
-    func toRadians() -> Double {
-        return self * .pi / 180.0
     }
 }

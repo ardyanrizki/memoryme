@@ -28,6 +28,32 @@ enum StateValue: Equatable {
     case floatValue(Float)
     case boolValue(Bool)
     case sceneActivityValue(SceneActivity)
+    
+    func isEqual<T: Equatable>(with value: T) -> Bool {
+        switch self {
+        case .intValue(let int):
+            if let intValue = value as? Int {
+                return int == intValue
+            }
+        case .stringValue(let string):
+            if let stringValue = value as? String {
+                return string == stringValue
+            }
+        case .floatValue(let float):
+            if let floatValue = value as? Float {
+                return float == floatValue
+            }
+        case .boolValue(let bool):
+            if let boolValue = value as? Bool {
+                return bool == boolValue
+            }
+        case .sceneActivityValue(let sceneActivity):
+            if let sceneActivityValue = value as? SceneActivity {
+                return sceneActivity == sceneActivityValue
+            }
+        }
+        return false
+    }
 }
 
 protocol GameStateCentralDelegate: AnyObject {
@@ -64,6 +90,10 @@ class GameState {
     func removeAllStates() {
         states.removeAll()
         delegate?.didUpdate(nil, value: nil)
+    }
+    
+    func stateExisted(_ stateKey: StateKey) -> Bool {
+        states.first { $0.key == stateKey } != nil
     }
     
 }

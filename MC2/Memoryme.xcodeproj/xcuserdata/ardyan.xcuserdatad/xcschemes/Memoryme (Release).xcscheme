@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "38763EFC2A3AA7A8004129A6"
-               BuildableName = "MC2.app"
-               BlueprintName = "MC2"
-               ReferencedContainer = "container:MC2.xcodeproj">
+               BuildableName = "Memoryme.app"
+               BlueprintName = "Memoryme"
+               ReferencedContainer = "container:Memoryme.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -44,9 +44,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "38763EFC2A3AA7A8004129A6"
-            BuildableName = "MC2.app"
-            BlueprintName = "MC2"
-            ReferencedContainer = "container:MC2.xcodeproj">
+            BuildableName = "Memoryme.app"
+            BlueprintName = "Memoryme"
+            ReferencedContainer = "container:Memoryme.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </LaunchAction>
@@ -61,9 +61,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "38763EFC2A3AA7A8004129A6"
-            BuildableName = "MC2.app"
-            BlueprintName = "MC2"
-            ReferencedContainer = "container:MC2.xcodeproj">
+            BuildableName = "Memoryme.app"
+            BlueprintName = "Memoryme"
+            ReferencedContainer = "container:Memoryme.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

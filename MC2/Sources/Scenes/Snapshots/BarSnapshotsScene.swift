@@ -21,8 +21,6 @@ class BarSnapshotsScene: PlayableScene {
     /** Track current snapshot that already seen */
     var currentSnapshotIndex: Int = 0
     
-    var touchEventsEnabled: Bool = false
-    
     let fadeDuration: TimeInterval = 1.0
     
     let delayDuration: TimeInterval = 2.0
@@ -129,7 +127,7 @@ class BarSnapshotsScene: PlayableScene {
         }
         
         let touchLocation = touch.location(in: self)
-        let touchedNode = self.nodes(at: touchLocation).first
+        let _ = self.nodes(at: touchLocation).first
         
         if clicked < 3 {
             // Animate the fade effect

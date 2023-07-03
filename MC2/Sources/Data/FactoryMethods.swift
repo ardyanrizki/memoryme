@@ -25,7 +25,7 @@ struct FactoryMethods {
     static func createDialogBox(with size: CGSize, sceneFrame frame: CGRect, cornerRadius: CGFloat = 10) -> DialogBoxNode {
         // Create the box shape.
         let dialogBox = DialogBoxNode(rectOf: size, cornerRadius: cornerRadius)
-        dialogBox.fillColor = UIColor.black.withAlphaComponent(0.7)
+        dialogBox.fillColor = UIColor.black.withAlphaComponent(0.9)
         dialogBox.strokeColor = .white
         dialogBox.lineWidth = 2.0
         dialogBox.position = CGPoint(x: frame.midX / 2, y: (frame.minY + (size.height / 2) + 75))
@@ -34,7 +34,7 @@ struct FactoryMethods {
         // Create the prompt text label.
         let promptLabel = SKLabelNode(fontNamed: Constants.fontName)
         promptLabel.text = .emptyString
-        promptLabel.fontSize = 32
+        promptLabel.fontSize = 40
         promptLabel.fontColor = .white
         promptLabel.position = CGPoint(x: -size.width / 2 + 20, y: size.height / 2 - 70)
         promptLabel.horizontalAlignmentMode = .left
@@ -44,7 +44,7 @@ struct FactoryMethods {
         // Create the character name label.
         let nameLabel = SKLabelNode(fontNamed: Constants.fontName)
         nameLabel.text = .emptyString
-        nameLabel.fontSize = 40
+        nameLabel.fontSize = 48
         nameLabel.fontColor = .white
         nameLabel.position = CGPoint(x: -size.width / 2 + 50, y: size.height / 2 - 40)
         dialogBox.addChild(nameLabel)
