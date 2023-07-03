@@ -63,6 +63,8 @@ struct Constants {
     static let burn = "burn.mp3"
     static let lighter = "lighter.mp3"
     static let cutSceneBedroom = "cutscene-bedroom.mp3"
+    static let cutSceneBar = "cutscene-bar.mp3"
+    static let truck = "truck-horn.mp3"
 }
 
 extension String {

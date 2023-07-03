@@ -19,6 +19,10 @@ class BarSnapshotsScene: PlayableScene {
     
     private var overlayNode: SKSpriteNode!
     
+    weak var gameViewController: GameViewController?
+    var truckSFX = SoundComponent(soundFile: Constants.truck)
+    var cutSceneBar = SoundComponent(soundFile: Constants.cutSceneBar)
+    
     override func update(_ currentTime: TimeInterval) {
         var previousScene = ""
         var selectedScene = ""
@@ -43,6 +47,9 @@ class BarSnapshotsScene: PlayableScene {
             self.childNode(withName: selectedScene)?.alpha = 1
             if selectedScene == "memory-3b" {
                 self.sceneManager?.presentCrashQTEScene()
+                
+                self.truckSFX.soundPlayer?.play()
+                self.truckSFX.soundPlayer?.volume = 0.4
             }
             if selectedScene == "memory-3c-s2" {
 //                self.childNode(withName: "keep-button")?.alpha = 1
@@ -53,6 +60,12 @@ class BarSnapshotsScene: PlayableScene {
     }
     
     override func didMove(to view: SKView) {
+        
+        //Cut off sound
+        gameViewController?.stopBackgroundMusic()
+        
+        gameViewController?.playBackgroundMusic(filename: Constants.cutSceneBar)
+        
         setupDialogBox()
         
         let promptLabel = SKLabelNode(fontNamed: Constants.fontName)
@@ -124,6 +137,10 @@ class BarSnapshotsScene: PlayableScene {
         guard dialogBox == nil else { return }
         let size = CGSize(width: frame.width - 200, height: 150)
         dialogBox = FactoryMethods.createDialogBox(with: size, sceneFrame: frame)
+    }
+    
+    override func willMove(from view: SKView) {
+        gameViewController.stop
     }
 }
 

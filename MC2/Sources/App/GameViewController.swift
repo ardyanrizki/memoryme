@@ -33,11 +33,11 @@ class GameViewController: UIViewController, AVAudioPlayerDelegate {
     var gameState: GameState?
     
     var audioPlayer: AVAudioPlayer!
-//    var isBedroomSnapShotScenePlaying: Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        presentTitleScene()
+//        presentTitleScene()
+        presentBarScene()
         setupGameState()
         playBackgroundMusic(filename: Constants.ambience)
     }
@@ -92,9 +92,6 @@ extension GameViewController {
                 
                 // Play the background music
                 audioPlayer.play()
-                
-//                // Update isCutscenePlaying based on the filename
-//                isBedroomSnapShotScenePlaying = filename.contains(Constants.cutSceneBedroom)
                 
             } catch {
                 // Error handling if the audio player fails to initialize

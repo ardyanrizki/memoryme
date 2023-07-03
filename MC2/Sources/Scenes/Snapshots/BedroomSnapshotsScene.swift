@@ -132,10 +132,7 @@ class BedroomSnapshotsScene: PlayableScene {
     }
     
     override func willMove(from view: SKView) {
-        if gameViewController?.isBedroomSnapShotScenePlaying == true {
-            gameViewController?.stopBackgroundMusic()
-            gameViewController?.playBackgroundMusic(filename: Constants.ambience)
-        }
+        gameViewController?.stopBackgroundMusic()
     }
     
     func setupDialogBox() {
