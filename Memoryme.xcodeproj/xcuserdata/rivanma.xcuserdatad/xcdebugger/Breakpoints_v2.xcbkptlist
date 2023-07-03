@@ -1,0 +1,469 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   uuid = "45CF2489-64F0-403B-BA0A-9755000767E3"
+   type = "1"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "A5E0AE53-A416-4751-B34C-91C3698A7146"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Sources/Scenes/MainRoomScene.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "84"
+            endingLineNumber = "84"
+            landmarkName = "startOpeningEventIfNeeded()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "A5E0AE53-A416-4751-B34C-91C3698A7146 - 3e1ee2a97c92c7a5"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "MC2.MainRoomScene.touchesEnded(_: Swift.Set&lt;__C.UITouch&gt;, with: Swift.Optional&lt;__C.UIEvent&gt;) -&gt; ()"
+                  moduleName = "MC2"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/rivanma/Documents/ADA/memoryme-ada23/MC2/Sources/Scenes/MainRoomScene.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "84"
+                  endingLineNumber = "84"
+                  offsetFromSymbolStart = "448">
+               </Location>
+               <Location
+                  uuid = "A5E0AE53-A416-4751-B34C-91C3698A7146 - fdf5cb7edc7a84f7"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "MC2.MainRoomScene.didBegin(__C.SKPhysicsContact) -&gt; ()"
+                  moduleName = "MC2"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/rivanma/Documents/ADA/memoryme-ada23/MC2/Sources/Scenes/MainRoomScene.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "84"
+                  endingLineNumber = "84"
+                  offsetFromSymbolStart = "56">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "09844ED8-136C-4640-9F93-DC1ADF2634AF"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Sources/Components/PhysicsComponent.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "61"
+            endingLineNumber = "61"
+            landmarkName = "setupPhysicsBody(for:withSize:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "D2136694-DF9A-4E02-9554-1F9DD1BA7EA9"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Sources/Components/PhysicsComponent.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "59"
+            endingLineNumber = "59"
+            landmarkName = "setupPhysicsBody(for:withSize:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "C356BD3F-8201-4CD2-A9D4-2BD04B3E41BF"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Sources/Components/PhysicsComponent.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "52"
+            endingLineNumber = "52"
+            landmarkName = "setupPhysicsBody(for:withSize:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "C356BD3F-8201-4CD2-A9D4-2BD04B3E41BF - 8001eb8c38101e9a"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "MC2.PhysicsComponent.setupPhysicsBody(for: MC2.PhysicsType, withSize: Swift.Optional&lt;__C.CGSize&gt;) -&gt; ()"
+                  moduleName = "MC2"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/rivanma/Documents/ADA/memoryme-ada23/MC2/Sources/Components/PhysicsComponent.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "51"
+                  endingLineNumber = "51"
+                  offsetFromSymbolStart = "1740">
+               </Location>
+               <Location
+                  uuid = "C356BD3F-8201-4CD2-A9D4-2BD04B3E41BF - 8001eb8c38101e58"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "MC2.PhysicsComponent.setupPhysicsBody(for: MC2.PhysicsType, withSize: Swift.Optional&lt;__C.CGSize&gt;) -&gt; ()"
+                  moduleName = "MC2"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/rivanma/Documents/ADA/memoryme-ada23/MC2/Sources/Components/PhysicsComponent.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "53"
+                  endingLineNumber = "53"
+                  offsetFromSymbolStart = "2068">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "2885EFBE-5864-466D-8C87-96B0FB42F124"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Sources/Scenes/Mini Games/RadioScene.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "110"
+            endingLineNumber = "110"
+            landmarkName = "touchesMoved(_:with:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "2885EFBE-5864-466D-8C87-96B0FB42F124 - 4ca1e12192847af2"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "MC2.RadioScene.touchesMoved(_: Swift.Set&lt;__C.UITouch&gt;, with: Swift.Optional&lt;__C.UIEvent&gt;) -&gt; ()"
+                  moduleName = "MC2"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/rivanma/Documents/ADA/clara-main/MC2/Sources/Scenes/Mini%20Games/RadioScene.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "114"
+                  endingLineNumber = "114"
+                  offsetFromSymbolStart = "3080">
+               </Location>
+               <Location
+                  uuid = "2885EFBE-5864-466D-8C87-96B0FB42F124 - 4ca1e12192847af2"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "MC2.RadioScene.touchesMoved(_: Swift.Set&lt;__C.UITouch&gt;, with: Swift.Optional&lt;__C.UIEvent&gt;) -&gt; ()"
+                  moduleName = "MC2"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/rivanma/Documents/ADA/clara-main/MC2/Sources/Scenes/Mini%20Games/RadioScene.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "114"
+                  endingLineNumber = "114"
+                  offsetFromSymbolStart = "3640">
+               </Location>
+               <Location
+                  uuid = "2885EFBE-5864-466D-8C87-96B0FB42F124 - 4ca1e12192846725"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "MC2.RadioScene.touchesMoved(_: Swift.Set&lt;__C.UITouch&gt;, with: Swift.Optional&lt;__C.UIEvent&gt;) -&gt; ()"
+                  moduleName = "MC2"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/rivanma/Documents/ADA/clara-main/MC2/Sources/Scenes/Mini%20Games/RadioScene.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "97"
+                  endingLineNumber = "97"
+                  offsetFromSymbolStart = "3832">
+               </Location>
+               <Location
+                  uuid = "2885EFBE-5864-466D-8C87-96B0FB42F124 - 4ca1e12192846725"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "MC2.RadioScene.touchesMoved(_: Swift.Set&lt;__C.UITouch&gt;, with: Swift.Optional&lt;__C.UIEvent&gt;) -&gt; ()"
+                  moduleName = "MC2"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/rivanma/Documents/ADA/clara-main/MC2/Sources/Scenes/Mini%20Games/RadioScene.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "97"
+                  endingLineNumber = "97"
+                  offsetFromSymbolStart = "3272">
+               </Location>
+               <Location
+                  uuid = "2885EFBE-5864-466D-8C87-96B0FB42F124 - 4ca1e1219284643c"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "MC2.RadioScene.touchesMoved(_: Swift.Set&lt;__C.UITouch&gt;, with: Swift.Optional&lt;__C.UIEvent&gt;) -&gt; ()"
+                  moduleName = "MC2"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/rivanma/Documents/ADA/clara-main/MC2/Sources/Scenes/Mini%20Games/RadioScene.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "104"
+                  endingLineNumber = "104"
+                  offsetFromSymbolStart = "3620">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "0811E6D5-2382-4E78-B219-4F8539AD97C2"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Sources/Scenes/Snapshots/BarSnapshotsScene.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "127"
+            endingLineNumber = "127"
+            landmarkName = "touchesBegan(_:with:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "D718C0BA-C07D-4920-9324-0A969BAEA5A3"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Sources/Scenes/Snapshots/BarSnapshotsScene.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "117"
+            endingLineNumber = "117"
+            landmarkName = "didMove(to:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "6A991E03-092F-400A-B182-CE0D57B68BAB"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Sources/Scenes/BarScene.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "40"
+            endingLineNumber = "40"
+            landmarkName = "touchesBegan(_:with:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "76D9CDFE-976D-4FE4-A3A4-592F807A0FAE"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Sources/App/GameViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "102"
+            endingLineNumber = "102"
+            landmarkName = "checkCurrentBackgroundMusic()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "76D9CDFE-976D-4FE4-A3A4-592F807A0FAE - ce96dce39cd4f0a9"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "MC2.GameViewController.checkCurrentBackgroundMusic() -&gt; ()"
+                  moduleName = "MC2"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/rivanma/Documents/ADA/clara-main/MC2/Sources/App/GameViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "102"
+                  endingLineNumber = "102"
+                  offsetFromSymbolStart = "12">
+               </Location>
+               <Location
+                  uuid = "76D9CDFE-976D-4FE4-A3A4-592F807A0FAE - ce96dce39cd4f04e"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "MC2.GameViewController.checkCurrentBackgroundMusic() -&gt; ()"
+                  moduleName = "MC2"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/rivanma/Documents/ADA/clara-main/MC2/Sources/App/GameViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "101"
+                  endingLineNumber = "101"
+                  offsetFromSymbolStart = "32">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "55078A41-2A33-42F9-8FC7-F2794200E74F"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Sources/Scenes/Mini Games/CrashQTEScene.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "53"
+            endingLineNumber = "53"
+            landmarkName = "startCounter()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "E9A0BAC6-2ECA-4479-A7FA-BC758A8BA738"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Sources/Scenes/Mini Games/CrashQTEScene.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "58"
+            endingLineNumber = "58"
+            landmarkName = "decrementCounter()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "E9A0BAC6-2ECA-4479-A7FA-BC758A8BA738 - 9e98275bd41c480e"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "MC2.CrashQTEScene.startCounter() -&gt; ()"
+                  moduleName = "MC2"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/rivanma/Documents/ADA/clara-main/MC2/Sources/Scenes/Mini%20Games/CrashQTEScene.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "46"
+                  endingLineNumber = "46"
+                  offsetFromSymbolStart = "32">
+               </Location>
+               <Location
+                  uuid = "E9A0BAC6-2ECA-4479-A7FA-BC758A8BA738 - 9439239e7ac09451"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "MC2.CrashQTEScene.decrementCounter() -&gt; ()"
+                  moduleName = "MC2"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/rivanma/Documents/ADA/clara-main/MC2/Sources/Scenes/Mini%20Games/CrashQTEScene.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "44"
+                  endingLineNumber = "44"
+                  offsetFromSymbolStart = "184">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "2DEC9BA3-056D-48E2-AE96-43855978352A"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Sources/Scenes/Snapshots/BarSnapshotsScene.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "118"
+            endingLineNumber = "118"
+            landmarkName = "didMove(to:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "B59B5FE6-E945-40AF-A1E7-FB2F7CD39075"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Sources/Scenes/Mini Games/CrashQTEScene.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "39"
+            endingLineNumber = "39"
+            landmarkName = "didMove(to:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "081ABB75-B538-4404-8C61-E695F0CCDA7F"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Sources/Scenes/Snapshots/BarSnapshotsScene.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "107"
+            endingLineNumber = "107"
+            landmarkName = "didMove(to:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "50DD5C39-B99E-4298-81A6-ACE404E07D11"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Sources/Scenes/Snapshots/BarSnapshotsScene.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "143"
+            endingLineNumber = "143"
+            landmarkName = "touchesBegan(_:with:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "968FB016-3C61-4DDA-A6EF-6154E40BD2C5"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Sources/Scenes/Snapshots/BarSnapshotsScene.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "135"
+            endingLineNumber = "135"
+            landmarkName = "touchesBegan(_:with:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>
