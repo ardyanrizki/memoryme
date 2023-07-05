@@ -40,7 +40,7 @@ class SceneChangeZoneNode: SKSpriteNode {
         case .toBedroom:
             sceneManager?.presentBedroomScene(playerPosition: .bedroomEntrance)
         case .toBar:
-            sceneManager?.presentBarScene(playerPosition: .officeEntrance, transition: SKTransition.fade(withDuration: 0.5))
+            sceneManager?.presentBarScene(playerPosition: .barEntrance, transition: SKTransition.fade(withDuration: 0.5))
         case .toHospital:
             sceneManager?.presentHospitalRoomScene()
         case .toMainRoomFromOffice:
