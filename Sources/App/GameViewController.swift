@@ -12,7 +12,7 @@ import AVFoundation
 protocol SceneManagerProtocol: AnyObject {
     func presentTitleScene()
     func presentMainRoomScene(playerPosition: PositionIdentifier)
-    func presentOfficeRoomScene(playerPosition: PositionIdentifier, transition: SKTransition?)
+    func presentOfficeRoomScene(playerPosition: PositionIdentifier,transition: SKTransition?)
     func presentBedroomScene(playerPosition: PositionIdentifier)
     func presentBarScene(playerPosition: PositionIdentifier, transition: SKTransition?)
     func presentHospitalRoomScene()
@@ -27,7 +27,7 @@ protocol SceneManagerProtocol: AnyObject {
     func presentBarSnapshotsScene(state: String)
 }
 
-class GameViewController: UIViewController {
+class GameViewController: UIViewController, AVAudioPlayerDelegate {
     
     var gameState: GameState?
     
@@ -80,12 +80,16 @@ extension GameViewController {
                 // Create the audio player
                 audioPlayer = try AVAudioPlayer(contentsOf: url)
                 
+                // Set the delegate of the audio player to self
+                audioPlayer.delegate = self
+                
                 // Configure the audio player settings
                 audioPlayer.numberOfLoops = -1 // Loop indefinitely
                 audioPlayer.volume = 0.5 // Adjust the volume as needed
                 
                 // Play the background music
                 audioPlayer.play()
+                
             } catch {
                 // Error handling if the audio player fails to initialize
                 print("Could not create audio player: \(error.localizedDescription)")
@@ -93,6 +97,10 @@ extension GameViewController {
         } else {
             print("Music file not found: \(filename)")
         }
+    }
+    
+    func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool) {
+        stopBackgroundMusic()
     }
     
     func checkCurrentBackgroundMusic() {
@@ -229,6 +237,10 @@ extension GameViewController: SceneManagerProtocol {
         scene.sceneManager = self
         scene.gameState = gameState
         let fade = SKTransition.fade(withDuration: 1.5)
+        // Stop the background music
+        stopBackgroundMusic()
+        // Play the cutSceneBedroom music
+        playBackgroundMusic(filename: Constants.cutSceneBedroom)
         present(scene: scene, transition: fade)
     }
     

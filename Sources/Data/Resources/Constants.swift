@@ -67,12 +67,22 @@ struct Constants {
     static let layAction = "lay"
     
     // Sound
+    //BGM
     static let ambience = "ambience.mp3"
-    static let cutsceneBar = "cutscene-bar.mp3"
     
-    // Sound Effect
+    //SFX
+    static let cutsceneBar = "cutscene-bar.mp3"
     static let radioStatic = "radio-static.mp3"
     static let truckHorn = "truck-horn.mp3"
     static let footSteps = "foot-steps.mp3"
+    static let click = "keyboard-click.mp3"
+    static let door = "door.mp3"
+    static let phone = "phone.mp3"
+    static let cutSceneOffice = "cutscene-office.mp3"
+    static let burn = "burn.mp3"
+    static let lighter = "lighter.mp3"
+    static let cutSceneBedroom = "cutscene-bedroom.mp3"
+    static let cutSceneBar = "cutscene-bar.mp3"
+    static let truck = "truck-horn.mp3"
 }
 

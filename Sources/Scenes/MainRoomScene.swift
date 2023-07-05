@@ -18,10 +18,10 @@ class MainRoomSceneBlocker: SceneBlockerProtocol {
     
     func isAllowToPresentScene(_ identifier: SceneChangeZoneIdentifier) -> Bool {
         switch identifier {
-        case .toOffice, .toBedroom:
-            return true
+//        case .toOffice, .toBedroom:
+//            return true
         default:
-            return false
+            return true
         }
     }
     

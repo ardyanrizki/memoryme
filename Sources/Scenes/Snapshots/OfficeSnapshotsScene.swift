@@ -29,6 +29,15 @@ class OfficeSnapshotsScene: SKScene {
     
     let delayDuration: TimeInterval = 2.0
     
+    weak var gameViewController: GameViewController?
+    var phoneSFX = SoundComponent(soundFile: Constants.phone)
+    var cutSceneOffice = SoundComponent(soundFile: Constants.cutSceneOffice)
+    
+    /**Stop any background music**/
+    func stopBackgroundMusic() {
+        gameViewController?.stopBackgroundMusic()
+    }
+    
     var dialogBox: DialogBoxNode?
     
     /** show snapshot and its tap continue */
@@ -42,7 +51,22 @@ class OfficeSnapshotsScene: SKScene {
             fadeInAction
         ])
         
-        node.run(snapshotSequence)
+        //Smooth transition
+//        stopBackgroundMusic()
+        
+        node.run(snapshotSequence){
+            //Cut off sound
+            self.stopBackgroundMusic()
+            
+            //To play audio
+            self.cutSceneOffice.soundPlayer?.play()
+            
+            if self.currentSnapshotIndex == self.memoryNodes.count - 1{
+                self.phoneSFX.soundPlayer?.play()
+                self.phoneSFX.soundPlayer?.volume = 0.4
+            }
+        }
+        
         
         if isShowTapContinue {
             let tapContinueSequence = SKAction.sequence([
@@ -130,6 +154,10 @@ extension OfficeSnapshotsScene {
         createTapContinueLabel()
         
         animateShowingSnapshot(for: memoryNodes[0])
+        
+        if let viewController = view.window?.rootViewController as? GameViewController {
+                gameViewController = viewController
+        }
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {        

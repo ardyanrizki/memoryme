@@ -10,10 +10,23 @@ import GameplayKit
 
 class BedroomSnapshotsScene: PlayableScene {
     
+    weak var gameViewController: GameViewController?
+    var burnSFX = SoundComponent(soundFile: Constants.burn)
+    var lighterSFX = SoundComponent(soundFile: Constants.lighter)
+    var cutSceneBedroom = SoundComponent(soundFile: Constants.cutSceneBedroom)
+    
+    //flag to count photos matched
+    var clicked = 0
+    
     // Flag to count photos matched.
     var pageIndex = 0
 
     var photoPicked: String = .emptyString
+    
+    /**Stop any background music**/
+    override func stopBackgroundMusic() {
+        gameViewController?.stopBackgroundMusic()
+    }
     
     private var overlayNode: SKSpriteNode!
     
@@ -48,6 +61,9 @@ class BedroomSnapshotsScene: PlayableScene {
     }
     
     override func didMove(to view: SKView) {
+        self.stopBackgroundMusic()
+        cutSceneBedroom.soundPlayer?.play()
+        
         setupDialogBox()
         addPromptLabelToScene()
         addOverlayToScene()
@@ -71,6 +87,7 @@ class BedroomSnapshotsScene: PlayableScene {
         overlayNode.zPosition = 100 // Place the overlay above other nodes.
         overlayNode.alpha = 0 // Initially hidden.
         self.addChild(overlayNode)
+        
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -89,9 +106,12 @@ class BedroomSnapshotsScene: PlayableScene {
             timeout(after: 0.5, node: self) {
                 self.pageIndex += 1
             }
+        }else if clicked == 3{
+            lighterSFX.soundPlayer?.play()
         }
         
         if touchedNode?.name == Constants.burnButton {
+            burnSFX.soundPlayer?.play()
             dialogBox?.startSequence(dialogs: [
                 DialogResources.bedroom_4_withPhoto_alt2_seq2
             ], from: self)
@@ -112,6 +132,10 @@ class BedroomSnapshotsScene: PlayableScene {
                 self.sceneManager?.presentBedroomScene(playerPosition: .bedroomCenter)
             }
         }
+    }
+    
+    override func willMove(from view: SKView) {
+        gameViewController?.stopBackgroundMusic()
     }
     
     func setupDialogBox() {
