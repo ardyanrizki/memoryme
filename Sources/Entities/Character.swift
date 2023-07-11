@@ -8,7 +8,7 @@
 import SpriteKit
 import GameplayKit
 
-class Player: GKEntity {
+class Character: GKEntity {
     
     var node: SKSpriteNode? {
         for case let component as RenderComponent in components {
@@ -17,27 +17,10 @@ class Player: GKEntity {
         return nil
     }
     
-    init(at position: CGPoint, textures: [CharacterAnimationState: [SKTexture]]? = nil) {
+    init(at position: CGPoint, textures: [CharacterAnimationState: [SKTexture]]) {
         super.init()
-        
-        let textureName = TextureResources.mainCharacter
-        
-        let idleTextures = TextureResources.mainCharacterAtlasIdle.getAllTexturesFromAtlas()
-        let walkTextures = TextureResources.mainCharacterAtlasWalk.getAllTexturesFromAtlas()
-        let layTextures = TextureResources.mainCharacterAtlasLay.getAllTexturesFromAtlas()
-        var defaultTextures: [CharacterAnimationState: [SKTexture]] = [
-            .walk: walkTextures,
-            .idle: idleTextures,
-            .lay: layTextures
-        ]
-        if let textures {
-            defaultTextures = textures
-        }
-        
-        addingComponents(name: textureName, position: position, textures: defaultTextures)
-        
+        addingComponents(position: position, textures: textures)
         node?.zPosition = 15
-        
         animate(for: .idle)
     }
     
@@ -72,8 +55,10 @@ class Player: GKEntity {
         }
     }
     
-    private func addingComponents(name: TextureName, position: CGPoint, textures: [CharacterAnimationState: [SKTexture]]) {
-        let renderComponent = RenderComponent(with: name, at: position)
+    private func addingComponents(position: CGPoint, textures: [CharacterAnimationState: [SKTexture]]) {
+        guard let staticTexture = textures[.static]?.first ?? textures[.idle]?.first else { fatalError(.errorTextureNotFound) }
+        
+        let renderComponent = RenderComponent(with: staticTexture, at: position)
         addComponent(renderComponent)
         
         // MARK: Character Component

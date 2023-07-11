@@ -8,7 +8,7 @@
 import SpriteKit
 import GameplayKit
 
-class RadioScene: PlayableScene{
+class RadioScene: RoomBaseScene{
 
     var radioTuner: SKSpriteNode!
     var radioPointer: SKSpriteNode!
@@ -64,7 +64,7 @@ class RadioScene: PlayableScene{
         
         switch(touchedNode?.name) {
             case "back-button":
-                sceneManager?.presentBarScene(playerPosition: .barAfterMiniGameEntrance, transition: SKTransition.fade(withDuration: 0.5))
+                sceneManager?.presentBarScene(playerPosition: .radioSpot, transition: SKTransition.fade(withDuration: 0.5))
                 break
             default:
                 break
@@ -114,7 +114,7 @@ class RadioScene: PlayableScene{
                 ], from: self)
                 if radioPointer.position.x > 120 {
                     timeout(after: 1.0, node: self) {
-                        self.sceneManager?.presentBarSnapshotsScene(state: "")
+                        self.sceneManager?.presentBarSnapshotsScene()
                     }
                 }
             } else if isPlayingSound && (radioPointer.position.x <= 120) {

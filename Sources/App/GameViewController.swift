@@ -24,7 +24,7 @@ protocol SceneManagerProtocol: AnyObject {
     func presentCrashQTEScene()
     func presentOfficeSnapshotsScene()
     func presentBedroomSnapshotsScene()
-    func presentBarSnapshotsScene(state: String)
+    func presentBarSnapshotsScene()
 }
 
 class GameViewController: UIViewController, AVAudioPlayerDelegate {
@@ -33,10 +33,16 @@ class GameViewController: UIViewController, AVAudioPlayerDelegate {
     
     var audioPlayer: AVAudioPlayer!
     
+    var audioPlayerManager: AudioPlayerManager?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        presentTitleScene()
         setupGameState()
+        setupAudioPlayerManager()
+//        presentTitleScene()
+//        presentOfficeRoomScene(playerPosition: .officeEntrance)
+        presentBedroomScene(playerPosition: .bedroomEntrance)
+//        presentBarScene(playerPosition: .barEntrance)
     }
     
     override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
@@ -55,6 +61,10 @@ class GameViewController: UIViewController, AVAudioPlayerDelegate {
         gameState = GameState()
         gameState?.setState(key: .sceneActivity, value: .sceneActivityValue(.opening))
     }
+    
+    private func setupAudioPlayerManager() {
+        audioPlayerManager = AudioPlayerManager()
+    }
 }
 
 // MARK: Audio Player
@@ -62,41 +72,12 @@ extension GameViewController {
     
     // TODO: duplicate code from PlayableScene
     func stopBackgroundMusic() {
-        audioPlayer?.stop()
-        audioPlayer = nil
+        audioPlayerManager?.stop(fileName: .ambience)
     }
     
     // TODO: duplicate code from PlayableScene
     func playBackgroundMusic(filename: String) {
-        // Stop the current background music if playing
-        stopBackgroundMusic()
-        
-        // Get the path to the new music file
-        let filePath = Bundle.main.path(forResource: filename, ofType: nil)
-        if let path = filePath {
-            let url = URL(fileURLWithPath: path)
-            
-            do {
-                // Create the audio player
-                audioPlayer = try AVAudioPlayer(contentsOf: url)
-                
-                // Set the delegate of the audio player to self
-                audioPlayer.delegate = self
-                
-                // Configure the audio player settings
-                audioPlayer.numberOfLoops = -1 // Loop indefinitely
-                audioPlayer.volume = 0.5 // Adjust the volume as needed
-                
-                // Play the background music
-                audioPlayer.play()
-                
-            } catch {
-                // Error handling if the audio player fails to initialize
-                print("Could not create audio player: \(error.localizedDescription)")
-            }
-        } else {
-            print("Music file not found: \(filename)")
-        }
+        audioPlayerManager?.play(fileName: .ambience)
     }
     
     func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool) {
@@ -128,6 +109,7 @@ extension GameViewController: SceneManagerProtocol {
         guard let scene = MainRoomScene.sharedScene(playerPosition: playerPosition) else { return }
         scene.sceneManager = self
         scene.gameState = gameState
+        scene.audioPlayerManager = audioPlayerManager
         let fade = SKTransition.fade(withDuration: 0.5)
         present(scene: scene, transition: fade)
     }
@@ -136,6 +118,7 @@ extension GameViewController: SceneManagerProtocol {
         guard let scene = OfficeRoomScene.sharedScene(playerPosition: playerPosition) else { return }
         scene.sceneManager = self
         scene.gameState = gameState
+        scene.audioPlayerManager = audioPlayerManager
         present(scene: scene, transition: transition)
     }
     
@@ -145,6 +128,7 @@ extension GameViewController: SceneManagerProtocol {
         guard let scene = BedroomScene.sharedScene(isTidy: isTidy ? true : false, playerPosition: playerPosition) else { return }
         scene.sceneManager = self
         scene.gameState = gameState
+        scene.audioPlayerManager = audioPlayerManager
         let fade = SKTransition.fade(withDuration: 0.5)
         present(scene: scene, transition: fade)
     }
@@ -153,6 +137,7 @@ extension GameViewController: SceneManagerProtocol {
         guard let scene = BarScene.sharedScene(playerPosition: playerPosition) else { return }
         scene.sceneManager = self
         scene.gameState = gameState
+        scene.audioPlayerManager = audioPlayerManager
         let fade = SKTransition.fade(withDuration: 0.5)
         present(scene: scene, transition: fade)
         checkCurrentBackgroundMusic()
@@ -162,6 +147,7 @@ extension GameViewController: SceneManagerProtocol {
         guard let scene = HospitalRoomScene.sharedScene(playerPosition: .hospitalEntrance) else { return }
         scene.sceneManager = self
         scene.gameState = gameState
+        scene.audioPlayerManager = audioPlayerManager
         let fade = SKTransition.fade(withDuration: 0.5)
         present(scene: scene, transition: fade)
     }
@@ -216,7 +202,7 @@ extension GameViewController: SceneManagerProtocol {
     func presentCrashQTEScene() {
         guard let scene = CrashQTEScene(fileNamed: Constants.crashQTEScene) else {return}
         scene.sceneManager = self
-        //        scene.gameState = gameState
+        scene.gameState = gameState
         let fade = SKTransition.fade(withDuration: 0.5)
         present(scene: scene, transition: fade)
     }
@@ -236,6 +222,7 @@ extension GameViewController: SceneManagerProtocol {
         guard let scene = BedroomSnapshotsScene(fileNamed: Constants.bedroomSnapshotsScene) else {return}
         scene.sceneManager = self
         scene.gameState = gameState
+        scene.audioPlayerManager = audioPlayerManager
         let fade = SKTransition.fade(withDuration: 1.5)
         // Stop the background music
         stopBackgroundMusic()
@@ -245,13 +232,13 @@ extension GameViewController: SceneManagerProtocol {
     }
     
     //Snapshots Bar
-    func presentBarSnapshotsScene(state: String) {
-        guard let scene = BarSnapshotsScene(fileNamed: Constants.barSnapshotsScene) else {return}
-        scene.choice = state
+    func presentBarSnapshotsScene() {
+        guard let scene = BarSnapshotsScene(fileNamed: Constants.barSnapshotsScene) else { return }
         scene.sceneManager = self
+        scene.gameState = gameState
+        scene.audioPlayerManager = audioPlayerManager
         let fade = SKTransition.fade(withDuration: 1.5)
         present(scene: scene, transition: fade)
-//        playBackgroundMusic(filename: Constants.cutsceneBar)
     }
     
 }
@@ -265,15 +252,17 @@ extension GameViewController {
                     view.removeGestureRecognizer(recognizer)
                 }
             }
+            
+            scene.scaleMode = .aspectFill
+            scene.physicsBody = SKPhysicsBody(edgeLoopFrom: scene.frame)
+            scene.physicsWorld.gravity = CGVector.zero
+            
             if let transition {
                 view.presentScene(scene, transition: transition)
             } else {
                 view.presentScene(scene)
             }
             
-            scene.scaleMode = .aspectFill
-            scene.physicsBody = SKPhysicsBody(edgeLoopFrom: scene.frame)
-            scene.physicsWorld.gravity = CGVector.zero
             view.ignoresSiblingOrder = true
 #if DEBUG
             view.showsPhysics = true

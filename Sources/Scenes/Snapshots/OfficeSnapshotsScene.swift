@@ -5,108 +5,77 @@
 //  Created by Ivan on 01/07/23.
 //
 
-import Foundation
+import SpriteKit
 import GameplayKit
 
-
-class OfficeSnapshotsScene: SKScene {
+class OfficeSnapshotsScene: SnapshotsBaseScene {
     
-    weak var sceneManager: SceneManagerProtocol?
-    
-    weak var gameState: GameState?
-    
-    var memoryNodes: [SKSpriteNode]!
-    
-    /** tap contnue label node */
-    var tapContinueLabel: SKLabelNode!
-    
-    /** Track current snapshot that already seen */
-    var currentSnapshotIndex: Int = 0
-    
-    var touchEventsEnabled: Bool = false
-    
-    let fadeDuration: TimeInterval = 1.0
-    
-    let delayDuration: TimeInterval = 2.0
-    
-    weak var gameViewController: GameViewController?
-    var phoneSFX = SoundComponent(soundFile: Constants.phone)
-    var cutSceneOffice = SoundComponent(soundFile: Constants.cutSceneOffice)
-    
-    /**Stop any background music**/
-    func stopBackgroundMusic() {
-        gameViewController?.stopBackgroundMusic()
+    override func didMove(to view: SKView) {
+        super.didMove(to: view)
+        audioPlayerManager?.add(fileName: .officeSnapshotsBGM)
+        showSnapshot(forIndex: 0) {
+            self.playSnapshotAudio()
+        }
     }
     
-    var dialogBox: DialogBoxNode?
-    
-    /** show snapshot and its tap continue */
-    func animateShowingSnapshot(for node: SKSpriteNode, isShowTapContinue: Bool = true) {
-        let delayedTapContinueDuration = delayDuration + 2
-        let fadeInAction = SKAction.fadeIn(withDuration: fadeDuration)
-        _ = SKAction.run { self.touchEventsEnabled = true }
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        guard touchEventsEnabled else { return }
         
-        let snapshotSequence = SKAction.sequence([
-            SKAction.wait(forDuration: delayDuration),
-            fadeInAction
-        ])
-        
-        //Smooth transition
-//        stopBackgroundMusic()
-        
-        node.run(snapshotSequence){
-            //Cut off sound
-            self.stopBackgroundMusic()
-            
-            //To play audio
-            self.cutSceneOffice.soundPlayer?.play()
-            
-            if self.currentSnapshotIndex == self.memoryNodes.count - 1{
-                self.phoneSFX.soundPlayer?.play()
-                self.phoneSFX.soundPlayer?.volume = 0.4
-            }
+        guard let touch = touches.first else {
+            return
         }
         
+        let touchedLocation = touch.location(in: self)
         
-        if isShowTapContinue {
-            let tapContinueSequence = SKAction.sequence([
-                SKAction.wait(forDuration: delayedTapContinueDuration),
-                fadeInAction,
-                SKAction.run { self.touchEventsEnabled = true }
-            ])
-            
-            tapContinueLabel.run(tapContinueSequence)
+        if snapshotIndex < snapshots.count - 1 {
+            hideSnapshot(forIndex: snapshotIndex) {
+                self.showSnapshot(forIndex: self.snapshotIndex + 1) {
+                    self.playSnapshotAudio()
+                }
+            }
         } else {
-            self.touchEventsEnabled = true
+            let touchedLocation = touch.location(in: self)
+            if let touchedNode = self.nodes(at: touchedLocation).first {
+            
+                switch(touchedNode.name) {
+                case Constants.acceptNode:
+                    // Doing action if accepting the phone.
+                    hideSnapshot(forIndex: snapshotIndex) {
+                        self.gameState?.setState(key: .momsCallAccepted, value: .boolValue(true))
+                        
+                        self.startMomsCallDialog {
+                            let whiteFade = SKTransition.fade(with: .white, duration: 1)
+                            self.sceneManager?.presentOfficeRoomScene(
+                                playerPosition: .computerSpot,
+                                transition: whiteFade
+                            )
+                        }
+                    }
+                case Constants.declineNode:
+                    // Doing action if decline the phone.
+                    gameState?.setState(key: .momsCallAccepted, value: .boolValue(false))
+                    rejectedMomsCallDialog {
+                        let whiteFade = SKTransition.fade(with: .white, duration: 1)
+                        self.sceneManager?.presentOfficeRoomScene(
+                            playerPosition: .computerSpot,
+                            transition: whiteFade
+                        )
+                    }
+                default:
+                    break
+                }
+            }
         }
     }
     
-    /** hide snapshot and its tap continue */
-    func animateHidingSnapshot(for node: SKSpriteNode, completion: @escaping () -> Void = {}) {
-        let fadeOutAction = SKAction.fadeOut(withDuration: fadeDuration)
-        let fadeOutTapAction = SKAction.group([
-            fadeOutAction,
-            SKAction.run {
-                self.touchEventsEnabled = false
-                completion()
-            }
-        ])
-                
-        node.run(fadeOutAction)
-        tapContinueLabel.run(fadeOutTapAction)
-    }
-    
-    /** Inject tap to continue label on the bottom-right of corner */
-    func createTapContinueLabel() {
-        tapContinueLabel = SKLabelNode(fontNamed: Constants.fontName)
-        tapContinueLabel.text = "Tap to continue"
-        tapContinueLabel.name = "tap-label"
-        tapContinueLabel.fontSize = 40
-        tapContinueLabel.fontColor = .black
-        tapContinueLabel.position = CGPoint(x: frame.maxX - (40 * 4), y: frame.minY + 40)
-        tapContinueLabel.zPosition = 10
-        tapContinueLabel.alpha = 0
-        addChild(tapContinueLabel)
+    func playSnapshotAudio() {
+        audioPlayerManager?.stop(fileName: .ambience)
+        audioPlayerManager?.play(fileName: .officeSnapshotsBGM)
+        
+        if snapshotIndex == snapshots.count - 1{
+            audioPlayerManager?.play(fileName: .phone)
+            audioPlayerManager?.setVolume(0.4, fileName: .phone)
+        }
     }
     
     func startMomsCallDialog(completion: @escaping () -> Void) {
@@ -140,78 +109,5 @@ class OfficeSnapshotsScene: SKScene {
     
     func rejectedMomsCallDialog(completion: @escaping (() -> Void)) {
         dialogBox?.start(dialog: DialogResources.office_29_rejectPhone, from: self, completion: completion)
-    }
-}
-
-// MARK: Overrided methods.
-extension OfficeSnapshotsScene {
-        
-    override func didMove(to view: SKView) {
-        memoryNodes = childNode(withName: "MemoryNodes")!.children as? [SKSpriteNode]
-        let size = CGSize(width: frame.width - 200, height: 150)
-        dialogBox = FactoryMethods.createDialogBox(with: size, sceneFrame: frame)
-        
-        createTapContinueLabel()
-        
-        animateShowingSnapshot(for: memoryNodes[0])
-        
-        if let viewController = view.window?.rootViewController as? GameViewController {
-                gameViewController = viewController
-        }
-    }
-    
-    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {        
-        guard touchEventsEnabled else { return }
-        
-        guard let touch = touches.first else {
-            return
-        }
-        
-        if currentSnapshotIndex < memoryNodes.count - 1 {
-            let currentSnapshotNode = memoryNodes[currentSnapshotIndex]
-            let nextSnapshotNode = memoryNodes[currentSnapshotIndex + 1]
-            
-            currentSnapshotIndex += 1
-            let isLastSnapshot = currentSnapshotIndex == memoryNodes.count - 1
-            
-            animateHidingSnapshot(for: currentSnapshotNode) {
-                self.animateShowingSnapshot(for: nextSnapshotNode, isShowTapContinue: !isLastSnapshot)
-            }
-        } else {
-            let touchedLocation = touch.location(in: self)
-            if let touchedNode = self.nodes(at: touchedLocation).first {
-            
-                switch(touchedNode.name) {
-                case Constants.acceptNode:
-                    // Doing action if accepting the phone.
-                    let currentSnapshotNode = memoryNodes[currentSnapshotIndex]
-                    animateHidingSnapshot(for: currentSnapshotNode) {
-                        self.gameState?.setState(key: .momsCallAccepted, value: .boolValue(true))
-                        
-                        self.startMomsCallDialog {
-                            let whiteFade = SKTransition.fade(with: .white, duration: 1)
-                            self.sceneManager?.presentOfficeRoomScene(
-                                playerPosition: .computerSpot,
-                                transition: whiteFade
-                            )
-                        }
-                    }
-                    
-                case Constants.declineNode:
-                    // Doing action if decline the phone.
-                    gameState?.setState(key: .momsCallAccepted, value: .boolValue(false))
-                    rejectedMomsCallDialog {
-                        let whiteFade = SKTransition.fade(with: .white, duration: 1)
-                        self.sceneManager?.presentOfficeRoomScene(
-                            playerPosition: .computerSpot,
-                            transition: whiteFade
-                        )
-                    }
-                    
-                default:
-                    break
-                }
-            }
-        }
     }
 }

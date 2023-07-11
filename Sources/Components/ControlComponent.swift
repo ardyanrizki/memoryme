@@ -58,10 +58,6 @@ class ControlComponent: GKComponent {
             // On target location
             if animationComponent?.animationKey == Constants.walkingAction {
                 stopWalking()
-                
-                if soundComponent?.soundPlayer != nil {
-                    soundComponent?.soundPlayer?.stop()
-                }
             }
         }
     }
@@ -74,5 +70,8 @@ class ControlComponent: GKComponent {
     public func stopWalking() {
         targetLocation = nil
         animationComponent?.animate(for: .idle, timePerFrame: 0.6, withKey: Constants.idleAction)
+        if soundComponent?.soundPlayer != nil {
+            soundComponent?.soundPlayer?.stop()
+        }
     }
 }

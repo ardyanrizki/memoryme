@@ -8,6 +8,7 @@
 import Foundation
 
 enum CharacterAnimationState: String {
+    case `static`
     case idle
     case walk
     case sit

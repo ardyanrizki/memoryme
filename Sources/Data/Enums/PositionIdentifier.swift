@@ -17,7 +17,7 @@ enum PositionIdentifier: String, CaseIterable {
     case hospitalEntrance = "hospitalEntrance"
     case barEntrance = "barEntrance"
     case bartenderPosition = "bartenderPosition"
-    case barAfterMiniGameEntrance = "barAfterMiniGameEntrance"
+    case radioSpot = "radioSpot"
     case bedroomEntrance = "bedroomEntrance"
     case computerSpot = "computerSpot"
     case bedroomCenter = "bedroomCenter"

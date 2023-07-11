@@ -8,7 +8,7 @@
 import SpriteKit
 import GameplayKit
 
-class PhotoAlbumGameSecondScene: PlayableScene {
+class PhotoAlbumGameSecondScene: RoomBaseScene {
     
     //polaroid array
     var polaroidNodes: [SKSpriteNode] = []

@@ -1,5 +1,5 @@
 //
-//  PlayableScene.swift
+//  RoomBaseScene.swift
 //  Memoryme
 //
 //  Created by Muhammad Rizki Ardyan on 24/06/23.
@@ -19,9 +19,11 @@ protocol SceneBlockerProtocol {
     func sceneBlockedHandler(_ identifier: SceneChangeZoneIdentifier)
 }
 
-class PlayableScene: SKScene {
+class RoomBaseScene: SKScene {
     
     weak var sceneManager: SceneManagerProtocol?
+    
+    var audioPlayerManager: AudioPlayerManager?
     
     var touchEventsEnabled: Bool = true
     
@@ -48,11 +50,11 @@ class PlayableScene: SKScene {
     /**
      Player character entity.
      */
-    lazy var player: Player? = {
+    lazy var player: Character? = {
         nil
     }()
     
-    lazy var npc: NPC? = {
+    lazy var npc: Character? = {
         nil
     }()
     
@@ -114,7 +116,7 @@ class PlayableScene: SKScene {
         guard npc == nil else { return }
         let positionNode = positions.first { $0.identifier == position }
         let position = positionNode?.position ?? CGPoint(x: frame.midX, y: frame.midY)
-        npc = FactoryMethods.createNPC(at: position)
+        npc = FactoryMethods.createBartender(at: position)
         if let node = npc?.node {
             addChild(node)
         }
@@ -342,7 +344,7 @@ class PlayableScene: SKScene {
 }
 
 // MARK: Overrided methods.
-extension PlayableScene {
+extension RoomBaseScene {
     
     override func didMove(to view: SKView) {
         scene?.anchorPoint = CGPoint(x: 0.5, y: 0.5)
@@ -389,7 +391,7 @@ extension PlayableScene {
 }
 
 // MARK: SKPhysicsContactDelegate methods.
-extension PlayableScene: SKPhysicsContactDelegate {
+extension RoomBaseScene: SKPhysicsContactDelegate {
 
     func didBegin(_ contact: SKPhysicsContact) {
         detectContactsWithItem(contact: contact)
