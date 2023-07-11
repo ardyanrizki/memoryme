@@ -30,7 +30,7 @@ class MainRoomSceneBlocker: SceneBlockerProtocol {
     }
 }
 
-class MainRoomScene: PlayableScene, PlayableSceneProtocol {
+class MainRoomScene: RoomBaseScene, PlayableSceneProtocol {
     
     typealias T = MainRoomScene
     

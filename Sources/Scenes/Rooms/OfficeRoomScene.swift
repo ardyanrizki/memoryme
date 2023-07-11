@@ -8,7 +8,7 @@
 import SpriteKit
 import GameplayKit
 
-class OfficeRoomScene: PlayableScene, PlayableSceneProtocol {
+class OfficeRoomScene: RoomBaseScene, PlayableSceneProtocol {
     
     typealias T = OfficeRoomScene
     

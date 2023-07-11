@@ -13,8 +13,7 @@ class RenderComponent: GKComponent {
     
     let node: SKSpriteNode
     
-    init(with name: TextureName, at position: CGPoint) {
-        let texture = name.getTexture()
+    init(with texture: SKTexture, at position: CGPoint) {
         node = SKSpriteNode(texture: texture)
         node.position = position
         

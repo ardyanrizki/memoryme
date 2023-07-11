@@ -10,12 +10,34 @@ import SpriteKit
 struct FactoryMethods {
     static let defaultOverlayZPosition: CGFloat = 99.0
     
-    static func createPlayer(at position: CGPoint) -> Player {
-        Player(at: position)
+    static func createPlayer(at position: CGPoint) -> Character {
+        let staticTexture = TextureResources.mainCharacter.getTexture()
+        let idleTextures = TextureResources.mainCharacterAtlasIdle.getAllTexturesFromAtlas()
+        let walkTextures = TextureResources.mainCharacterAtlasWalk.getAllTexturesFromAtlas()
+        let layTextures = TextureResources.mainCharacterAtlasLay.getAllTexturesFromAtlas()
+        
+        let textures: [CharacterAnimationState: [SKTexture]] = [
+            .static: [staticTexture],
+            .walk: walkTextures,
+            .idle: idleTextures,
+            .lay: layTextures
+        ]
+        
+        return Character(at: position, textures: textures)
     }
     
-    static func createNPC(at position: CGPoint) -> NPC {
-        NPC(at: position)
+    static func createBartender(at position: CGPoint) -> Character {
+        let staticTexture = TextureResources.bartenderCharacter.getTexture()
+        let idleTextures = TextureResources.bartenderCharacterAtlasIdle.getAllTexturesFromAtlas()
+        let walkTextures = TextureResources.bartenderCharacterAtlasWalk.getAllTexturesFromAtlas()
+        
+        var textures: [CharacterAnimationState: [SKTexture]] = [
+            .static: [staticTexture],
+            .walk: walkTextures,
+            .idle: idleTextures,
+        ]
+        
+        return Character(at: position, textures: textures)
     }
     
     static func createInteractableItem(with identifier: ItemIdentifier, at position: CGPoint, in scene: SKScene) -> InteractableItem {
