@@ -1,9 +1,7 @@
 # Me...Mory...Me
 
 [![Swift](https://img.shields.io/badge/Swift-5.0-orange.svg)](https://swift.org/)
-[![Platform](https://img.shields.io/badge/Platform-iOS%20|%20macOS-blue.svg)](https://developer.apple.com/swift/)
-[![License](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
-
+[![Platform](https://img.shields.io/badge/Platform-iPadOS%20-blue.svg)](https://developer.apple.com/swift/)
 
 ## Description
 
@@ -18,7 +16,7 @@
 
 - Xcode 14.0+
 - Swift 5.0+
-- iOS 16.4+
+- iPadOS 16.4+
 
 ## Installation
 
