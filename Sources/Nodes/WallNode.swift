@@ -7,7 +7,10 @@
 
 import SpriteKit
 
+/// A custom `SKSpriteNode` representing a wall in the scene.
 class WallNode: SKSpriteNode {
+    
+    /// Sets up the physics body for the wall node.
     func setupPhysicsBody() {
         physicsBody = SKPhysicsBody(rectangleOf: self.frame.size)
         physicsBody?.categoryBitMask = PhysicsType.wall.rawValue
@@ -15,11 +18,12 @@ class WallNode: SKSpriteNode {
         physicsBody?.affectedByGravity = false
         physicsBody?.isDynamic = false
         physicsBody?.allowsRotation = false
-#if DEBUG
+        
+        #if DEBUG
         color = .red
         alpha = 0.5
-#else
+        #else
         alpha = 0
-#endif
+        #endif
     }
 }

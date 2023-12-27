@@ -1,0 +1,12 @@
+{
+  "images" : [
+    {
+      "filename" : "mory_static.png",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

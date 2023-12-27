@@ -64,23 +64,24 @@ class InteractableItem: GKEntity {
         }
     }
     
-    init(withNode node: ItemNode, textures: [ItemTextureType: SKTexture], isAnimationable: Bool = false) {
+    init(withNode node: ItemNode, textures: [ItemTextureType: SKTexture], supportsAnimation: Bool = false) {
         guard let firstTexture = textures.first else { fatalError(.errorTextureNotFound) }
         
         super.init()
-        addingComponents(node: node, isAnimationable: isAnimationable)
+        addingComponents(node: node, supportsAnimation: supportsAnimation)
         // Important! First texture always run for the first time as a default texture.
         if node.texture == nil {
             node.run(SKAction.setTexture(firstTexture.value, resize: true))
         }
         if node.children.count > 0 {
             guard let bubbleNode = node.childNode(withName: "bubble") as? ItemNode else { return }
-            node.bubbleDialog = InteractableItem(withNode: bubbleNode, textures: ItemIdentifier.bubble.getTextures(), isAnimationable: true)
+            node.infoBubble = InteractableItem(withNode: bubbleNode, textures: SharingItem.bubble.textures, supportsAnimation: true)
+            node.infoBubble?.hidePhysicsBody()
         }
     }
     
-    init(withIdentifier identifier: ItemIdentifier, at point: CGPoint, in scene: SKScene) {
-        guard let node = identifier.createNode(in: scene, withTextureType: nil) else {
+    init(from renderableItem: any RenderableItem, at point: CGPoint, in scene: SKScene) {
+        guard let node = renderableItem.generateNode(in: scene, with: nil) else {
             fatalError(.errorNodeNotFound)
         }
         super.init()
@@ -91,14 +92,14 @@ class InteractableItem: GKEntity {
         fatalError(.initCoderNotImplemented)
     }
     
-    private func addingComponents(node: ItemNode, isAnimationable: Bool = false) {
+    private func addingComponents(node: ItemNode, supportsAnimation: Bool = false) {
         let renderComponent = RenderComponent(node: node)
         let physicalComponent = PhysicsComponent(type: .item, renderComponent: renderComponent)
         
         addComponent(renderComponent)
         addComponent(physicalComponent)
         
-        if isAnimationable {
+        if supportsAnimation {
             let animationComponent = AnimationComponent(renderComponent: renderComponent)
             addComponent(animationComponent)
         }

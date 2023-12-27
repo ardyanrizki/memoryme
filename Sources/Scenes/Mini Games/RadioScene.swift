@@ -8,20 +8,22 @@
 import SpriteKit
 import GameplayKit
 
-class RadioScene: RoomBaseScene{
+/// A scene where the player interacts with the radio tuner.
+class RadioScene: PlayableScene {
+
+    // MARK: - Properties
 
     var radioTuner: SKSpriteNode!
     var radioPointer: SKSpriteNode!
     var targetFrequencyNode: SKNode!
-    //starting angle dari touch kita
     var startingAngle: CGFloat = 0
-    //starting angle dari radio
     var radioStartingAngle: CGFloat = 0
     var previousAngleOffset: CGFloat = 0
     var draggingTouch: UITouch?
-    
     var isPlayingSound: Bool = false
-  
+
+    // MARK: - Scene Lifecycle
+
     override func didMove(to view: SKView) {
         setupDialogBox()
         
@@ -29,29 +31,23 @@ class RadioScene: RoomBaseScene{
         radioPointer = self.childNode(withName: "radio-pointer") as? SKSpriteNode
         targetFrequencyNode = self.childNode(withName: "targetFrequencyNode")
         
-        // Play the initial background music
-        playBackgroundMusic(filename: "radio-static.mp3")
+        audioPlayerManager?.play(audioFile: .radioStatic, type: .background)
         
-        self.dialogBox?.startSequence(dialogs: [
-            DialogResources.bar_2_solo_seq1
-        ], from: self)
+        Task {
+            await dialogBox?.start(dialog: DialogResources.bar2Solo, from: self)
+        }
     }
-    
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) { // panggil sekali
-        //menyimpan touch
+
+    // MARK: - Touch Handling
+
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         guard let touch = touches.first else { return }
-        //menyimpan lokasi touch
         let touchLocation = touch.location(in: self)
         let touchedNode = self.nodes(at: touchLocation).first
-        
+
         if radioTuner.contains(touchLocation) {
-            //saat touch radio, id nya disimpan
             draggingTouch = touch
-            
-            //untuk menjadikan tengah radio tuner sebagai anchor
             let touchLocationInRadio = CGPoint(x: touchLocation.x - radioTuner.position.x, y: touchLocation.y - radioTuner.position.y)
-            
-            //detect angle awal waktu di touch radio tunernya
             startingAngle = atan2(touchLocationInRadio.x, touchLocationInRadio.y)
             previousAngleOffset = 0.0
             
@@ -64,25 +60,19 @@ class RadioScene: RoomBaseScene{
         
         switch(touchedNode?.name) {
             case "back-button":
-                sceneManager?.presentBarScene(playerPosition: .radioSpot, transition: SKTransition.fade(withDuration: 0.5))
+            scenePresenter?.presentBar(playerPosition: .barRadioSpot, transition: SKTransition.fade(withDuration: 0.5))
                 break
             default:
                 break
         }
     }
-    
-    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) { // dipanggil setiap ada jari yang digerakin
-        
-        //harus di redefine
-        //menyimpan touch
+
+    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
         guard let touch = touches.first else { return }
-        //menyimpan lokasi touch
         let touchLocation = touch.location(in: self)
-        
-        //dicek apakah jari yg bergerak sama dengan jari yg sentuh radio tuner di awal
-        if let draggingTouch, draggingTouch == touch{
+
+        if let draggingTouch, draggingTouch == touch {
             let touchLocationInRadio = CGPoint(x: touchLocation.x - radioTuner.position.x, y: touchLocation.y - radioTuner.position.y)
-            
             let currentAngle = atan2(touchLocationInRadio.x, touchLocationInRadio.y)
             var angleOffset = currentAngle - startingAngle
              
@@ -105,25 +95,43 @@ class RadioScene: RoomBaseScene{
             radioTuner.zRotation = newRotation
             
             radioPointer.position.x = getPositionFromAngle(newRotation.toDegrees())
-            print(radioPointer.position.x)
-            if radioPointer.position.x > 120 && !isPlayingSound {
-                changeBackgroundMusic(filename: "cutscene-bar.mp3")
-                isPlayingSound = true
-                self.dialogBox?.startSequence(dialogs: [
-                    DialogResources.bar_3_solo_seq1
-                ], from: self)
-                if radioPointer.position.x > 120 {
-                    timeout(after: 1.0, node: self) {
-                        self.sceneManager?.presentBarSnapshotsScene()
+            
+            Task {
+                if radioPointer.position.x > 120 && !isPlayingSound {
+                    isPlayingSound = true
+                    await dialogBox?.start(dialog: DialogResources.bar3Solo, from: self)
+                    if radioPointer.position.x > 120 {
+                        timeout(after: 1.0, node: self) {
+                            self.scenePresenter?.presentStrangerSnapshots()
+                        }
                     }
+                } else if isPlayingSound && (radioPointer.position.x <= 120) {
+                    audioPlayerManager?.play(audioFile: .radioStatic, type: .soundEffect)
+                    isPlayingSound = false
                 }
-            } else if isPlayingSound && (radioPointer.position.x <= 120) {
-                changeBackgroundMusic(filename: "radio-static.mp3")
-                isPlayingSound = false
             }
+            
         }
     }
-    
+
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        guard let touch = touches.first else { return }
+        
+        if let draggingTouch, draggingTouch == touch {
+            self.draggingTouch = nil
+        }
+    }
+
+    override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
+        guard let touch = touches.first else { return }
+        
+        if let draggingTouch, draggingTouch == touch {
+            self.draggingTouch = nil
+        }
+    }
+
+    // MARK: - Helper Functions
+
     func getAngleMultiplier(_ number: Int) -> Int {
         let normalizedNumber = (number - 270) % (360 * 360)
         let result = (normalizedNumber / 360) + 1
@@ -140,31 +148,10 @@ class RadioScene: RoomBaseScene{
         return linearInterpolation
     }
     
-    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) { //panggil sekali
-        guard let touch = touches.first else { return }
-        
-        //kalau jari yang dilepas sama dengan jari yg disentuh di awal, maka udah gaad yg nyentuh di radio lagi
-        if let draggingTouch, draggingTouch == touch{
-            self.draggingTouch = nil
-        }
-    }
-    
-    //Kalau touchnya gajadi
-    override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
-        guard let touch = touches.first else { return }
-        
-        //kalau jari yang dilepas sama dengan jari yg disentuh di awal, maka udah gaad yg nyentuh di radio lagi
-        if let draggingTouch, draggingTouch == touch{
-            self.draggingTouch = nil
-        }
-    }
-
-}
-
-extension RadioScene {
-    func setupDialogBox() {
-        guard dialogBox == nil else { return }
-        let size = CGSize(width: frame.width - 200, height: 150)
-        dialogBox = FactoryMethods.createDialogBox(with: size, sceneFrame: frame)
+    func timeout(after seconds: TimeInterval, node: SKNode, completion: @escaping () -> Void) {
+        let waitAction = SKAction.wait(forDuration: seconds)
+        let completionAction = SKAction.run(completion)
+        let sequenceAction = SKAction.sequence([waitAction, completionAction])
+        node.run(sequenceAction)
     }
 }

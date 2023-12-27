@@ -1,3 +1,7 @@
+//: [Previous](@previous)
+
+import Foundation
+
 //
 //  OfficeSnapshotsScene.swift
 //  Memoryme
@@ -6,108 +10,133 @@
 //
 
 import SpriteKit
-import GameplayKit
 
-class OfficeSnapshotsScene: SnapshotsBaseScene {
-    
+/// A scene to display snapshots in an office setting with interactive features.
+class OfficeSnapshotsScene: SnapshotsScene {
+
+    // MARK: - Scene Lifecycle
+
     override func didMove(to view: SKView) {
         super.didMove(to: view)
-        audioPlayerManager?.add(fileName: .officeSnapshotsBGM)
-        showSnapshot(forIndex: 0) {
+        playSnapshotAudio()
+        showInitialSnapshot()
+    }
+    
+    // MARK: - Snapshot Audio
+    
+    /// Plays audio associated with snapshots.
+    private func playSnapshotAudio() {
+        audioPlayerManager?.play(audioFile: .officeSnapshotsBGM, type: .background)
+
+        if currentSnapshotIndex == snapshotNodes.count - 2 {
+            audioPlayerManager?.play(audioFile: .phone, type: .soundEffect)
+            audioPlayerManager?.setVolume(audioFile: .phone, to: 0.4)
+        }
+    }
+
+    // MARK: - Touch Handling
+
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        guard touchEventsEnabled else { return }
+
+        guard let touch = touches.first, let touchedNode = getNodeTouched(touch) else {
+            return
+        }
+
+        handleTouchedNode(touchedNode)
+    }
+
+    // MARK: - Snapshot Handling
+
+    /// Displays the initial snapshot when the scene is loaded.
+    private func showInitialSnapshot() {
+        Task {
+            await showSnapshot()
             self.playSnapshotAudio()
         }
     }
-    
-    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        guard touchEventsEnabled else { return }
-        
-        guard let touch = touches.first else {
-            return
-        }
-        
+
+    // MARK: - Dialog Handling
+
+    /// Initiates a dialog sequence for a call from mom.
+    private func startMomsCallDialog() async {
+        await dialogBox?.start(dialogs: DialogResources.office5OnPhoneSequence, from: self)
+    }
+
+    /// Initiates a dialog sequence for rejecting a call from mom.
+    private func rejectedMomsCallDialog() async {
+        await dialogBox?.start(dialog: DialogResources.office6RejectPhone, from: self)
+    }
+
+    // MARK: - Node Handling
+
+    /// Retrieves the touched node at the given touch location.
+    ///
+    /// - Parameter touch: The touch event.
+    /// - Returns: The touched SKNode.
+    private func getNodeTouched(_ touch: UITouch) -> SKNode? {
         let touchedLocation = touch.location(in: self)
-        
-        if snapshotIndex < snapshots.count - 1 {
-            hideSnapshot(forIndex: snapshotIndex) {
-                self.showSnapshot(forIndex: self.snapshotIndex + 1) {
-                    self.playSnapshotAudio()
-                }
-            }
-        } else {
-            let touchedLocation = touch.location(in: self)
-            if let touchedNode = self.nodes(at: touchedLocation).first {
-            
-                switch(touchedNode.name) {
-                case Constants.acceptNode:
-                    // Doing action if accepting the phone.
-                    hideSnapshot(forIndex: snapshotIndex) {
-                        self.gameState?.setState(key: .momsCallAccepted, value: .boolValue(true))
-                        
-                        self.startMomsCallDialog {
-                            let whiteFade = SKTransition.fade(with: .white, duration: 1)
-                            self.sceneManager?.presentOfficeRoomScene(
-                                playerPosition: .computerSpot,
-                                transition: whiteFade
-                            )
-                        }
-                    }
-                case Constants.declineNode:
-                    // Doing action if decline the phone.
-                    gameState?.setState(key: .momsCallAccepted, value: .boolValue(false))
-                    rejectedMomsCallDialog {
-                        let whiteFade = SKTransition.fade(with: .white, duration: 1)
-                        self.sceneManager?.presentOfficeRoomScene(
-                            playerPosition: .computerSpot,
-                            transition: whiteFade
-                        )
-                    }
-                default:
-                    break
+        return self.nodes(at: touchedLocation).first
+    }
+
+    /// Handles the interaction with a touched node.
+    ///
+    /// - Parameter touchedNode: The node that was touched.
+    private func handleTouchedNode(_ touchedNode: SKNode) {
+        switch touchedNode.name {
+        case Constants.acceptNode:
+            handleAcceptPhone()
+        case Constants.declineNode:
+            handleDeclinePhone()
+        default:
+            if !isLastSnapshot {
+                Task {
+                    await hideSnapshot()
+                    await showSnapshot()
+                    playSnapshotAudio()
                 }
             }
         }
     }
-    
-    func playSnapshotAudio() {
-        audioPlayerManager?.stop(fileName: .ambience)
-        audioPlayerManager?.play(fileName: .officeSnapshotsBGM)
-        
-        if snapshotIndex == snapshots.count - 1{
-            audioPlayerManager?.play(fileName: .phone)
-            audioPlayerManager?.setVolume(0.4, fileName: .phone)
+
+    // MARK: - Action Handling
+
+    /// Handles the action when the phone call is accepted.
+    private func handleAcceptPhone() {
+        Task {
+            await hideSnapshot()
+            acceptedPhoneAction()
         }
     }
-    
-    func startMomsCallDialog(completion: @escaping () -> Void) {
-        dialogBox?.startSequence(dialogs: [
-            DialogResources.office_7_onphone_seq1,
-            DialogResources.office_8_onphone_seq2,
-            DialogResources.office_9_onphone_seq3,
-            DialogResources.office_10_onphone_seq4,
-            DialogResources.office_11_onphone_seq5,
-            DialogResources.office_12_onphone_seq6,
-            DialogResources.office_13_onphone_seq7,
-            DialogResources.office_14_onphone_seq8,
-            DialogResources.office_15_onphone_seq9,
-            DialogResources.office_16_onphone_seq10,
-            DialogResources.office_17_onphone_seq11,
-            DialogResources.office_18_onphone_seq12,
-            DialogResources.office_19_onphone_seq13,
-            DialogResources.office_20_onphone_seq14,
-            DialogResources.office_21_onphone_seq15,
-            DialogResources.office_22_onphone_seq16,
-            DialogResources.office_23_onphone_seq17,
-            DialogResources.office_24_onphone_seq18,
-            DialogResources.office_25_onphone_seq19,
-            DialogResources.office_26_onphone_seq20,
-            DialogResources.office_27_onphone_seq21,
-            DialogResources.office_28_onphone_seq22
-        ], from: self, completion: {
-            completion()
-        })
+
+    /// Handles the action when the phone call is declined.
+    private func handleDeclinePhone() {
+        audioPlayerManager?.stop(audioFile: .phone)
+        gameStateManager?.setState(key: .momsCallAccepted, value: .boolValue(false))
+        
+        Task {
+            await rejectedMomsCallDialog()
+            transitionToOfficeRoomScene()
+        }
     }
-    
-    func rejectedMomsCallDialog(completion: @escaping (() -> Void)) {
-        dialogBox?.start(dialog: DialogResources.office_29_rejectPhone, from: self, completion: completion)
+
+    /// Handles the action when the phone call is accepted, updating the game state and transitioning to the next scene.
+    private func acceptedPhoneAction() {
+        audioPlayerManager?.stop(audioFile: .phone)
+        gameStateManager?.setState(key: .momsCallAccepted, value: .boolValue(true))
+
+        Task {
+            await startMomsCallDialog()
+            transitionToOfficeRoomScene()
+        }
+    }
+
+    // MARK: - Scene Transition
+
+    /// Transitions to the office room scene after the phone call.
+    private func transitionToOfficeRoomScene() {
+        let whiteFade = SKTransition.fade(with: .white, duration: 1)
+        scenePresenter?.presentOffice(playerPosition: .officeComputerSpot, transition: whiteFade)
     }
 }
+

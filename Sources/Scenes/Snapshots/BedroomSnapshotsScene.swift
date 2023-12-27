@@ -6,70 +6,118 @@
 //
 
 import SpriteKit
-import GameplayKit
 
-class BedroomSnapshotsScene: SnapshotsBaseScene {
-    
+class BedroomSnapshotsScene: SnapshotsScene {
+
+    // MARK: - Scene Lifecycle
+
     override func didMove(to view: SKView) {
         super.didMove(to: view)
-        setupAudioPlayer()
-        audioPlayerManager?.play(fileName: .bedroomSnapshotsBGM)
-        showSnapshot(forIndex: 0, completion: {})
+        setupSceneAudio()
+        showInitialSnapshot()
     }
     
-    func setupAudioPlayer() {
-        audioPlayerManager?.add(fileName: .burn)
-        audioPlayerManager?.add(fileName: .lighter)
-        audioPlayerManager?.add(fileName: .bedroomSnapshotsBGM)
-    }
+    // MARK: - Snapshot Audio
     
+    func setupSceneAudio() {
+        audioPlayerManager?.play(audioFile: .bedroomSnapshotsBGM, type: .background)
+    }
+
+    // MARK: - Touch Handling
+
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        guard touchEventsEnabled else { return }
+        guard touchEventsEnabled, let touch = touches.first else { return }
         
-        guard let touch = touches.first else { return }
-        
-        hideSnapshot(forIndex: snapshotIndex) {
-            self.showSnapshot(forIndex: self.snapshotIndex + 1) {
-                if self.snapshotIndex == self.snapshots.count - 1 {
-                    self.audioPlayerManager?.play(fileName: .lighter)
-                    self.setupBurnChoiceButtons(isHidden: false)
-                }
-            }
-        }
-        
-        let touchLocation = touch.location(in: self)
-        guard let touchedNode = self.nodes(at: touchLocation).first else { return }
-        
-        if touchedNode.name == Constants.burnButton {
-            audioPlayerManager?.play(fileName: .burn)
-            setupBurnChoiceButtons(isHidden: true)
-            dialogBox?.startSequence(dialogs: [
-                DialogResources.bedroom_4_withPhoto_alt2_seq2
-            ], from: self, completion: {
-                DispatchQueue.main.asyncAfter(deadline: .now() + 6) {
-                    self.gameState?.setState(key: .friendsPhotosKept, value: .boolValue(false))
-                    self.sceneManager?.presentBedroomScene(playerPosition: .photoAlbumSpot)
-                }
-            })
-        }
-        
-        if touchedNode.name == Constants.keepButton {
-            setupBurnChoiceButtons(isHidden: true)
-            dialogBox?.startSequence(dialogs: [
-                DialogResources.bedroom_4_withPhoto_alt1_seq1
-            ], from: self, completion: {
-                DispatchQueue.main.asyncAfter(deadline: .now() + 6) {
-                    self.gameState?.setState(key: .friendsPhotosKept, value: .boolValue(true))
-                    self.sceneManager?.presentBedroomScene(playerPosition: .bedroomCenter)
-                }
-            })
+        Task {
+            await handleSnapshotTouch(touch)
         }
     }
-    
+
+    // MARK: - Snapshot Handling
+
+    private func showInitialSnapshot() {
+        Task {
+            await showSnapshot()
+        }
+    }
+
+    private func handleSnapshotTouch(_ touch: UITouch) async {
+        if isLastSnapshot {
+            let touchLocation = touch.location(in: self)
+            guard let touchedNode = self.nodes(at: touchLocation).first else { return }
+            
+            await handleButtonTouch(touchedNode)
+            return
+        }
+        
+        hideAndShowNextSnapshot()
+    }
+
+    private func hideAndShowNextSnapshot() {
+        Task {
+            await hideSnapshot()
+            await showNextSnapshotIfNeeded()
+        }
+    }
+
+    private func showNextSnapshotIfNeeded() async {
+        guard currentSnapshotIndex < snapshotNodes.count - 1 else { return }
+        
+        await showSnapshot()
+        
+        if isLastSnapshot {
+            handleLastSnapshot()
+        }
+    }
+
+    private func handleLastSnapshot() {
+        audioPlayerManager?.play(audioFile: .lighter, type: .soundEffect)
+        setupBurnChoiceButtons(isHidden: false)
+    }
+
+    // MARK: - Button Handling
+
+    private func handleButtonTouch(_ touchedNode: SKNode) async {
+        switch touchedNode.name {
+        case Constants.burnButton:
+            await handleBurnButtonTouch()
+        case Constants.keepButton:
+            await handleKeepButtonTouch()
+        default:
+            break
+        }
+    }
+
+    private func handleBurnButtonTouch() async {
+        audioPlayerManager?.play(audioFile: .burn, type: .soundEffect)
+        await handleChoiceButtonTouch(isKept: false)
+    }
+
+    private func handleKeepButtonTouch() async {
+        await handleChoiceButtonTouch(isKept: true)
+    }
+
+    private func handleChoiceButtonTouch(isKept: Bool) async {
+        setupBurnChoiceButtons(isHidden: true)
+        
+        let dialogResource = isKept ? DialogResources.bedroom4WithPhotoAlt1 : DialogResources.bedroom4WithPhotoAlt2
+        await dialogBox?.start(dialogs: [dialogResource], from: self)
+        self.handleDialogCompletion(isKept: isKept)
+    }
+
+    private func handleDialogCompletion(isKept: Bool) {
+        gameStateManager?.setState(key: .friendsPhotosKept, value: .boolValue(isKept))
+        audioPlayerManager?.play(audioFile: .ambience, type: .background)
+        
+        let position: CharacterPosition = isKept ? .bedroomCenter : .bedroomPhotoAlbumSpot
+        scenePresenter?.presentBedroom(playerPosition: position)
+    }
+
+    // MARK: - Button Visibility
+
     private func setupBurnChoiceButtons(isHidden: Bool) {
-        self.childNode(withName: Constants.keepButton)?.alpha = isHidden ? 0 : 1
-        self.childNode(withName: Constants.burnButton)?.alpha = isHidden ? 0 : 1
+        childNode(withName: Constants.keepButton)?.alpha = isHidden ? 0 : 1
+        childNode(withName: Constants.burnButton)?.alpha = isHidden ? 0 : 1
     }
 }
-
 

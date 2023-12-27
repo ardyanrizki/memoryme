@@ -6,7 +6,7 @@
 //
 import SpriteKit
 
-class KeypadNode: SKSpriteNode{
+class KeypadNode: SKSpriteNode {
    var number = 0
     
     //initialize variable
