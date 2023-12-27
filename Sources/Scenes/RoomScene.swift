@@ -101,6 +101,16 @@ class RoomScene: PlayableScene {
         }
     }
     
+    /// Dispatches the character to the specified position.
+    func dispatch(character: Character?, walkTo position: CharacterPosition) async {
+        guard let spot = childNode(withName: position.rawValue) else { return }
+        await withCheckedContinuation { continuation in
+            character?.walk(to: spot.position, completion: {
+                continuation.resume()
+            })
+        }
+    }
+    
     /**
      Setup walls collision.
      - Warning: Ensure change wall's node custom class to `WallNode`.

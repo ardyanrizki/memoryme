@@ -198,16 +198,6 @@ extension HospitalScene {
         await dispatch(character: bartender, walkTo: .hospitalBartenderDestinationSpot)
     }
     
-    /// Dispatches the character to the specified position.
-    private func dispatch(character: Character?, walkTo position: CharacterPosition) async {
-        guard let spot = childNode(withName: position.rawValue) else { return }
-        await withCheckedContinuation { continuation in
-            character?.walk(to: spot.position, completion: {
-                continuation.resume()
-            })
-        }
-    }
-    
     /// Assigns the mom character to the scene.
     private func assignMomToScene() -> Character? {
         guard let entranceSpot = childNode(withName: CharacterPosition.hospitalEntrance.rawValue) else { return nil }
@@ -259,19 +249,19 @@ extension HospitalScene {
         if isParentsPresent {
             await parentDialogs()
         } else if isFriendsPresent {
-            await friendsDialog()
+            await friendsDialogs()
         } else if isBartenderPresent {
-            await bartenderDialog()
+            await bartenderDialogs()
         }
     }
     
     /// Presents the second person dialogues.
     private func secondPersonDialog() async {
         if isParentsPresent, isFriendsPresent {
-            await friendsDialog()
+            await friendsDialogs()
             
         } else if isBartenderPresent {
-            await bartenderDialog()
+            await bartenderDialogs()
         }
         
         try? await Task.sleep(nanoseconds: 2 * 1_000_000_000)
@@ -280,7 +270,7 @@ extension HospitalScene {
     /// Presents the third person dialogues.
     private func thirdPersonDialog() async {
         if isAllPresent {
-            await bartenderDialog()
+            await bartenderDialogs()
         }
     }
     
@@ -303,13 +293,13 @@ extension HospitalScene {
     }
 
     /// Presents the friends dialogues.
-    private func friendsDialog() async {
+    private func friendsDialogs() async {
         let dialogs = DialogResources.hospital3FriendSequence
         await dialogBox?.start(dialogs: dialogs, from: self)
     }
 
     /// Presents the bartender dialogues.
-    private func bartenderDialog() async {
+    private func bartenderDialogs() async {
         let dialogs = DialogResources.hospital4BartenderSequence
         await dialogBox?.start(dialogs: dialogs, from: self)
     }

@@ -22,5 +22,7 @@ enum GameStateKey: String {
     
     /// Key for representing whether a stranger has been saved.
     case strangerSaved
+    
+    case bartenderEventOccurred
 }
 
