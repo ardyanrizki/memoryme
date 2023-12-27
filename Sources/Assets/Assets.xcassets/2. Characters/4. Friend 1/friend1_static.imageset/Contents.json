@@ -1,0 +1,12 @@
+{
+  "images" : [
+    {
+      "filename" : "friend1_idle_1.png",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

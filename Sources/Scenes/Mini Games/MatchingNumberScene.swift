@@ -8,20 +8,16 @@
 import SpriteKit
 import GameplayKit
 
-
-
-class MatchingNumberScene: SKScene {
-    
-    var sceneManager: SceneManagerProtocol?
+class MatchingNumberScene: PlayableScene {
     
     // represent match number node in mini game
     var matchNumberParentNode: SKNode!
     
     // represent email screen on macbook
-    var macbookEmailScreen: SKNode!
+    var macBookEmailScreen: SKNode!
     
     // represent verification screen on macbook
-    var macbookVerificationScreen: SKNode!
+    var macBookVerificationScreen: SKNode!
     
     // TODO: move this value to State Machine
     var touchEventsEnabled: Bool = true
@@ -29,35 +25,16 @@ class MatchingNumberScene: SKScene {
     //array yang menampung 2 variabel untuk cek apakah ud match
     var currentSelectKeypads: [SKSpriteNode] = []
     
-    /**
-     Box to showing dialog or prompt.
-     */
-    var dialogBox: DialogBoxNode?
-    
-    /**
-     Setup dialog box.
-     */
-    private func setupDialogBox() {
-        guard dialogBox == nil else { return }
-        let size = CGSize(width: frame.width - 200, height: 150)
-        dialogBox = FactoryMethods.createDialogBox(with: size, sceneFrame: frame)
-    }
-    
-    func matchingNumberCompletion() {
+    func matchingNumberCompletion() async {
         touchEventsEnabled = false
-        macbookVerificationScreen.alpha = 0
+        macBookVerificationScreen.alpha = 0
         matchNumberParentNode.alpha = 0
         
-        macbookEmailScreen.alpha = 1
+        macBookEmailScreen.alpha = 1
         
-        self.dialogBox?.startSequence(dialogs: [
-            DialogResources.office_4_email_seq1,
-            DialogResources.office_5_email_seq2,
-            DialogResources.office_6_email_seq3
-        ], from: self, completion: {
-            self.touchEventsEnabled = true
-            self.sceneManager?.presentOfficeSnapshotsScene()
-        })
+        await dialogBox?.start(dialogs: DialogResources.office4EmailSequence, from: self)
+        self.touchEventsEnabled = true
+        self.scenePresenter?.presentWorkingSnapshots()
     }
 }
 
@@ -66,8 +43,8 @@ extension MatchingNumberScene {
     
     override func didMove(to view: SKView) {
         matchNumberParentNode = childNode(withName: "matchNumbers")
-        macbookVerificationScreen = childNode(withName: TextureResources.macbookVerificationScreen)
-        macbookEmailScreen = childNode(withName: TextureResources.macbookEmailScreen)
+        macBookVerificationScreen = childNode(withName: TextureResources.macbookVerificationScreen)
+        macBookEmailScreen = childNode(withName: TextureResources.macbookEmailScreen)
         
         setupDialogBox()
     }
@@ -87,7 +64,6 @@ extension MatchingNumberScene {
                 }
             }
             
-            //kosongkan array lagi
             currentSelectKeypads = []
         }
     }
@@ -131,15 +107,16 @@ extension MatchingNumberScene {
         // To handle back button
         if backLabelNode.contains(touchedLocation) {
             let fade = SKTransition.fade(withDuration: 0.5)
-            sceneManager?.presentOfficeRoomScene(playerPosition: .computerSpot, transition: fade)
+            scenePresenter?.presentOffice(playerPosition: .officeComputerSpot, transition: fade)
             return
         }
         
         // To handle completion match number game.
         // Triggered if the number is left one
-        if let matchNumbers = matchNumberParentNode?.children {
-            if matchNumbers.count <= 1 {
-                matchingNumberCompletion()
+        if let matchNumbers = matchNumberParentNode?.children, 
+            matchNumbers.count <= 1 {
+            Task {
+                await matchingNumberCompletion()
             }
         }
     }

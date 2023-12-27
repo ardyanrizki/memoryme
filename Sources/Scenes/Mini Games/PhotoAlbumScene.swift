@@ -8,9 +8,8 @@
 import SpriteKit
 import GameplayKit
 
-class PhotoAlbumScene: RoomBaseScene {
+class PhotoAlbumScene: RoomScene {
     
-    //polaroid array
     var polaroidNodes: [SKSpriteNode] = []
     
     /** Initial position of polaroids*/
@@ -22,7 +21,7 @@ class PhotoAlbumScene: RoomBaseScene {
     /**Next arrow button**/
     var rightArrow: SKSpriteNode?
     
-    //flag to count photos matched
+    /// flag to count photos matched
     var matchedPhotoCount = 0
     
     var photoPicked: String = ""
@@ -64,9 +63,9 @@ class PhotoAlbumScene: RoomBaseScene {
             }
         }
         
-        self.dialogBox?.startSequence(dialogs: [
-            DialogResources.bedroom_2_withPhoto_seq1
-        ], from: self)
+        Task {
+            await dialogBox?.start(dialog: DialogResources.bedroom2WithPhoto, from: self)
+        }
         
     }
     
@@ -79,11 +78,6 @@ class PhotoAlbumScene: RoomBaseScene {
         let touchLocation = touch.location(in: self)
         let touchedNode = self.nodes(at: touchLocation).first
         
-        // TODO
-        // loop throuugh to the polaroidNodes
-        // check whether touchLocation contain corresponding the child node
-        // if yes, change the child node position to the current touchLocation
-        // otherwise, do nothing
         for polaroidNode in polaroidNodes {
             if polaroidNode.contains(touchLocation) {
                 photoPicked = polaroidNode.name!
@@ -92,10 +86,10 @@ class PhotoAlbumScene: RoomBaseScene {
         }
         switch(touchedNode?.name) {
             case "arrow-right":
-                sceneManager?.presentMGPhotoAlbumSecondScene()
+                scenePresenter?.presentPhotoAlbumSecondMiniGame()
                 break
             case "back-button":
-            sceneManager?.presentBedroomScene(playerPosition: .photoAlbumSpot)
+                scenePresenter?.presentBedroom(playerPosition: .bedroomPhotoAlbumSpot)
                 break
             default:
                 break
@@ -103,13 +97,6 @@ class PhotoAlbumScene: RoomBaseScene {
     }
     
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
-        
-        // TODO
-        // loop throuugh to the polaroidNodes
-        // check whether touchLocation contain corresponding the child node
-        // if yes, change the child node position to the current touchLocation
-        // otherwise, do nothing
-        
         guard let touch = touches.first else{
             return
         }
@@ -119,22 +106,14 @@ class PhotoAlbumScene: RoomBaseScene {
         for polaroidNode in polaroidNodes{
             if polaroidNode.contains(touchLocation) && photoPicked == polaroidNode.name {
                 polaroidNode.position = touchLocation
+                polaroidNode.zRotation = 0
+                polaroidNode.zPosition = 2
             }
         }
         
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        // TODO
-        // loop throuugh to the polaroidNodes
-        
-        // if any polaroidNode selected
-        // check whether the polaroid node intersect with target node
-        // if yes, change polaroid node to the current target node
-        
-        // then remove the node from polaroidNodes
-        // otherwise, use initial position to assign current selected node back to the origin position
-        
         guard touches.first != nil else{
             return
         }
@@ -148,6 +127,7 @@ class PhotoAlbumScene: RoomBaseScene {
                     
                     // if yes, change polaroid node to the current target node
                     polaroidNode.position = targetNode.position
+                    polaroidNode.zPosition = 1
                     matchedPhotoCount += 1
         
                     //remove node from polaroidNodes
@@ -166,15 +146,10 @@ class PhotoAlbumScene: RoomBaseScene {
                 
                 if let initialPosition = initialPolaroidPosition[polaroidNode.name!]{
                     polaroidNode.position = initialPosition
+                    polaroidNode.zPosition = 1
                 }
 
             }
         }
-    }
-    
-    func setupDialogBox() {
-        guard dialogBox == nil else { return }
-        let size = CGSize(width: frame.width - 200, height: 150)
-        dialogBox = FactoryMethods.createDialogBox(with: size, sceneFrame: frame)
     }
 }

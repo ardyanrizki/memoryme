@@ -8,15 +8,22 @@
 import SpriteKit
 import GameplayKit
 
-class BedroomScene: RoomBaseScene, PlayableSceneProtocol {
+class BedroomScene: RoomScene, PresentableSceneProtocol {
+    
+    override var renderableItems: [any RenderableItem] {
+        [
+            SharingItem.allCases as [any RenderableItem],
+            BedroomItem.allCases as [any RenderableItem],
+        ].flatMap { $0 }
+    }
     
     typealias T = BedroomScene
     
-    static func sharedScene(playerPosition: PositionIdentifier) -> BedroomScene? {
-        return nil 
+    static func sharedScene(playerPosition: CharacterPosition) -> BedroomScene? {
+        return nil
     }
     
-    static func sharedScene(isTidy: Bool = true, playerPosition position: PositionIdentifier) -> BedroomScene? {
+    static func sharedScene(isTidy: Bool = true, playerPosition position: CharacterPosition) -> BedroomScene? {
         let scene = BedroomScene(fileNamed: isTidy ? Constants.bedroomTidyScene : Constants.bedroomMessyScene)
         scene?.setup(playerPosition: position)
         return scene
@@ -25,14 +32,14 @@ class BedroomScene: RoomBaseScene, PlayableSceneProtocol {
     
     override func didMove(to view: SKView) {
         super.didMove(to: view)
-        startFirstTimeEnteringEventIfNeeded()
+        Task {
+            await startFirstTimeEnteringEventIfNeeded()
+        }
     }
     
-    override func playerDidContact(with itemIdentifier: ItemIdentifier, node: ItemNode) {
-        if itemIdentifier == .photoAlbum, gameState?.getState(key: .friendsPhotosKept) != nil {
-            node.isShowBubble = false
-        } else {
-            node.isShowBubble = true
+    override func playerDidContact(with item: any RenderableItem, node: ItemNode) {
+        if item as? BedroomItem == .photoAlbum {
+            node.isBubbleShown = gameStateManager?.getState(key: .friendsPhotosKept) != nil ? false : true
         }
     }
     
@@ -42,14 +49,14 @@ class BedroomScene: RoomBaseScene, PlayableSceneProtocol {
         let touchLocation = touch.location(in: self)
         let touchedNode = self.nodes(at: touchLocation).first
         
-        if touchedNode!.name == ItemIdentifier.bubble.rawValue {
+        if touchedNode!.name == SharingItem.bubble.rawValue {
             // Indicate touched node does not have any parent
             guard let parentNode = touchedNode?.parent else { return }
             
             switch(parentNode.name) {
-            case ItemIdentifier.photoAlbum.rawValue:
-                if gameState?.stateExisted(.friendsPhotosKept) == false {
-                    sceneManager?.presentMGPhotoAlbumScene()
+            case BedroomItem.photoAlbum.rawValue:
+                if gameStateManager?.stateExisted(.friendsPhotosKept) == false {
+                    scenePresenter?.presentPhotoAlbumMiniGame()
                 }
                 break
             default:
@@ -65,43 +72,27 @@ class BedroomScene: RoomBaseScene, PlayableSceneProtocol {
 // MARK: Scene's Events
 extension BedroomScene {
     
-    func startFirstTimeEnteringEventIfNeeded() {
-        guard let gameState else { return }
-        if !gameState.stateExisted(.friendsPhotosKept) {
-            let photoAlbumNode = childNode(withName: ItemIdentifier.photoAlbum.rawValue)
+    func startFirstTimeEnteringEventIfNeeded() async {
+        guard let gameStateManager else { return }
+        
+        if !gameStateManager.stateExisted(.friendsPhotosKept) {
             isUserInteractionEnabled = false
+            
+            let photoAlbumNode = childNode(withName: BedroomItem.photoAlbum.rawValue)
             if photoAlbumNode != nil {
-                self.dialogBox?.startSequence(dialogs: [
-                    DialogResources.bedroom_1_solo_seq1
-                ], from: self, completion: {
-                    self.isUserInteractionEnabled = true
-                })
+                await self.dialogBox?.start(dialog: DialogResources.bedroom1Solo, from: self)
             } else {
-                self.dialogBox?.startSequence(dialogs: [
-                    DialogResources.bedroom_3_withPhoto_seq2
-                ], from: self, completion: {
-                    self.isUserInteractionEnabled = true
-                })
+                await self.dialogBox?.start(dialog: DialogResources.bedroom5AfterCleaning, from: self)
             }
+            
+            self.isUserInteractionEnabled = true
         }
-    }
-    
-    func startSeeingAlbumEvent() {
-        
-    }
-    
-    func startPhotoAlbumGame() {
-        
-    }
-    
-    func changeRoomScenery() {
-        
     }
     
     // State update according game event.
     func updateFriendsPhotosEventState(photosKept: Bool) {
-        guard let gameState else { return }
-        gameState.setState(key: .friendsPhotosKept, value: .boolValue(photosKept))
+        guard let gameStateManager else { return }
+        gameStateManager.setState(key: .friendsPhotosKept, value: .boolValue(photosKept))
     }
     
 }

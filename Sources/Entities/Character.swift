@@ -10,6 +10,10 @@ import GameplayKit
 
 class Character: GKEntity {
     
+    var identifier: String
+    
+    var disabledMovement: Bool = false
+    
     var node: SKSpriteNode? {
         for case let component as RenderComponent in components {
             return component.node
@@ -17,7 +21,8 @@ class Character: GKEntity {
         return nil
     }
     
-    init(at position: CGPoint, textures: [CharacterAnimationState: [SKTexture]]) {
+    init(at position: CGPoint, textures: [CharacterAnimationState: [SKTexture]], withIdentifier identifier: String) {
+        self.identifier = identifier
         super.init()
         addingComponents(position: position, textures: textures)
         node?.zPosition = 15
@@ -43,9 +48,10 @@ class Character: GKEntity {
         }
     }
     
-    public func walk(to point: CGPoint) {
+    public func walk(to point: CGPoint, completion: @escaping () -> Void = {}) {
+        guard disabledMovement == false else { return }
         for case let controlComponent as ControlComponent in components {
-            controlComponent.walk(to: point)
+            controlComponent.walk(to: point, completion: completion)
         }
     }
     
@@ -72,7 +78,7 @@ class Character: GKEntity {
         let physicsComponent = PhysicsComponent(type: .character, renderComponent: renderComponent)
         addComponent(physicsComponent)
         
-        let walkingSoundComponent = SoundComponent(soundFile: Constants.footSteps)
+        let walkingSoundComponent = SoundComponent(soundFile: AudioFile.footSteps.rawValue)
         
         // MARK: Animation Component
         let animationComponent = AnimationComponent(renderComponent: renderComponent, characterVisualComponent: characterVisualComponent)

@@ -2,36 +2,35 @@
 //  RoomBaseScene.swift
 //  Memoryme
 //
-//  Created by Muhammad Rizki Ardyan on 24/06/23.
+//  Created by Muhammad Rizki Ardyan on 25/12/23.
 //
 
 import SpriteKit
-import GameplayKit
-import AVFoundation
 
-protocol PlayableSceneProtocol {
-    associatedtype T: SKScene
-    static func sharedScene(playerPosition: PositionIdentifier) -> T?
-}
-
-protocol SceneBlockerProtocol {
-    func isAllowToPresentScene(_ identifier: SceneChangeZoneIdentifier) -> Bool
-    func sceneBlockedHandler(_ identifier: SceneChangeZoneIdentifier)
-}
-
+<<<<<<< HEAD:Sources/Scenes/PlayableScene.swift
+/// A base class for playable scenes in the game.
+class PlayableScene: SKScene {
+=======
 class RoomBaseScene: SKScene {
+>>>>>>> main:Sources/Scenes/Rooms/RoomBaseScene.swift
     
-    weak var sceneManager: SceneManagerProtocol?
+    // MARK: - Properties
     
+<<<<<<< HEAD:Sources/Scenes/PlayableScene.swift
+    /// The scene manager responsible for transitioning between scenes.
+    weak var scenePresenter: ScenePresenter?
+=======
     var audioPlayerManager: AudioPlayerManager?
     
     var touchEventsEnabled: Bool = true
+>>>>>>> main:Sources/Scenes/Rooms/RoomBaseScene.swift
     
-    /**
-     Collection of character position's points.
-     */
-    var positions: [PositionNode] = [PositionNode]()
+    weak var gameStateManager: GameStateManager?
     
+<<<<<<< HEAD:Sources/Scenes/PlayableScene.swift
+    /// The manager for handling audio playback in the scene.
+    weak var audioPlayerManager: AudioPlayerManager?
+=======
     /**
      Collection of wall node to define collisions.
      */
@@ -64,33 +63,35 @@ class RoomBaseScene: SKScene {
      Box to showing dialog or prompt.
      */
     var dialogBox: DialogBoxNode?
+>>>>>>> main:Sources/Scenes/Rooms/RoomBaseScene.swift
     
+    /// The protocol defining scene-blocking behavior.
     var sceneBlocker: SceneBlockerProtocol?
     
-    var audioPlayer: AVAudioPlayer!
+    /// The node responsible for displaying dialog boxes.
+    var dialogBox: DialogBoxNode?
     
-    var audioEffectPlayer: AVAudioPlayer!
+    // MARK: - Setup
     
-    private var timeOnLastFrame: TimeInterval = 0
-    
-    func setup(playerPosition: PositionIdentifier) {
-        setupBackground()
-        setupPositions()
-        setupPlayer(at: playerPosition, from: positions)
+    /// Sets up the scene with the provided scene manager and audio player manager.
+    /// - Parameters:
+    ///   - scenePresenter: The scene manager for transitioning between scenes.
+    ///   - audioPlayerManager: The audio player manager for handling audio playback.
+    func setup(scenePresenter: ScenePresenter?,
+               audioPlayerManager: AudioPlayerManager?,
+               gameStateManager: GameStateManager?) {
+        self.scenePresenter = scenePresenter
+        self.audioPlayerManager = audioPlayerManager
+        self.gameStateManager = gameStateManager
         setupDialogBox()
-        setupWallsCollision()
-        setupSceneChangeZones()
-        setupInteractableItems()
     }
     
-    /**
-     Setting up the background's z index.
-     */
-    private func setupBackground() {
-        let background = childNode(withName: Constants.background)
-        background?.zPosition = 0
-    }
+    // MARK: - Dialog Box
     
+<<<<<<< HEAD:Sources/Scenes/PlayableScene.swift
+    /// Sets up the dialog box if it has not been initialized.
+    func setupDialogBox() {
+=======
     /**
      Search the scene for all PositionNode.
      - Warning: Always setup positions before all nodes or entities.
@@ -126,11 +127,14 @@ class RoomBaseScene: SKScene {
      Setup dialog box.
      */
     private func setupDialogBox() {
+>>>>>>> main:Sources/Scenes/Rooms/RoomBaseScene.swift
         guard dialogBox == nil else { return }
         let size = CGSize(width: frame.width - 200, height: 150)
         dialogBox = FactoryMethods.createDialogBox(with: size, sceneFrame: frame)
     }
     
+<<<<<<< HEAD:Sources/Scenes/PlayableScene.swift
+=======
     /**
      Setup walls collision.
      - Warning: Ensure change wall's node custom class to `WallNode`.
@@ -397,4 +401,5 @@ extension RoomBaseScene: SKPhysicsContactDelegate {
         detectContactsWithItem(contact: contact)
     }
 
+>>>>>>> main:Sources/Scenes/Rooms/RoomBaseScene.swift
 }

@@ -1,0 +1,12 @@
+{
+  "images" : [
+    {
+      "filename" : "mory_idle_2.png",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}
