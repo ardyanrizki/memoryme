@@ -19,6 +19,10 @@ class CrashQTEScene: PlayableScene {
     var initialArrowPosition: CGPoint = .zero
     var isDraggingArrow = false
     
+    var gameState: GameState?
+    
+    var sceneManager: SceneManagerProtocol?
+    
     var timerNode: SKLabelNode!
     
     var counter = 0
