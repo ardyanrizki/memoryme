@@ -154,7 +154,6 @@ struct DialogResources {
     ]
     
     static let hospital2SoloAlt2Sequence = [
-        Dialog(Constants.mainCharacterName, prompt: "Ugh… I just had the weirdest dream..."),
         Dialog(Constants.mainCharacterName, prompt: "Am I…. in the hospital? "),
         Dialog(Constants.mainCharacterName, prompt: "What have i done?! I should’ve been more thoughtful... now I have no one by my side...")
     ]
