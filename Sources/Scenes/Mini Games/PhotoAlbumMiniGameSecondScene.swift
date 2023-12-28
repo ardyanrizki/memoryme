@@ -1,5 +1,5 @@
 //
-//  PhotoAlbumGameSecondScene.swift
+//  PhotoAlbumMiniGameSecondScene.swift
 //  Memoryme
 //
 //  Created by Rivan Mohammad Akbar on 01/07/23.
@@ -9,7 +9,7 @@ import SpriteKit
 import GameplayKit
 
 /// A scene representing the second part of the photo album game.
-class PhotoAlbumGameSecondScene: PlayableScene {
+class PhotoAlbumMiniGameSecondScene: GameScene {
     
     // MARK: - Properties
     
@@ -39,7 +39,7 @@ class PhotoAlbumGameSecondScene: PlayableScene {
                     showCompleteDialog = true
                     await dialogBox?.start(dialog: DialogResources.bedroom3WithPhoto, from: self)
                     await timeout(after: 4)
-                    scenePresenter?.presentPhotoAlbumSnapshots()
+                    sceneManager?.presentPhotoAlbumSnapshots()
                 }
             }
         }
@@ -100,7 +100,7 @@ class PhotoAlbumGameSecondScene: PlayableScene {
         
         switch touchedNode?.name {
         case Constants.backButtonName:
-            scenePresenter?.presentBedroom(playerPosition: .bedroomPhotoAlbumSpot)
+            sceneManager?.presentBedroom(playerPosition: .bedroomPhotoAlbumSpot)
         default:
             break
         }

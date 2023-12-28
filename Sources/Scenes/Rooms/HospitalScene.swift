@@ -9,7 +9,7 @@ import SpriteKit
 import GameplayKit
 
 /// The `HospitalScene` class represents the scene for the hospital room.
-class HospitalScene: RoomScene, PresentableSceneProtocol {
+class HospitalScene: ExplorationScene, PresentableSceneProtocol {
     
     // MARK: - Properties
     
@@ -26,7 +26,7 @@ class HospitalScene: RoomScene, PresentableSceneProtocol {
     
     // MARK: - Scene Initialization
     
-    /// Creates and returns a shared instance of the hospital scene with the specified player position.
+    /// Creates and returns a shared instance of the hospital scene with the specified playableCharacter position.
     static func sharedScene(playerPosition position: CharacterPosition) -> HospitalScene? {
         let scene = HospitalScene(fileNamed: Constants.hospitalScene)
         scene?.setup(playerPosition: .hospitalPlayerBed)
@@ -65,9 +65,9 @@ class HospitalScene: RoomScene, PresentableSceneProtocol {
     /// Called when the scene is added to the view.
     override func didMove(to view: SKView) {
         super.didMove(to: view)
-        player?.disabledMovement = true
-        audioPlayerManager?.stopBackgroundAudio()
-        audioPlayerManager?.play(audioFile: .bedroomSnapshotsBGM, type: .soundEffect)
+        playableCharacter?.disabledMovement = true
+        audioManager?.stopBackgroundAudio()
+        audioManager?.play(audioFile: .bedroomSnapshotsBGM, type: .soundEffect)
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
             Task {
@@ -80,9 +80,9 @@ class HospitalScene: RoomScene, PresentableSceneProtocol {
     override func setupPlayer(at position: CharacterPosition, from positions: [CharacterPositionNode]) {
         let positionNode = positions.first { $0.identifier == .hospitalPlayerBed }
         let position = positionNode?.position ?? CGPoint(x: frame.midX, y: frame.midY)
-        player = FactoryMethods.createColoredPlayer(at: position)
-        player?.animate(for: .sleep)
-        if let node = player?.node {
+        playableCharacter = FactoryMethods.createColoredPlayer(at: position)
+        playableCharacter?.animate(for: .sleep)
+        if let node = playableCharacter?.node {
             addChild(node)
         }
     }
@@ -93,17 +93,17 @@ extension HospitalScene {
     
     /// Checks if the parents are present in the hospital scene.
     var isParentsPresent: Bool {
-        gameStateManager?.getState(key: .momsCallAccepted) == .boolValue(true)
+        stateManager?.getState(key: .momsCallAccepted) == .boolValue(true)
     }
     
     /// Checks if the friends are present in the hospital scene.
     var isFriendsPresent: Bool {
-        gameStateManager?.getState(key: .friendsPhotosKept) == .boolValue(true)
+        stateManager?.getState(key: .friendsPhotosKept) == .boolValue(true)
     }
     
     /// Checks if the bartender is present in the hospital scene.
     var isBartenderPresent: Bool {
-        gameStateManager?.getState(key: .strangerSaved) == .boolValue(true)
+        stateManager?.getState(key: .strangerSaved) == .boolValue(true)
     }
     
     /// Checks if any character is present in the hospital scene.
@@ -134,7 +134,7 @@ extension HospitalScene {
         }
         try? await Task.sleep(nanoseconds: 4 * 1_000_000_000)
         
-        scenePresenter?.presentEndingScreen()
+        sceneManager?.presentEndingScreen()
     }
     
     /// Enters the first person perspective based on character presence.
@@ -153,7 +153,7 @@ extension HospitalScene {
     /// Makes the player character awake.
     private func playerAwake() async {
         try? await Task.sleep(nanoseconds: 4 * 1_000_000_000)
-        player?.animate(for: .idle)
+        playableCharacter?.animate(for: .idle)
         try? await Task.sleep(nanoseconds: 2 * 1_000_000_000)
         await soloDialog()
     }

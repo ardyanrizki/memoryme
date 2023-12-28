@@ -11,7 +11,7 @@ import GameplayKit
 /// A scene representing the title screen or main menu of the game.
 class TitleScreenScene: SKScene {
     /// The presenter responsible for handling scene transitions.
-    var scenePresenter: ScenePresenter?
+    var sceneManager: SceneManager?
     
     /// The sprite node representing the play button.
     var playButton: SKSpriteNode = SKSpriteNode()
@@ -42,7 +42,7 @@ class TitleScreenScene: SKScene {
             let location = touch.location(in: self)
             
             if playButton.contains(location) {
-                scenePresenter?.presentHall(playerPosition: .hallStart)
+                sceneManager?.presentHall(playerPosition: .hallStart)
             }
         }
     }

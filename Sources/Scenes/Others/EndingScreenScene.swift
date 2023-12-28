@@ -7,7 +7,7 @@
 
 import SpriteKit
 
-class EndingScreenScene: PlayableScene {
+class EndingScreenScene: GameScene {
     
     var endingLabel: SKLabelNode!
     
@@ -38,8 +38,8 @@ class EndingScreenScene: PlayableScene {
             await fadeInOut(node: endingLabel, duration: 4)
             
             try? await Task.sleep(nanoseconds: sleepDuration)
-            scenePresenter?.presentTitleScreen()
-            audioPlayerManager?.play(audioFile: .ambience, type: .background)
+            sceneManager?.presentTitleScreen()
+            audioManager?.play(audioFile: .ambience, type: .background)
         }
     }
     
@@ -72,8 +72,8 @@ class EndingScreenScene: PlayableScene {
     }
     
     var isNotAnyonePresent: Bool {
-        gameStateManager?.getState(key: .momsCallAccepted) != .boolValue(true) &&
-        gameStateManager?.getState(key: .friendsPhotosKept) != .boolValue(true) &&
-        gameStateManager?.getState(key: .strangerSaved) != .boolValue(true)
+        stateManager?.getState(key: .momsCallAccepted) != .boolValue(true) &&
+        stateManager?.getState(key: .friendsPhotosKept) != .boolValue(true) &&
+        stateManager?.getState(key: .strangerSaved) != .boolValue(true)
     }
 }

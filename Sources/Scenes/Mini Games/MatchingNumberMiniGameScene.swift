@@ -1,5 +1,5 @@
 //
-//  MatchingNumberScene.swift
+//  MatchingNumberMiniGameScene.swift
 //  Memoryme
 //
 //  Created by Clarabella Lius on 26/06/23.
@@ -8,7 +8,7 @@
 import SpriteKit
 import GameplayKit
 
-class MatchingNumberScene: PlayableScene {
+class MatchingNumberMiniGameScene: GameScene {
     
     // represent match number node in mini game
     var matchNumberParentNode: SKNode!
@@ -34,12 +34,12 @@ class MatchingNumberScene: PlayableScene {
         
         await dialogBox?.start(dialogs: DialogResources.office4EmailSequence, from: self)
         self.touchEventsEnabled = true
-        self.scenePresenter?.presentWorkingSnapshots()
+        self.sceneManager?.presentWorkingSnapshots()
     }
 }
 
 // MARK: Overrided methods.
-extension MatchingNumberScene {
+extension MatchingNumberMiniGameScene {
     
     override func didMove(to view: SKView) {
         matchNumberParentNode = childNode(withName: "matchNumbers")
@@ -107,7 +107,7 @@ extension MatchingNumberScene {
         // To handle back button
         if backLabelNode.contains(touchedLocation) {
             let fade = SKTransition.fade(withDuration: 0.5)
-            scenePresenter?.presentOffice(playerPosition: .officeComputerSpot, transition: fade)
+            sceneManager?.presentOffice(playerPosition: .officeComputerSpot, transition: fade)
             return
         }
         

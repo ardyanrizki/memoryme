@@ -24,25 +24,27 @@ struct Constants {
     static let friend2Name = "Friend 2"
     
     // Game scenes
-    static let titleScene = "TitleScreenScene"
-    static let endingScene = "EndingScreenScene"
-    static let mainRoomScene = "HallScene"
-    static let officeRoomScene = "OfficeScene"
+    static let titleScreenScene = "TitleScreenScene"
+    static let endingScreenScene = "EndingScreenScene"
+    
+    static let hallScene = "HallScene"
+    static let officeScene = "OfficeScene"
     static let bedroomMessyScene = "BedroomMessyScene"
     static let bedroomTidyScene = "BedroomTidyScene"
     static let barScene = "BarScene"
     static let hospitalScene = "HospitalScene"
-    static let inputPinScene = "PINEntryScene"
-    static let matchingNumberScene = "MatchingNumberScene"
-    static let photoAlbumScene = "PhotoAlbumScene"
-    static let photoAlbumSecondScene = "PhotoAlbumGameSecondScene"
-    static let radioScene = "RadioScene"
-    static let crashQTEScene = "CrashQTEScene"
+    
+    static let inputPinMiniGameScene = "InputPinMiniGameScene"
+    static let matchingNumberMiniGameScene = "MatchingNumberMiniGameScene"
+    static let photoAlbumMiniGameFirstScene = "PhotoAlbumMiniGameFirstScene"
+    static let photoAlbumMiniGameSecondScene = "PhotoAlbumMiniGameSecondScene"
+    static let radioTunerMiniGameScene = "RadioTunerMiniGameScene"
+    static let saveStrangerMiniGameScene = "SaveStrangerMiniGameScene"
     
     // Snapshots
     static let officeSnapshotsScene = "OfficeSnapshotsScene"
-    static let bedroomSnapshotsScene = "BedroomSnapshotsScene"
-    static let barSnapshotsScene = "BarSnapshotsScene"
+    static let bedroomSnapshotsScene = "PhotoAlbumSnapshotsScene"
+    static let saveStrangerSnapshotScene = "SaveStrangerSnapshotScene"
     
     // Snapshots: Office
     static let acceptNode = "acceptNode"

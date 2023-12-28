@@ -9,11 +9,11 @@ import SpriteKit
 
 /// FactoryMethods provides convenient methods for creating characters and other game elements.
 struct FactoryMethods {
-    /// Creates a player character with specified textures at the given position.
+    /// Creates a playableCharacter character with specified textures at the given position.
     ///
     /// - Parameters:
     ///   - position: The position where the character will be created.
-    /// - Returns: A player character instance.
+    /// - Returns: A playableCharacter character instance.
     static func createPlayer(at position: CGPoint) -> Character {
         let staticTexture = TextureResources.mainCharacter.getTexture()
         let idleTextures = TextureResources.mainCharacterAtlasIdle.textures
@@ -30,11 +30,11 @@ struct FactoryMethods {
         return Character(at: position, textures: textures, withIdentifier: Constants.mainCharacterName)
     }
     
-    /// Creates a colored player character with specified textures at the given position.
+    /// Creates a colored playableCharacter character with specified textures at the given position.
     ///
     /// - Parameters:
     ///   - position: The position where the character will be created.
-    /// - Returns: A colored player character instance.
+    /// - Returns: A colored playableCharacter character instance.
     static func createColoredPlayer(at position: CGPoint) -> Character {
         let staticTexture = TextureResources.mainCharacter.getTexture()
         let idleTextures = TextureResources.mainCharacterAtlasRest.textures

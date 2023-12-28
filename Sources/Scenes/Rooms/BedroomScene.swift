@@ -8,7 +8,7 @@
 import SpriteKit
 import GameplayKit
 
-class BedroomScene: RoomScene, PresentableSceneProtocol {
+class BedroomScene: ExplorationScene, PresentableSceneProtocol {
     
     override var renderableItems: [any RenderableItem] {
         [
@@ -39,7 +39,7 @@ class BedroomScene: RoomScene, PresentableSceneProtocol {
     
     override func playerDidContact(with item: any RenderableItem, node: ItemNode) {
         if item as? BedroomItem == .photoAlbum {
-            node.isBubbleShown = gameStateManager?.getState(key: .friendsPhotosKept) != nil ? false : true
+            node.isBubbleShown = stateManager?.getState(key: .friendsPhotosKept) != nil ? false : true
         }
     }
     
@@ -55,8 +55,8 @@ class BedroomScene: RoomScene, PresentableSceneProtocol {
             
             switch(parentNode.name) {
             case BedroomItem.photoAlbum.rawValue:
-                if gameStateManager?.stateExisted(.friendsPhotosKept) == false {
-                    scenePresenter?.presentPhotoAlbumMiniGame()
+                if stateManager?.stateExisted(.friendsPhotosKept) == false {
+                    sceneManager?.presentPhotoAlbumMiniGame()
                 }
                 break
             default:
@@ -73,9 +73,9 @@ class BedroomScene: RoomScene, PresentableSceneProtocol {
 extension BedroomScene {
     
     func startFirstTimeEnteringEventIfNeeded() async {
-        guard let gameStateManager else { return }
+        guard let stateManager else { return }
         
-        if !gameStateManager.stateExisted(.friendsPhotosKept) {
+        if !stateManager.stateExisted(.friendsPhotosKept) {
             isUserInteractionEnabled = false
             
             let photoAlbumNode = childNode(withName: BedroomItem.photoAlbum.rawValue)
@@ -91,8 +91,8 @@ extension BedroomScene {
     
     // State update according game event.
     func updateFriendsPhotosEventState(photosKept: Bool) {
-        guard let gameStateManager else { return }
-        gameStateManager.setState(key: .friendsPhotosKept, value: .boolValue(photosKept))
+        guard let stateManager else { return }
+        stateManager.setState(key: .friendsPhotosKept, value: .boolValue(photosKept))
     }
     
 }

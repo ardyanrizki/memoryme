@@ -1,5 +1,5 @@
 //
-//  GameStateManager.swift
+//  StateManager.swift
 //  Memoryme
 //
 //  Created by Muhammad Rizki Ardyan on 27/06/23.
@@ -8,9 +8,9 @@
 import Foundation
 
 /**
- A protocol for delegates to receive updates from the GameStateManager.
+ A protocol for delegates to receive updates from the StateManager.
  */
-protocol GameStateManagerDelegate: AnyObject {
+protocol StateManagerDelegate: AnyObject {
     /**
      Informs the delegate about changes in the game state.
      
@@ -24,13 +24,13 @@ protocol GameStateManagerDelegate: AnyObject {
 /**
  Manages the game state and provides methods to modify and retrieve state variables.
  */
-class GameStateManager {
+class StateManager {
     
     /// Dictionary to store game state variables.
     private var states: [GameStateKey: GameStateValue] = [:]
     
     /// Delegate to receive updates about changes in game state.
-    var delegate: GameStateManagerDelegate?
+    var delegate: StateManagerDelegate?
     
     /**
      Sets the value for a specified state variable.

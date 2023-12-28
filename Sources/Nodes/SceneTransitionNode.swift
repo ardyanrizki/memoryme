@@ -33,9 +33,9 @@ class SceneTransitionNode: SKSpriteNode {
     /// Moves the scene based on the specified scene transition identifier.
     ///
     /// - Parameters:
-    ///   - scenePresenter: The `ScenePresenter` responsible for presenting scenes.
+    ///   - sceneManager: The `SceneManager` responsible for presenting scenes.
     ///   - sceneBlocker: An optional `SceneBlockerProtocol` to check scene transition blocking conditions.
-    func moveScene(with scenePresenter: ScenePresenter?, sceneBlocker: SceneBlockerProtocol? = nil) {
+    func moveScene(with sceneManager: SceneManager?, sceneBlocker: SceneBlockerProtocol? = nil) {
         guard let identifier else { return }
         
         if let sceneBlocker, !sceneBlocker.isAllowToPresentScene(identifier) {
@@ -46,21 +46,21 @@ class SceneTransitionNode: SKSpriteNode {
         switch identifier {
         case .fromHallToOffice:
             let fade = SKTransition.fade(withDuration: 0.5)
-            scenePresenter?.presentOffice(playerPosition: .officeEntrance, transition: fade)
+            sceneManager?.presentOffice(playerPosition: .officeEntrance, transition: fade)
         case .fromHallToBedroom:
-            scenePresenter?.presentBedroom(playerPosition: .bedroomEntrance)
+            sceneManager?.presentBedroom(playerPosition: .bedroomEntrance)
         case .fromHallToBar:
-            scenePresenter?.presentBar(playerPosition: .barEntrance, transition: SKTransition.fade(withDuration: 0.5))
+            sceneManager?.presentBar(playerPosition: .barEntrance, transition: SKTransition.fade(withDuration: 0.5))
         case .fromHallToHospital:
-            scenePresenter?.presentHospital()
+            sceneManager?.presentHospital()
         case .fromOfficeToMain:
-            scenePresenter?.presentHall(playerPosition: .hallOfficeDoor)
+            sceneManager?.presentHall(playerPosition: .hallOfficeDoor)
         case .fromBedroomToMain:
-            scenePresenter?.presentHall(playerPosition: .hallBedroomDoor)
+            sceneManager?.presentHall(playerPosition: .hallBedroomDoor)
         case .fromHospitalToMain:
-            scenePresenter?.presentHall(playerPosition: .hallHospitalDoor)
+            sceneManager?.presentHall(playerPosition: .hallHospitalDoor)
         case .fromBarToMain:
-            scenePresenter?.presentHall(playerPosition: .hallBarDoor)
+            sceneManager?.presentHall(playerPosition: .hallBarDoor)
         }
     }
 }

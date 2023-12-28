@@ -26,11 +26,11 @@ class OfficeSnapshotsScene: SnapshotsScene {
     
     /// Plays audio associated with snapshots.
     private func playSnapshotAudio() {
-        audioPlayerManager?.play(audioFile: .officeSnapshotsBGM, type: .background)
+        audioManager?.play(audioFile: .officeSnapshotsBGM, type: .background)
 
         if currentSnapshotIndex == snapshotNodes.count - 2 {
-            audioPlayerManager?.play(audioFile: .phone, type: .soundEffect)
-            audioPlayerManager?.setVolume(audioFile: .phone, to: 0.4)
+            audioManager?.play(audioFile: .phone, type: .soundEffect)
+            audioManager?.setVolume(audioFile: .phone, to: 0.4)
         }
     }
 
@@ -111,8 +111,8 @@ class OfficeSnapshotsScene: SnapshotsScene {
 
     /// Handles the action when the phone call is declined.
     private func handleDeclinePhone() {
-        audioPlayerManager?.stop(audioFile: .phone)
-        gameStateManager?.setState(key: .momsCallAccepted, value: .boolValue(false))
+        audioManager?.stop(audioFile: .phone)
+        stateManager?.setState(key: .momsCallAccepted, value: .boolValue(false))
         
         Task {
             await rejectedMomsCallDialog()
@@ -122,8 +122,8 @@ class OfficeSnapshotsScene: SnapshotsScene {
 
     /// Handles the action when the phone call is accepted, updating the game state and transitioning to the next scene.
     private func acceptedPhoneAction() {
-        audioPlayerManager?.stop(audioFile: .phone)
-        gameStateManager?.setState(key: .momsCallAccepted, value: .boolValue(true))
+        audioManager?.stop(audioFile: .phone)
+        stateManager?.setState(key: .momsCallAccepted, value: .boolValue(true))
 
         Task {
             await startMomsCallDialog()
@@ -136,7 +136,7 @@ class OfficeSnapshotsScene: SnapshotsScene {
     /// Transitions to the office room scene after the phone call.
     private func transitionToOfficeRoomScene() {
         let whiteFade = SKTransition.fade(with: .white, duration: 1)
-        scenePresenter?.presentOffice(playerPosition: .officeComputerSpot, transition: whiteFade)
+        sceneManager?.presentOffice(playerPosition: .officeComputerSpot, transition: whiteFade)
     }
 }
 

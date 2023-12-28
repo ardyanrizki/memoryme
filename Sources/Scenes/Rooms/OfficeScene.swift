@@ -8,7 +8,7 @@
 import SpriteKit
 import GameplayKit
 
-class OfficeScene: RoomScene, PresentableSceneProtocol {
+class OfficeScene: ExplorationScene, PresentableSceneProtocol {
     
     override var renderableItems: [any RenderableItem] {
         [
@@ -20,7 +20,7 @@ class OfficeScene: RoomScene, PresentableSceneProtocol {
     typealias T = OfficeScene
     
     static func sharedScene(playerPosition position: CharacterPosition) -> OfficeScene? {
-        let scene = OfficeScene(fileNamed: Constants.officeRoomScene)
+        let scene = OfficeScene(fileNamed: Constants.officeScene)
         scene?.setup(playerPosition: position)
         return scene
     }
@@ -34,7 +34,7 @@ class OfficeScene: RoomScene, PresentableSceneProtocol {
     
     override func playerDidContact(with item: any RenderableItem, node: ItemNode) {
         if item as? OfficeItem == .macBook {
-            node.isBubbleShown = gameStateManager?.getState(key: .momsCallAccepted) != nil ? false : true
+            node.isBubbleShown = stateManager?.getState(key: .momsCallAccepted) != nil ? false : true
         }
     }
     
@@ -84,9 +84,9 @@ class OfficeScene: RoomScene, PresentableSceneProtocol {
 extension OfficeScene {
     
     func startFirstTimeEnteringEventIfNeeded() async {
-        guard let gameStateManager else { return }
+        guard let stateManager else { return }
         
-        if !gameStateManager.stateExisted(.momsCallAccepted) {
+        if !stateManager.stateExisted(.momsCallAccepted) {
             isUserInteractionEnabled = false
             await dialogBox?.start(dialog: DialogResources.office1Solo, from: self)
             isUserInteractionEnabled = true
@@ -94,13 +94,13 @@ extension OfficeScene {
     }
     
     func startInputPinGame() {
-        guard gameStateManager?.getState(key: .momsCallAccepted) == nil else { return }
-        scenePresenter?.presentInputPinMiniGame()
+        guard stateManager?.getState(key: .momsCallAccepted) == nil else { return }
+        sceneManager?.presentInputPinMiniGame()
     }
     
     // State updates according game event.
     func updateMomCallEventState(callAccepted: Bool) {
-        guard let gameStateManager else { return }
-        gameStateManager.setState(key: .momsCallAccepted, value: .boolValue(callAccepted))
+        guard let stateManager else { return }
+        stateManager.setState(key: .momsCallAccepted, value: .boolValue(callAccepted))
     }
 }

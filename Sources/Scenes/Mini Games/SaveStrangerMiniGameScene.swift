@@ -1,5 +1,5 @@
 //
-//  CrashQTEScene.swift
+//  SaveStrangerMiniGameScene.swift
 //  Memoryme
 //
 //  Created by Clarabella Lius on 01/07/23.
@@ -9,7 +9,7 @@ import SpriteKit
 import GameplayKit
 
 /// A scene representing a Quick Time Event (QTE) for avoiding a crash.
-class CrashQTEScene: PlayableScene {
+class SaveStrangerMiniGameScene: GameScene {
     
     // MARK: - Properties
     
@@ -33,7 +33,7 @@ class CrashQTEScene: PlayableScene {
     
     override func didMove(to view: SKView) {
         setupSceneElements()
-        audioPlayerManager?.play(audioFile: .truckHorn, type: .soundEffect, playingTimes: 2)
+        audioManager?.play(audioFile: .truckHorn, type: .soundEffect, playingTimes: 2)
         counter = counterStartValue
         startCounter()
     }
@@ -43,8 +43,8 @@ class CrashQTEScene: PlayableScene {
     func detectGoalIntersect() {
         if swipeArrow.intersects(goalNode) {
             counterTimer.invalidate()
-            gameStateManager?.setState(key: .strangerSaved, value: .boolValue(true))
-            scenePresenter?.presentStrangerSnapshots()
+            stateManager?.setState(key: .strangerSaved, value: .boolValue(true))
+            sceneManager?.presentStrangerSnapshots()
         }
     }
     
@@ -58,8 +58,8 @@ class CrashQTEScene: PlayableScene {
         
         if counter == 0 {
             counterTimer.invalidate()
-            gameStateManager?.setState(key: .strangerSaved, value: .boolValue(false))
-            scenePresenter?.presentStrangerSnapshots()
+            stateManager?.setState(key: .strangerSaved, value: .boolValue(false))
+            sceneManager?.presentStrangerSnapshots()
         }
     }
     

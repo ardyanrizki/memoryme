@@ -1,5 +1,5 @@
 //
-//  BedroomSnapshotsScene.swift
+//  PhotoAlbumSnapshotsScene.swift
 //  Memoryme
 //
 //  Created by Rivan Mohammad Akbar on 01/07/23.
@@ -7,7 +7,7 @@
 
 import SpriteKit
 
-class BedroomSnapshotsScene: SnapshotsScene {
+class PhotoAlbumSnapshotsScene: SnapshotsScene {
 
     // MARK: - Scene Lifecycle
 
@@ -20,7 +20,7 @@ class BedroomSnapshotsScene: SnapshotsScene {
     // MARK: - Snapshot Audio
     
     func setupSceneAudio() {
-        audioPlayerManager?.play(audioFile: .bedroomSnapshotsBGM, type: .background)
+        audioManager?.play(audioFile: .bedroomSnapshotsBGM, type: .background)
     }
 
     // MARK: - Touch Handling
@@ -71,7 +71,7 @@ class BedroomSnapshotsScene: SnapshotsScene {
     }
 
     private func handleLastSnapshot() {
-        audioPlayerManager?.play(audioFile: .lighter, type: .soundEffect)
+        audioManager?.play(audioFile: .lighter, type: .soundEffect)
         setupBurnChoiceButtons(isHidden: false)
     }
 
@@ -89,7 +89,7 @@ class BedroomSnapshotsScene: SnapshotsScene {
     }
 
     private func handleBurnButtonTouch() async {
-        audioPlayerManager?.play(audioFile: .burn, type: .soundEffect)
+        audioManager?.play(audioFile: .burn, type: .soundEffect)
         await handleChoiceButtonTouch(isKept: false)
     }
 
@@ -106,11 +106,11 @@ class BedroomSnapshotsScene: SnapshotsScene {
     }
 
     private func handleDialogCompletion(isKept: Bool) {
-        gameStateManager?.setState(key: .friendsPhotosKept, value: .boolValue(isKept))
-        audioPlayerManager?.play(audioFile: .ambience, type: .background)
+        stateManager?.setState(key: .friendsPhotosKept, value: .boolValue(isKept))
+        audioManager?.play(audioFile: .ambience, type: .background)
         
         let position: CharacterPosition = isKept ? .bedroomCenter : .bedroomPhotoAlbumSpot
-        scenePresenter?.presentBedroom(playerPosition: position)
+        sceneManager?.presentBedroom(playerPosition: position)
     }
 
     // MARK: - Button Visibility

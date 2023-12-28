@@ -1,5 +1,5 @@
 //
-//  RoomScene.swift
+//  ExplorationScene.swift
 //  Memoryme
 //
 //  Created by Muhammad Rizki Ardyan on 24/06/23.
@@ -9,7 +9,7 @@ import SpriteKit
 import GameplayKit
 import AVFoundation
 
-class RoomScene: PlayableScene {
+class ExplorationScene: GameScene {
     
     var touchEventsEnabled: Bool = true
     
@@ -47,7 +47,7 @@ class RoomScene: PlayableScene {
     /**
      Player character entity.
      */
-    lazy var player: Character? = nil
+    lazy var playableCharacter: Character? = nil
     
     var characters = [Character]()
     
@@ -82,14 +82,14 @@ class RoomScene: PlayableScene {
     }
     
     /**
-     Setup player and assign to scene.
+     Setup playableCharacter and assign to scene.
      */
     func setupPlayer(at position: CharacterPosition, from positions: [CharacterPositionNode]) {
-        guard player == nil else { return }
+        guard playableCharacter == nil else { return }
         let positionNode = positions.first { $0.identifier == position }
         let position = positionNode?.position ?? CGPoint(x: frame.midX, y: frame.midY)
-        player = FactoryMethods.createPlayer(at: position)
-        if let node = player?.node {
+        playableCharacter = FactoryMethods.createPlayer(at: position)
+        if let node = playableCharacter?.node {
             addChild(node)
         }
     }
@@ -136,25 +136,25 @@ class RoomScene: PlayableScene {
     }
     
     /**
-     Detecting player contact to perform change scene.
+     Detecting playableCharacter contact to perform change scene.
      */
     private func detectIntersectsAndChangeScene() {
         sceneTransitionNodes.forEach { zone in
-            if player?.node?.intersects(zone) == true {
-                zone.moveScene(with: scenePresenter, sceneBlocker: sceneBlocker)
+            if playableCharacter?.node?.intersects(zone) == true {
+                zone.moveScene(with: sceneManager, sceneBlocker: sceneBlocker)
             }
         }
     }
     
     /**
-     Detecting player contact with item to perform action.
+     Detecting playableCharacter contact with item to perform action.
      */
     private func detectIntersectsWithItem() {
         interactableItems.forEach { item in
             if let itemNode = item.node,
-               player?.node?.intersects(itemNode) == true,
+               playableCharacter?.node?.intersects(itemNode) == true,
                let itemIdentifier = itemNode.renderableItem {
-                if itemNode.position.y < (player?.node?.position.y)! {
+                if itemNode.position.y < (playableCharacter?.node?.position.y)! {
                     itemNode.zPosition = 20
                 } else {
                     if itemNode.zPosition > 10 {
@@ -168,9 +168,9 @@ class RoomScene: PlayableScene {
     
     private func detectContactsWithItem(contact: SKPhysicsContact) {
         if (contact.bodyA.categoryBitMask == PhysicsType.character.rawValue ||
-            contact.bodyA.categoryBitMask == PhysicsType.character.rawValue) {
+            contact.bodyB.categoryBitMask == PhysicsType.character.rawValue) {
             
-            if (contact.bodyB.categoryBitMask == PhysicsType.item.rawValue ||
+            if (contact.bodyA.categoryBitMask == PhysicsType.item.rawValue ||
                 contact.bodyB.categoryBitMask == PhysicsType.item.rawValue) {
                 // This code block will triggered when player contacted with another item.
                 var itemNode: ItemNode?
@@ -185,7 +185,7 @@ class RoomScene: PlayableScene {
                 playerDidContact(with: identifier, node: itemNode)
             }
             
-            if (contact.bodyB.categoryBitMask == PhysicsType.wall.rawValue ||
+            if (contact.bodyA.categoryBitMask == PhysicsType.wall.rawValue ||
                 contact.bodyB.categoryBitMask == PhysicsType.wall.rawValue) {
                 stopPlayerWhenDidContact()
             }
@@ -203,7 +203,7 @@ class RoomScene: PlayableScene {
         detectIntersectsAndChangeScene()
         detectIntersectsWithItem()
         
-        let playerControlComponent = player?.component(ofType: ControlComponent.self) as? ControlComponent
+        let playerControlComponent = playableCharacter?.component(ofType: ControlComponent.self) as? ControlComponent
         playerControlComponent?.update(deltaTime: deltaTime)
         
         for character in characters {
@@ -213,7 +213,7 @@ class RoomScene: PlayableScene {
     }
     
     private func stopPlayerWhenDidContact() {
-        guard let component = player?.component(ofType: ControlComponent.self) as? ControlComponent else { return }
+        guard let component = playableCharacter?.component(ofType: ControlComponent.self) as? ControlComponent else { return }
         component.stopWalking()
     }
     
@@ -248,7 +248,7 @@ class RoomScene: PlayableScene {
     
     // MARK: Scene Audio
     func playAmbienceBGM() {
-        audioPlayerManager?.play(audioFile: .ambience, type: .background)
+        audioManager?.play(audioFile: .ambience, type: .background)
     }
     
     // MARK: Overrideable Methods
@@ -265,7 +265,7 @@ class RoomScene: PlayableScene {
 }
 
 // MARK: Overrided methods.
-extension RoomScene {
+extension ExplorationScene {
     
     override func didMove(to view: SKView) {
         scene?.anchorPoint = CGPoint(x: 0.5, y: 0.5)
@@ -289,18 +289,22 @@ extension RoomScene {
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         guard let touchLocation = touches.first?.location(in: self) else { return }
         if dialogBox?.isShowing == false, (dialogBox?.isShowing == false || dialogBox?.contains(touchLocation) == false) {
-            // Assign player to walk if `dialogBox` not shown.
-            player?.walk(to: touchLocation)
+            // Assign playableCharacter to walk if `dialogBox` not shown.
+            playableCharacter?.walk(to: touchLocation)
         }
     }
     
 }
 
 // MARK: SKPhysicsContactDelegate methods.
-extension RoomScene: SKPhysicsContactDelegate {
+extension ExplorationScene: SKPhysicsContactDelegate {
     
     func didBegin(_ contact: SKPhysicsContact) {
         detectContactsWithItem(contact: contact)
+    }
+    
+    func didEnd(_ contact: SKPhysicsContact) {
+        print("foo 1")
     }
     
 }

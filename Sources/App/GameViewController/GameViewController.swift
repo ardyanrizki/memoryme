@@ -13,10 +13,10 @@ import AVFoundation
 class GameViewController: UIViewController {
     
     /// Manages the state of the game.
-    var gameStateManager: GameStateManager?
+    var stateManager: StateManager?
     
     /// Manages audio playback during the game.
-    var audioPlayerManager: AudioPlayerManager?
+    var audioPlayerManager: AudioManager?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,13 +41,13 @@ class GameViewController: UIViewController {
     
     /// Sets up the game state manager and initializes the opening scene.
     private func setupGameState() {
-        gameStateManager = GameStateManager()
-        gameStateManager?.setState(key: .sceneActivity, value: .sceneActivityValue(.opening))
+        stateManager = StateManager()
+        stateManager?.setState(key: .sceneActivity, value: .sceneActivityValue(.opening))
     }
     
     /// Initializes the audio player manager for handling background music.
     private func setupAudioPlayerManager() {
-        audioPlayerManager = AudioPlayerManager()
+        audioPlayerManager = AudioManager()
     }
 }
 

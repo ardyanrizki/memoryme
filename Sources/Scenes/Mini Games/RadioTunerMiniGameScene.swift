@@ -1,5 +1,5 @@
 //
-//  RadioScene.swift
+//  RadioTunerMiniGameScene.swift
 //  Memoryme
 //
 //  Created by Clarabella Lius on 29/06/23.
@@ -8,8 +8,8 @@
 import SpriteKit
 import GameplayKit
 
-/// A scene where the player interacts with the radio tuner.
-class RadioScene: PlayableScene {
+/// A scene where the playableCharacter interacts with the radio tuner.
+class RadioTunerMiniGameScene: GameScene {
 
     // MARK: - Properties
 
@@ -31,7 +31,7 @@ class RadioScene: PlayableScene {
         radioPointer = self.childNode(withName: "radio-pointer") as? SKSpriteNode
         targetFrequencyNode = self.childNode(withName: "targetFrequencyNode")
         
-        audioPlayerManager?.play(audioFile: .radioStatic, type: .background)
+        audioManager?.play(audioFile: .radioStatic, type: .background)
         
         Task {
             await dialogBox?.start(dialog: DialogResources.bar2Solo, from: self)
@@ -60,7 +60,7 @@ class RadioScene: PlayableScene {
         
         switch(touchedNode?.name) {
             case "back-button":
-            scenePresenter?.presentBar(playerPosition: .barRadioSpot, transition: SKTransition.fade(withDuration: 0.5))
+            sceneManager?.presentBar(playerPosition: .barRadioSpot, transition: SKTransition.fade(withDuration: 0.5))
                 break
             default:
                 break
@@ -102,11 +102,11 @@ class RadioScene: PlayableScene {
                     await dialogBox?.start(dialog: DialogResources.bar3Solo, from: self)
                     if radioPointer.position.x > 120 {
                         timeout(after: 1.0, node: self) {
-                            self.scenePresenter?.presentStrangerSnapshots()
+                            self.sceneManager?.presentStrangerSnapshots()
                         }
                     }
                 } else if isPlayingSound && (radioPointer.position.x <= 120) {
-                    audioPlayerManager?.play(audioFile: .radioStatic, type: .soundEffect)
+                    audioManager?.play(audioFile: .radioStatic, type: .soundEffect)
                     isPlayingSound = false
                 }
             }

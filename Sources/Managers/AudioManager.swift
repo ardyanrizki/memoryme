@@ -1,5 +1,5 @@
 //
-//  AudioPlayerManager.swift
+//  AudioManager.swift
 //  Memoryme
 //
 //  Created by Muhammad Rizki Ardyan on 10/07/23.
@@ -17,7 +17,7 @@ enum AudioPlayerType {
 }
 
 /// Manages audio playback using AVAudioPlayer.
-class AudioPlayerManager: NSObject {
+class AudioManager: NSObject {
     
     /// The collection of audio players.
     private var library: [AudioPlayer] = []
@@ -103,7 +103,7 @@ class AudioPlayerManager: NSObject {
     }
 }
 
-extension AudioPlayerManager: AVAudioPlayerDelegate {
+extension AudioManager: AVAudioPlayerDelegate {
     
     /// Handles the completion of audio playback.
     ///

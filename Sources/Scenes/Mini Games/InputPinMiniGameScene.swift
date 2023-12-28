@@ -1,5 +1,5 @@
 //
-//  PINEntryScene.swift
+//  InputPinMiniGameScene.swift
 //  Memoryme
 //
 //  Created by Clarabella Lius on 21/06/23.
@@ -8,7 +8,7 @@
 import SpriteKit
 
 /// The scene for entering a PIN code.
-class PINEntryScene: PlayableScene {
+class InputPinMiniGameScene: GameScene {
     
     // MARK: - Properties
     
@@ -76,13 +76,13 @@ class PINEntryScene: PlayableScene {
         // Check if touch is on a keypad.
         for keypad in keypads where keypad.contains(location) {
             pinInputField.fillDigit(keypad.number, completion: handleCompletePIN)
-            audioPlayerManager?.play(audioFile: .click, type: .soundEffect, volume: 1)
+            audioManager?.play(audioFile: .click, type: .soundEffect, volume: 1)
         }
         
         // Check if touch is on the delete button.
         if deleteButton.contains(location) {
             pinInputField.deleteDigit()
-            audioPlayerManager?.play(audioFile: .click, type: .soundEffect, volume: 1)
+            audioManager?.play(audioFile: .click, type: .soundEffect, volume: 1)
         }
     }
     
@@ -105,7 +105,7 @@ class PINEntryScene: PlayableScene {
         // Check if touch is on the back label node.
         if backLabelNode.contains(touchedLocation) {
             let fade = SKTransition.fade(withDuration: 0.5)
-            scenePresenter?.presentOffice(playerPosition: .officeComputerSpot, transition: fade)
+            sceneManager?.presentOffice(playerPosition: .officeComputerSpot, transition: fade)
         }
     }
     
@@ -118,7 +118,7 @@ class PINEntryScene: PlayableScene {
         let fadeAction = SKAction.fadeAlpha(to: 0, duration: 0.5)
         let intervalAction = SKAction.wait(forDuration: 0.5)
         let presentNewScreen = SKAction.run {
-            self.scenePresenter?.presentMatchingNumbersMiniGame()
+            self.sceneManager?.presentMatchingNumbersMiniGame()
         }
         
         var actions = [SKAction]()

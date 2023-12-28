@@ -8,7 +8,7 @@
 import SpriteKit
 
 /// A scene to display snapshots with interactive features.
-class SnapshotsScene: PlayableScene {
+class SnapshotsScene: GameScene {
     
     // MARK: - Properties
     
@@ -36,9 +36,9 @@ class SnapshotsScene: PlayableScene {
     
     // MARK: - Scene Setup
     
-    override func setup(scenePresenter: ScenePresenter?, audioPlayerManager: AudioPlayerManager?, gameStateManager: GameStateManager?) {
-        super.setup(scenePresenter: scenePresenter, audioPlayerManager: audioPlayerManager, gameStateManager: gameStateManager)
-        self.audioPlayerManager?.stop(audioFile: .ambience)
+    override func setup(sceneManager: SceneManager?, audioPlayerManager: AudioManager?, stateManager: StateManager?) {
+        super.setup(sceneManager: sceneManager, audioPlayerManager: audioPlayerManager, stateManager: stateManager)
+        self.audioManager?.stop(audioFile: .ambience)
     }
     
     override func didMove(to view: SKView) {

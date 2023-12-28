@@ -13,9 +13,9 @@ protocol PresentableSceneProtocol {
     /// The type of the scene that conforms to `SKScene`.
     associatedtype T: SKScene
     
-    /// Creates and returns a shared instance of the scene with the specified player position.
+    /// Creates and returns a shared instance of the scene with the specified playableCharacter position.
     ///
-    /// - Parameter playerPosition: The initial position of the player character in the scene.
+    /// - Parameter playerPosition: The initial position of the playableCharacter character in the scene.
     /// - Returns: An optional shared instance of the scene, or `nil` if it couldn't be created.
     static func sharedScene(playerPosition: CharacterPosition) -> T?
 }

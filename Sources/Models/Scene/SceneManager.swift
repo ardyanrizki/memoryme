@@ -1,5 +1,5 @@
 //
-//  ScenePresenter.swift
+//  SceneManager.swift
 //  Memoryme
 //
 //  Created by Muhammad Rizki Ardyan on 26/12/23.
@@ -8,7 +8,7 @@
 import SpriteKit
 
 /// A protocol defining methods to present various scenes in the game.
-protocol ScenePresenter: AnyObject {
+protocol SceneManager: AnyObject {
     /// Presents the title screen or main menu.
     func presentTitleScreen()
 

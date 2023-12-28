@@ -1,5 +1,5 @@
 //
-//  PhotoAlbumGameScene.swift
+//  PhotoAlbumMiniGameFirstScene.swift
 //  Memoryme
 //
 //  Created by Clarabella Lius on 28/06/23.
@@ -8,7 +8,7 @@
 import SpriteKit
 import GameplayKit
 
-class PhotoAlbumScene: PlayableScene {
+class PhotoAlbumMiniGameFirstScene: GameScene {
     
     var polaroidNodes: [SKSpriteNode] = []
     
@@ -86,10 +86,10 @@ class PhotoAlbumScene: PlayableScene {
         }
         switch(touchedNode?.name) {
             case "arrow-right":
-                scenePresenter?.presentPhotoAlbumSecondMiniGame()
+                sceneManager?.presentPhotoAlbumSecondMiniGame()
                 break
             case "back-button":
-                scenePresenter?.presentBedroom(playerPosition: .bedroomPhotoAlbumSpot)
+                sceneManager?.presentBedroom(playerPosition: .bedroomPhotoAlbumSpot)
                 break
             default:
                 break

@@ -9,7 +9,7 @@ import SpriteKit
 import GameplayKit
 
 /// The scene representing the bar in the game.
-class BarScene: RoomScene, PresentableSceneProtocol {
+class BarScene: ExplorationScene, PresentableSceneProtocol {
     
     // MARK: - Renderable Items
     
@@ -24,7 +24,7 @@ class BarScene: RoomScene, PresentableSceneProtocol {
     // MARK: - Shared Scene Initialization
     
     /// Creates and returns a shared instance of the bar scene.
-    /// - Parameter playerPosition: The initial position of the player character.
+    /// - Parameter playerPosition: The initial position of the playableCharacter character.
     /// - Returns: A shared instance of the bar scene.
     static func sharedScene(playerPosition position: CharacterPosition) -> BarScene? {
         let scene = BarScene(fileNamed: Constants.barScene)
@@ -57,7 +57,7 @@ class BarScene: RoomScene, PresentableSceneProtocol {
     
     override func playerDidContact(with item: any RenderableItem, node: ItemNode) {
         if item as? BarItem == .radioBar {
-            node.isBubbleShown = gameStateManager?.getState(key: .strangerSaved) != nil ? false : true
+            node.isBubbleShown = stateManager?.getState(key: .strangerSaved) != nil ? false : true
         }
     }
     
@@ -76,7 +76,7 @@ class BarScene: RoomScene, PresentableSceneProtocol {
             }
             
             if parentNode.name == BarItem.radioBar.rawValue {
-                scenePresenter?.presentRadioTunerMiniGame()
+                sceneManager?.presentRadioTunerMiniGame()
             }
         } else {
             FactoryMethods.removeOverlay(in: self)
@@ -93,17 +93,17 @@ extension BarScene {
     
     /// Checks if it is the first entry into the bar scene.
     private var isFirstEnter: Bool {
-        gameStateManager?.getState(key: .strangerSaved) == nil
+        stateManager?.getState(key: .strangerSaved) == nil
     }
     
     /// Checks if the stranger is saved in the bar scene.
     private var isStrangerSaved: Bool {
-        gameStateManager?.getState(key: .strangerSaved) == .boolValue(true)
+        stateManager?.getState(key: .strangerSaved) == .boolValue(true)
     }
     
     /// Checks if the bartender event has occurred in the bar scene.
     private var isBartenderEventOccurred: Bool {
-        gameStateManager?.getState(key: .bartenderEventOccurred) == .boolValue(true)
+        stateManager?.getState(key: .bartenderEventOccurred) == .boolValue(true)
     }
     
     /// Presents the dialogues for the first entry into the bar scene.
@@ -148,13 +148,13 @@ extension BarScene {
     
     /// Updates the game state to indicate the bartender event has occurred.
     private func updateState() {
-        gameStateManager?.setState(key: .bartenderEventOccurred, value: .boolValue(true))
+        stateManager?.setState(key: .bartenderEventOccurred, value: .boolValue(true))
     }
     
     /// Updates the game state to indicate whether the stranger is saved.
     /// - Parameter strangerSaved: A boolean value indicating whether the stranger is saved.
     func updateSaveStrangerEventState(strangerSaved: Bool) {
-        guard let gameStateManager else { return }
-        gameStateManager.setState(key: .strangerSaved, value: .boolValue(strangerSaved))
+        guard let stateManager else { return }
+        stateManager.setState(key: .strangerSaved, value: .boolValue(strangerSaved))
     }
 }

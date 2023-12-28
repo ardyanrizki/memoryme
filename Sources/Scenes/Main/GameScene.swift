@@ -1,5 +1,5 @@
 //
-//  PlayableScene.swift
+//  GameScene.swift
 //  Memoryme
 //
 //  Created by Muhammad Rizki Ardyan on 25/12/23.
@@ -8,17 +8,17 @@
 import SpriteKit
 
 /// A base class for playable scenes in the game.
-class PlayableScene: SKScene {
+class GameScene: SKScene {
     
     // MARK: - Properties
     
     /// The scene manager responsible for transitioning between scenes.
-    weak var scenePresenter: ScenePresenter?
+    weak var sceneManager: SceneManager?
     
-    weak var gameStateManager: GameStateManager?
+    weak var stateManager: StateManager?
     
     /// The manager for handling audio playback in the scene.
-    weak var audioPlayerManager: AudioPlayerManager?
+    weak var audioManager: AudioManager?
     
     /// The protocol defining scene-blocking behavior.
     var sceneBlocker: SceneBlockerProtocol?
@@ -30,14 +30,14 @@ class PlayableScene: SKScene {
     
     /// Sets up the scene with the provided scene manager and audio player manager.
     /// - Parameters:
-    ///   - scenePresenter: The scene manager for transitioning between scenes.
-    ///   - audioPlayerManager: The audio player manager for handling audio playback.
-    func setup(scenePresenter: ScenePresenter?,
-               audioPlayerManager: AudioPlayerManager?,
-               gameStateManager: GameStateManager?) {
-        self.scenePresenter = scenePresenter
-        self.audioPlayerManager = audioPlayerManager
-        self.gameStateManager = gameStateManager
+    ///   - sceneManager: The scene manager for transitioning between scenes.
+    ///   - audioManager: The audio player manager for handling audio playback.
+    func setup(sceneManager: SceneManager?,
+               audioPlayerManager: AudioManager?,
+               stateManager: StateManager?) {
+        self.sceneManager = sceneManager
+        self.audioManager = audioPlayerManager
+        self.stateManager = stateManager
         setupDialogBox()
     }
     

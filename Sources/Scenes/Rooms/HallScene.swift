@@ -34,7 +34,7 @@ class HallSceneBlocker: SceneBlockerProtocol {
     }
 }
 
-class HallScene: RoomScene, PresentableSceneProtocol {
+class HallScene: ExplorationScene, PresentableSceneProtocol {
     
     override var renderableItems: [any RenderableItem] {
         [
@@ -46,7 +46,7 @@ class HallScene: RoomScene, PresentableSceneProtocol {
     typealias T = HallScene
     
     static func sharedScene(playerPosition: CharacterPosition) -> HallScene? {
-        let scene = HallScene(fileNamed: Constants.mainRoomScene)
+        let scene = HallScene(fileNamed: Constants.hallScene)
         scene?.setup(playerPosition: playerPosition)
         return scene
     }
@@ -145,7 +145,7 @@ class HallScene: RoomScene, PresentableSceneProtocol {
 extension HallScene {
     
     var memoriesCollected: Int {
-        return gameStateManager?.getStates(of: [
+        return stateManager?.getStates(of: [
             .momsCallAccepted,
             .friendsPhotosKept,
             .strangerSaved
@@ -153,27 +153,27 @@ extension HallScene {
     }
     
     var isOpening: Bool {
-        gameStateManager?.getState(key: .sceneActivity) == .sceneActivityValue(.opening)
+        stateManager?.getState(key: .sceneActivity) == .sceneActivityValue(.opening)
     }
     
     var isStrangerSaved: Bool {
-        gameStateManager?.getState(key: .strangerSaved) == .boolValue(true)
+        stateManager?.getState(key: .strangerSaved) == .boolValue(true)
     }
     
     var isMomsCallAccepted: Bool {
-        gameStateManager?.getState(key: .momsCallAccepted) == .boolValue(true)
+        stateManager?.getState(key: .momsCallAccepted) == .boolValue(true)
     }
     
     func startOpeningEventIfNeeded() {
         if isOpening {
             touchEventsEnabled = false
-            player?.lay(completion: {
+            playableCharacter?.lay(completion: {
                 Task {
                     await self.dialogBox?.start(dialogs: DialogResources.opening1SoloSequence, from: self)
                     self.touchEventsEnabled = true
                 }
             })
-            gameStateManager?.setState(key: .sceneActivity, value: .sceneActivityValue(.exploring))
+            stateManager?.setState(key: .sceneActivity, value: .sceneActivityValue(.exploring))
         }
     }
     
@@ -188,11 +188,11 @@ extension HallScene {
     
     // State updates according game event.
     func adjustBroomForPhotoAlbumEvent() {
-        guard let gameStateManager else { return }
+        guard let stateManager else { return }
         let broom = interactableItems.first { $0.node?.renderableItem as? MainRoomItem == .broom }
         
-        if gameStateManager.stateExisted(.friendsPhotosKept),
-           gameStateManager.getState(key: .friendsPhotosKept) == .boolValue(false)
+        if stateManager.stateExisted(.friendsPhotosKept),
+           stateManager.getState(key: .friendsPhotosKept) == .boolValue(false)
         {
             broom?.showPhysicsBody()
             return
@@ -203,10 +203,10 @@ extension HallScene {
     
     // State updates according game event.
     func adjustOfficeDeskForMomCallAndPhotoAlbumEvent() {
-        guard let gameStateManager else { return }
+        guard let stateManager else { return }
         let mainDesk = interactableItems.first { $0.node?.renderableItem as? MainRoomItem == .mainDesk }
         
-        if gameStateManager.stateExisted(.momsCallAccepted) {
+        if stateManager.stateExisted(.momsCallAccepted) {
             mainDesk?.showPhysicsBody()
             if isMomsCallAccepted {
                 mainDesk?.textureType = .opened
@@ -216,7 +216,7 @@ extension HallScene {
             return
         }
         
-        if gameStateManager.stateExisted(.friendsPhotosKept) {
+        if stateManager.stateExisted(.friendsPhotosKept) {
             mainDesk?.showPhysicsBody()
             mainDesk?.textureType = .normal
             return
@@ -229,9 +229,9 @@ extension HallScene {
     func adjustRadioTableForStrangerEvent() {
         let radioTable = interactableItems.first { $0.node?.renderableItem as? MainRoomItem == .radioTable }
         
-        guard let gameStateManager else { return }
+        guard let stateManager else { return }
         // If saved, show radio in desk.
-        if gameStateManager.getState(key: .strangerSaved) == .boolValue(true) {
+        if stateManager.getState(key: .strangerSaved) == .boolValue(true) {
             radioTable?.showPhysicsBody()
         } else {
             radioTable?.hidePhysicsBody()
@@ -317,12 +317,12 @@ extension HallScene {
                 return
             }
             
-            if gameStateManager?.stateExisted(.momsCallAccepted) == true {
+            if stateManager?.stateExisted(.momsCallAccepted) == true {
                 await dialogBox?.start(dialog: DialogResources.main4PhotoAlbumAlt2, from: self)
                 return
             }
         
-            if gameStateManager?.stateExisted(.friendsPhotosKept) == true {
+            if stateManager?.stateExisted(.friendsPhotosKept) == true {
                 await dialogBox?.start(dialog: DialogResources.main3PhotoAlbumAlt1, from: self)
                 return
             }
@@ -349,8 +349,8 @@ extension HallScene {
     
 }
 
-// MARK: GameStateManagerDelegate
-extension HallScene: GameStateManagerDelegate {
+// MARK: StateManagerDelegate
+extension HallScene: StateManagerDelegate {
     
     func didUpdate(_ variable: GameStateKey?, value: GameStateValue?) {
         // Use this function if need to trigger action everytime any state changed.

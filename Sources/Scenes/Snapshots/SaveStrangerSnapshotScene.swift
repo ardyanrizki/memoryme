@@ -1,5 +1,5 @@
 //
-//  BarSnapshotsScene.swift
+//  SaveStrangerSnapshotScene.swift
 //  Memoryme
 //
 //  Created by Rivan Mohammad Akbar on 01/07/23.
@@ -7,7 +7,7 @@
 
 import SpriteKit
 
-class BarSnapshotsScene: SnapshotsScene {
+class SaveStrangerSnapshotScene: SnapshotsScene {
     
     // MARK: - Scene Lifecycle
     
@@ -15,7 +15,7 @@ class BarSnapshotsScene: SnapshotsScene {
         super.didMove(to: view)
         playSnapshotAudio()
         
-        if let gameStateManager, gameStateManager.stateExisted(.strangerSaved) {
+        if let stateManager, stateManager.stateExisted(.strangerSaved) {
             handleStrangerSavedSnapshot()
         } else {
             Task {
@@ -27,13 +27,13 @@ class BarSnapshotsScene: SnapshotsScene {
     // MARK: - Snapshot Audio
     
     func playSnapshotAudio() {
-        audioPlayerManager?.play(audioFile: .barSnapshotsBGM, type: .background, volume: 0.2)
+        audioManager?.play(audioFile: .barSnapshotsBGM, type: .background, volume: 0.2)
     }
     
     // MARK: - Snapshot Handling
     
     private func handleStrangerSavedSnapshot() {
-        let isStrangerSaved = gameStateManager?.getState(key: .strangerSaved) == .boolValue(true)
+        let isStrangerSaved = stateManager?.getState(key: .strangerSaved) == .boolValue(true)
         let fileNameToRemove = isStrangerSaved ? "failed" : "saved"
         removeSnapshotNodes(withNameContaining: fileNameToRemove)
         
@@ -62,7 +62,7 @@ class BarSnapshotsScene: SnapshotsScene {
     }
     
     private func presentCrashQTEScene() {
-        scenePresenter?.presentCrashQTEMiniGame()
+        sceneManager?.presentCrashQTEMiniGame()
     }
     
     private func handleNextSnapshotOrSceneTransition() {
@@ -93,12 +93,12 @@ class BarSnapshotsScene: SnapshotsScene {
     }
     
     private func handleLastSnapshot() {
-        audioPlayerManager?.stop(audioFile: .barSnapshotsBGM)
+        audioManager?.stop(audioFile: .barSnapshotsBGM)
         presentNextScene()
     }
     
     private func presentNextScene() {
         let whiteFade = SKTransition.fade(with: .white, duration: 1)
-        scenePresenter?.presentBar(playerPosition: .barRadioSpot, transition: whiteFade)
+        sceneManager?.presentBar(playerPosition: .barRadioSpot, transition: whiteFade)
     }
 }
