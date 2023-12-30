@@ -30,6 +30,7 @@ enum CharacterPosition: String, CaseIterable {
     case barBartenderHidingSpot
     
     case hospitalEntrance
+    case hospitalSafeEntrance
     case hospitalPlayerBed
     case hospitalMomDestinationSpot
     case hospitalDadDestinationSpot

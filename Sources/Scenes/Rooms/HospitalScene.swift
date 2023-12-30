@@ -179,22 +179,27 @@ extension HospitalScene {
     /// Enters the parents characters into the scene.
     private func enterParents() async {
         let mom = assignMomToScene()
+        await dispatch(character: mom, walkTo: .hospitalSafeEntrance)
         await dispatch(character: mom, walkTo: .hospitalMomDestinationSpot)
         let dad = assignDadToScene()
+        await dispatch(character: dad, walkTo: .hospitalSafeEntrance)
         await dispatch(character: dad, walkTo: .hospitalDadDestinationSpot)
     }
     
     /// Enters the friends characters into the scene.
     private func enterFriends() async {
         let friend1 = assignFriend1ToScene()
+        await dispatch(character: friend1, walkTo: .hospitalSafeEntrance)
         await dispatch(character: friend1, walkTo: .hospitalFriend1DestinationSpot)
         let friend2 = assignFriend2ToScene()
+        await dispatch(character: friend2, walkTo: .hospitalSafeEntrance)
         await dispatch(character: friend2, walkTo: .hospitalFriend2DestinationSpot)
     }
     
     /// Enters the bartender character into the scene.
     private func enterBartender() async {
         let bartender = assignBartenderToScene()
+        await dispatch(character: bartender, walkTo: .hospitalSafeEntrance)
         await dispatch(character: bartender, walkTo: .hospitalBartenderDestinationSpot)
     }
     
