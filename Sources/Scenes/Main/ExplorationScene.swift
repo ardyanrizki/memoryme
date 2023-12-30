@@ -105,7 +105,7 @@ class ExplorationScene: GameScene {
     func dispatch(character: Character?, walkTo position: CharacterPosition) async {
         guard let spot = childNode(withName: position.rawValue) else { return }
         await withCheckedContinuation { continuation in
-            character?.walk(to: spot.position, completion: {
+            character?.walk(to: spot.position, itemNode: nil, completion: {
                 continuation.resume()
             })
         }
@@ -162,32 +162,6 @@ class ExplorationScene: GameScene {
                     }
                 }
                 playerDidIntersect(with: itemIdentifier, node: itemNode)
-            }
-        }
-    }
-    
-    private func detectContactsWithItem(contact: SKPhysicsContact) {
-        if (contact.bodyA.categoryBitMask == PhysicsType.character.rawValue ||
-            contact.bodyB.categoryBitMask == PhysicsType.character.rawValue) {
-            
-            if (contact.bodyA.categoryBitMask == PhysicsType.item.rawValue ||
-                contact.bodyB.categoryBitMask == PhysicsType.item.rawValue) {
-                // This code block will triggered when player contacted with another item.
-                var itemNode: ItemNode?
-                if contact.bodyA.categoryBitMask == PhysicsType.item.rawValue {
-                    itemNode = contact.bodyA.node as? ItemNode
-                } else if contact.bodyB.categoryBitMask == PhysicsType.item.rawValue {
-                    itemNode = contact.bodyB.node as? ItemNode
-                }
-                guard let itemNode, let identifier = itemNode.renderableItem else { return }
-                stopPlayerWhenDidContact()
-                itemNode.isBubbleShown = true
-                playerDidContact(with: identifier, node: itemNode)
-            }
-            
-            if (contact.bodyA.categoryBitMask == PhysicsType.wall.rawValue ||
-                contact.bodyB.categoryBitMask == PhysicsType.wall.rawValue) {
-                stopPlayerWhenDidContact()
             }
         }
     }
@@ -289,9 +263,27 @@ extension ExplorationScene {
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         guard let touchLocation = touches.first?.location(in: self) else { return }
         if dialogBox?.isShowing == false, (dialogBox?.isShowing == false || dialogBox?.contains(touchLocation) == false) {
+            
+            let itemNode = atPoint(touchLocation) as? ItemNode
             // Assign playableCharacter to walk if `dialogBox` not shown.
-            playableCharacter?.walk(to: touchLocation)
+            playableCharacter?.walk(to: touchLocation, itemNode: itemNode)
         }
+    }
+    
+    private func getItemNode(from contact: SKPhysicsContact) -> ItemNode? {
+        if (contact.bodyA.categoryBitMask == PhysicsType.item.rawValue ||
+            contact.bodyB.categoryBitMask == PhysicsType.item.rawValue) {
+            // This code block will triggered when player contacted with another item.
+            var itemNode: ItemNode?
+            if contact.bodyA.categoryBitMask == PhysicsType.item.rawValue {
+                itemNode = contact.bodyA.node as? ItemNode
+            } else if contact.bodyB.categoryBitMask == PhysicsType.item.rawValue {
+                itemNode = contact.bodyB.node as? ItemNode
+            }
+            guard let itemNode else { return nil }
+            return itemNode
+        }
+        return nil
     }
     
 }
@@ -300,11 +292,17 @@ extension ExplorationScene {
 extension ExplorationScene: SKPhysicsContactDelegate {
     
     func didBegin(_ contact: SKPhysicsContact) {
-        detectContactsWithItem(contact: contact)
+        playableCharacter?.didBeginContact(contact)
+        
+        if  let itemNode = getItemNode(from: contact),
+            let identifier = itemNode.renderableItem {
+            itemNode.isBubbleShown = true
+            playerDidContact(with: identifier, node: itemNode)
+        }
     }
     
     func didEnd(_ contact: SKPhysicsContact) {
-        print("foo 1")
+        playableCharacter?.didEndContact(contact)
     }
     
 }

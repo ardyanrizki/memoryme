@@ -48,16 +48,28 @@ class Character: GKEntity {
         }
     }
     
-    public func walk(to point: CGPoint, completion: @escaping () -> Void = {}) {
+    public func walk(to point: CGPoint, itemNode: ItemNode?, completion: @escaping () -> Void = {}) {
         guard disabledMovement == false else { return }
         for case let controlComponent as ControlComponent in components {
-            controlComponent.walk(to: point, completion: completion)
+            controlComponent.walk(to: point, itemNode: itemNode, completion: completion)
         }
     }
     
     public func stopWalking() {
         for case let controlComponent as ControlComponent in components {
             controlComponent.stopWalking()
+        }
+    }
+    
+    public func didBeginContact(_ contact: SKPhysicsContact) {
+        for case let controlComponent as ControlComponent in components {
+            controlComponent.didBeginContact(contact)
+        }
+    }
+    
+    public func didEndContact(_ contact: SKPhysicsContact) {
+        for case let controlComponent as ControlComponent in components {
+            controlComponent.didEndContact(contact)
         }
     }
     

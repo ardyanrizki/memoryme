@@ -17,31 +17,39 @@ enum MainRoomItem: String, CaseIterable {
     var props: ItemProps {
         switch self {
         case .broom:
-            return .init(heightMultiplier: 1, textures: [
-                .normal: SKTexture(imageNamed: TextureResources.broom)
-            ])
+            return .init(heightMultiplier: 1,
+                         textures: [
+                            .normal: SKTexture(imageNamed: TextureResources.broom)
+                         ], 
+                         makePhysicsBody: { node in makeRectPhysicsBody(node: node) })
         case .mainDesk:
-            return .init(heightMultiplier: 1, textures: [
-                .normal: SKTexture(imageNamed: TextureResources.mainDeskNormal),
-                .closed: SKTexture(imageNamed: TextureResources.mainDeskClosed),
-                .opened: SKTexture(imageNamed: TextureResources.mainDeskOpened)
-            ])
+            return .init(heightMultiplier: 1,
+                         textures: [
+                            .normal: SKTexture(imageNamed: TextureResources.mainDeskNormal),
+                            .closed: SKTexture(imageNamed: TextureResources.mainDeskClosed),
+                            .opened: SKTexture(imageNamed: TextureResources.mainDeskOpened)
+                         ], 
+                         makePhysicsBody: { node in makeRectPhysicsBody(node: node) })
         case .mainWindow:
             return .init(textures: [
                 .opened: SKTexture(imageNamed: TextureResources.mainWindowOpened),
                 .closed: SKTexture(imageNamed: TextureResources.mainWindowClosed)
-            ])
+            ],
+                         makePhysicsBody: { node in makeRectPhysicsBody(node: node) })
         case .radioTable:
-            return .init(heightMultiplier: 0.6, textures: [
-                .normal: SKTexture(imageNamed: TextureResources.radioTable)
-            ])
+            return .init(heightMultiplier: 0.6,
+                         textures: [
+                            .normal: SKTexture(imageNamed: TextureResources.radioTable)
+                         ], makePhysicsBody: { node in makeRectPhysicsBody(node: node) }
+            )
         case .vase:
             return .init(textures: [
                 .ripe: SKTexture(imageNamed: TextureResources.vaseRipe),
                 .budding: SKTexture(imageNamed: TextureResources.vaseBudding),
                 .partialBlossom: SKTexture(imageNamed: TextureResources.vasePartialBlossom),
                 .fullBlossom: SKTexture(imageNamed: TextureResources.vaseFullBlossom)
-            ])
+            ], 
+                         makePhysicsBody: { node in makeRectPhysicsBody(node: node) })
         }
     }
 }
@@ -54,6 +62,10 @@ extension MainRoomItem: RenderableItem {
     
     var size: CGSize? {
         props.size
+    }
+    
+    var makePhysicsBody: (ItemNode) -> SKPhysicsBody?  {
+        props.makePhysicsBody
     }
     
 }

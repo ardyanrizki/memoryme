@@ -12,6 +12,8 @@ struct ItemProps {
     /// Dictionary mapping item texture types to corresponding textures.
     let textures: [ItemTextureType: SKTexture]
     
+    var makePhysicsBody: (ItemNode) -> SKPhysicsBody?
+    
     /// Optional size of the item. If `nil`, the size is not explicitly set.
     var size: CGSize?
 
@@ -21,17 +23,19 @@ struct ItemProps {
     ///   - widthMultiplier: A multiplier for the width of the item's size. Defaults to `1`.
     ///   - heightMultiplier: A multiplier for the height of the item's size.
     ///   - textures: Dictionary mapping item texture types to corresponding textures.
-    init(widthMultiplier: CGFloat = 1, heightMultiplier: CGFloat, textures: [ItemTextureType: SKTexture]) {
+    init(widthMultiplier: CGFloat = 1, heightMultiplier: CGFloat, textures: [ItemTextureType: SKTexture], makePhysicsBody: @escaping (ItemNode) -> SKPhysicsBody?) {
         self.textures = textures
+        self.makePhysicsBody = makePhysicsBody
         self.size = calculateSize(widthMultiplier: widthMultiplier, heightMultiplier: heightMultiplier)
     }
 
     /// Initializes an `ItemProps` without explicitly setting the size.
     ///
     /// - Parameter textures: Dictionary mapping item texture types to corresponding textures.
-    init(textures: [ItemTextureType: SKTexture]) {
+    init(textures: [ItemTextureType: SKTexture], size: CGSize? = nil, makePhysicsBody: @escaping (ItemNode) -> SKPhysicsBody?) {
         self.textures = textures
-        self.size = nil
+        self.makePhysicsBody = makePhysicsBody
+        self.size = size
     }
 
     /// Calculates the size of the item based on provided multipliers.

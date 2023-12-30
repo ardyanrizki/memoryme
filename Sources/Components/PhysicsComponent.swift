@@ -57,25 +57,22 @@ class PhysicsComponent: GKComponent {
         
         switch type {
         case .character:
+            let physicsSize = CGSize(width: node.size.width * 0.8, height: node.size.height / 4)
             node.anchorPoint = CGPoint(x: 0.5, y: 0)
-            let physicsSize = CGSize(width: node.size.width / 1.2, height: node.size.height / 4)
-            node.anchorPoint = CGPoint(x: 0.5, y: 0)
-            node.physicsBody = SKPhysicsBody(rectangleOf: physicsSize, center: CGPoint(x: 0, y: physicsSize.height / 2))
+            let nodePath = CGPath(ellipseIn: CGRect(x: -(physicsSize.width / 2), y: 0, width: physicsSize.width, height: physicsSize.height), transform: nil)
+            node.physicsBody = SKPhysicsBody(polygonFrom: nodePath)
             configurePhysicsBody(of: node, for: .character)
+            
         case .item:
-            if let node = node as? ItemNode, let uniqueSize = node.renderableItem?.size {
-                let yPoint = uniqueSize.height > node.size.height ? (abs(uniqueSize.height - node.size.height) / 2) : -(node.size.height / 2) + (uniqueSize.height / 2)
-                node.physicsBody = SKPhysicsBody(rectangleOf: uniqueSize, center: CGPoint(x: 0, y: yPoint))
-                configurePhysicsBody(of: node, for: .item)
-                configureItemZPosition(node)
-            } else if let size {
-                node.physicsBody = SKPhysicsBody(rectangleOf: size, center: CGPoint(x: 0, y: size.height / 2))
-                configurePhysicsBody(of: node, for: .item)
+            if let node = node as? ItemNode,
+               let physicsBody = node.renderableItem?.makePhysicsBody(node) {
+                node.physicsBody = physicsBody
             } else {
                 node.physicsBody = SKPhysicsBody(rectangleOf: node.size)
-                configurePhysicsBody(of: node, for: .item)
-                configureItemZPosition(node)
             }
+            configureItemZPosition(node)
+            configurePhysicsBody(of: node, for: .item)
+            
         case .wall, .sceneChangeZone:
             break
         }

@@ -23,6 +23,8 @@ class ControlComponent: GKComponent {
     /// The target location for the character to move towards.
     private var targetLocation: CGPoint?
     
+    private var contactingItem: ItemNode?
+    
     /// A closure to be executed upon completion of walking.
     private var walkingCompletion: (() -> Void)?
     
@@ -90,10 +92,34 @@ class ControlComponent: GKComponent {
     ///   - point: The target point to walk towards.
     ///   - speed: The speed of the walking movement.
     ///   - completion: A closure to be executed upon completion of walking.
-    public func walk(to point: CGPoint, speed: CGFloat = 300.0, completion: @escaping () -> Void) {
-        targetLocation = CGPoint(x: point.x, y: point.y)
+    public func walk(to point: CGPoint, itemNode: ItemNode?, speed: CGFloat = 300.0, completion: @escaping () -> Void) {
+        var location = CGPoint(x: point.x, y: point.y)
+        if let itemNode, itemNode == contactingItem, itemNode.physicsBody?.node?.contains(point) == true {
+            if let difference = getPointsDifference(relativeTo: point) {
+                location = difference
+            } else {
+                stopWalking()
+                return
+            }
+        }
+        targetLocation = location
         moveSpeed = speed
         walkingCompletion = completion
+    }
+    
+    func getPointsDifference(relativeTo point: CGPoint) -> CGPoint? {
+        let node = renderComponent.node
+        let lastPosition = node.position
+        
+        if lastPosition.x == point.x, lastPosition.y != point.y {
+            return CGPoint(x: point.x, y: lastPosition.y)
+        }
+        
+        if lastPosition.y == point.y, lastPosition.x != point.x {
+            return CGPoint(x: lastPosition.x, y: point.y)
+        }
+        
+        return nil
     }
     
     /// Stops the walking movement and executes the walking completion closure.
@@ -113,5 +139,46 @@ class ControlComponent: GKComponent {
         // Execute walking completion closure
         walkingCompletion?()
         walkingCompletion = nil
+    }
+    
+    public func didBeginContact(_ contact: SKPhysicsContact)  {
+        handleContact(contact, onItemContact: { itemNode in
+            contactingItem = itemNode
+            stopWalking()
+        }) {
+            stopWalking()
+        }
+    }
+    
+    public func didEndContact(_ contact: SKPhysicsContact) {
+        handleContact(contact) { itemNode in
+            if itemNode == contactingItem {
+                contactingItem = nil
+            }
+        }
+    }
+    
+    private func handleContact(_ contact: SKPhysicsContact, onItemContact: (ItemNode) -> Void = { _ in }, onWallContact: () -> Void = {}) {
+        if (contact.bodyA.categoryBitMask == PhysicsType.character.rawValue ||
+            contact.bodyB.categoryBitMask == PhysicsType.character.rawValue) {
+            
+            if (contact.bodyA.categoryBitMask == PhysicsType.item.rawValue ||
+                contact.bodyB.categoryBitMask == PhysicsType.item.rawValue) {
+                // This code block will triggered when player contacted with another item.
+                var itemNode: ItemNode?
+                if contact.bodyA.categoryBitMask == PhysicsType.item.rawValue {
+                    itemNode = contact.bodyA.node as? ItemNode
+                } else if contact.bodyB.categoryBitMask == PhysicsType.item.rawValue {
+                    itemNode = contact.bodyB.node as? ItemNode
+                }
+                guard let itemNode else { return }
+                onItemContact(itemNode)
+            }
+            
+            if (contact.bodyA.categoryBitMask == PhysicsType.wall.rawValue ||
+                contact.bodyB.categoryBitMask == PhysicsType.wall.rawValue) {
+                onWallContact()
+            }
+        }
     }
 }

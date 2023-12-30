@@ -29,73 +29,64 @@ enum BedroomItem: String {
     var props: ItemProps {
         switch self {
         case .bed:
-            return .init(heightMultiplier: 0.8, textures: [
-                .messy: SKTexture(imageNamed: TextureResources.bedMessy)
-            ])
+            return .init(heightMultiplier: 0.8, 
+                         textures: [.messy: SKTexture(imageNamed: TextureResources.bedMessy)],
+                         makePhysicsBody: { node in makeRectPhysicsBody(node: node) })
         case .bedTidy:
-            return .init(heightMultiplier: 0.8, textures: [
-                .tidy: SKTexture(imageNamed: TextureResources.bedTidy)
-            ])
+            return .init(heightMultiplier: 0.8, 
+                         textures: [.tidy: SKTexture(imageNamed: TextureResources.bedTidy)],
+                         makePhysicsBody: { node in makeRectPhysicsBody(node: node) })
         case .book:
-            return .init(textures: [
-                .messy: SKTexture(imageNamed: TextureResources.booksMessy)
-            ])
+            return .init(textures: [.messy: SKTexture(imageNamed: TextureResources.booksMessy)],
+                         makePhysicsBody: { node in makeRectPhysicsBody(node: node) })
         case .bookshelf:
-            return .init(heightMultiplier: 0.8, textures: [
-                .messy: SKTexture(imageNamed: TextureResources.bookshelfMessy)
-            ])
+            return .init(heightMultiplier: 0.8, 
+                         textures: [.messy: SKTexture(imageNamed: TextureResources.bookshelfMessy)],
+                         makePhysicsBody: { node in makeRectPhysicsBody(node: node) })
         case .bookshelfTidy:
-            return .init(heightMultiplier: 0.8, textures: [
-                .tidy: SKTexture(imageNamed: TextureResources.bookshelfTidy)
-            ])
+            return .init(heightMultiplier: 0.8, 
+                         textures: [.tidy: SKTexture(imageNamed: TextureResources.bookshelfTidy)],
+                         makePhysicsBody: { node in makeRectPhysicsBody(node: node) })
         case .chair:
-            return .init(heightMultiplier: 0.6, textures: [
-                .messy: SKTexture(imageNamed: TextureResources.chairMessy)
-            ])
+            return .init(heightMultiplier: 0.6,
+                         textures: [.messy: SKTexture(imageNamed: TextureResources.chairMessy)],
+                         makePhysicsBody: { node in makeRectPhysicsBody(node: node) })
         case .clothes:
-            return .init(textures: [
-                .messy: SKTexture(imageNamed: TextureResources.clothesMessy)
-            ])
+            return .init(textures: [.messy: SKTexture(imageNamed: TextureResources.clothesMessy)],
+                         makePhysicsBody: { node in makeRectPhysicsBody(node: node) })
         case .computer:
-            return .init(textures: [
-                .messy: SKTexture(imageNamed: TextureResources.computerMessy)
-            ])
+            return .init(textures: [.messy: SKTexture(imageNamed: TextureResources.computerMessy)],
+                         makePhysicsBody: { node in makeRectPhysicsBody(node: node) })
         case .curtain:
-            return .init(textures: [
-                .messy: SKTexture(imageNamed: TextureResources.curtainMessy)
-            ])
+            return .init(textures: [.messy: SKTexture(imageNamed: TextureResources.curtainMessy)],
+                         makePhysicsBody: { node in makeRectPhysicsBody(node: node) })
         case .desk:
-            return .init(heightMultiplier: 0.8, textures: [
-                .messy: SKTexture(imageNamed: TextureResources.deskMessy)
-            ])
+            return .init(heightMultiplier: 0.8,
+                         textures: [.messy: SKTexture(imageNamed: TextureResources.deskMessy)],
+                         makePhysicsBody: { node in makeRectPhysicsBody(node: node) })
         case .deskTidy:
-            return .init(heightMultiplier: 0.6, textures: [
-                .tidy: SKTexture(imageNamed: TextureResources.deskTidy)
-            ])
+            return .init(heightMultiplier: 0.6, 
+                         textures: [.tidy: SKTexture(imageNamed: TextureResources.deskTidy)],
+                         makePhysicsBody: { node in makeRectPhysicsBody(node: node) })
         case .photoAlbum:
-            return .init(textures: [
-                .normal: SKTexture(imageNamed: TextureResources.photoAlbum)
-            ])
+            return .init(textures: [.normal: SKTexture(imageNamed: TextureResources.photoAlbum)],
+                         makePhysicsBody: { node in makeRectPhysicsBody(node: node) })
         case .pillow:
-            return .init(textures: [
-                .messy: SKTexture(imageNamed: TextureResources.pillowMessy)
-            ])
+            return .init(textures: [.messy: SKTexture(imageNamed: TextureResources.pillowMessy)],
+                         makePhysicsBody: { node in makeRectPhysicsBody(node: node) })
         case .wardrobe:
-            return .init(heightMultiplier: 0.8, textures: [
-                .messy: SKTexture(imageNamed: TextureResources.wardrobeMessy)
-            ])
+            return .init(heightMultiplier: 0.8,
+                         textures: [.messy: SKTexture(imageNamed: TextureResources.wardrobeMessy)],
+                         makePhysicsBody: { node in makeRectPhysicsBody(node: node) })
         case .wardrobeTidy:
-            return .init(heightMultiplier: 0.8, textures: [
-                .tidy: SKTexture(imageNamed: TextureResources.wardrobeTidy)
-            ])
+            return .init(heightMultiplier: 0.8, textures: [.tidy: SKTexture(imageNamed: TextureResources.wardrobeTidy)],
+                         makePhysicsBody: { node in makeRectPhysicsBody(node: node) })
         case .window:
-            return .init(textures: [
-                .messy: SKTexture(imageNamed: TextureResources.windowMessy)
-            ])
+            return .init(textures: [.messy: SKTexture(imageNamed: TextureResources.windowMessy)],
+                         makePhysicsBody: { node in makeRectPhysicsBody(node: node) })
         case .windowTidy:
-            return .init(textures: [
-                .tidy: SKTexture(imageNamed: TextureResources.windowTidy)
-            ])
+            return .init(textures: [.tidy: SKTexture(imageNamed: TextureResources.windowTidy)],
+                         makePhysicsBody: { node in makeRectPhysicsBody(node: node) })
         }
     }
 }
@@ -108,6 +99,10 @@ extension BedroomItem: RenderableItem {
     
     var size: CGSize? {
         props.size
+    }
+    
+    var makePhysicsBody: (ItemNode) -> SKPhysicsBody?  {
+        props.makePhysicsBody
     }
     
 }
